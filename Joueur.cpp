@@ -8,16 +8,18 @@ int Joueur::HP = 20;
     this-> d = d;
     this-> HP = HP;
 }
-*/
 
 Joueur::Joueur( int HP) {
     this-> HP = HP;
 }
 
-Joueur::Joueur(string nom, int ID) {
+*/
+
+
+Joueur::Joueur(string nom, int ID, int HP) {
     this -> nom = nom;
     this -> ID = ID;
-    HP = 20;
+    this -> HP = HP;
 }
 
 int Joueur::getHP() {

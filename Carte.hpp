@@ -16,8 +16,8 @@ class Carte {
 
     // Les gets
 
-    string Carte::getCouleur();
-    string Carte::getNom();
+    string getCouleur();
+    string getNom();
     
     // Les methodes
 
@@ -25,13 +25,6 @@ class Carte {
         return est_engage;
         
     }
-
-
-    
-
-
-
-
 
 };
 

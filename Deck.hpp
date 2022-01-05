@@ -5,16 +5,19 @@
 #include "Endroit.hpp"
 #include <vector>
 
-class Deck  {
+class Deck {
     private : 
-    vector<pair<Carte,Endroit>> deck;
-    string nom;
+        vector<pair<Carte , Endroit>> deck;
+        string nom;
 
     public :
-    Deck(string nom, vector<pair<Carte,Endroit>> deck); // Constructeur
-    ~Deck() {}; // Destructeur
+    // -- -- -- Constructeur -- -- -- 
+    Deck(string nom, vector<pair<Carte,Endroit>> deck); 
 
-    //les gets
+    // -- -- -- Destructeur -- -- -- 
+    ~Deck() {};
+
+    // -- -- -- les gets -- -- --
     string getNom();
     vector<pair<Carte,Endroit>> getDeck();
 };

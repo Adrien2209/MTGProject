@@ -31,7 +31,7 @@ void Creature::setForce(int i) { force = i; }
 void Creature::setEndurance(int i) { endurance = i; }
 
 // -- -- -- Les méthodes -- -- -- 
-
+/*
 void Creature::Attaque(Creature c1) {
     if (this->force > c1.getEndurance()) {
        return J1.getSante() - this->force;
@@ -43,6 +43,7 @@ void Creature::Attaque(Creature c1) {
     if (this->force < c1.getEndurance()) {
          
     }
+  
 }
-
+  */
 

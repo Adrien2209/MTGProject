@@ -19,5 +19,5 @@
     
     // -- -- -- les sets -- -- --
     void Partie::setTour(int t) { tour = t; }
-    void Partie::setJoueur1(Joueur J) { J1 = J; }
-    void Partie::setJoueur1(Joueur J) { J2 = J; }
+    void Partie::setJoueur1(Joueur j) { J1 = j; }
+    void Partie::setJoueur2(Joueur p) { J2 = p; }

@@ -22,8 +22,7 @@ class Joueur {
 
     // -- -- -- -- CONSTRUCTEUR -- -- -- --
     // Joueur(Deck d, int HP); 
-    Joueur(string nom, int ID);
-    Joueur(int HP);
+    Joueur(string nom, int ID, int HP);
 
     // -- -- -- -- DESTRUCTEUR -- -- -- --
     virtual ~Joueur();
