@@ -250,10 +250,226 @@
             "Force" : 4,
             "Endurance" : 5,
             "Capacity" : ["Lifelink"]
+        },
+
+
+
+        {
+            "Title" : "Cavalier of Flame",
+            "CommonCost" : 2,
+            "ColorCost" : ["Red","Red","Red"],
+            "Color" : "Red",
+            "Type" : "Elemental Knight",
+            "Force" : 6,
+            "Endurance" : 5,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Chandra's Embercat",
+            "CommonCost" : 1,
+            "ColorCost" : ["Red"],
+            "Color" : "Red",
+            "Type" : "Elemental Cat",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Chandra's Spitfire",
+            "CommonCost" : 2,
+            "ColorCost" : ["Red"],
+            "Color" : "Red",
+            "Type" : "Elemental",
+            "Force" : 1,
+            "Endurance" : 3,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Daggersail Aeronaut",
+            "CommonCost" : 3,
+            "ColorCost" : ["Red"],
+            "Color" : "Red",
+            "Type" : "Goblin",
+            "Force" : 3,
+            "Endurance" : 2,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Destructive Digger",
+            "CommonCost" : 2,
+            "ColorCost" : ["Red"],
+            "Color" : "Red",
+            "Type" : "Goblin",
+            "Force" : 3,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Dragon Mage",
+            "CommonCost" : 5,
+            "ColorCost" : ["Red","Red"],
+            "Color" : "Red",
+            "Type" : "Dragon Wizard",
+            "Force" : 5,
+            "Endurance" : 5,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Drakuseth, Maw of Flames",
+            "CommonCost" : 4,
+            "ColorCost" : ["Red","Red","Red"],
+            "Color" : "Red",
+            "Type" : "Dragon",
+            "Force" : 7,
+            "Endurance" : 7,
+            "Capacity" : ["Flying"]
+        },
+
+
+
+        {
+            "Title" : "Barkhide Troll",
+            "CommonCost" : 0,
+            "ColorCost" : ["Green", "Green"],
+            "Color" : "Green",
+            "Type" : "Troll",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Brightwood Tracker",
+            "CommonCost" : 3,
+            "ColorCost" : ["Green"],
+            "Color" : "Green",
+            "Type" : "Elf Scout",
+            "Force" : 2,
+            "Endurance" : 4,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Cavalier of Thorns",
+            "CommonCost" : 2,
+            "ColorCost" : ["Green", "Green", "Green"],
+            "Color" : "Green",
+            "Type" : "Elemental Knight",
+            "Force" : 5,
+            "Endurance" : 6,
+            "Capacity" : ["Reach"]
+        },
+        {
+            "Title" : "Centaur Courser",
+            "CommonCost" : 2,
+            "ColorCost" : ["Green"],
+            "Color" : "Green",
+            "Type" : "Centaur Warrior",
+            "Force" : 3,
+            "Endurance" : 3,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Elvish Reclaimer",
+            "CommonCost" : 0,
+            "ColorCost" : ["Green"],
+            "Color" : "Green",
+            "Type" : "Elf Warrior",
+            "Force" : 1,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Gargos, Vicious Watcher",
+            "CommonCost" : 3,
+            "ColorCost" : ["Green", "Green", "Green"],
+            "Color" : "Green",
+            "Type" : "Hydra",
+            "Force" : 8,
+            "Endurance" : 7,
+            "Capacity" : ["Vigilance"]
+        },
+        {
+            "Title" : "Greenwood Sentinel",
+            "CommonCost" : 1,
+            "ColorCost" : ["Green"],
+            "Color" : "Green",
+            "Type" : "Elf Scout",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : ["Vigilance"]
+        },
+
+
+
+        {
+            "Title" : "Corpse Knight",
+            "CommonCost" : 0,
+            "ColorCost" : ["White", "Black"],
+            "Color" : "Multicolor",
+            "Type" : "Zombie Knight",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Creeping Trailblazer",
+            "CommonCost" : 0,
+            "ColorCost" : ["Red", "Green"],
+            "Color" : "Multicolor",
+            "Type" : "Elemental",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Empyrean Eagle",
+            "CommonCost" : 1,
+            "ColorCost" : ["White", "Blue"],
+            "Color" : "Multicolor",
+            "Type" : "Bird Spirit",
+            "Force" : 2,
+            "Endurance" : 3,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Kaalia, Zenith Seeker",
+            "CommonCost" : 0,
+            "ColorCost" : ["Red", "White", "Black"],
+            "Color" : "Multicolor",
+            "Type" : "Human Cleric",
+            "Force" : 3,
+            "Endurance" : 3,
+            "Capacity" : ["Flying", "Vigilance"]
+        },
+        {
+            "Title" : "Kethis, the Hidden Hand",
+            "CommonCost" : 0,
+            "ColorCost" : ["White", "Black", "Green"],
+            "Color" : "Multicolor",
+            "Type" : "Elf Advisor",
+            "Force" : 3,
+            "Endurance" : 4,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Kylar, Wind's Fury",
+            "CommonCost" : 1,
+            "ColorCost" : ["Blue", "Red", "White"],
+            "Color" : "Multicolor",
+            "Type" : "Bird Wizard",
+            "Force" : 3,
+            "Endurance" : 3,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Lightning Stormkin",
+            "CommonCost" : 0,
+            "ColorCost" : ["Blue", "Red"],
+            "Color" : "Multicolor",
+            "Type" : "Elemental Wizard",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : ["Flying", "Haste"]
         }
-
-
-
         ]
     }
 }
