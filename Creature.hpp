@@ -17,9 +17,17 @@ class Creature : public Carte {
     int getCout();
     int getForce();
     int getEndurance();
-    vector<string>  getCapacite();
+    vector<string> getCapacite();
     vector<string> getCout_Couleur();
 
+    //les sets 
+    void setCout(int i);
+    void setForce(int i);
+    void setEndurance(int i);
+
+    // les methodes 
+
+    void Attaque(Creature c1);
 
 };
 

@@ -2,6 +2,7 @@
 #define CARTE_H
 
 #include <string>
+#include "Deck.hpp"
 using namespace std;
 
 class Carte {

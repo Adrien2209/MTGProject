@@ -1,25 +1,43 @@
 #include "Joueur.hpp"
 
-int Joueur::sante = 20;
+int Joueur::HP = 20;
 // Deck deck = ;
 
 // Constructeur 
-Joueur::Joueur(Deck d, int sante) {
+/* Joueur::Joueur(Deck d, int HP) {
     this-> d = d;
-    this-> sante = sante;
+    this-> HP = HP;
+}
+*/
+
+Joueur::Joueur( int HP) {
+    this-> HP = HP;
 }
 
-// Crée un joueur
-Joueur Joueur::CreeJoueur() {
+Joueur::Joueur(string nom, int ID) {
+    this -> nom = nom;
+    this -> ID = ID;
+    HP = 20;
 }
+
+int Joueur::getHP() {
+        return HP;
+    }
+
+/*
+    int  Joueur::getDeck() {
+        return d;
+    }
+*/
+
+void Joueur::setHP(int s) {
+         HP = s;
+}
+
 // Renvoie le nombre d'HP du joueur
 int Joueur::NombreHP()
 {
-    return sante;
+    return HP;
 }  
 
-// Renvoie le nombre de HP que le joueur a perdu.
-int Joueur::PerdHP() {}
-
-// Renvoie si fin de partie ou non 
 

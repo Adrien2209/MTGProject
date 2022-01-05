@@ -6,19 +6,24 @@
 
 class Partie {
     private : 
-    Joueur J1, J2;
-    int tour;
+    Joueur static J1, J2;
+    int static tour;
 
     public :
+    Partie();
     Partie(Joueur, Joueur, int tour); // Constructeur à faire
     ~Partie() {}; // Destructeur
 
     //les gets
-    int get();
-    int get();
-    int get();
+    Joueur getJoueur1();
+    Joueur getJoueur2();
+    int getTour();
     
+    // les sets 
 
+    void setTour(int t);
+    void setJoueur1(Joueur J);
+    void setJoueur2(Joueur J);
     // méthodes
 
     string FinDePartie(); // renvoie si la partie est finie
