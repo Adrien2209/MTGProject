@@ -2,17 +2,17 @@
 #define JOUEUR_H
 
 #include <vector>
-#include "Carte.hpp"
+#include "Deck.hpp"
 
 using namespace std;
 
 class Joueur {
     private : 
-    vector<Carte> main;
+    Deck d;
     int static sante;
   
     public :
-    Joueur(vector<Carte> main, int sante); // Constructeur
+    Joueur(Deck d, int sante); // Constructeur
     ~Joueur() {}; // Destructeur
 
     Joueur CreeJoueur();

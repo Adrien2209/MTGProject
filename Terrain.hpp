@@ -3,11 +3,9 @@
 
 #include "Creature.hpp"
 
-class Terrain : public Creature {
-    private : 
-    
+class Terrain : public Carte {
     public :
-    Terrain() {}; // Constructeur
+    Terrain(string nom, string couleur); // Constructeur
     ~Terrain() {}; // Destructeur
 
 

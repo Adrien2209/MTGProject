@@ -1,10 +1,11 @@
 #include "Joueur.hpp"
 
 int Joueur::sante = 20;
+// Deck deck = ;
 
 // Constructeur 
-Joueur::Joueur(vector<Carte> main, int sante) {
-    this-> main = main;
+Joueur::Joueur(Deck d, int sante) {
+    this-> d = d;
     this-> sante = sante;
 }
 
@@ -19,4 +20,6 @@ int Joueur::NombreHP()
 
 // Renvoie le nombre de HP que le joueur a perdu.
 int Joueur::PerdHP() {}
+
+// Renvoie si fin de partie ou non 
 
