@@ -1,0 +1,259 @@
+{
+    "Card": {
+        "Terrain" : [
+        {
+            "Title" : "Plains",
+            "Color" : "White"
+        },
+        {
+            "Title" : "Island",
+            "Color" : "Blue"
+        },
+        {
+            "Title" : "Swamp",
+            "Color" : "Black"
+        },
+        {
+            "Title" : "Mountain",
+            "Color" : "Red"
+        },
+        {
+            "Title" : "Forest",
+            "Color" : "Green"
+        }
+        ],
+        "Creature" : [
+        {
+            "Title" : "Saitama",
+            "CommonCost" : 0,
+            "ColorCost" : ["White", "Black", "Blue", "Red", "Green"],
+            "Color" : "Multicolor",
+            "Type" : "Simple Human",
+            "Force" : 99,
+            "Endurance" : 99,
+            "Capacity" : ["Flying"]
+        },
+
+
+        {
+            "Title" : "Angel of Vitality",
+            "CommonCost" : 2,
+            "ColorCost" : ["White"],
+            "Color" : "White",
+            "Type" : "Angel",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Apostle of Puryfing Light",
+            "CommonCost" : 1,
+            "ColorCost" : ["White"],
+            "Color" : "White",
+            "Type" : "Human Cleric",
+            "Force" : 2,
+            "Endurance" : 1,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Battalion Foot Soldier",
+            "CommonCost" : 2,
+            "ColorCost" : ["White"],
+            "Color" : "White",
+            "Type" : "Human Soldier",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Bishop of Wings",
+            "CommonCost" : 0,
+            "ColorCost" : ["White", "White"],
+            "Color" : "White",
+            "Type" : "Human Cleric",
+            "Force" : 1,
+            "Endurance" : 4,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Cavalier of Dawn",
+            "CommonCost" : 2,
+            "ColorCost" : ["White", "White", "White"],
+            "Color" : "White",
+            "Type" : "Elemental Knight",
+            "Force" : 4,
+            "Endurance" : 6,
+            "Capacity" : ["Vigilance"]
+        },
+        {
+            "Title" : "Dawning Angel",
+            "CommonCost" : 4,
+            "ColorCost" : ["White"],
+            "Color" : "White",
+            "Type" : "Angel",
+            "Force" : 3,
+            "Endurance" : 2,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Daybreak Chaplain",
+            "CommonCost" : 1,
+            "ColorCost" : ["White"],
+            "Color" : "White",
+            "Type" : "Human Cleric",
+            "Force" : 1,
+            "Endurance" : 3,
+            "Capacity" : ["Lifelink"]
+        },
+
+
+
+        {
+            "Title" : "Agent of Treachery",
+            "CommonCost" : 5,
+            "ColorCost" : ["Blue", "Blue"],
+            "Color" : "Blue",
+            "Type" : "Human Rogue",
+            "Force" : 2,
+            "Endurance" : 3,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Air Elemental",
+            "CommonCost" : 3,
+            "ColorCost" : ["Blue", "Blue"],
+            "Color" : "Blue",
+            "Type" : "Elemental",
+            "Force" : 4,
+            "Endurance" : 4,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Atemsis, All-Seeing",
+            "CommonCost" : 3,
+            "ColorCost" : ["Blue", "Blue", "Blue"],
+            "Color" : "Blue",
+            "Type" : "Legendary - Sphinx",
+            "Force" : 4,
+            "Endurance" : 5,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Boreal Elemental",
+            "CommonCost" : 4,
+            "ColorCost" : ["Blue"],
+            "Color" : "Blue",
+            "Type" : "Elemental",
+            "Force" : 3,
+            "Endurance" : 4,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Brineborn Cutthroat",
+            "CommonCost" : 1,
+            "ColorCost" : ["Blue"],
+            "Color" : "Blue",
+            "Type" : "Merfolk Pirate",
+            "Force" : 2,
+            "Endurance" : 1,
+            "Capacity" : ["Flash"]
+        },
+        {
+            "Title" : "Cavalier of Gales",
+            "CommonCost" : 2,
+            "ColorCost" : ["Blue", "Blue", "Blue"],
+            "Color" : "Blue",
+            "Type" : "Elemental Knight",
+            "Force" : 5,
+            "Endurance" : 5,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Cerulean Drake",
+            "CommonCost" : 1,
+            "ColorCost" : ["Blue"],
+            "Color" : "Blue",
+            "Type" : "Drake",
+            "Force" : 1,
+            "Endurance" : 1,
+            "Capacity" : ["Flying"]
+        },
+
+
+
+        {
+            "Title" : "Audacious Thief",
+            "CommonCost" : 2,
+            "ColorCost" : ["Black"],
+            "Color" : "Black",
+            "Type" : "Human Rogue",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Barony Vampire",
+            "CommonCost" : 2,
+            "ColorCost" : ["Black"],
+            "Color" : "Black",
+            "Type" : "Vampire",
+            "Force" : 3,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Blightbeetle",
+            "CommonCost" : 1,
+            "ColorCost" : ["Black"],
+            "Color" : "Black",
+            "Type" : "Insect",
+            "Force" : 1,
+            "Endurance" : 1,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Blood Burglar",
+            "CommonCost" : 1,
+            "ColorCost" : ["Black"],
+            "Color" : "Black",
+            "Type" : "Vampire Rogue",
+            "Force" : 2,
+            "Endurance" : 2,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Bloodthirsty Aerialist",
+            "CommonCost" : 1,
+            "ColorCost" : ["Black", "Black"],
+            "Color" : "Black",
+            "Type" : "Vampire Rogue",
+            "Force" : 2,
+            "Endurance" : 3,
+            "Capacity" : ["Flying"]
+        },
+        {
+            "Title" : "Boneclad Necromancer",
+            "CommonCost" : 3,
+            "ColorCost" : ["Black", "Black"],
+            "Color" : "Black",
+            "Type" : "Human Wizarde",
+            "Force" : 3,
+            "Endurance" : 3,
+            "Capacity" : [""]
+        },
+        {
+            "Title" : "Cavalier of Night",
+            "CommonCost" : 2,
+            "ColorCost" : ["Black", "Black", "Black"],
+            "Color" : "Black",
+            "Type" : "Elemental Knight",
+            "Force" : 4,
+            "Endurance" : 5,
+            "Capacity" : ["Lifelink"]
+        }
+
+
+
+        ]
+    }
+}
