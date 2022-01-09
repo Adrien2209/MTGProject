@@ -15,17 +15,16 @@ class Joueur {
     private : 
     /* Deck d; */
     int static HP;
-    int ID;
     string nom;
   
     public :
 
     // -- -- -- -- CONSTRUCTEUR -- -- -- --
     // Joueur(Deck d, int HP); 
-    Joueur(string nom, int ID, int HP);
+    Joueur(string nom, int HP);
 
     // -- -- -- -- DESTRUCTEUR -- -- -- --
-    virtual ~Joueur();
+    ~Joueur();
 
     // -- -- -- -- Les gets -- -- -- --
     int getHP();

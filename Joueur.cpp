@@ -9,18 +9,11 @@ int Joueur::HP = 20;
 /* Joueur::Joueur(Deck d, int HP) {
     this-> d = d;
     this-> HP = HP;
-}
-
-Joueur::Joueur( int HP) {
-    this-> HP = HP;
-}
-
-*/
+}*/
 
 
-Joueur::Joueur(string nom, int ID, int HP) {
+Joueur::Joueur(string nom, int HP) {
     this -> nom = nom;
-    this -> ID = ID;
     this -> HP = HP;
 }
 
@@ -28,9 +21,6 @@ int Joueur::getHP() {
         return HP;
 }
 
-void Joueur::setHP(int s) {
-         HP = s;
-}
 
 // Renvoie le nombre d'HP du joueur
 int Joueur::NombreHP()
