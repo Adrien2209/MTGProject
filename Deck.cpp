@@ -1,7 +1,6 @@
 #include "Deck.hpp"
-#include "Endroit.hpp"
 
-Deck::Deck(string nom, vector<pair<Carte,Endroit>> deck) { 
+Deck::Deck(string nom, vector<Carte> deck) { 
     this -> nom = nom;
     this -> deck = deck;
 }
@@ -10,6 +9,6 @@ string Deck::getNom() {
     return nom;
 }
 
-vector<pair<Carte,Endroit>> Deck::getDeck() {
+vector<Carte> Deck::getDeck() {
     return deck;
 }

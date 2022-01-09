@@ -1,0 +1,54 @@
+{
+    "DeckTest" : 
+    {
+        "Terrain" : 
+        [
+            {
+                "Title" : "Plains",
+                "Color" : "White"
+            },
+            {
+                "Title" : "Plains",
+                "Color" : "White"
+            },
+            {
+                "Title" : "Plains",
+                "Color" : "White"
+            }
+        ],
+        "Creature" :
+        [
+            {
+                "Title" : "Saitama",
+                "CommonCost" : 5,
+                "ColorCost" : ["White", "Black", "Blue", "Red", "Green"],
+                "Color" : "Multicolor",
+                "Type" : "Simple Human",
+                "Force" : 99,
+                "Endurance" : 99,
+                "Capacity" : ["Flying"]
+            },
+            {
+                "Title" : "Saitama",
+                "CommonCost" : 5,
+                "ColorCost" : ["White", "Black", "Blue", "Red", "Green"],
+                "Color" : "Multicolor",
+                "Type" : "Simple Human",
+                "Force" : 99,
+                "Endurance" : 99,
+                "Capacity" : ["Flying"]
+            },
+            {
+                "Title" : "Saitama",
+                "CommonCost" : 5,
+                "ColorCost" : ["White", "Black", "Blue", "Red", "Green"],
+                "Color" : "Multicolor",
+                "Type" : "Simple Human",
+                "Force" : 99,
+                "Endurance" : 99,
+                "Capacity" : ["Flying"]
+            }
+        ]
+    }
+    
+}

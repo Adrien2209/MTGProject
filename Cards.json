@@ -25,7 +25,7 @@
         "Creature" : [
         {
             "Title" : "Saitama",
-            "CommonCost" : 0,
+            "CommonCost" : 5,
             "ColorCost" : ["White", "Black", "Blue", "Red", "Green"],
             "Color" : "Multicolor",
             "Type" : "Simple Human",

@@ -31,13 +31,11 @@ class Joueur {
     int getHP();
     string getNom();
     int getID();
-    // Deck getDeck();
 
     //-- -- -- -- Les sets -- -- -- -- 
     void setNom(string n);
     void setID(int i);
     void setHP(int s);
-    void setDeck();
     
 
     //-- -- -- -- methodes -- -- -- -- 

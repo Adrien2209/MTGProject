@@ -1,6 +1,8 @@
 #include "Joueur.hpp"
 
+
 int Joueur::HP = 20;
+
 // Deck deck = ;
 
 // Constructeur 
@@ -24,13 +26,7 @@ Joueur::Joueur(string nom, int ID, int HP) {
 
 int Joueur::getHP() {
         return HP;
-    }
-
-/*
-    int  Joueur::getDeck() {
-        return d;
-    }
-*/
+}
 
 void Joueur::setHP(int s) {
          HP = s;

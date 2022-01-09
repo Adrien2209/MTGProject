@@ -10,7 +10,8 @@ class Creature : public Carte {
     int cout,  force, endurance;
 
     public :
-    Creature(string  nom, string couleur, vector<string> capacite, vector<string> cout_couleur, int cout, int force, int endurance); // Constructeur à faire
+    Creature(string nom, string couleur, string lieu, bool etat);
+    Creature(string  nom, string couleur, string lieu, bool etat, vector<string> capacite, vector<string> cout_couleur, int cout, int force, int endurance); // Constructeur à faire
     ~Creature() {}; // Destructeur
 
     //les gets
@@ -26,8 +27,8 @@ class Creature : public Carte {
     void setEndurance(int i);
 
     // les methodes 
-
-    void Attaque(Creature c1);
+    void RecevoirDegat(int nbDegat);
+    void Attaque(Creature &creature);
 
 };
 

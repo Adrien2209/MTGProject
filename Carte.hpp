@@ -2,29 +2,32 @@
 #define CARTE_H
 
 #include <string>
-#include "Deck.hpp"
 using namespace std;
 
 class Carte {
     private : 
-    string nom, couleur;
-    bool est_engage;
+    string nom, couleur, lieu;
+    bool etat;
     
     public :
-    Carte(string  nom, string couleur); // Constructeur
+    Carte(string  nom, string couleur, string lieu, bool etat); // Constructeur
     ~Carte() {}; // Destructeur
 
     // Les gets
 
     string getCouleur();
     string getNom();
+    string getLieu();
     
+    // Les sets
+    void setLieu(string l);
+    void setEngage();
+    void setDesengage();
     // Les methodes
+    
+    bool getEtat();
 
-    bool est_Engage(Carte c1) {
-        return est_engage;
-        
-    }
+    void Death();
 
 };
 
