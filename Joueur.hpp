@@ -2,20 +2,16 @@
 #define JOUEUR_H
 
 #include <vector>
-#include "Deck.hpp"
-
-
-const int HP_START = 20;
-const int MAX_HAND = 7;
-
+#include "Carte.hpp"
 
 using namespace std;
 
 class Joueur {
     private : 
-    /* Deck d; */
-    int static HP;
+    vector<Carte> Hand, Bibli, Board, GraveYard; // Voir si on specifie Creature ou Terrain au lieu de Carte
+    int HP = 20;
     string nom;
+    bool mort = false;
   
     public :
 
@@ -24,34 +20,20 @@ class Joueur {
     Joueur(string nom, int HP);
 
     // -- -- -- -- DESTRUCTEUR -- -- -- --
-    ~Joueur();
+    ~Joueur() {};
 
     // -- -- -- -- Les gets -- -- -- --
     int getHP();
     string getNom();
-    int getID();
+    bool getMort();
 
     //-- -- -- -- Les sets -- -- -- -- 
     void setNom(string n);
-    void setID(int i);
     void setHP(int s);
-    
-
+    void setMort();
     //-- -- -- -- methodes -- -- -- -- 
+    void RecevoirDegat(int nbDegat);
 
-    int NombreHP();
-
-
-
-    // VOIR SI ON GARDE 
-
-    // Returns size of Player's deck 
-    int getDeckSize();
-
-    // Returns size of Player's hand 
-    int getHandSize();
-
-    int getGraveyardSize();
 };
 
 #endif

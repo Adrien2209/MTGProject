@@ -2,6 +2,7 @@
 #define CREATURE_H
 
 #include "Carte.hpp"
+#include "Joueur.hpp"
 #include <vector>
 
 class Creature : public Carte {
@@ -28,7 +29,8 @@ class Creature : public Carte {
 
     // les methodes 
     void RecevoirDegat(int nbDegat);
-    void Attaque(Creature &creature);
+    void AttaqueCarte(Creature &creature);
+    void AttaqueJoueur(Joueur &joueur);
 
 };
 

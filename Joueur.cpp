@@ -1,31 +1,29 @@
 #include "Joueur.hpp"
-
-
-int Joueur::HP = 20;
-
-// Deck deck = ;
-
+#include "Carte.hpp"
 // Constructeur 
-/* Joueur::Joueur(Deck d, int HP) {
-    this-> d = d;
-    this-> HP = HP;
-}*/
-
-
 Joueur::Joueur(string nom, int HP) {
     this -> nom = nom;
     this -> HP = HP;
 }
 
-int Joueur::getHP() {
-        return HP;
-}
+// Les gets
+string Joueur::getNom() { return nom;}
+int Joueur::getHP() { return HP;}
+bool Joueur::getMort() { return mort;}
+// Les sets
+void Joueur::setNom( string n) { nom = n;}
+void Joueur::setHP(int s) { HP = s;}
 
+// Les Methodes
+void Joueur::setMort() { mort = true;}
 
-// Renvoie le nombre d'HP du joueur
-int Joueur::NombreHP()
+void Joueur::RecevoirDegat( int nbDegat) 
 {
-    return HP;
-}  
-
+    HP -= nbDegat;
+    if (HP <= 0)
+  {
+    HP = 0;
+    this->setMort();
+  }
+}
 

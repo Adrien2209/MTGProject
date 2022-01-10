@@ -1,5 +1,5 @@
 #include "Creature.hpp"
-
+#include "Joueur.hpp"
 Creature::Creature(string nom, string couleur, string lieu, bool etat) : Carte(nom, couleur, lieu, etat)
 {
   this->cout_couleur = {""};
@@ -50,8 +50,13 @@ void Creature::RecevoirDegat(int nbDegat)
   }
 }
 
-void Creature::Attaque(Creature &creature)
+void Creature::AttaqueCarte(Creature &creature)
 {
   creature.RecevoirDegat(force);
   this->RecevoirDegat(creature.getForce());
+}
+
+void Creature::AttaqueJoueur(Joueur &joueur)
+{
+  joueur.RecevoirDegat(this->getForce());
 }
