@@ -1,6 +1,6 @@
 #include "Creature.hpp"
 #include "Joueur.hpp"
-Creature::Creature(string nom, string couleur, string lieu, bool etat) : Carte(nom, couleur, lieu, etat)
+Creature::Creature(string nom, string couleur, string lieu , bool etat) : Carte(nom, couleur, lieu, etat)
 {
   this->cout_couleur = {""};
   this->capacite = {""};
@@ -9,7 +9,7 @@ Creature::Creature(string nom, string couleur, string lieu, bool etat) : Carte(n
   this->endurance = 4;
 }
 
-Creature::Creature(string nom, string couleur, string lieu, bool etat, vector<string> capacite, vector<string> cout_couleur, int cout, int force, int endurance) : Carte(nom, couleur, lieu, etat)
+Creature::Creature(string nom, string couleur, string lieu , bool etat, vector<string> capacite, vector<string> cout_couleur, int cout, int force, int endurance) : Carte(nom, couleur, lieu, etat)
 {
   this->cout_couleur = cout_couleur;
   this->capacite = capacite;

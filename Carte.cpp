@@ -35,5 +35,5 @@ bool Carte::getEtat() {return etat;}
 void Carte::Death(){
     lieu = "GraveYard";
 }
-
+    
 
