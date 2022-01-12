@@ -1,4 +1,5 @@
 #include "Carte.hpp"
+#include <iostream>
 
 // Constructeur
 Carte::Carte(string  nom, string couleur, string lieu, bool etat) {
@@ -8,6 +9,14 @@ Carte::Carte(string  nom, string couleur, string lieu, bool etat) {
     this-> etat = etat;
 }
 
+void Carte::print() {
+cout           
+            << "                       " + this -> getCouleur() << endl
+            << " ____________________________________ " << endl
+            << "| Name : " + this->getNom() + "                        |" << endl
+            << "|                                   |" << endl
+            << "|___________________________________|" << endl;
+}
 // Les Gets
 
 string Carte::getNom() {

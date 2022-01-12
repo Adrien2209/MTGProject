@@ -1,8 +1,13 @@
 #ifndef DECK_H
 #define DECK_H
 
-#include "Carte.hpp"
+#include "json.hpp"
+#include "Creature.hpp"
+#include "Terrain.hpp"
 #include <vector>
+#include <string>
+
+using json = nlohmann::json;
 
 class Deck {
     private : 
@@ -11,6 +16,7 @@ class Deck {
 
     public :
     // -- -- -- Constructeur -- -- -- 
+    Deck(string nom); 
     Deck(string nom, vector<Carte> deck); 
 
     // -- -- -- Destructeur -- -- -- 
@@ -19,6 +25,8 @@ class Deck {
     // -- -- -- les gets -- -- --
     string getNom();
     vector<Carte> getDeck();
+    void printDeck();
+    vector<Carte> getDeckFromFile(string nomDeck);
 };
 
 #endif

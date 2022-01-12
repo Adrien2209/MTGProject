@@ -8,22 +8,22 @@
 class Creature : public Carte {
     private : 
     vector<string> capacite, cout_couleur;
-    int cout,  force, endurance;
+    int cost,  force, endurance;
 
     public :
     Creature(string nom, string couleur, string lieu, bool etat);
-    Creature(string  nom, string couleur, string lieu, bool etat, vector<string> capacite, vector<string> cout_couleur, int cout, int force, int endurance); // Constructeur à faire
+    Creature(string  nom, string couleur, string lieu, bool etat, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance); // Constructeur à faire
     ~Creature() {}; // Destructeur
 
     //les gets
-    int getCout();
+    int getCost();
     int getForce();
     int getEndurance();
     vector<string> getCapacite();
     vector<string> getCout_Couleur();
 
     //les sets 
-    void setCout(int i);
+    void setCost(int i);
     void setForce(int i);
     void setEndurance(int i);
 
@@ -31,7 +31,7 @@ class Creature : public Carte {
     void RecevoirDegat(int nbDegat);
     void AttaqueCarte(Creature &creature);
     void AttaqueJoueur(Joueur &joueur);
-
+    void print();
 };
 
 #endif

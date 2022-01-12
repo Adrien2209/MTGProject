@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Carte.hpp"
+#include "Deck.hpp"
 
 using namespace std;
 
@@ -12,13 +13,14 @@ class Joueur {
     int HP = 20;
     string nom;
     bool mort = false;
-  
+    int ID;
     public :
 
     // -- -- -- -- CONSTRUCTEUR -- -- -- --
     // Joueur(Deck d, int HP); 
-    Joueur(string nom, int HP);
-
+    Joueur(string nom, int HP, int ID, vector<Carte> Hand , vector<Carte> Bibli , vector<Carte> Board , vector<Carte> GraveYard);
+    Joueur(string nom, int HP, int ID);
+    Joueur(); 
     // -- -- -- -- DESTRUCTEUR -- -- -- --
     ~Joueur() {};
 
@@ -30,9 +32,13 @@ class Joueur {
     //-- -- -- -- Les sets -- -- -- -- 
     void setNom(string n);
     void setHP(int s);
-    void setMort();
+    vector<Carte> setBibli(Deck v);
+   
     //-- -- -- -- methodes -- -- -- -- 
     void RecevoirDegat(int nbDegat);
+    bool VerifMort();
+    void MelangeBibli(vector<Carte> v );
+
 
 };
 

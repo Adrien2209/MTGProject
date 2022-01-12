@@ -1,19 +1,21 @@
 #include "Creature.hpp"
 #include "Joueur.hpp"
+#include <iostream>
+using namespace std;
 Creature::Creature(string nom, string couleur, string lieu , bool etat) : Carte(nom, couleur, lieu, etat)
 {
   this->cout_couleur = {""};
   this->capacite = {""};
-  this->cout = 1;
+  this->cost= 1;
   this->force = 2;
   this->endurance = 4;
 }
 
-Creature::Creature(string nom, string couleur, string lieu , bool etat, vector<string> capacite, vector<string> cout_couleur, int cout, int force, int endurance) : Carte(nom, couleur, lieu, etat)
+Creature::Creature(string nom, string couleur, string lieu , bool etat, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance) : Carte(nom, couleur, lieu, etat)
 {
   this->cout_couleur = cout_couleur;
   this->capacite = capacite;
-  this->cout = cout;
+  this-> cost = cost;
   this->force = force;
   this->endurance = endurance;
 }
@@ -24,7 +26,7 @@ vector<string> Creature::getCapacite() { return capacite; }
 
 vector<string> Creature::getCout_Couleur() { return cout_couleur; }
 
-int Creature::getCout() { return cout; }
+int Creature::getCost() { return cost; }
 
 int Creature::getForce() { return force; }
 
@@ -32,7 +34,7 @@ int Creature::getEndurance() { return endurance; }
 
 // -- -- -- Les sets -- -- --
 
-void Creature::setCout(int i) { cout = i; }
+void Creature::setCost(int i) { cost = i; }
 
 void Creature::setForce(int i) { force = i; }
 
@@ -59,4 +61,14 @@ void Creature::AttaqueCarte(Creature &creature)
 void Creature::AttaqueJoueur(Joueur &joueur)
 {
   joueur.RecevoirDegat(this->getForce());
+}
+
+void Creature::print() {
+  cout <<" Methode de creature " << endl;
+  cout << this -> getCouleur() << endl
+            << " ____________________________________ " << endl
+            <<"| Name : " + this->getNom() + "  Cout : " + to_string(cost) + " |" << endl
+            <<"|                                   |" << endl
+            <<"| Attack : " + to_string(force) + "                 HP : " + to_string(endurance) + " |" << endl
+            <<"|___________________________________|" << endl;
 }

@@ -13,6 +13,8 @@ class Carte {
     Carte(string  nom, string couleur, string lieu, bool etat); // Constructeur
     ~Carte() {}; // Destructeur
 
+    void virtual print();
+    
     // Les gets
 
     string getCouleur();

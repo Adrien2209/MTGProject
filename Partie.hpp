@@ -6,12 +6,12 @@
 
 class Partie {
     private : 
-    Joueur static J1, J2;
-    int static tour;
+    Joueur J1, J2;
+    int tour;
 
     public :
-    Partie();
-    Partie(Joueur, Joueur, int tour); // Constructeur à faire
+
+    Partie(Joueur J1, Joueur J2, int tour = 0); // Constructeur à faire
     ~Partie() {}; // Destructeur
 
     //les gets
@@ -24,12 +24,11 @@ class Partie {
     void setTour(int t);
     void setJoueur1(Joueur J);
     void setJoueur2(Joueur J);
+    
     // méthodes
-
-    string FinDePartie(); // renvoie si la partie est finie
-
-
-
+    int JoueurCommence();
+    int TourSuivant();
+    bool FinDePartie();
 
 };
 
