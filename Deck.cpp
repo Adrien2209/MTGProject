@@ -11,9 +11,6 @@ Deck::Deck(string nom, vector<Carte> deck) {
     this -> deck = deck;
 }
 
-void Deck::printDeck(){
-}
-
 string Deck::getNom() {
     return nom;
 }
@@ -57,4 +54,10 @@ vector<Carte> Deck::getDeckFromFile(string nomDeck) {
     }
 
     return DeckRetour;
+}
+
+void Deck::printDeck() {
+    for ( auto e : this->deck) {
+        e.print();
+    }
 }

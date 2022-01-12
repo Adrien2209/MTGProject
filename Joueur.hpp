@@ -7,6 +7,8 @@
 
 using namespace std;
 
+class Deck;
+
 class Joueur {
     private : 
     vector<Carte> Hand, Bibli, Board, GraveYard; // Voir si on specifie Creature ou Terrain au lieu de Carte
@@ -28,6 +30,7 @@ class Joueur {
     int getHP();
     string getNom();
     bool getMort();
+    vector<Carte> getBibli();
 
     //-- -- -- -- Les sets -- -- -- -- 
     void setNom(string n);
@@ -39,6 +42,7 @@ class Joueur {
     bool VerifMort();
     void MelangeBibli(vector<Carte> v );
 
+    void printBibli();
 
 };
 

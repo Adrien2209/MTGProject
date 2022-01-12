@@ -29,6 +29,7 @@ Joueur::Joueur() {};
 string Joueur::getNom() { return nom;}
 int Joueur::getHP() { return HP;}
 bool Joueur::getMort() { return mort;}
+vector<Carte> Joueur::getBibli() { return Bibli;}
 
 // Les sets
 void Joueur::setNom( string n) { nom = n;}
@@ -56,10 +57,14 @@ void Joueur::RecevoirDegat( int nbDegat)
 }
 
 void Joueur::MelangeBibli(vector<Carte> v ) {
-  unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-  shuffle (v.begin(),v.end(),std::default_random_engine(seed));
+  random_shuffle (v.begin(),v.end());
 }
 
+void Joueur::printBibli() {
+  for ( auto e : this->Bibli) {
+        e.print();
+    }
+}
 
 
 

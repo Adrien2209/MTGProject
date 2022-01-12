@@ -55,18 +55,30 @@ int main() {
 
     Carte c = Carte("zub", "Blue", "Board", true);
 
-    c.print();
-    c2.print();
-
     // -- Creation Deck -- 
     Deck d = Deck("Wass", {c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15,c16,c17,c18,land1, land2, land3,land4, land5,land1, land2, land3,land4, land5,land1, land2});
     Deck d1 = Deck("DeckTest");
+    d1.printDeck();
+
+    cout << "--------------------------------------------------------------------------------" << endl;
     
-    vector<Carte> Bibli = J1.setBibli(d);
+
+    vector<Carte> Bibli = J1.setBibli(d1);
+
+
+    cout << "Bibli avant melange" << endl;
+    J1.printBibli();
+   
+    J1.MelangeBibli(Bibli);
     J1.MelangeBibli(Bibli);
 
+    cout << "--------------------------------------------------------------------------------" << endl;
+
+    cout << "Bibli après melange" << endl;
+    J1.printBibli();
+
     // Creation de la Partie 
-    Partie game = Partie(J1,J2,0);
+   /* Partie game = Partie(J1,J2,0);
     cout << "Le Joueur qui commence sera le joueur numéro : " << game.JoueurCommence() << endl;
     int tour = 0;
     while (J1.getHP() > 0 && J2.getHP() > 0) {
@@ -78,7 +90,7 @@ int main() {
         c3.AttaqueJoueur(J2);
         }
 
-
+*/
     //------------------------ DECK ------------------------
 
 /*

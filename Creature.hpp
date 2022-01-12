@@ -5,6 +5,8 @@
 #include "Joueur.hpp"
 #include <vector>
 
+class Joueur;
+
 class Creature : public Carte {
     private : 
     vector<string> capacite, cout_couleur;
