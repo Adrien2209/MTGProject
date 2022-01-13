@@ -44,7 +44,6 @@ class Joueur {
     void RecevoirDegat(int nbDegat);
     bool VerifMort();
     void MelangeBibli(vector<Carte> v );
-
     void printBibli();
 
     //-- -- -- -- Phases -- -- -- --

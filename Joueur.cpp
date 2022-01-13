@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <iostream>
 #include <random>       // std::default_random_engine
-#include <chrono>       // std::chrono::system_clock
+
 
 // Constructeur 
 Joueur::Joueur(string nom, int HP, int ID, vector<Carte> Hand , vector<Carte> Bibli , vector<Carte> Board , vector<Carte> GraveYard) {
@@ -59,12 +59,16 @@ void Joueur::RecevoirDegat( int nbDegat)
   }
 }
 
+
 void Joueur::MelangeBibli(vector<Carte> v ) {
-  random_shuffle (v.begin(),v.end());
+    random_device rd;
+    default_random_engine rng(rd());
+    shuffle(v.begin(), v.end(), rng);
+    this->Bibli = v;
 }
 
 void Joueur::printBibli() {
-  for ( auto e : this->Bibli) {
+  for ( auto e : Bibli) {
         e.print();
     }
 }

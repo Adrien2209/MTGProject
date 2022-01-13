@@ -34,18 +34,19 @@ int main() {
     cout << "--------------------------------------------------------------------------------" << endl;
     
 
-    vector<Carte> Bibli = J1.setBibli(d1);
+    vector<Carte> Biblio = J1.setBibli(d1);
 
 
     cout << "Bibli avant melange" << endl;
     J1.printBibli();
    
-    J1.MelangeBibli(Bibli);
-    J1.MelangeBibli(Bibli);
+
 
     cout << "--------------------------------------------------------------------------------" << endl;
 
     cout << "Bibli après melange" << endl;
+    J1.MelangeBibli(Biblio);
+
     J1.printBibli();
 
     // Creation de la Partie 
