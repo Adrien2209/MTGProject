@@ -10,7 +10,7 @@ class Joueur;
 class Creature : public Carte {
     private : 
     vector<string> capacite, cout_couleur;
-    int cost,  force, endurance;
+    int cost,  force, endurance, idCreature;;
 
     public :
     Creature(string nom, string couleur, string lieu, bool etat);
@@ -23,6 +23,7 @@ class Creature : public Carte {
     int getEndurance();
     vector<string> getCapacite();
     vector<string> getCout_Couleur();
+    int getID();
 
     //les sets 
     void setCost(int i);

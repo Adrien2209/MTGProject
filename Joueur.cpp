@@ -1,5 +1,6 @@
 #include "Joueur.hpp"
 #include "Carte.hpp"
+#include "Terrain.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -73,7 +74,7 @@ void Joueur::printBibli() {
     }
 }
 
-int Joueur::PhaseDePioche() {
+void Joueur::PhaseDePioche() {
   if (this->getBibli().empty()) {
     mort = true;
     this->VerifMort();
@@ -96,6 +97,7 @@ int Joueur::PhaseDeDesengagement() {
       carte.setDesengage();
     }
   }
+}
 }
 
 

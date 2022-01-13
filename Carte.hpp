@@ -9,11 +9,13 @@ class Carte {
     string nom, couleur, lieu;
     bool etat;
     
+
     public :
     Carte(string  nom, string couleur, string lieu, bool etat); // Constructeur
     ~Carte() {}; // Destructeur
 
     void virtual print();
+    int virtual getID();
     
     // Les gets
 

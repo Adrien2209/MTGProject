@@ -45,7 +45,7 @@ class Joueur {
     bool VerifMort();
     void MelangeBibli(vector<Carte> v );
     void printBibli();
-
+    int ParcourirBoard(vector<Carte> v);
     //-- -- -- -- Phases -- -- -- --
     int PhaseDePioche();
     int PhaseDeDesengagement();

@@ -9,6 +9,7 @@ Creature::Creature(string nom, string couleur, string lieu , bool etat) : Carte(
   this->cost= 1;
   this->force = 2;
   this->endurance = 4;
+  this-> idCreature = 2;
 }
 
 Creature::Creature(string nom, string couleur, string lieu , bool etat, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance) : Carte(nom, couleur, lieu, etat)
@@ -18,6 +19,7 @@ Creature::Creature(string nom, string couleur, string lieu , bool etat, vector<s
   this-> cost = cost;
   this->force = force;
   this->endurance = endurance;
+  this-> idCreature = 2;
 }
 
 // -- -- -- Les gets -- -- --
@@ -31,6 +33,11 @@ int Creature::getCost() { return cost; }
 int Creature::getForce() { return force; }
 
 int Creature::getEndurance() { return endurance; }
+
+int Creature::getID() {
+  cout << "Creature" << endl;
+  return idCreature;
+  }
 
 // -- -- -- Les sets -- -- --
 
