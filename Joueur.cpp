@@ -30,6 +30,9 @@ string Joueur::getNom() { return nom;}
 int Joueur::getHP() { return HP;}
 bool Joueur::getMort() { return mort;}
 vector<Carte> Joueur::getBibli() { return Bibli;}
+vector<Carte> Joueur::getBoard() { return Board;}
+vector<Carte> Joueur::getGraveYard() { return GraveYard;}
+vector<Carte> Joueur::getHand() { return Hand;}
 
 // Les sets
 void Joueur::setNom( string n) { nom = n;}
@@ -40,7 +43,7 @@ vector<Carte> Joueur::setBibli(Deck v) {
 
 // Les Methodes
 bool Joueur::VerifMort() { 
-  if (this->getHP()  <= 0 ){
+  if (this->getHP()  <= 0 || mort == true){
       cout << "Le joueur " << this->getNom() << " est mort ! C'est CIAO !!" << endl ;
        return mort = true;}
     return mort;
@@ -64,6 +67,21 @@ void Joueur::printBibli() {
   for ( auto e : this->Bibli) {
         e.print();
     }
+}
+
+void Joueur::PhaseDePioche() {
+  if (this->getBibli().empty()) {
+    mort = true;
+    this->VerifMort();
+  }
+  else {
+    this->getHand().push_back(this->getBibli().front());
+    this->getBibli().erase(this->getBibli().begin());
+  }
+
+void Joueur::PhaseDeDesengagement() {
+  
+}
 }
 
 

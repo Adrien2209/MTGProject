@@ -31,6 +31,9 @@ class Joueur {
     string getNom();
     bool getMort();
     vector<Carte> getBibli();
+    vector<Carte> getHand();
+    vector<Carte> getGraveYard();
+    vector<Carte> getBoard();
 
     //-- -- -- -- Les sets -- -- -- -- 
     void setNom(string n);
@@ -43,6 +46,14 @@ class Joueur {
     void MelangeBibli(vector<Carte> v );
 
     void printBibli();
+
+    //-- -- -- -- Phases -- -- -- --
+    void PhaseDePioche();
+    void PhaseDeDesengagement();
+    void PhasePrincipale();
+    void PhaseDeCombat();
+    void PhaseSecondaire();
+    void FinDeTour();
 
 };
 
