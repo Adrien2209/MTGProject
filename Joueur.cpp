@@ -73,19 +73,29 @@ void Joueur::printBibli() {
     }
 }
 
-void Joueur::PhaseDePioche() {
+int Joueur::PhaseDePioche() {
   if (this->getBibli().empty()) {
     mort = true;
     this->VerifMort();
+    return 0;
   }
   else {
     this->getHand().push_back(this->getBibli().front());
     this->getBibli().erase(this->getBibli().begin());
+    return 1;
   }
-
-void Joueur::PhaseDeDesengagement() {
-  
 }
+
+int Joueur::PhaseDeDesengagement() {
+  if (this->getBoard().empty()) {
+    cout << "Le joueur " << this->getNom() << " n'a pas de cartes sur le terrain" << endl ;
+    return 0;
+  }
+  else {
+    for(Carte& carte : this->getBoard()){
+      carte.setDesengage();
+    }
+  }
 }
 
 

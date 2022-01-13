@@ -47,12 +47,12 @@ class Joueur {
     void printBibli();
 
     //-- -- -- -- Phases -- -- -- --
-    void PhaseDePioche();
-    void PhaseDeDesengagement();
-    void PhasePrincipale();
-    void PhaseDeCombat();
-    void PhaseSecondaire();
-    void FinDeTour();
+    int PhaseDePioche();
+    int PhaseDeDesengagement();
+    int PhasePrincipale();
+    int PhaseDeCombat();
+    int PhaseSecondaire();
+    int FinDeTour();
 
 };
 
