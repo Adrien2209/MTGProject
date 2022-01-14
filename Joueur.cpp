@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include <random> // std::default_random_engine
+#include <stdlib.h>
 
 // Constructeur
 Joueur::Joueur(string nom, int HP, int ID, vector<Carte> Hand, vector<Carte> Bibli, vector<Carte> Board, vector<Carte> GraveYard)
@@ -74,6 +75,14 @@ void Joueur::MelangeBibli(vector<Carte> v)
   this->Bibli = v;
 }
 
+void Joueur::printHand()
+{
+  for (auto e : Hand)
+  {
+    e.print();
+  }
+}
+
 void Joueur::printBibli()
 {
   for (auto e : Bibli)
@@ -116,31 +125,37 @@ int Joueur::PhaseDeDesengagement()
 
 Carte Joueur::ChoixCreature()
 {
-  int id;
+
+  int idCarteChoisie = 0;
   cout << "Quelle carte voulez-vous jouer ? :) " << endl;
-  this->getHand().print();
-  cout << " Veuillez renseignez le numero de la carte à poser " << endl;
-  getline(cin, id);
-  Creature CarteChoisie = Carte(id);
+  // Afficher les cartes disponibles :
+  for (auto e : Hand)
+  {
+    e.print();
+  }
+  cout << " Veuillez renseignez le numero de la carte a poser ! Premiere carte afficher numero 1, etc..." << endl;
+  cin >> idCarteChoisie;
+  Carte CarteChoisie = Hand[idCarteChoisie - 1];
   return CarteChoisie;
+ 
+  
 }
 
-void Joueur::PhasePrincipale()
+bool Joueur::PhasePrincipale()
 {
   // Stockage des terrains
-  vector<Terrain> nbLand;
-  for (Carte &carte : this->getBoard())
+  vector<Carte> nbLand;
+  for (Carte carte : this->getBoard())
   {
-    if (carte.getID() == 1 && carte.getEtat() = false)
+    if (carte.getID() == 1 && carte.getEtat() == false)
     {
       nbLand.push_back(carte);
     }
   }
 
-  
   while (true)
   {
-    Creature CarteChoisie = this->ChoixCreature();                // Creature choisie par le joueur.
+    Carte CarteChoisie = this->ChoixCreature();                   // Creature choisie par le joueur.
     int cost = CarteChoisie.getCost();                            // Cout de la carte quelconque
     vector<string> cost_couleur = CarteChoisie.getCout_Couleur(); // cout couleur specifique
     int CoutCouleur = cost_couleur.size();
@@ -158,17 +173,17 @@ void Joueur::PhasePrincipale()
           {                   // Si le nombre de carte n'a pas deja été trouver alors
             c.setEngage();    // on engage la carte
             i++;              // On incremente i
-            nbCarteTrouver++; // On incremente le carte totale de terrain trouver
-          } 
+           nbTerrainTrouver++; // On incremente le carte totale de terrain trouver
+          }
           else // Si on a trouver toute les cartes de couleurs necessaire on doit verifier s'il reste des cartes de n'importe quelles couleurs qui satisfont le cost.
           {
-            int cpt = 0
+            int cpt = 0;
             while (cpt <= nbLand.size())
             {
-              if (t.getEtat() = false)
+              if (c.getEtat() == false)
               {
-                t.setEngage();
-                nbCarteTrouver++;
+                c.setEngage();
+                nbTerrainTrouver++;
                 cpt++;
               }
               else
@@ -179,19 +194,18 @@ void Joueur::PhasePrincipale()
           }
         }
       }
-     
     }
-     if (nbCarteTrouver == CoutTotale)
+    if (nbTerrainTrouver == CoutTotale)
+    {
+      return true;
+    }
+    else
+    {
+      for (Terrain c : nbLand)
       {
-        return true;
+        c.setDesengage();
       }
-      else
-      {
-        for (Terrain c : nbLand)
-        {
-          c.setDesengage()
-        }
-        return false;
-      }
+      return false;
+    }
   }
 }

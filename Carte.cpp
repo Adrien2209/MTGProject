@@ -2,6 +2,10 @@
 #include <iostream>
 
 // Constructeur
+Carte::Carte(int numero) {
+    this->numero = numero;
+} 
+
 Carte::Carte(string  nom, string couleur, string lieu, bool etat, int numero) {
     this-> nom = nom;
     this-> couleur = couleur;

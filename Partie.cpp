@@ -34,24 +34,73 @@
     }
 
     void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2){
-        vector<int> choix_attaquand = {};
-        vector<int> liste_ID_Attaque = {};
-        string liste_ID_AttaqueString = "";
-        for(Carte& carte : J1.getBoard){
-            if (carte.getID() == 2 || carte.getEtat() = false){
-                liste_ID_Attaque.push_back(carte.getNumero())
+        vector<Carte&> liste_Attaque = {};
+
+        for(unsigned int i = 0; i < J1.getBoard().size(); i++){
+            if (J1.getBoard()[i].getID() == 2 || J1.getBoard()[i].getEtat() = false){
+                liste_Attaque.push_back(J1.getBoard()[i]);
             }
         }
-        for(int i : liste_ID_Attaque){
-            liste_ID_AttaqueString += to_string(i) + " ; "
-        }
-        liste_ID_AttaqueString = liste_ID_AttaqueString.substr(0, liste_ID_AttaqueString.size()-2);
-        cout << "Sac a viande " << J1.getNom << "\n";
-        cout << "Entre les ID des creatures avec lesquelles tu souhaites attaquer parmis cette liste. Quand tu as fini, rentre OK :\n";
-        cout << liste_ID_AttaqueString << "\n";
-        
 
+        cout << "Sac a viande " << J1.getNom() << "\n";
+        cout << "Parmis ces creatures, avec lesquelles decides-tu d'attaquer. Quand tu as fini, rentre OK, ET EN MAJUSCULE !! :\n";
         
+        for(Carte& carte : liste_Attaque){
+            carte.print();
+        }
+
+        string safeword = "";
+        vector<int> choix_attaquant = {};
+        vector<Carte&> Attacking_Cards = {};
+
+        while(safeword != "OK"){
+            cin >> safeword;
+            if(safeword != "OK"){
+                choix_attaquant.push_back(stoi(safeword));
+                safeword = "";
+            }
+        }
+
+        for(int i : choix_attaquant){
+            Attacking_Cards.push_back(liste_Attaque[i]);
+        }
+
+        cout << "Tu as donc selectionne les cartes suivantes : \n";
+
+        for(Carte& carte : Attacking_Cards){
+            carte.print();
+        }
+
+        cout << "Enfin !! Maintenant fumier " << J2.getNom() << "\n";
+
+        vector<Carte&> liste_Defense = {};
+
+        for(unsigned int i = 0; i < J1.getBoard().size(); i++){
+            if (J1.getBoard()[i].getID() == 2 || J1.getBoard()[i].getEtat() = false){
+                liste_Defense.push_back(J1.getBoard()[i]);
+            }
+        }
+
+        while(safeword != "OK"){
+            for(Carte& carte : Attacking_Cards){
+                cout << "Quelle carte va protéger ton fessier de poule mouille contre :\n";
+                carte.print();
+                cout << "Allez choisi une carte : \n";
+                for(Carte& carte : liste_Defense){
+                    carte.print();
+                }
+                cin >> safeword;
+                if(safeword != "OK"){
+                choix_attaquant.push_back(stoi(rep));
+                }
+            }
+
+            cin >> safeword;
+            if(safeword != "OK"){
+                choix_attaquant.push_back(stoi(rep));
+            }
+        }
+
 
     }
 

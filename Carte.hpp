@@ -12,6 +12,7 @@ class Carte {
     
 
     public :
+    Carte(int numero);
     Carte(string  nom, string couleur, string lieu, bool etat, int numero); // Constructeur
     ~Carte() {}; // Destructeur
 
