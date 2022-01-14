@@ -47,6 +47,7 @@ class Joueur {
     void printBibli();
     int ParcourirBoard(vector<Carte> v);
     //-- -- -- -- Phases -- -- -- --
+    void ChoixCreature()
     int PhaseDePioche();
     int PhaseDeDesengagement();
     int PhasePrincipale();

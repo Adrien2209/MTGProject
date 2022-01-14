@@ -114,23 +114,48 @@ int Joueur::PhaseDeDesengagement()
   }
 }
 
-int Joueur::PhasePrincipale()
-{
-  vector<Terrain> nbLand;
-  for (Carte &carte : this->getBoard())
-  {
-    if (carte.getID() == 1)
-    {
-      nbLand++;
-    }
-  }
+Carte Joueur::ChoixCreature() {
+  int id;
+  cout << "Quelle carte voulez-vous jouer ? :) " << endl;
+  this->getHand().print();
+  cout << " Veuillez renseignez le numero de la carte à poser " << endl;
+  getline(cin, id);
+  Creature CarteChoisie = Carte(id);
+  return CarteChoisie;
 }
 
-int Joueur::PhaseDeCombat(){
-  for(Carte &carte : this->getBoard())
-  {
-    if (carte.getID() == 2){
-      
+int Joueur::PhasePrincipale() {
+    // Stockage des terrains 
+    vector<Terrain> nbLand;
+    for(Carte& carte : this->getBoard()) {
+      if ( carte.getID() == 1 && carte.getEtat() = false) {
+        nbLand.push_back(carte);
+      }
     }
+
+    bool FinChoix = true;
+    while(FinChoix = false) {
+      Creature CarteChoisie = this->ChoixCreature(); //Creature choisie par le joueur.
+    }
+  
+   
+    int cost = CarteChoisie.getCost();
+    vector<string> cost_couleur = CarteChoisie.getCout_Couleur();
+    int nb = cost_couleur.size();
+  
+    for(Terrain& c : nbLand) {
+      int i = 0;
+      for ( auto s : cost_couleur) {
+        if ( c.getCouleur() = s ) {
+          c.setEngage();
+          if ( i = nb) {
+            return 1;
+          }
+          nbLand.erase(c);
+      }
+    } 
+    }
+    
+
   }
 }
