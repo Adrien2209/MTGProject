@@ -16,6 +16,7 @@ string Carte::getNom() {return nom;}
 string Carte::getCouleur() {return couleur;}
 string Carte::getLieu(){ return lieu;}
 int Carte::getID() { return 0;}
+int Carte::getNumero() { return numero;}
 bool Carte::getEtat() {return etat;}
 
 // Les sets

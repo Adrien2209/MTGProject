@@ -51,7 +51,6 @@ class Joueur {
     int PhaseDePioche();
     int PhaseDeDesengagement();
     int PhasePrincipale();
-    int PhaseDeCombat();
     int PhaseSecondaire();
     int FinDeTour();
 

@@ -114,7 +114,8 @@ int Joueur::PhaseDeDesengagement()
   }
 }
 
-Carte Joueur::ChoixCreature() {
+Carte Joueur::ChoixCreature()
+{
   int id;
   cout << "Quelle carte voulez-vous jouer ? :) " << endl;
   this->getHand().print();
@@ -124,38 +125,73 @@ Carte Joueur::ChoixCreature() {
   return CarteChoisie;
 }
 
-int Joueur::PhasePrincipale() {
-    // Stockage des terrains 
-    vector<Terrain> nbLand;
-    for(Carte& carte : this->getBoard()) {
-      if ( carte.getID() == 1 && carte.getEtat() = false) {
-        nbLand.push_back(carte);
-      }
+void Joueur::PhasePrincipale()
+{
+  // Stockage des terrains
+  vector<Terrain> nbLand;
+  for (Carte &carte : this->getBoard())
+  {
+    if (carte.getID() == 1 && carte.getEtat() = false)
+    {
+      nbLand.push_back(carte);
     }
+  }
 
-    bool FinChoix = true;
-    while(FinChoix = false) {
-      Creature CarteChoisie = this->ChoixCreature(); //Creature choisie par le joueur.
-    }
   
-   
-    int cost = CarteChoisie.getCost();
-    vector<string> cost_couleur = CarteChoisie.getCout_Couleur();
-    int nb = cost_couleur.size();
-  
-    for(Terrain& c : nbLand) {
-      int i = 0;
-      for ( auto s : cost_couleur) {
-        if ( c.getCouleur() = s ) {
-          c.setEngage();
-          if ( i = nb) {
-            return 1;
+  while (true)
+  {
+    Creature CarteChoisie = this->ChoixCreature();                // Creature choisie par le joueur.
+    int cost = CarteChoisie.getCost();                            // Cout de la carte quelconque
+    vector<string> cost_couleur = CarteChoisie.getCout_Couleur(); // cout couleur specifique
+    int CoutCouleur = cost_couleur.size();
+    int CoutTotale = CoutCouleur + cost;
+    int nbTerrainTrouver = 0;
+
+    for (Terrain &c : nbLand)
+    {
+      for (auto s : cost_couleur) // On parcours les couleurs dont la carte a besoin
+      {
+        int i = 0; // Compteur qui va nous permettre de savoir si on a le bon nombre de carte de couleur.
+        if (c.getCouleur() == s)
+        { // Si c'est la bonne couleur alors
+          if (CoutCouleur != i)
+          {                   // Si le nombre de carte n'a pas deja été trouver alors
+            c.setEngage();    // on engage la carte
+            i++;              // On incremente i
+            nbCarteTrouver++; // On incremente le carte totale de terrain trouver
+          } 
+          else // Si on a trouver toute les cartes de couleurs necessaire on doit verifier s'il reste des cartes de n'importe quelles couleurs qui satisfont le cost.
+          {
+            int cpt = 0
+            while (cpt <= nbLand.size())
+            {
+              if (t.getEtat() = false)
+              {
+                t.setEngage();
+                nbCarteTrouver++;
+                cpt++;
+              }
+              else
+              {
+                cpt++;
+              }
+            }
           }
-          nbLand.erase(c);
+        }
       }
-    } 
+     
     }
-    
-
+     if (nbCarteTrouver == CoutTotale)
+      {
+        return true;
+      }
+      else
+      {
+        for (Terrain c : nbLand)
+        {
+          c.setDesengage()
+        }
+        return false;
+      }
   }
 }

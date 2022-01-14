@@ -12,6 +12,8 @@ class Terrain : public Carte {
 
     int getID();
 
+    void getDesengage();
+
 
 
 };
