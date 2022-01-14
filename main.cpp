@@ -74,7 +74,6 @@ int main() {
     J1.printBibli();
    
     J1.MelangeBibli(Bibli);
-    J1.MelangeBibli(Bibli);
 
     cout << "--------------------------------------------------------------------------------" << endl;
 

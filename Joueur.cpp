@@ -74,7 +74,7 @@ void Joueur::printBibli() {
     }
 }
 
-void Joueur::PhaseDePioche() {
+int Joueur::PhaseDePioche() {
   if (this->getBibli().empty()) {
     mort = true;
     this->VerifMort();
@@ -97,8 +97,21 @@ int Joueur::PhaseDeDesengagement() {
       carte.setDesengage();
     }
   }
+
+int Joueur::PhasePrincipale() {
+    vector<Terrain> nbLand;
+    for(Carte& carte : this->getBoard()) {
+      if ( carte.getID() == 1) {
+        nbLand++;
+      }
+    }
+
+  }
+
 }
-}
+
+
+
 
 
 

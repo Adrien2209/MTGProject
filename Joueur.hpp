@@ -11,7 +11,7 @@ class Deck;
 
 class Joueur {
     private : 
-    vector<Carte> Hand, Bibli, Board, GraveYard; // Voir si on specifie Creature ou Terrain au lieu de Carte
+    vector<Carte*> Hand, Bibli, Board, GraveYard; // Voir si on specifie Creature ou Terrain au lieu de Carte
     int HP = 20;
     string nom;
     bool mort = false;
