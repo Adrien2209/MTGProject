@@ -10,7 +10,7 @@ class Joueur;
 class Creature : public Carte {
     private : 
     vector<string> capacite, cout_couleur;
-    int cost,  force, endurance, idCreature;
+    int cost,  force, endurance, idCreature, base_endurance;
 
     public :
     Creature(string nom, string couleur, string lieu, bool etat, int numero);
@@ -21,6 +21,7 @@ class Creature : public Carte {
     int getCost();
     int getForce();
     int getEndurance();
+    int getBaseEndurance();
     vector<string> getCapacite();
     vector<string> getCout_Couleur();
     int getID();
@@ -29,6 +30,7 @@ class Creature : public Carte {
     void setCost(int i);
     void setForce(int i);
     void setEndurance(int i);
+    void setBaseEndurance(int i);
 
     // les methodes 
     void RecevoirDegat(int nbDegat);

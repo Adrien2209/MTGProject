@@ -10,6 +10,7 @@ Creature::Creature(string nom, string couleur, string lieu , bool etat, int nume
   this->force = 2;
   this->endurance = 4;
   this-> idCreature = 2;
+  this->base_endurance = 4;
 }
 
 Creature::Creature(string nom, string couleur, string lieu , bool etat, int numero, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance) : Carte(nom, couleur, lieu, etat, numero)
@@ -20,6 +21,7 @@ Creature::Creature(string nom, string couleur, string lieu , bool etat, int nume
   this->force = force;
   this->endurance = endurance;
   this-> idCreature = 2;
+  this->base_endurance = endurance;
 }
 
 // -- -- -- Les gets -- -- --
@@ -34,6 +36,8 @@ int Creature::getForce() { return force; }
 
 int Creature::getEndurance() { return endurance; }
 
+int Creature::getBaseEndurance() { return base_endurance; }
+
 int Creature::getID() {
   cout << "Creature" << endl;
   return idCreature;
@@ -46,6 +50,7 @@ void Creature::setCost(int i) { cost = i; }
 void Creature::setForce(int i) { force = i; }
 
 void Creature::setEndurance(int i) { endurance = i; }
+void Creature::setBaseEndurance(int i) { base_endurance = i;}
 
 // -- -- -- Les méthodes -- -- --
 void Creature::RecevoirDegat(int nbDegat)
