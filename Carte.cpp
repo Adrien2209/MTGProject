@@ -2,11 +2,12 @@
 #include <iostream>
 
 // Constructeur
-Carte::Carte(string  nom, string couleur, string lieu, bool etat) {
+Carte::Carte(string  nom, string couleur, string lieu, bool etat, int numero) {
     this-> nom = nom;
     this-> couleur = couleur;
     this-> lieu = lieu;
     this-> etat = etat;
+    this-> numero = numero;
 
 }
 

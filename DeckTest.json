@@ -5,15 +5,18 @@
         [
             {
                 "Title" : "Plains",
-                "Color" : "White"
+                "Color" : "White",
+                "ID"    : 1
             },
             {
                 "Title" : "Plains",
-                "Color" : "White"
+                "Color" : "White",
+                "ID"    : 2
             },
             {
                 "Title" : "Plains",
-                "Color" : "White"
+                "Color" : "White",
+                "ID"    : 3
             }
         ],
         "Creature" :
@@ -26,7 +29,8 @@
                 "Type" : "Simple Human",
                 "Force" : 99,
                 "Endurance" : 99,
-                "Capacity" : ["Flying"]
+                "Capacity" : ["Flying"],
+                "ID"    : 4
             },
             {
                 "Title" : "Saitama",
@@ -36,7 +40,8 @@
                 "Type" : "Simple Human",
                 "Force" : 99,
                 "Endurance" : 99,
-                "Capacity" : ["Flying"]
+                "Capacity" : ["Flying"],
+                "ID"    : 5
             },
             {
                 "Title" : "Saitama",
@@ -46,7 +51,8 @@
                 "Type" : "Simple Human",
                 "Force" : 99,
                 "Endurance" : 99,
-                "Capacity" : ["Flying"]
+                "Capacity" : ["Flying"],
+                "ID"    : 6
             }
         ]
     }

@@ -8,10 +8,11 @@ class Carte {
     private : 
     string nom, couleur, lieu;
     bool etat;
+    int numero;
     
 
     public :
-    Carte(string  nom, string couleur, string lieu, bool etat); // Constructeur
+    Carte(string  nom, string couleur, string lieu, bool etat, int numero); // Constructeur
     ~Carte() {}; // Destructeur
 
     void virtual print();
@@ -22,6 +23,7 @@ class Carte {
     string getCouleur();
     string getNom();
     string getLieu();
+    int getNumero();
     
     // Les sets
     void setLieu(string l);

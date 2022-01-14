@@ -2,7 +2,7 @@
 #include "Joueur.hpp"
 #include <iostream>
 using namespace std;
-Creature::Creature(string nom, string couleur, string lieu , bool etat) : Carte(nom, couleur, lieu, etat)
+Creature::Creature(string nom, string couleur, string lieu , bool etat, int numero) : Carte(nom, couleur, lieu, etat, numero)
 {
   this->cout_couleur = {""};
   this->capacite = {""};
@@ -12,7 +12,7 @@ Creature::Creature(string nom, string couleur, string lieu , bool etat) : Carte(
   this-> idCreature = 2;
 }
 
-Creature::Creature(string nom, string couleur, string lieu , bool etat, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance) : Carte(nom, couleur, lieu, etat)
+Creature::Creature(string nom, string couleur, string lieu , bool etat, int numero, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance) : Carte(nom, couleur, lieu, etat, numero)
 {
   this->cout_couleur = cout_couleur;
   this->capacite = capacite;

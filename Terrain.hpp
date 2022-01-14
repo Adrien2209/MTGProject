@@ -7,7 +7,7 @@ class Terrain : public Carte {
     private : 
     int idTerrain ;
     public :
-    Terrain(string nom, string couleur, string lieu, bool etat); // Constructeur
+    Terrain(string nom, string couleur, string lieu, bool etat, int numero); // Constructeur
     ~Terrain() {}; // Destructeur
 
     int getID();

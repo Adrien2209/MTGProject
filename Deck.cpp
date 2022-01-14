@@ -37,9 +37,10 @@ vector<Carte> Deck::getDeckFromFile(string nomDeck) {
         int force = liste_creature.value()["Force"];
         int endurance = liste_creature.value()["Endurance"];
         vector<string> capacity = liste_creature.value()["Capacity"];
+        int id = liste_terrain.value()["ID"];
         string lieu = "Bibli";
         bool etat = false;
-        DeckRetour.push_back(Creature(title, color, lieu, etat, capacity, colorcost, commoncost, force, endurance));
+        DeckRetour.push_back(Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance));
     }
 
     // Ajout des terrains dans le deck
@@ -48,9 +49,10 @@ vector<Carte> Deck::getDeckFromFile(string nomDeck) {
     {
         string title = liste_terrain.value()["Title"];
         string color = liste_terrain.value()["Color"];
+        int id = liste_terrain.value()["ID"];
         string lieu = "Bibli";
         bool etat = false;
-        DeckRetour.push_back(Terrain(title, color, lieu, etat));
+        DeckRetour.push_back(Terrain(title, color, lieu, etat, id));
     }
 
     return DeckRetour;

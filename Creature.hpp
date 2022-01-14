@@ -10,11 +10,11 @@ class Joueur;
 class Creature : public Carte {
     private : 
     vector<string> capacite, cout_couleur;
-    int cost,  force, endurance, idCreature;;
+    int cost,  force, endurance, idCreature;
 
     public :
-    Creature(string nom, string couleur, string lieu, bool etat);
-    Creature(string  nom, string couleur, string lieu, bool etat, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance); // Constructeur à faire
+    Creature(string nom, string couleur, string lieu, bool etat, int numero);
+    Creature(string  nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance); // Constructeur à faire
     ~Creature() {}; // Destructeur
 
     //les gets
