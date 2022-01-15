@@ -15,8 +15,8 @@ class Partie {
     ~Partie() {}; // Destructeur
 
     //les gets
-    Joueur getJoueur1();
-    Joueur getJoueur2();
+    Joueur* getJoueur1();
+    Joueur* getJoueur2();
     int getTour();
     
     
@@ -27,8 +27,9 @@ class Partie {
     void setJoueur2(Joueur J);
     
     // méthodes
-    Joueur JoueurCommence();
-    Joueur ChangementDeJoueur();
+    Joueur& JoueurCommence();
+    Joueur* ChangementDeJoueur();
+    //Joueur getJoueurCommence();
     int TourSuivant();
     void PhaseDeCombat(Joueur &J1, Joueur &J2);
     bool FinDePartie();

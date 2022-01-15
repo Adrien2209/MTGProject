@@ -99,7 +99,7 @@ void Joueur::printHand()
 
 void Joueur::printBibli()
 {
-  for (auto &e : Bibli)
+  for (auto& e : Bibli)
   {
     e.print();
   }
@@ -107,7 +107,7 @@ void Joueur::printBibli()
 
 void Joueur::printGraveYard()
 {
-  for (auto &e : GraveYard)
+  for (auto& e : GraveYard)
   {
     e.print();
   }
@@ -115,7 +115,7 @@ void Joueur::printGraveYard()
 
 void Joueur::printBoard()
 {
-  for (auto &e : Board)
+  for (auto& e : Board)
   {
     e.print();
   }

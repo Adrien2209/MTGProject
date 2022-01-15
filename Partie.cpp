@@ -13,8 +13,8 @@ Partie::Partie(Joueur J1, Joueur J2, int tour)
 }
 
 // -- -- -- les gets -- -- --
-Joueur Partie::getJoueur1() { return J1; }
-Joueur Partie::getJoueur2() { return J2; }
+Joueur *Partie::getJoueur1() { return &J1; }
+Joueur *Partie::getJoueur2() { return &J2; }
 int Partie::getTour() { return tour; }
 
 // -- -- -- les sets -- -- --
@@ -28,23 +28,23 @@ int Partie::TourSuivant()
     return this->tour + 1;
 }
 
-Joueur Partie::ChangementDeJoueur()
+Joueur *Partie::ChangementDeJoueur()
 {
-    if (this->JoueurCommence().getNom() == J1.getNom())
+    if (this->JoueurCommence().getNom() == this->getJoueur2()->getNom())
     {
-        return J2;
+        return this->getJoueur1();
     }
     else
     {
-        return J1;
+        return this->getJoueur2();
     }
 }
 
-Joueur Partie::JoueurCommence()
+Joueur &Partie::JoueurCommence()
 {
     srand(time(NULL));
     int IdJoueur = rand() % 2 + 1;
-    if (J1.getId() == IdJoueur)
+    if (this->getJoueur1()->getId() == IdJoueur)
     {
         cout << "Le Joueur qui commence sera : " << J1.getNom() << endl;
         return J1;
@@ -55,6 +55,10 @@ Joueur Partie::JoueurCommence()
     }
     return J2;
 }
+/*
+void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
+{
+    vector<Carte &> liste_Attaque = {}; // Liste qui donne toutes les cartes avec lesquelles l'attaque est possible
 
 void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 {
@@ -145,7 +149,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 }
 bool Partie::FinDePartie()
 {
-    if (this->getJoueur1().getHP() <= 0 || this->getJoueur2().getHP() <= 0)
+    if (this->getJoueur1()->getHP() <= 0 || this->getJoueur2()->getHP() <= 0)
     {
         return false;
     }
