@@ -11,11 +11,9 @@ class Terrain : public Carte {
     ~Terrain() {}; // Destructeur
 
     int getID();
-
+    int getCost();
+    vector<string> getCout_Couleur();
     void getDesengage();
-
-
-
 };
 
 #endif

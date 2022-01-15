@@ -2,6 +2,7 @@
 #define CARTE_H
 
 #include <string>
+#include <vector>
 using namespace std;
 
 class Carte {
@@ -12,12 +13,14 @@ class Carte {
     
 
     public :
-    Carte(int numero);
     Carte(string  nom, string couleur, string lieu, bool etat, int numero); // Constructeur
     ~Carte() {}; // Destructeur
 
-    void virtual print();
+    int virtual getCost();
+    vector<string> virtual getCout_Couleur();
     int virtual getID();
+    void virtual print();
+   
     
     // Les gets
 

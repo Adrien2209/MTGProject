@@ -26,13 +26,18 @@
     int Partie::TourSuivant() {
         return this-> tour + 1;
     } 
-    
 
-    int Partie::JoueurCommence() {
+    void Partie::JoueurCommence() {
          srand(time(NULL));
-         return rand()%2 + 1;
+         int IdJoueur = rand()%2 + 1;
+         if ( J1.getId() == IdJoueur ) {
+             cout << "Le Joueur qui commence sera : " << J1.getNom() << endl;
+         } else {
+             cout << "Le Joueur qui commence sera : " << J2.getNom() << endl;
+         }
     }
 
+/* 
     void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2){
         vector<Carte&> liste_Attaque = {};
 
@@ -103,7 +108,7 @@
 
 
     }
-
+*/
     bool Partie::FinDePartie() {
         if ( this->getJoueur1().getHP() <= 0 || this->getJoueur2().getHP() <= 0) {
             return false;

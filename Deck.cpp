@@ -37,7 +37,7 @@ vector<Carte> Deck::getDeckFromFile(string nomDeck) {
         int force = liste_creature.value()["Force"];
         int endurance = liste_creature.value()["Endurance"];
         vector<string> capacity = liste_creature.value()["Capacity"];
-        int id = liste_terrain.value()["ID"];
+        int id = liste_creature.value()["ID"];
         string lieu = "Bibli";
         bool etat = false;
         DeckRetour.push_back(Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance));
