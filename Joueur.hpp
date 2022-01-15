@@ -55,7 +55,7 @@ public:
     int ParcourirBoard(vector<Carte> v);
     //-- -- -- -- Phases -- -- -- --
     Carte &ChoixCreature();
-    bool PhaseDePioche();
+    void PhaseDePioche();
     int PhaseDeDesengagement();
     void PhasePrincipale();
     int PhaseSecondaire();

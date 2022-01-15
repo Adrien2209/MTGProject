@@ -45,14 +45,20 @@ int main()
     vector<Carte> Hand1 = J1.setInitialHand(Bibli1_Melanger);
     vector<Carte> Hand2 = J2.setInitialHand(Bibli2_Melanger);
 
-    // Tirage au sort joueur qui commence
-    Joueur JoueurQuiJoue = game.JoueurCommence();
-    cout << " ----------------- print de la bibli du joueur qui joue  ----------------- " << endl;
-    JoueurQuiJoue.printBibli();
 
-    JoueurQuiJoue.PhaseDePioche();
-    cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;
-    JoueurQuiJoue.printHand();
+    // Tirage au sort joueur qui commence
+    cout << " ----------------- print de la bibli du joueur qui joue  ----------------- " << endl;
+    J1.printBibli();
+    cout << " ----------------- print de la main du joueur qui joue  ----------------- " << endl;
+    J1.PhaseDePioche();
+    cout << " ----------------- print de la main du joueur qui joue  ----------------- " << endl;
+    J1.printHand();
+    cout << " ----------------- print de la bibli du joueur qui joue  ----------------- " << endl;
+    J1.printBibli();
+
+    //JoueurQuiJoue.PhaseDePioche();
+    //cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;
+    //JoueurQuiJoue.printHand();
 
     // Phase de Pioche
     /*while (J1.getHP() > 0 && J2.getHP() > 0)

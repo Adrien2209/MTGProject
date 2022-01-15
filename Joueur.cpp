@@ -121,19 +121,17 @@ void Joueur::printBoard()
   }
 }
 
-bool Joueur::PhaseDePioche()
+void Joueur::PhaseDePioche()
 {
   if (this->getBibli().empty())
   {
     mort = true;
     this->VerifMort();
-    return false;
   }
   else
   {
-    this->getHand().push_back(this->getBibli().front());
-    this->getBibli().erase(this->getBibli().begin());
-    return true;
+    Hand.push_back(Bibli.front());
+    Bibli.erase(Bibli.begin());
   }
 }
 
