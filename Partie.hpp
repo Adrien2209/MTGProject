@@ -27,7 +27,8 @@ class Partie {
     void setJoueur2(Joueur J);
     
     // méthodes
-    void JoueurCommence();
+    Joueur JoueurCommence();
+    Joueur ChangementDeJoueur();
     int TourSuivant();
     void PhaseDeCombat(Joueur &J1, Joueur &J2);
     bool FinDePartie();

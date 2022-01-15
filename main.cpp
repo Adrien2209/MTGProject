@@ -12,7 +12,7 @@ int main()
 {
 
     srand(time(NULL));
-
+    int tour = 0;
     string name1;
     string name2;
     cout << "Lancement du jeu ... [||||||||||||||||||||||||||||||||||||||___________] 100 %" << endl;
@@ -25,32 +25,98 @@ int main()
 
     // -- Creation Joueur --
     Joueur J1 = Joueur(name1, 20, 1); // Joueur1
-    Joueur J2 = Joueur(name2, 2, 2);  // Joueur2
+    Joueur J2 = Joueur(name2, 20, 2); // Joueur2
 
     // -- Creation de la partie --
-    Partie game = Partie(J1, J2, 0);
+    Partie game = Partie(J1, J2, 1); // Creation de la partie
 
     // -- Creation Deck --
-    Deck d1 = Deck("DeckTest");
+    Deck d1 = Deck("DeckTest2"); // Creation du Deck
 
-    // Les deux joueurs
+    // Bibliotheques des deux joueurs
     vector<Carte> Bibli1 = J1.setBibli(d1);
     vector<Carte> Bibli2 = J2.setBibli(d1);
 
     // On melange au prealables les Bibliothèques des deux joueurs
-    J1.MelangeBibli(Bibli1);
-    J2.MelangeBibli(Bibli2);
+    vector<Carte> Bibli1_Melanger = J1.MelangeBibli(Bibli1);
+    vector<Carte> Bibli2_Melanger = J2.MelangeBibli(Bibli2);
 
-    // Tirage au sort joueur qui commence 
-    game.JoueurCommence();
-    
+    // Creation des mains avant le dubut du premier tour.
+    vector<Carte> Hand1 = J1.setInitialHand(Bibli1_Melanger);
+    vector<Carte> Hand2 = J2.setInitialHand(Bibli2_Melanger);
+
+    // Tirage au sort joueur qui commence
+    Joueur JoueurQuiJoue = game.JoueurCommence();
+    cout << " ----------------- print de la bibli du joueur qui joue  ----------------- " << endl;
+    JoueurQuiJoue.printBibli();
+
+    JoueurQuiJoue.PhaseDePioche();
+    cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;
+    JoueurQuiJoue.printHand();
+
     // Phase de Pioche
-    J1.PhaseDePioche();
-    /*
-        // Creation de la Partie
-        Partie game = Partie(J1,J2,0);
-        cout << "Le Joueur qui commence sera le joueur numéro : " << game.JoueurCommence() << endl;
-        int tour = 0;
+    /*while (J1.getHP() > 0 && J2.getHP() > 0)
+    {
+        // On augmente change le tour :
+        game.setTour(tour);
+        cout << "LE TOUR " << game.getTour() << " COMMENCE ! " << JoueurQuiJoue.getNom() << " a votre tour. PHASE DE PIOCHE " << endl;
+
+        // HP de chaque Joueur :
+        cout << "LES HPs de : " << game.getJoueur1().getNom() << " = " << game.getJoueur1().getHP() << endl;
+        cout << "LES HPs de : " << game.getJoueur2().getNom() << " = " << game.getJoueur2().getHP() << endl;
+
+        // Phase de pioche
+        if (game.getTour() != 1) // Au tout premier tour le premier joueur ne pioche pas !
+        {
+
+        }
+
+        // Phase de desengagement
+        JoueurQuiJoue.PhaseDeDesengagement();
+        // Phase Principale
+        // JoueurQuiJoue.PhasePrincipale();
+        // Phase de combat
+
+        // phase secondaire
+
+        // Fin de tour
+        tour++;
+        JoueurQuiJoue = game.ChangementDeJoueur();
+}*/
+
+return 0;
+}
+
+/* cout << "-------------------------------------------------------" << endl;
+  cout << "-------------------------------------------------------" << endl;
+  cout << "-------------------------------------------------------" << endl;
+  cout << "                AVANT MELANGE J1                       " << endl;
+  J1.printBibli();
+
+  cout << "-------------------------------------------------------" << endl;
+  cout << "-------------------------------------------------------" << endl;
+  cout << "-------------------------------------------------------" << endl;
+  cout << "                AVANT MELANGE J2                       " << endl;
+  J2.printBibli();
+  */
+
+/*
+    cout << "-------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << "                APRES MELANGE J1                       " << endl;
+    J1.printBibli();
+
+
+
+    cout << "-------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------" << endl;
+    cout << "                APRES MELANGE J2                       " << endl;
+    J2.printBibli();
+    */
+
+/*
         while (J1.getHP() > 0 && J2.getHP() > 0) {
             if (J1.VerifMort()) {
                 cout << " Bravo au joueur  " << J2.getNom() << " Pour la victoire UHO ! " << endl;
@@ -61,21 +127,6 @@ int main()
             }
 
     */
-    //------------------------ DECK ------------------------
-
-    /*
-        cout << "HP de " << J1.getNom() << " " << J1.getHP() << endl;
-        cout << "HP du " << J2.getNom() << " " << J2.getHP() << endl;
-
-        cout << " -- -- -- TEST PERTE HP -- -- --" << endl;
-        cout << " HP Joueur1 avant attaque = " << J1.getHP() << endl;
-        c1.AttaqueJoueur(J1);
-        cout << " HP Joueur1 apres attaque = " << J1.getHP() << endl;
-    */
-
-    return 0;
-}
-
 /*
     cout << " zebi 2 attaque zebi 1" << endl;
     c2.AttaqueCarte(c1);

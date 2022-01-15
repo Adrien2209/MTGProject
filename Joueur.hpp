@@ -41,7 +41,8 @@ public:
     void setNom(string n);
     void setHP(int s);
     vector<Carte> setBibli(Deck v);
-
+    vector<Carte> setHand(vector<Carte> v);
+    vector<Carte> setInitialHand(vector<Carte> v);
     //-- -- -- -- methodes -- -- -- --
     void printBibli();
     void printHand();
@@ -50,11 +51,11 @@ public:
 
     void RecevoirDegat(int nbDegat);
     bool VerifMort();
-    void MelangeBibli(vector<Carte> v);
+    vector<Carte> MelangeBibli(vector<Carte> v);
     int ParcourirBoard(vector<Carte> v);
     //-- -- -- -- Phases -- -- -- --
     Carte &ChoixCreature();
-    void PhaseDePioche();
+    bool PhaseDePioche();
     int PhaseDeDesengagement();
     void PhasePrincipale();
     int PhaseSecondaire();

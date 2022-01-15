@@ -47,13 +47,24 @@ vector<Carte> Joueur::setBibli(Deck v)
   return Bibli;
 }
 
+vector<Carte> Joueur::setInitialHand(vector<Carte> v)
+{
+  int i = 0;
+  while (i < 7)
+  {
+    Hand.push_back(v[i]);
+    i++;
+  }
+  return Hand;
+}
+
 // -- -- -- Les Methodes -- -- --
 bool Joueur::VerifMort()
 {
   if (this->getHP() <= 0 || mort == true)
   {
     cout << "Le joueur " << this->getNom() << " est mort ! C'est CIAO !!" << endl;
-    return mort = true;
+    return mort;
   }
   return mort;
 }
@@ -68,13 +79,14 @@ void Joueur::RecevoirDegat(int nbDegat)
   }
 }
 
-void Joueur::MelangeBibli(vector<Carte> v)
+vector<Carte> Joueur::MelangeBibli(vector<Carte> v)
 {
   random_device rd;
   default_random_engine rng(rd());
   shuffle(v.begin(), v.end(), rng);
   this->Bibli = v;
   cout << " Melange de la bibliotheques de : " << this->getNom() << " en cours... FAIT " << endl;
+  return Bibli;
 }
 
 void Joueur::printHand()
@@ -109,22 +121,19 @@ void Joueur::printBoard()
   }
 }
 
-void Joueur::PhaseDePioche()
+bool Joueur::PhaseDePioche()
 {
   if (this->getBibli().empty())
   {
     mort = true;
     this->VerifMort();
-    return;
+    return false;
   }
   else
   {
-    if (this->getHand().size() <= 7)
-    {
-      this->getHand().push_back(this->getBibli().front());
-      this->getBibli().erase(this->getBibli().begin());
-    }
-    return;
+    this->getHand().push_back(this->getBibli().front());
+    this->getBibli().erase(this->getBibli().begin());
+    return true;
   }
 }
 
