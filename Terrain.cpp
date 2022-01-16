@@ -23,3 +23,14 @@ vector<string> Terrain::getCout_Couleur()
     cout << "Methode getCout_Couleur() de Terrain " << endl;
     return {};
 }
+
+void Terrain::print() {
+
+  cout << this->getCouleur() << endl
+       << " ____________________________________ " << endl
+       << "| Name : " + this->getNom() + "  Cout : 0 |" << endl
+       << "|                                   |" << endl
+       << "|                                   |" << endl
+       << "|___________________________________|" << endl;
+}
+

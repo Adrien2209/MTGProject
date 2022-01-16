@@ -9,7 +9,7 @@ class Terrain : public Carte {
     public :
     Terrain(string nom, string couleur, string lieu, bool etat, int numero); // Constructeur
     ~Terrain() {}; // Destructeur
-
+    void print();
     int getID();
     int getCost();
     vector<string> getCout_Couleur();

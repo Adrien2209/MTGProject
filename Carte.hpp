@@ -16,9 +16,9 @@ class Carte {
     Carte(string  nom, string couleur, string lieu, bool etat, int numero); // Constructeur
     ~Carte() {}; // Destructeur
 
-    int virtual getCost();
-    vector<string> virtual getCout_Couleur();
-    int virtual getID();
+    int virtual getCost() = 0;
+    vector<string> virtual getCout_Couleur() = 0;
+    int virtual getID() = 0;
     void virtual print();
    
     

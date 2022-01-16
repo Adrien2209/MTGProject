@@ -55,18 +55,14 @@ Joueur &Partie::JoueurCommence()
     }
     return J2;
 }
-/*
-void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
-{
-    vector<Carte &> liste_Attaque = {}; // Liste qui donne toutes les cartes avec lesquelles l'attaque est possible
 
 void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 {
-    vector<Carte> liste_Attaque = {}; // Liste qui donne toutes les cartes avec lesquelles l'attaque est possible
+    vector<Carte *> liste_Attaque = {}; // Liste qui donne toutes les cartes avec lesquelles l'attaque est possible
 
     for (unsigned int i = 0; i < J1.getBoard().size(); i++)
     {
-        if (J1.getBoard()[i].getID() == 2 || J1.getBoard()[i].getEtat() == false)
+        if (J1.getBoard()[i]->getID() == 2 || J1.getBoard()[i]->getEtat() == false)
         {
             liste_Attaque.push_back(J1.getBoard()[i]);
         }
@@ -80,12 +76,12 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
         carte.print();
     }
 
-    string safeword = "";                 // Mot clé défini à OK qui permet à l'utilisateur de terminer son action
+    string safeword = "";                 // Mot cle defini a OK qui permet a l'utilisateur de terminer son action
     vector<int> choix_attaquant = {};     // Un vecteur d'entier correspondant aux positions des cartes de son board avec lesquelles il souhaite attaquer
     vector<Carte> Attacking_Cards = {}; // Vecteur de carte qui contient les cartes qui vont attaquer
 
     while (safeword != "OK")
-    { // Tant que l'utilisateur n'a pas écrit ok, il rentre les cartes avec lesquelles il compte attaquer
+    { // Tant que l'utilisateur n'a pas ecrit ok, il rentre les cartes avec lesquelles il compte attaquer
         cin >> safeword;
         if (safeword != "OK")
         {
@@ -124,7 +120,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
     {
         for (Carte &carte : Attacking_Cards)
         {
-            cout << "Quelle carte va protéger ton fessier de poule mouille contre :\n";
+            cout << "Quelle carte va proteger ton fessier de poule mouille contre :\n";
             carte.print();
             cout << "Allez choisi une carte : \n";
             for (Carte &carte : liste_Defense)
@@ -146,7 +142,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
         }
     }
     
-}*/
+}
 
 
 bool Partie::FinDePartie()
@@ -157,5 +153,5 @@ bool Partie::FinDePartie()
     }
     return true;
 
-    // Ajouter plus tard les autres règles
+    // Ajouter plus tard les autres regles
 }

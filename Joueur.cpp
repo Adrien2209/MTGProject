@@ -278,7 +278,7 @@ void Joueur::PoserTerrain()
   string index;
   int i = 0;
   bool possible = true; // Possible de poser un terrain
-  cout << " Voulez-vous poser un terrain ? S " << endl;
+  cout << " Voulez-vous poser un terrain ? " << endl;
   cin >> index;
 
   while (i <= Hand.size())

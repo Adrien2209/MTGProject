@@ -38,28 +38,21 @@ int main()
     vector<Carte*> Bibli2 = J2.setBibli(d1);
 
     // On melange au prealables les Bibliothèques des deux joueurs
-    vector<Carte*> Bibli1_Melanger = J1.MelangeBibli(Bibli1);
-    vector<Carte*> Bibli2_Melanger = J2.MelangeBibli(Bibli2);
+    J1.MelangeBibli(Bibli1);
+    J2.MelangeBibli(Bibli2);
 
     // Creation des mains avant le dubut du premier tour.
-    vector<Carte*> Hand1 = J1.setInitialHand(Bibli1_Melanger);
-    vector<Carte*> Hand2 = J2.setInitialHand(Bibli2_Melanger);
-
-
+    vector<Carte*> Hand1 = J1.setInitialHand(Bibli1);
+    vector<Carte*> Hand2 = J2.setInitialHand(Bibli2);
+ 
     // Tirage au sort joueur qui commence
-    cout << " ----------------- print de la bibli du joueur qui joue  ----------------- " << endl;
+    cout << " ----------------- print de la bibli du joueur avant pioche  ----------------- " << endl;
+    
     J1.printBibli();
-    cout << " ----------------- print de la main du joueur qui joue  ----------------- " << endl;
-    J1.PhaseDePioche();
-    cout << " ----------------- print de la main du joueur qui joue  ----------------- " << endl;
-    J1.printHand();
-    cout << " ----------------- print de la bibli du joueur qui joue  ----------------- " << endl;
-    J1.printBibli();
-
-
-
-
-    J1.PhasePrincipale();
+    J1.PhaseDePioche(); 
+    
+    
+    //J1.PhasePrincipale();
 
     //JoueurQuiJoue.PhaseDePioche();
     //cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;
