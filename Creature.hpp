@@ -33,9 +33,6 @@ class Creature : public Carte {
     void setBaseEndurance(int i);
 
     // les methodes 
-    void RecevoirDegat(int nbDegat);
-    void AttaqueCarte(Creature &creature);
-    void AttaqueJoueur(Joueur &joueur);
     void print();
 };
 

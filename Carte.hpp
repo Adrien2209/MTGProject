@@ -19,6 +19,13 @@ class Carte {
     int virtual getCost() = 0;
     vector<string> virtual getCout_Couleur() = 0;
     int virtual getID() = 0;
+    int virtual getForce();
+    int virtual getEndurance();
+    int virtual getBaseEndurance();
+
+    void virtual setForce();
+    void virtual setEndurance();
+    void virtual setBaseEndurance();
     void virtual print();
    
     
@@ -33,6 +40,7 @@ class Carte {
     void setLieu(string l);
     void setEngage();
     void setDesengage();
+
     // Les methodes
     
     bool getEtat();

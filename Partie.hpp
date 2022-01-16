@@ -31,7 +31,7 @@ class Partie {
     Joueur* ChangementDeJoueur();
     //Joueur getJoueurCommence();
     int TourSuivant();
-    void PhaseDeCombat(Joueur &J1, Joueur &J2);
+    void PhaseDeCombat(Joueur& J1, Joueur& J2);
     bool FinDePartie();
 
 };

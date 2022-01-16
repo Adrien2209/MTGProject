@@ -50,9 +50,7 @@ int main()
     
     J1.printBibli();
     J1.PhaseDePioche(); 
-    
-    
-    //J1.PhasePrincipale();
+    game.PhaseDeCombat(J1, J2);
 
     //JoueurQuiJoue.PhaseDePioche();
     //cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;

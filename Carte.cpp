@@ -15,11 +15,56 @@ Carte::Carte(string nom, string couleur, string lieu, bool etat, int numero)
 string Carte::getNom() { return nom; }
 string Carte::getCouleur() { return couleur; }
 string Carte::getLieu() { return lieu; }
+
+// -- -- -- -- Virtual des GET -- -- -- --
+
+
 int Carte::getID()
 {
     cout << "Methode getID() de Carte " << endl;
     return 0;
 }
+
+int Carte::getForce()
+{
+    cout << "Methode getForce() de Carte " << endl;
+    return 0;
+}
+
+int Carte::getEndurance()
+{
+    cout << "Methode getEndurance() de Carte " << endl;
+    return 0;
+}
+
+int Carte::getBaseEndurance()
+{
+    cout << "Methode getBaseEndurance() de Carte " << endl;
+    return 0;
+}
+
+
+// -- -- -- -- Virtual des SET -- -- -- --
+
+
+void Carte::setForce()
+{
+    cout << "Methode setForce() de Carte " << endl;
+}
+
+void Carte::setEndurance()
+{
+    cout << "Methode setEndurance() de Carte " << endl;
+}
+
+void Carte::setBaseEndurance()
+{
+    cout << "Methode setBaseEndurance() de Carte " << endl;
+}
+
+// -- -- -- --
+
+
 int Carte::getNumero() { return numero; }
 bool Carte::getEtat() { return etat; }
 int Carte::getCost()
@@ -39,6 +84,7 @@ void Carte::setEngage() { etat = true; }
 void Carte::setDesengage() { etat = false; }
 
 // Les méthodes
+
 
 void Carte::Death()
 {

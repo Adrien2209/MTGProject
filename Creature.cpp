@@ -62,27 +62,6 @@ void Creature::setEndurance(int i) { endurance = i; }
 void Creature::setBaseEndurance(int i) { base_endurance = i; }
 
 // -- -- -- Les méthodes -- -- --
-void Creature::RecevoirDegat(int nbDegat)
-{
-  endurance -= nbDegat;
-
-  if (endurance <= 0)
-  {
-    endurance = 0;
-    this->Death();
-  }
-}
-
-void Creature::AttaqueCarte(Creature &creature)
-{
-  creature.RecevoirDegat(force);
-  this->RecevoirDegat(creature.getForce());
-}
-
-void Creature::AttaqueJoueur(Joueur &joueur)
-{
-  joueur.RecevoirDegat(this->getForce());
-}
 
 void Creature::print()
 {
