@@ -11,22 +11,22 @@ using json = nlohmann::json;
 
 class Deck {
     private : 
-        vector<Carte> deck;
+        vector<Carte*> deck;
         string nom;
 
     public :
     // -- -- -- Constructeur -- -- -- 
     Deck(string nom); 
-    Deck(string nom, vector<Carte> deck); 
+    Deck(string nom, vector<Carte*> deck); 
 
     // -- -- -- Destructeur -- -- -- 
     ~Deck() {};
 
     // -- -- -- les gets -- -- --
     string getNom();
-    vector<Carte> getDeck();
+    vector<Carte*> getDeck();
     void printDeck();
-    vector<Carte> getDeckFromFile(string nomDeck);
+    vector<Carte*> getDeckFromFile(string nomDeck);
 };
 
 #endif

@@ -34,16 +34,16 @@ int main()
     Deck d1 = Deck("DeckTest2"); // Creation du Deck
 
     // Bibliotheques des deux joueurs
-    vector<Carte> Bibli1 = J1.setBibli(d1);
-    vector<Carte> Bibli2 = J2.setBibli(d1);
+    vector<Carte*> Bibli1 = J1.setBibli(d1);
+    vector<Carte*> Bibli2 = J2.setBibli(d1);
 
     // On melange au prealables les Bibliothèques des deux joueurs
-    vector<Carte> Bibli1_Melanger = J1.MelangeBibli(Bibli1);
-    vector<Carte> Bibli2_Melanger = J2.MelangeBibli(Bibli2);
+    vector<Carte*> Bibli1_Melanger = J1.MelangeBibli(Bibli1);
+    vector<Carte*> Bibli2_Melanger = J2.MelangeBibli(Bibli2);
 
     // Creation des mains avant le dubut du premier tour.
-    vector<Carte> Hand1 = J1.setInitialHand(Bibli1_Melanger);
-    vector<Carte> Hand2 = J2.setInitialHand(Bibli2_Melanger);
+    vector<Carte*> Hand1 = J1.setInitialHand(Bibli1_Melanger);
+    vector<Carte*> Hand2 = J2.setInitialHand(Bibli2_Melanger);
 
 
     // Tirage au sort joueur qui commence
@@ -55,6 +55,11 @@ int main()
     J1.printHand();
     cout << " ----------------- print de la bibli du joueur qui joue  ----------------- " << endl;
     J1.printBibli();
+
+
+
+
+    J1.PhasePrincipale();
 
     //JoueurQuiJoue.PhaseDePioche();
     //cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;

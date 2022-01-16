@@ -6,7 +6,7 @@ Deck::Deck(string nom) {
     this -> nom = nom;
     this -> deck = Deck::getDeckFromFile(nom);
 }
-Deck::Deck(string nom, vector<Carte> deck) { 
+Deck::Deck(string nom, vector<Carte*> deck) { 
     this -> nom = nom;
     this -> deck = deck;
 }
@@ -15,12 +15,12 @@ string Deck::getNom() {
     return nom;
 }
 
-vector<Carte> Deck::getDeck() {
+vector<Carte*> Deck::getDeck() {
     return deck;
 }
 
-vector<Carte> Deck::getDeckFromFile(string nomDeck) {
-    vector<Carte> DeckRetour = {};
+vector<Carte*> Deck::getDeckFromFile(string nomDeck) {
+    std::vector<Carte*> DeckRetour = {};
     std::ifstream ifs(nomDeck + ".json");
     json deck;
     ifs >> deck;
@@ -40,7 +40,7 @@ vector<Carte> Deck::getDeckFromFile(string nomDeck) {
         int id = liste_creature.value()["ID"];
         string lieu = "Bibli";
         bool etat = false;
-        DeckRetour.push_back(Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance));
+        DeckRetour.push_back(new Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance));
     }
 
     // Ajout des terrains dans le deck
@@ -52,7 +52,7 @@ vector<Carte> Deck::getDeckFromFile(string nomDeck) {
         int id = liste_terrain.value()["ID"];
         string lieu = "Bibli";
         bool etat = false;
-        DeckRetour.push_back(Terrain(title, color, lieu, etat, id));
+        DeckRetour.push_back(new Terrain(title, color, lieu, etat, id));
     }
 
     return DeckRetour;
@@ -60,6 +60,6 @@ vector<Carte> Deck::getDeckFromFile(string nomDeck) {
 
 void Deck::printDeck() {
     for ( auto e : this->deck) {
-        e.print();
+        e->print();
     }
 }

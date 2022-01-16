@@ -105,7 +105,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
     { // Affichage des cartes selectionne par le joueur
         carte.print();
     }
-/*
+
     cout << "Enfin !! Maintenant fumier " << J2.getNom() << "\n";
 
     vector<Carte> liste_Defense = {}; // Liste qui donne toutes les cartes avec lesquelles la defense est possible
@@ -145,8 +145,10 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
             choix_attaquant.push_back(stoi(safeword));
         }
     }
-    */
-}
+    
+}*/
+
+
 bool Partie::FinDePartie()
 {
     if (this->getJoueur1()->getHP() <= 0 || this->getJoueur2()->getHP() <= 0)
