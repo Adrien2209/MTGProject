@@ -27,6 +27,7 @@ class Partie {
     void setJoueur2(Joueur J);
     
     // méthodes
+    void PartieDeMagic(Joueur* J1, Joueur* J2);
     Joueur& JoueurCommence();
     Joueur* ChangementDeJoueur();
     //Joueur getJoueurCommence();
