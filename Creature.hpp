@@ -4,17 +4,19 @@
 #include "Carte.hpp"
 #include "Joueur.hpp"
 #include <vector>
+#include <map>
 
 class Joueur;
 
 class Creature : public Carte {
     private : 
-    vector<string> capacite, cout_couleur;
+    vector<string> capacite ;
+    map<string,int> cout_couleur;
     int cost,  force, endurance, idCreature, base_endurance;
 
     public :
-    Creature(string nom, string couleur, string lieu, bool etat, int numero);
-    Creature(string  nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance); // Constructeur à faire
+
+    Creature(string  nom, string couleur, string lieu, bool etat, int numero,  vector<string> capacite, map<string,int> cout_couleur, int cost, int force, int endurance); // Constructeur à faire
     ~Creature() {}; // Destructeur
 
     //les gets
@@ -23,7 +25,7 @@ class Creature : public Carte {
     int getEndurance();
     int getBaseEndurance();
     vector<string> getCapacite();
-    vector<string> getCout_Couleur();
+    map<string,int> getCout_Couleur();
     int getID();
 
     //les sets 
@@ -35,6 +37,7 @@ class Creature : public Carte {
 
     // les methodes 
     void print();
+    int CoutTotale();
 };
 
 #endif

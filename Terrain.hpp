@@ -7,12 +7,12 @@ class Terrain : public Carte {
     private : 
     int idTerrain ;
     public :
-    Terrain(string nom, string couleur, string lieu, bool etat, int numero); // Constructeur
+    Terrain(string nom, string couleur, string lieu, bool etat, int numero = 0); // Constructeur
     ~Terrain() {}; // Destructeur
     void print();
     int getID();
     int getCost();
-    vector<string> getCout_Couleur();
+    map<string,int> getCout_Couleur();
     void getDesengage();
 };
 

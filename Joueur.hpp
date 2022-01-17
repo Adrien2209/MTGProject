@@ -43,7 +43,7 @@ public:
     void setHP(int s);
     vector<Carte*> setBibli(Deck v);
     vector<Carte*> setInitialHand(vector<Carte*> v);
-    void setBoard(vector<Carte*> c);
+    vector<Carte*> setBoard(vector<Carte*> c);
 
     //-- -- -- -- methodes -- -- -- --
     void printBibli();
@@ -56,14 +56,16 @@ public:
     vector<Carte*> MelangeBibli(vector<Carte*> v);
     int ParcourirBoard(vector<Carte*> v);
     //-- -- -- -- Phases -- -- -- --
-    Carte* ChoixCreature();
+    vector<Carte*> ChoixCreature();
     void PhaseDePioche();
     int PhaseDeDesengagement();
     void PhasePrincipale();
     int PhaseSecondaire();
     int FinDeTour();
     map<string, int> CoutDisponibleEnJeu();
+    int CoutTotalDispoEnJeu();
     void PoserTerrain();
+    vector<Carte*> TerrainDispo();
 };
 
 #endif

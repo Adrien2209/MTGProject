@@ -2,18 +2,8 @@
 #include "Joueur.hpp"
 #include <iostream>
 using namespace std;
-Creature::Creature(string nom, string couleur, string lieu, bool etat, int numero) : Carte(nom, couleur, lieu, etat, numero)
-{
-  this->cout_couleur = {""};
-  this->capacite = {""};
-  this->cost = 1;
-  this->force = 2;
-  this->endurance = 4;
-  this->idCreature = 2;
-  this->base_endurance = 4;
-}
 
-Creature::Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, vector<string> cout_couleur, int cost, int force, int endurance) : Carte(nom, couleur, lieu, etat, numero)
+Creature::Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string,int> cout_couleur, int cost, int force, int endurance) : Carte(nom, couleur, lieu, etat, numero)
 {
   this->cout_couleur = cout_couleur;
   this->capacite = capacite;
@@ -28,15 +18,13 @@ Creature::Creature(string nom, string couleur, string lieu, bool etat, int numer
 
 vector<string> Creature::getCapacite() { return capacite; }
 
-vector<string> Creature::getCout_Couleur()
+map<string,int> Creature::getCout_Couleur()
 {
-  cout << "Methode getCout_Couleur() de Creature " << endl;
   return cout_couleur;
 }
 
 int Creature::getCost()
 {
-  cout << "Methode getCost() de Creature " << endl;
   return cost;
 }
 
@@ -71,4 +59,13 @@ void Creature::print()
        << "|                                   |" << endl
        << "| Attack : " + to_string(force) + " HP : " + to_string(endurance) + " |" << endl
        << "|___________________________________|" << endl;
+}
+
+int Creature::CoutTotale() {
+  map<string,int>::iterator it;
+  int res;
+  for (it = cout_couleur.begin(); it != cout_couleur.end(); ++it) {
+    res += it -> second;
+  }
+  return res + this->getCost();
 }

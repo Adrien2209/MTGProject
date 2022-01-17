@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 using namespace std;
 
 class Carte {
@@ -17,7 +18,7 @@ class Carte {
     ~Carte() {}; // Destructeur
 
     int virtual getCost() = 0;
-    vector<string> virtual getCout_Couleur() = 0;
+    map<string,int> virtual getCout_Couleur() = 0;
     int virtual getID() = 0;
     int virtual getForce();
     int virtual getEndurance();
@@ -28,7 +29,7 @@ class Carte {
     void virtual setBaseEndurance(int i);
     void virtual minusEndurance(int i);
     void virtual print();
-   
+    int virtual CoutTotale() { return 0;}
     
     // Les gets
 

@@ -28,27 +28,26 @@ int main()
     Joueur J2 = Joueur(name2, 20, 2); // Joueur2
 
     // -- Creation de la partie --
-    Partie game = Partie(J1, J2, 1); // Creation de la partie
+    Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
 
     // -- Creation Deck --
-    Deck d1 = Deck("DeckTest2"); // Creation du Deck
+    Deck d1 = Deck("DeckTest2"); // Creation du Deck. OK.
+    Deck d2 = Deck("DeckTerrain");
 
-    // Bibliotheques des deux joueurs
+    // Bibliotheques des deux joueurs. OK.
     vector<Carte*> Bibli1 = J1.setBibli(d1);
     vector<Carte*> Bibli2 = J2.setBibli(d1);
-
-    // On melange au prealables les Bibliothèques des deux joueurs
+    // On melange au prealables les Bibliothèques des deux joueurs. OK.
     J1.MelangeBibli(Bibli1);
     J2.MelangeBibli(Bibli2);
 
-    // Creation des mains avant le dubut du premier tour.
+    // Creation des mains avant le dubut du premier tour. OK.
     vector<Carte*> Hand1 = J1.setInitialHand(Bibli1);
     vector<Carte*> Hand2 = J2.setInitialHand(Bibli2);
  
     // Tirage au sort joueur qui commence
-    cout << " ----------------- print de la bibli du joueur avant pioche  ----------------- " << endl;
-    
-    J1.printBibli();
+  
+    // PHASE DE PIOCHE OK.
     J1.PhaseDePioche(); 
     game.PhaseDeCombat(J1, J2);
     
@@ -56,6 +55,21 @@ int main()
     J1.printGraveYard();
     cout << endl << " ----------------- Cimetierre de J2 ----------------- " << endl;
     J2.printGraveYard();
+
+      Terrain* Plains = new Terrain("Plains", "White", "", false);
+    Terrain* Island = new Terrain("Island", "Blue", "", false);
+    Terrain* Swamp = new Terrain("Swamp", "Black", "", false);
+    Terrain* Mountain = new Terrain("Island", "Red","", false);
+    Terrain* Forest = new Terrain("Island", "Green", "", false);
+
+    vector<Carte*> BoardJ1 = { Plains, Island, Swamp, Mountain, Forest,Plains, Island, Swamp, Mountain, Forest, Plains, Island, Swamp, Mountain, Forest};
+    vector<Carte*> BoardFinal = J1.setBoard(BoardJ1);
+
+    vector<Carte*> CreaturePoser = J1.ChoixCreature();
+
+    for ( Carte* c : CreaturePoser) {
+        c->print();
+    }
     //JoueurQuiJoue.PhaseDePioche();
     //cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;
     //JoueurQuiJoue.printHand();

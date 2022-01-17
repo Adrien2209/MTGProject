@@ -77,9 +77,8 @@ int Carte::getCost()
     cout << "Methode getCost() de Carte " << endl;
     return 0;
 }
-vector<string> Carte::getCout_Couleur()
+map<string,int> Carte::getCout_Couleur()
 {
-    cout << "Methode getCout_Couleur() de Carte " << endl;
     return {};
 }
 

@@ -32,8 +32,11 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
     {
         string title = liste_creature.value()["Title"];
         int commoncost = liste_creature.value()["CommonCost"];
+<<<<<<< Updated upstream
         vector<string> colorcost = liste_creature.value()["ColorCost"];
         /*
+=======
+>>>>>>> Stashed changes
         vector<string> color_cost_string = liste_creature.value()["ColorCost"];
         // Conversion du vector de string en map
         map<string, int> colorcost = {{"White", 0}, {"Blue", 0}, {"Black", 0}, {"Red", 0}, {"Green", 0}};
@@ -61,7 +64,10 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
                 colorcost[t] = nbGreen++;
             }
         }
+<<<<<<< Updated upstream
         */
+=======
+>>>>>>> Stashed changes
         string color = liste_creature.value()["Color"];
         string type = liste_creature.value()["Type"];
         int force = liste_creature.value()["Force"];
