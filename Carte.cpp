@@ -47,19 +47,24 @@ int Carte::getBaseEndurance()
 // -- -- -- -- Virtual des SET -- -- -- --
 
 
-void Carte::setForce()
+void Carte::setForce(int i)
 {
     cout << "Methode setForce() de Carte " << endl;
 }
 
-void Carte::setEndurance()
+void Carte::setEndurance(int i)
 {
     cout << "Methode setEndurance() de Carte " << endl;
 }
 
-void Carte::setBaseEndurance()
+void Carte::setBaseEndurance(int i)
 {
     cout << "Methode setBaseEndurance() de Carte " << endl;
+}
+
+void Carte::minusEndurance(int i)
+{
+    cout << "Methode minusEndurance() de Carte " << endl;
 }
 
 // -- -- -- --

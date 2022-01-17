@@ -15,7 +15,7 @@ int main()
     //int tour = 0;
     string name1;
     string name2;
-    cout << "Lancement du jeu ... [||||||||||||||||||||||||||||||||||||||___________] 100 %" << endl;
+    cout << "Lancement du jeu ... [||||||||||||||||||||||||||||||||||||||___________] 70 %" << endl;
     cout << "                     [|||||||||||||||||||||||||||||||||||||||||||||||||] 100 %" << endl;
     cout << " Bienvenue dans Magic : THE CLAQUÉ" << endl;
     cout << " Veuillez choisir le nom du premier Joueur" << endl;
@@ -51,7 +51,11 @@ int main()
     J1.printBibli();
     J1.PhaseDePioche(); 
     game.PhaseDeCombat(J1, J2);
-
+    
+    cout << endl << " ----------------- Cimetierre de J1 ----------------- " << endl;
+    J1.printGraveYard();
+    cout << endl << " ----------------- Cimetierre de J2 ----------------- " << endl;
+    J2.printGraveYard();
     //JoueurQuiJoue.PhaseDePioche();
     //cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;
     //JoueurQuiJoue.printHand();

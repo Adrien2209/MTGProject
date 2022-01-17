@@ -48,7 +48,6 @@ int Creature::getBaseEndurance() { return base_endurance; }
 
 int Creature::getID()
 {
-  cout << "Methode getID() de Creature " << endl;
   return idCreature;
 }
 
@@ -60,6 +59,7 @@ void Creature::setForce(int i) { force = i; }
 
 void Creature::setEndurance(int i) { endurance = i; }
 void Creature::setBaseEndurance(int i) { base_endurance = i; }
+void Creature::minusEndurance(int i) { endurance -= i;}
 
 // -- -- -- Les méthodes -- -- --
 

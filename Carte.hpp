@@ -23,9 +23,10 @@ class Carte {
     int virtual getEndurance();
     int virtual getBaseEndurance();
 
-    void virtual setForce();
-    void virtual setEndurance();
-    void virtual setBaseEndurance();
+    void virtual setForce(int i);
+    void virtual setEndurance(int i);
+    void virtual setBaseEndurance(int i);
+    void virtual minusEndurance(int i);
     void virtual print();
    
     

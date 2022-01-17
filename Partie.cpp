@@ -70,14 +70,14 @@ void Partie::PhaseDeCombat(Joueur& J1, Joueur& J2)
         }
     }
 
-    cout << "Sac a viande " << J1.getNom() << endl;
+    cout << endl << "-- -- -- -- -- Sac a viande " << J1.getNom() << " -- -- -- -- -- " << endl << endl ;
 
     for (Carte *carte : liste_Attaque)
     { // J'affiche les cartes avec lesquelles l'attaque est possible
         carte->print();
     }
 
-    cout << "Parmis ces creatures, avec lesquelles decides-tu d'attaquer. Quand tu as fini, rentre OK, ET EN MAJUSCULE !! :\n";
+    cout << endl << "Parmis ces creatures, avec lesquelles decides-tu d'attaquer. Quand tu as fini, rentre OK, ET EN MAJUSCULE !! :\n";
 
     string safeword = "";                 // Mot cle defini a OK qui permet a l'utilisateur de terminer son action
     vector<int> choix_attaquant = {};     // Un vecteur d'entier correspondant aux positions des cartes de son board avec lesquelles il souhaite attaquer
@@ -98,7 +98,7 @@ void Partie::PhaseDeCombat(Joueur& J1, Joueur& J2)
         Attacking_Cards.push_back(liste_Attaque[i - 1]);
     }
 
-    cout << "Tu as donc selectionne les cartes suivantes : \n";
+    cout << "-- -- -- -- -- "<< "Tu as donc selectionne les cartes suivantes -- -- -- -- --" << endl << endl;
 
     for (Carte *carte : Attacking_Cards)
     { // Affichage des cartes selectionne par le joueur
@@ -107,11 +107,10 @@ void Partie::PhaseDeCombat(Joueur& J1, Joueur& J2)
 
     // -- -- -- -- -- Partie choix du defenseur -- -- -- -- --
 
-    cout << "Enfin !! Maintenant fumier " << J2.getNom() << "\n";
+    cout << endl << "-- -- -- -- -- Enfin !! Maintenant fumier " << J2.getNom() << " -- -- -- -- --"<< endl;
 
     vector<Carte *> liste_Defense = {}; // Liste qui donne toutes les cartes avec lesquelles la defense est possible
     safeword = "";
-    vector<int> choix_defenseur = {}; // Un vecteur d'entier correspondant aux positions des cartes de son board avec lesquelles il souhaite defendre
 
     for (unsigned int i = 0; i < J2.getHand().size(); i++)
     {
@@ -123,17 +122,31 @@ void Partie::PhaseDeCombat(Joueur& J1, Joueur& J2)
 
     for (Carte *carte : Attacking_Cards)
     {
-        cout << "Quelle carte va proteger ton fessier de poule mouille contre :\n";
+        cout << "-- -- -- -- -- Quelle carte va proteger ton fessier de poule mouille contre -- -- -- -- --" << endl << endl;
         carte->print();
-        cout << "Allez choisi une carte, si tu ne veux pas defendre, entre NON : \n";
-        for (Carte *carte : liste_Defense)
+        cout << endl << "-- -- -- -- -- Allez choisi une carte, si tu ne veux pas defendre, entre NON -- -- -- -- --" << endl;
+
+        for (Carte *carte_def : liste_Defense)
         {
-            carte->print();
+            carte_def->print();
         }
         cin >> safeword;
         if (safeword != "NON")
         {
-            choix_defenseur.push_back(stoi(safeword));
+            cout << endl << "-- -- -- -- -- Tu as choisi cette carte -- -- -- -- --" << endl << endl;
+            liste_Defense[stoi(safeword)-1]->print();
+            liste_Defense[stoi(safeword)-1]->minusEndurance(carte->getForce());
+            carte->minusEndurance(liste_Defense[stoi(safeword)-1]->getForce());
+            if(liste_Defense[stoi(safeword)-1]->getEndurance() <= 0){
+                liste_Defense[stoi(safeword)-1]->setLieu("GraveYard");
+                cout << endl << "Ta carte est morte en te protegeant, elle se trouve au " << liste_Defense[stoi(safeword)-1]->getLieu();
+                
+            }
+            if(carte->getEndurance() <= 0){
+                carte->setLieu("GraveYard");
+                cout << endl << "Ta carte est morte en attaquant, elle se trouve au " << carte->getLieu() << endl;
+            }
+            liste_Defense.erase(liste_Defense.begin() + stoi(safeword)-1);
             safeword = "";
         }
         if (safeword == "NON")

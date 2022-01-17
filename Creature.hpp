@@ -31,6 +31,7 @@ class Creature : public Carte {
     void setForce(int i);
     void setEndurance(int i);
     void setBaseEndurance(int i);
+    void minusEndurance(int i);
 
     // les methodes 
     void print();
