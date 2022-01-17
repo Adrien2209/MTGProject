@@ -375,6 +375,8 @@ int Joueur::CoutTotalDispoEnJeu()
   for (it = A.begin(); it != A.end(); ++it)
   {
     res += it->second;
+    cout << res << endl;
+
   }
   return res;
 }

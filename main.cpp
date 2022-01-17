@@ -49,13 +49,13 @@ int main()
   
     // PHASE DE PIOCHE OK.
     J1.PhaseDePioche(); 
-    game.PhaseDeCombat(J1, J2);
+    /*game.PhaseDeCombat(J1, J2);
     
     cout << endl << " ----------------- Cimetierre de J1 ----------------- " << endl;
     J1.printGraveYard();
     cout << endl << " ----------------- Cimetierre de J2 ----------------- " << endl;
     J2.printGraveYard();
-
+*/
       Terrain* Plains = new Terrain("Plains", "White", "", false);
     Terrain* Island = new Terrain("Island", "Blue", "", false);
     Terrain* Swamp = new Terrain("Swamp", "Black", "", false);
