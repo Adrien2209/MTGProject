@@ -55,6 +55,7 @@ public:
     bool VerifMort();
     void MelangeBibli();
     int ParcourirBoard(vector<Carte*> v);
+    
     //-- -- -- -- Phases -- -- -- --
     vector<Carte*> ChoixCreature();
     void PhaseDePioche();

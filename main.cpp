@@ -30,12 +30,19 @@ int main()
     // -- Creation de la partie --
     Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
 
+    game.PartieDeMagic(J1, J2);
+
+    /*
     Deck d1 = Deck("DeckTest2"); // Creation du Deck. OK.
     Deck d2 = Deck("DeckTest2");
+    */
+
 
     // Bibliotheques des deux joueurs. OK.
+
+
+    /*
     J1.setBibli(d1);
-    cout << J1.getBibli().size();
     cout << "-- -- -- -- -- Affichage de la bibliothèque de J1 -- -- -- --" << endl << endl;
     J1.printBibli();
     
@@ -49,8 +56,11 @@ int main()
     cout << "-- -- -- -- -- Affichage de la main de J1 apres melange -- -- -- --" << endl << endl;
     J1.printHand();
     cout << "-- -- -- -- -- Fin -- -- -- --" << endl << endl;
+    */
+
+
     // Tirage au sort joueur qui commence
-  
+
     /*
     // PHASE DE PIOCHE OK.
     J1.PhaseDePioche(); 

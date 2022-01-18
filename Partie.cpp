@@ -23,12 +23,12 @@ void Partie::setJoueur1(Joueur j) { J1 = j; }
 void Partie::setJoueur2(Joueur p) { J2 = p; }
 
 //  -- -- -- les methodes -- -- --
-void Partie::PartieDeMagic(Joueur* J1, Joueur* J2){
+void Partie::PartieDeMagic(Joueur J1, Joueur J2){
     //Selection du deck
-    cout << J1->getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
     string deckJ1 = "";
     getline(cin, deckJ1);
-    cout << J1->getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
     string deckJ2 = "";
     getline(cin, deckJ2);
 
@@ -37,28 +37,48 @@ void Partie::PartieDeMagic(Joueur* J1, Joueur* J2){
     Deck d2 = Deck(deckJ2);
 
     // Bibliotheques des deux joueurs. OK.
-    J1->setBibli(d1);
-    J2->setBibli(d2);
+    J1.setBibli(d1);
+    J2.setBibli(d2);
     
     // On melange au prealables les Bibliothèques des deux joueurs. OK.
-    J1->MelangeBibli();
-    J2->MelangeBibli();
+    J1.MelangeBibli();
+    J2.MelangeBibli();
 
     // Creation des mains avant le dubut du premier tour. OK.
-    J1->setInitialHand();
-    J2->setInitialHand();
+    J1.setInitialHand();
+    J2.setInitialHand();
 
-    /*
-    while(J1->getHP()>0 || J2->getHP()>0){
+    int n = rand()%2;
+
+    while(J1.getHP()>0 || J2.getHP()>0){
         if( n % 2 == 0){
-            J1->PhaseDePioche();
-            J1->PhaseDeDesengagement();
+            J1.PhaseDePioche();
+            J1.PhaseDeDesengagement();
             //Ajouter phase principale
             PhaseDeCombat(J1, J2);
+            cout << "Cimetierre de J1 " << endl;
+            J1.printGraveYard();
+            cout << "Cimetierre de J2 " << endl;
+            J2.printGraveYard();
             //Ajouter phase secondaire
             //Ajouter fin de tour
+            n += 1;
         }
-    }*/
+
+        if( n % 2 == 1){
+            J2.PhaseDePioche();
+            J2.PhaseDeDesengagement();
+            //Ajouter phase principale
+            PhaseDeCombat(J2, J1);
+            cout << "Cimetierre de J1 " << endl;
+            J1.printGraveYard();
+            cout << "Cimetierre de J2 " << endl;
+            J2.printGraveYard();
+            //Ajouter phase secondaire
+            //Ajouter fin de tour
+            n += 1;
+        }
+    }
 }
 
 int Partie::TourSuivant()
