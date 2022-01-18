@@ -61,20 +61,24 @@ int main()
     cout << endl << " ----------------- Cimetierre de J2 ----------------- " << endl;
     J2.printGraveYard();
 */
-      Terrain* Plains = new Terrain("Plains", "White", "", false);
+    Terrain* Plains = new Terrain("Plains", "White", "", false);
     Terrain* Island = new Terrain("Island", "Blue", "", false);
     Terrain* Swamp = new Terrain("Swamp", "Black", "", false);
     Terrain* Mountain = new Terrain("Island", "Red","", false);
     Terrain* Forest = new Terrain("Island", "Green", "", false);
 
-    vector<Carte*> BoardJ1 = { Plains, Island, Swamp, Mountain, Forest,Plains, Island, Swamp, Mountain, Forest, Plains, Island, Swamp, Mountain, Forest};
+    vector<Carte*> BoardJ1 = { Plains, Island, Swamp, Mountain, Forest, Plains, Island, Swamp, Mountain, Forest, Plains, Island, Swamp, Mountain, Forest};
+    vector<Carte*> BoardJ2 = { Plains, Plains, Plains};
     vector<Carte*> BoardFinal = J1.setBoard(BoardJ1);
-
-    vector<Carte*> CreaturePoser = J1.ChoixCreature();
+    vector<Carte*> BoardFinal2 = J2.setBoard(BoardJ2);
+    cout << J1.CoutTotalDispoEnJeu() << endl;
+    cout << J2.CoutTotalDispoEnJeu() << endl;
+    /* vector<Carte*> CreaturePoser = J1.ChoixCreature();
 
     for ( Carte* c : CreaturePoser) {
         c->print();
     }
+    */
     //JoueurQuiJoue.PhaseDePioche();
     //cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;
     //JoueurQuiJoue.printHand();
