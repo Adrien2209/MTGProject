@@ -37,17 +37,17 @@ int main()
     J1.setBibli(d1);
     cout << J1.getBibli().size();
     cout << "-- -- -- -- -- Affichage de la bibliothèque de J1 -- -- -- --" << endl << endl;
-    //J1.printBibli();
+    J1.printBibli();
     
     // On melange au prealables les Bibliothèques des deux joueurs. OK.
     J1.MelangeBibli();
     cout << "-- -- -- -- -- Affichage de la bibliothèque de J1 apres melange -- -- -- --" << endl << endl;
-    //J1.printBibli();
+    J1.printBibli();
 
     // Creation des mains avant le dubut du premier tour. OK.
     J1.setInitialHand();
     cout << "-- -- -- -- -- Affichage de la main de J1 apres melange -- -- -- --" << endl << endl;
-    //J1.printHand();
+    J1.printHand();
     cout << "-- -- -- -- -- Fin -- -- -- --" << endl << endl;
     // Tirage au sort joueur qui commence
   
