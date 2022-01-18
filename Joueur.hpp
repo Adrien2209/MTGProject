@@ -51,6 +51,16 @@ public:
     void printGraveYard();
     void printBoard();
 
+    void addToBibli(Carte* carte);
+    void addToHand(Carte* carte);
+    void addToGraveYard(Carte* carte);
+    void addToBoard(Carte* carte);
+
+    void deleteFromBibli(int i);
+    void deleteFromHand(int i);
+    void deleteFromGraveYard(int i);
+    void deleteFromBoard(int i);
+
     void RecevoirDegat(int nbDegat);
     bool VerifMort();
     void MelangeBibli();

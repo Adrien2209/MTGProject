@@ -121,6 +121,38 @@ void Joueur::printBoard()
   }
 }
 
+void Joueur::addToBibli(Carte* carte){
+  Bibli.push_back(carte);
+}
+
+void Joueur::addToHand(Carte* carte){
+  Hand.push_back(carte);
+}
+
+void Joueur::addToGraveYard(Carte* carte){
+  GraveYard.push_back(carte);
+}
+
+void Joueur::addToBoard(Carte* carte){
+  Board.push_back(carte);
+}
+
+void Joueur::deleteFromBibli(int i){
+  Bibli.erase(Bibli.begin() + i);
+}
+
+void Joueur::deleteFromBoard(int i){
+  Board.erase(Bibli.begin() + i);
+}
+
+void Joueur::deleteFromGraveYard(int i){
+  GraveYard.erase(Bibli.begin() + i);
+}
+
+void Joueur::deleteFromHand(int i){
+  Hand.erase(Bibli.begin() + i);
+}
+
 void Joueur::PhaseDePioche()
 {
   if (this->getBibli().empty())

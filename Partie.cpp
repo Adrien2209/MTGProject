@@ -156,7 +156,7 @@ void Partie::PhaseDeCombat(Joueur& J1, Joueur& J2)
         Attacking_Cards.push_back(liste_Attaque[i - 1]);
     }
 
-    cout << "-- -- -- -- -- "<< "Tu as donc selectionne les cartes suivantes -- -- -- -- --" << endl << endl;
+    cout << "-- -- -- -- -- Tu as donc selectionne les cartes suivantes -- -- -- -- --" << endl << endl;
 
     for (Carte *carte : Attacking_Cards)
     { // Affichage des cartes selectionne par le joueur
