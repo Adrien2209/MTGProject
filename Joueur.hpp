@@ -41,8 +41,8 @@ public:
     //-- -- -- -- Les sets -- -- -- --
     void setNom(string n);
     void setHP(int s);
-    vector<Carte*> setBibli(Deck v);
-    vector<Carte*> setInitialHand(vector<Carte*> v);
+    void setBibli(Deck v);
+    void setInitialHand();
     vector<Carte*> setBoard(vector<Carte*> c);
 
     //-- -- -- -- methodes -- -- -- --
@@ -53,7 +53,7 @@ public:
 
     void RecevoirDegat(int nbDegat);
     bool VerifMort();
-    vector<Carte*> MelangeBibli(vector<Carte*> v);
+    void MelangeBibli();
     int ParcourirBoard(vector<Carte*> v);
     //-- -- -- -- Phases -- -- -- --
     vector<Carte*> ChoixCreature();

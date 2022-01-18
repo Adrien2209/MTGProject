@@ -30,23 +30,28 @@ int main()
     // -- Creation de la partie --
     Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
 
-    // -- Creation Deck --
     Deck d1 = Deck("DeckTest2"); // Creation du Deck. OK.
-    Deck d2 = Deck("DeckTerrain");
+    Deck d2 = Deck("DeckTest2");
 
     // Bibliotheques des deux joueurs. OK.
-    vector<Carte*> Bibli1 = J1.setBibli(d1);
-    vector<Carte*> Bibli2 = J2.setBibli(d1);
+    J1.setBibli(d1);
+    cout << J1.getBibli().size();
+    cout << "-- -- -- -- -- Affichage de la bibliothèque de J1 -- -- -- --" << endl << endl;
+    J1.printBibli();
+    
     // On melange au prealables les Bibliothèques des deux joueurs. OK.
-    J1.MelangeBibli(Bibli1);
-    J2.MelangeBibli(Bibli2);
+    J1.MelangeBibli();
+    cout << "-- -- -- -- -- Affichage de la bibliothèque de J1 apres melange -- -- -- --" << endl << endl;
+    J1.printBibli();
 
     // Creation des mains avant le dubut du premier tour. OK.
-    vector<Carte*> Hand1 = J1.setInitialHand(Bibli1);
-    vector<Carte*> Hand2 = J2.setInitialHand(Bibli2);
- 
+    J1.setInitialHand();
+    cout << "-- -- -- -- -- Affichage de la main de J1 apres melange -- -- -- --" << endl << endl;
+    J1.printHand();
+    cout << "-- -- -- -- -- Fin -- -- -- --" << endl << endl;
     // Tirage au sort joueur qui commence
   
+    /*
     // PHASE DE PIOCHE OK.
     J1.PhaseDePioche(); 
     /*game.PhaseDeCombat(J1, J2);
@@ -73,8 +78,10 @@ int main()
     //JoueurQuiJoue.PhaseDePioche();
     //cout << " ----------------- MAIN APRES LA PHASE DE PIOCHE ----------------- " << endl;
     //JoueurQuiJoue.printHand();
+    */
 
     // Phase de Pioche
+
     /*while (J1.getHP() > 0 && J2.getHP() > 0)
     {
         // On augmente change le tour :

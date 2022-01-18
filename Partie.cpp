@@ -23,6 +23,44 @@ void Partie::setJoueur1(Joueur j) { J1 = j; }
 void Partie::setJoueur2(Joueur p) { J2 = p; }
 
 //  -- -- -- les methodes -- -- --
+void Partie::PartieDeMagic(Joueur* J1, Joueur* J2){
+    //Selection du deck
+    cout << J1->getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    string deckJ1 = "";
+    getline(cin, deckJ1);
+    cout << J1->getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    string deckJ2 = "";
+    getline(cin, deckJ2);
+
+    // -- Creation Deck --
+    Deck d1 = Deck(deckJ1); // Creation du Deck. OK.
+    Deck d2 = Deck(deckJ2);
+
+    // Bibliotheques des deux joueurs. OK.
+    J1->setBibli(d1);
+    J2->setBibli(d2);
+    
+    // On melange au prealables les Bibliothèques des deux joueurs. OK.
+    J1->MelangeBibli();
+    J2->MelangeBibli();
+
+    // Creation des mains avant le dubut du premier tour. OK.
+    J1->setInitialHand();
+    J2->setInitialHand();
+
+    /*
+    while(J1->getHP()>0 || J2->getHP()>0){
+        if( n % 2 == 0){
+            J1->PhaseDePioche();
+            J1->PhaseDeDesengagement();
+            //Ajouter phase principale
+            PhaseDeCombat(J1, J2);
+            //Ajouter phase secondaire
+            //Ajouter fin de tour
+        }
+    }*/
+}
+
 int Partie::TourSuivant()
 {
     return this->tour + 1;

@@ -46,20 +46,18 @@ vector<Carte *> Joueur::setBoard(vector<Carte *> c)
   Board = c;
   return Board;
 }
-vector<Carte *> Joueur::setBibli(Deck d)
+void Joueur::setBibli(Deck d)
 {
-  Bibli = d.getDeck();
-  return Bibli;
+  this->Bibli = d.getDeck();
 }
-vector<Carte *> Joueur::setInitialHand(vector<Carte *> v)
+void Joueur::setInitialHand()
 {
   int i = 0;
   while (i < 7)
   {
-    Hand.push_back(v[i]);
+    Hand.push_back(Bibli[i]);
     i++;
   }
-  return Hand;
 }
 
 // -- -- -- Les Methodes -- -- --
@@ -83,19 +81,17 @@ void Joueur::RecevoirDegat(int nbDegat)
   }
 }
 
-vector<Carte *> Joueur::MelangeBibli(vector<Carte *> v)
+void Joueur::MelangeBibli()
 {
   random_device rd;
   default_random_engine rng(rd());
-  shuffle(v.begin(), v.end(), rng);
-  this->Bibli = v;
-  cout << " Melange de la bibliotheques de : " << this->getNom() << " en cours... FAIT " << endl;
-  return Bibli;
+  shuffle(Bibli.begin(), Bibli.end(), rng);
+  cout << " Melange de la bibliotheques de : " << nom << " en cours... FAIT " << endl;
 }
 
 void Joueur::printHand()
 {
-  for (auto &e : Hand)
+  for (auto *e : Hand)
   {
     e->print();
   }
@@ -103,7 +99,7 @@ void Joueur::printHand()
 
 void Joueur::printBibli()
 {
-  for (auto &e : Bibli)
+  for (auto *e : Bibli)
   {
     e->print();
   }
