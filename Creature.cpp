@@ -63,9 +63,9 @@ void Creature::print()
 
 int Creature::CoutTotale() {
   map<string,int>::iterator it;
-  int res;
+  int res = cost;
   for (it = cout_couleur.begin(); it != cout_couleur.end(); ++it) {
-    res += it -> second;
+    res += it->second;
   }
-  return res + this->getCost();
+  return res;
 }

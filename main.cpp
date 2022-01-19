@@ -12,7 +12,7 @@ int main()
 {
 
     srand(time(NULL));
-    //int tour = 0;
+    // int tour = 0;
     string name1;
     string name2;
     cout << "Lancement du jeu ... [||||||||||||||||||||||||||||||||||||||___________] 70 %" << endl;
@@ -33,7 +33,7 @@ int main()
     game.PartieDeMagic(J1, J2);
 
 
-return 0;
+        return 0;
 }
 
 /* cout << "-------------------------------------------------------" << endl;

@@ -1,6 +1,8 @@
 #ifndef CARTE_H
 #define CARTE_H
 
+#include "Color.hpp"
+
 #include <string>
 #include <vector>
 #include <map>
@@ -17,7 +19,7 @@ class Carte {
     Carte(string  nom, string couleur, string lieu, bool etat, int numero); // Constructeur
     virtual ~Carte() {}; // Destructeur
 
-    int virtual getCost() = 0;
+    virtual int getCost() = 0;
     map<string,int> virtual getCout_Couleur() = 0;
     int virtual getID() = 0;
     int virtual getForce();
@@ -29,7 +31,7 @@ class Carte {
     void virtual setBaseEndurance(int i);
     void virtual minusEndurance(int i);
     void virtual print();
-    int virtual CoutTotale() { return 0;}
+    virtual int  CoutTotale() { return 0;}
     
     // Les gets
 
@@ -48,6 +50,9 @@ class Carte {
     bool getEtat();
 
     void Death();
+
+    // Affichage couleur
+    virtual void printCouleur();
 
 };
 

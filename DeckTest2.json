@@ -1,31 +1,48 @@
 {
     "DeckTest" : 
     {
-        "Terrain" : 
+        
+        "Creature" :
         [
+    
+    
             {
-                "Title" : "Plains",
-                "Color" : "White",
-                "ID"    : 1
-            },
-            {
-                "Title" : "Island",
-                "Color" : "Blue",
-                "ID"    : 2
-            },
-            {
-                "Title" : "Swamp",
-                "Color" : "Black",
-                "ID"    : 3
-            },
-            {
-                "Title" : "Mountain",
+                "Title" : "Angel of Vitality",
+                "CommonCost" : 2,
+                "ColorCost" : ["White"],
                 "Color" : "Red",
-                "ID"    : 4
+                "Type" : "Angel",
+                "Force" : 2,
+                "Endurance" : 2,
+                "Capacity" : ["Flying"],
+                "ID"    : 14
             },
-
             {
-                "Title" : "Forest",
+                "Title" : "Apostle of Puryfing Light",
+                "CommonCost" : 1,
+                "ColorCost" : ["1"],
+                "Color" : "Blue",
+                "Type" : "Human Cleric",
+                "Force" : 2,
+                "Endurance" : 1,
+                "Capacity" : [""],
+                "ID"    : 15
+            },
+            {
+                "Title" : "Battalion Foot Soldier",
+                "CommonCost" : 2,
+                "ColorCost" : ["White"],
+                "Color" : "Black",
+                "Type" : "Human Soldier",
+                "Force" : 2,
+                "Endurance" : 2,
+                "Capacity" : [""],
+                "ID"    : 16
+            },
+            {
+                "Title" : "Bishop of Wings",
+                "CommonCost" : 0,
+                "ColorCost" : ["White", "White"],
                 "Color" : "Green",
                 "ID"    : 12
             }
@@ -47,7 +64,7 @@
                 "Title" : "Angel of Vitality",
                 "CommonCost" : 2,
                 "ColorCost" : ["White"],
-                "Color" : "White",
+                "Color" : "Red",
                 "Type" : "Angel",
                 "Force" : 2,
                 "Endurance" : 2,
@@ -58,7 +75,7 @@
                 "Title" : "Apostle of Puryfing Light",
                 "CommonCost" : 1,
                 "ColorCost" : ["White"],
-                "Color" : "White",
+                "Color" : "Blue",
                 "Type" : "Human Cleric",
                 "Force" : 2,
                 "Endurance" : 1,
@@ -69,7 +86,7 @@
                 "Title" : "Battalion Foot Soldier",
                 "CommonCost" : 2,
                 "ColorCost" : ["White"],
-                "Color" : "White",
+                "Color" : "Black",
                 "Type" : "Human Soldier",
                 "Force" : 2,
                 "Endurance" : 2,
@@ -80,7 +97,7 @@
                 "Title" : "Bishop of Wings",
                 "CommonCost" : 0,
                 "ColorCost" : ["White", "White"],
-                "Color" : "White",
+                "Color" : "Green",
                 "Type" : "Human Cleric",
                 "Force" : 1,
                 "Endurance" : 4,

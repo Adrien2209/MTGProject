@@ -1,27 +1,29 @@
 #include "Terrain.hpp"
+
 #include <iostream>
 
 Terrain::Terrain(string nom, string couleur, string lieu, bool etat, int numero) : Carte(nom, couleur, lieu, etat, numero)
 {
-    this->idTerrain = 1;
+  this->idTerrain = 1;
 }
 
 int Terrain::getID()
 {
-    return idTerrain;
+  return idTerrain;
 }
 
 int Terrain::getCost()
 {
-    return 0;
+  return 0;
 }
 
-map<string,int> Terrain::getCout_Couleur()
+map<string, int> Terrain::getCout_Couleur()
 {
   return {{"", 0}};
 }
 
-void Terrain::print() {
+void Terrain::print()
+{
 
   cout << this->getCouleur() << endl
        << " ____________________________________ " << endl
@@ -30,4 +32,3 @@ void Terrain::print() {
        << "|                                   |" << endl
        << "|___________________________________|" << endl;
 }
-

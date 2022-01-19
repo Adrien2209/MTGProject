@@ -1,12 +1,12 @@
 CXX = g++
 CXXFlag = -Wall -g -std=c++14 
 
-%.o : %.cpp
+build/%.o : %.cpp
 	$(CXX) $(CXXFlag) $< -c -o $@
 
-main : Carte.o Joueur.o Creature.o Terrain.o Partie.o Deck.o main.o
+main : build/Color.o build/Carte.o build/Joueur.o build/Creature.o build/Terrain.o build/Partie.o build/Deck.o build/main.o
 	g++ -std=c++14 $^ -o $@
 
-clean :
-	rm -f *.o
+clean:
+	rm -f build/*.o
 

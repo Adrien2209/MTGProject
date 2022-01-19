@@ -1,5 +1,7 @@
 #include "Carte.hpp"
+
 #include <iostream>
+#include <cstring>
 
 // Constructeur
 Carte::Carte(string nom, string couleur, string lieu, bool etat, int numero)
@@ -17,7 +19,6 @@ string Carte::getCouleur() { return couleur; }
 string Carte::getLieu() { return lieu; }
 
 // -- -- -- -- Virtual des GET -- -- -- --
-
 
 int Carte::getID()
 {
@@ -43,9 +44,7 @@ int Carte::getBaseEndurance()
     return 0;
 }
 
-
 // -- -- -- -- Virtual des SET -- -- -- --
-
 
 void Carte::setForce(int i)
 {
@@ -69,7 +68,6 @@ void Carte::minusEndurance(int i)
 
 // -- -- -- --
 
-
 int Carte::getNumero() { return numero; }
 bool Carte::getEtat() { return etat; }
 int Carte::getCost()
@@ -77,7 +75,7 @@ int Carte::getCost()
     cout << "Methode getCost() de Carte " << endl;
     return 0;
 }
-map<string,int> Carte::getCout_Couleur()
+map<string, int> Carte::getCout_Couleur()
 {
     return {};
 }
@@ -88,7 +86,6 @@ void Carte::setEngage() { etat = true; }
 void Carte::setDesengage() { etat = false; }
 
 // Les méthodes
-
 
 void Carte::Death()
 {
@@ -103,4 +100,15 @@ void Carte::print()
         << "| Name : " + this->getNom() + "                        |" << endl
         << "|                                   |" << endl
         << "|___________________________________|" << endl;
+}
+
+void Carte::printCouleur() {
+    Color couleurDefaut(FG_DEFAULT);
+    Color c = Color::quelleCouleur(couleur);
+    
+    cout << c << "\t |-----------------------------------| " << endl;
+    cout << c << "\t |" << couleurDefaut << nom << "                  ";
+    cout << c  << "|" << endl;
+    cout << c << "\t |-----------------------------------| " << endl;
+    cout << couleurDefaut;
 }
