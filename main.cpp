@@ -32,8 +32,7 @@ int main()
 
     game.PartieDeMagic(J1, J2);
 
-
-        return 0;
+    return 0;
 }
 
 /* cout << "-------------------------------------------------------" << endl;

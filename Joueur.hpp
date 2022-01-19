@@ -67,7 +67,7 @@ public:
     int ParcourirBoard(vector<Carte*> v);
     
     //-- -- -- -- Phases -- -- -- --
-    vector<Carte*> ChoixCreature();
+    void PoserCreature();
     void PhaseDePioche();
     int PhaseDeDesengagement();
     void PhasePrincipale();
@@ -77,6 +77,8 @@ public:
     int CoutTotalDispoEnJeu();
     void PoserTerrain();
     vector<Carte*> TerrainDispo();
+    vector<Carte*>  MAJTerrainDispo();
+    vector<Carte *> TerrainEnMain();
 };
 
 #endif

@@ -26,10 +26,10 @@ void Partie::setJoueur2(Joueur p) { J2 = p; }
 void Partie::PartieDeMagic(Joueur J1, Joueur J2){
     //Selection du deck
     //cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
-    string deckJ1 = "DeckTest2";
+    string deckJ1 = "DeckTest3";
     //getline(cin, deckJ1);
     //cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
-    string deckJ2 = "DeckTest2";
+    string deckJ2 = "DeckTest3";
     //getline(cin, deckJ2);
 
     // -- Creation Deck --
@@ -41,14 +41,23 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
     J2.setBibli(d2);
     
     // On melange au prealables les Bibliothèques des deux joueurs. OK.
-    //J1.MelangeBibli();
-    //J2.MelangeBibli();
+    J1.MelangeBibli();
+    J2.MelangeBibli();
+
 
     // Creation des mains avant le dubut du premier tour. OK.
     J1.setInitialHand();
     J2.setInitialHand();
     J1.NettoyageBibli();
     J2.NettoyageBibli();
+    cout << " -------------------------------------------------------------------------------------" << endl;
+    cout << " -------------------------------------------------------------------------------------" << endl;
+    cout << " -------------------------------------------------------------------------------------" << endl;
+    cout << " -------------------------------------------------------------------------------------" << endl;
+    cout << " -------------------------------------------------------------------------------------" << endl;
+    for ( Carte * c : J1.getHand()) {
+        c->printCouleur();
+    }
 
     int n = rand()%2;
 
@@ -56,7 +65,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
         if( n % 2 == 0){
             //J1.PhaseDePioche();
             //J1.PhaseDeDesengagement();
-            //Ajouter phase principale
+            J1.PhasePrincipale();
             PhaseDeCombat(J1, J2);
             J1.NettoyageHand();
             J2.NettoyageHand();
@@ -77,7 +86,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
         if( n % 2 == 1){
             //J2.PhaseDePioche();
             //J2.PhaseDeDesengagement();
-            //Ajouter phase principale
+            J2.PhasePrincipale();
             PhaseDeCombat(J2, J1);
             J1.NettoyageHand();
             J2.NettoyageHand();
