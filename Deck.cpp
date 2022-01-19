@@ -35,7 +35,7 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
         vector<string> color_cost_string = liste_creature.value()["ColorCost"];
         // Conversion du vector de string en map
         map<string, int> colorcost = {{"White", 0}, {"Blue", 0}, {"Black", 0}, {"Red", 0}, {"Green", 0}};
-        int nbWhite, nbBlue, nbBlack, nbRed, nbGreen = 0;
+        int nbWhite = 0, nbBlue = 0, nbBlack = 0, nbRed = 0, nbGreen = 0;
         for (string t : color_cost_string)
         {
             if (t == "White")

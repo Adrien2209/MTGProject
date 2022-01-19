@@ -6,6 +6,7 @@ CXXFlag = -Wall -g -std=c++14
 
 main : Carte.o Joueur.o Creature.o Terrain.o Partie.o Deck.o main.o
 	g++ -std=c++14 $^ -o $@
-	./$@
 
+clean :
+	rm -f *.o
 

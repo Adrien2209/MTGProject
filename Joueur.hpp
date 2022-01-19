@@ -56,10 +56,10 @@ public:
     void addToGraveYard(Carte* carte);
     void addToBoard(Carte* carte);
 
-    void deleteFromBibli(int i);
-    void deleteFromHand(int i);
-    void deleteFromGraveYard(int i);
-    void deleteFromBoard(int i);
+    void NettoyageBibli();
+    void NettoyageHand();
+    void NettoyageGraveYard();
+    void NettoyageBoard();
 
     void RecevoirDegat(int nbDegat);
     bool VerifMort();

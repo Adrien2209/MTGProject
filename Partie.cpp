@@ -25,12 +25,12 @@ void Partie::setJoueur2(Joueur p) { J2 = p; }
 //  -- -- -- les methodes -- -- --
 void Partie::PartieDeMagic(Joueur J1, Joueur J2){
     //Selection du deck
-    cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
-    string deckJ1 = "";
-    getline(cin, deckJ1);
-    cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
-    string deckJ2 = "";
-    getline(cin, deckJ2);
+    //cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    string deckJ1 = "DeckTest2";
+    //getline(cin, deckJ1);
+    //cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    string deckJ2 = "DeckTest2";
+    //getline(cin, deckJ2);
 
     // -- Creation Deck --
     Deck d1 = Deck(deckJ1); // Creation du Deck. OK.
@@ -41,39 +41,57 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
     J2.setBibli(d2);
     
     // On melange au prealables les Bibliothèques des deux joueurs. OK.
-    J1.MelangeBibli();
-    J2.MelangeBibli();
+    //J1.MelangeBibli();
+    //J2.MelangeBibli();
 
     // Creation des mains avant le dubut du premier tour. OK.
     J1.setInitialHand();
     J2.setInitialHand();
+    J1.NettoyageBibli();
+    J2.NettoyageBibli();
 
     int n = rand()%2;
 
     while(J1.getHP()>0 || J2.getHP()>0){
         if( n % 2 == 0){
-            J1.PhaseDePioche();
-            J1.PhaseDeDesengagement();
+            //J1.PhaseDePioche();
+            //J1.PhaseDeDesengagement();
             //Ajouter phase principale
             PhaseDeCombat(J1, J2);
-            cout << "Cimetierre de J1 " << endl;
+            J1.NettoyageHand();
+            J2.NettoyageHand();
+            cout << "Cimetiere de : " << J1.getNom() << endl;
             J1.printGraveYard();
-            cout << "Cimetierre de J2 " << endl;
+            cout << "Cimetiere de : " << J2.getNom() << endl;
             J2.printGraveYard();
+
+            cout << "Main de : " << J1.getNom() << endl;
+            J1.printHand();
+            cout << "Main de : " << J2.getNom() << endl;
+            J2.printHand();
             //Ajouter phase secondaire
             //Ajouter fin de tour
             n += 1;
         }
 
         if( n % 2 == 1){
-            J2.PhaseDePioche();
-            J2.PhaseDeDesengagement();
+            //J2.PhaseDePioche();
+            //J2.PhaseDeDesengagement();
             //Ajouter phase principale
             PhaseDeCombat(J2, J1);
-            cout << "Cimetierre de J1 " << endl;
+            J1.NettoyageHand();
+            J2.NettoyageHand();
+            cout << "Cimetiere de : " << J1.getNom() << endl;
             J1.printGraveYard();
-            cout << "Cimetierre de J2 " << endl;
+            cout << "Cimetiere de : " << J2.getNom() << endl;
             J2.printGraveYard();
+
+            cout << "Main de : " << J1.getNom() << endl;
+            J1.printHand();
+            cout << "Main de : " << J2.getNom() << endl;
+            J2.printHand();
+
+            
             //Ajouter phase secondaire
             //Ajouter fin de tour
             n += 1;
@@ -150,7 +168,9 @@ void Partie::PhaseDeCombat(Joueur& J1, Joueur& J2)
             safeword = "";
         }
     }
-
+    cout << "avant "<<endl;
+    cout << endl <<liste_Attaque.at(0) << endl;
+    cout << "apres" << endl;
     for (int i : choix_attaquant)
     { // Ajout des cartes dans le vecteur de carte qui contient les cartes qui vont attaquer
         Attacking_Cards.push_back(liste_Attaque[i - 1]);
@@ -193,16 +213,18 @@ void Partie::PhaseDeCombat(Joueur& J1, Joueur& J2)
         {
             cout << endl << "-- -- -- -- -- Tu as choisi cette carte -- -- -- -- --" << endl << endl;
             liste_Defense[stoi(safeword)-1]->print();
+
+            //Actualisation des points de vie
             liste_Defense[stoi(safeword)-1]->minusEndurance(carte->getForce());
             carte->minusEndurance(liste_Defense[stoi(safeword)-1]->getForce());
+
             if(liste_Defense[stoi(safeword)-1]->getEndurance() <= 0){
                 liste_Defense[stoi(safeword)-1]->setLieu("GraveYard");
-                cout << endl << "Ta carte est morte en te protegeant, elle se trouve au " << liste_Defense[stoi(safeword)-1]->getLieu();
+                
                 
             }
             if(carte->getEndurance() <= 0){
                 carte->setLieu("GraveYard");
-                cout << endl << "Ta carte est morte en attaquant, elle se trouve au " << carte->getLieu() << endl;
             }
             liste_Defense.erase(liste_Defense.begin() + stoi(safeword)-1);
             safeword = "";
@@ -216,6 +238,7 @@ void Partie::PhaseDeCombat(Joueur& J1, Joueur& J2)
             safeword = "";
         }
     }
+    cout << "fin de phase d'attaque" << endl;
 }
 
 bool Partie::FinDePartie()

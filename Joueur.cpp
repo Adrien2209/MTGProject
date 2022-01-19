@@ -55,7 +55,9 @@ void Joueur::setInitialHand()
   int i = 0;
   while (i < 7)
   {
-    Hand.push_back(Bibli[i]);
+    Bibli.front()->setLieu("Hand");
+    Hand.push_back(Bibli.front());
+    Bibli.erase(Bibli.begin());
     i++;
   }
 }
@@ -137,20 +139,114 @@ void Joueur::addToBoard(Carte* carte){
   Board.push_back(carte);
 }
 
-void Joueur::deleteFromBibli(int i){
-  Bibli.erase(Bibli.begin() + i);
+void Joueur::NettoyageBibli(){
+  int i = 0;
+  vector<int> ListeADelete = {};
+  for(auto* carte : this->Bibli){
+    if(carte->getLieu() == "GraveYard"){
+      addToGraveYard(carte);
+      i += 1;
+    }
+    if(carte->getLieu() == "Hand"){
+      addToHand(carte);
+      ListeADelete.push_back(i);
+      cout << "on va vouloir supprimer " << carte->getNom() << " a la position " << i << endl;
+      this->Bibli.erase(this->Bibli.begin()+i);
+    }
+    if(carte->getLieu() == "Board"){
+      addToBoard(carte);
+      i += 1;
+    }
+    else{
+      i += 1;
+    }
+  }
+  for(int ite : ListeADelete){
+    this->Bibli.erase(this->Bibli.begin() + ite);
+  }
 }
 
-void Joueur::deleteFromBoard(int i){
-  Board.erase(Bibli.begin() + i);
+void Joueur::NettoyageHand(){
+  int i = 0;
+  vector<int> ListeADelete = {};
+  for(auto* carte : this->Hand){
+    if(carte->getLieu() == "GraveYard"){
+      addToGraveYard(carte);
+      cout << "on va vouloir supprimer " << carte->getNom() << " a la position " << i << endl;
+      this->Hand.erase(this->Hand.begin()+i);
+    }
+    if(carte->getLieu() == "Bibli"){
+      addToBibli(carte);
+      ListeADelete.push_back(i);
+      i += 1;
+    }
+    if(carte->getLieu() == "Board"){
+      addToBoard(carte);
+      ListeADelete.push_back(i);
+      i += 1;
+    }
+    else{
+      i += 1;
+    }
+  }
+  cout << "Ici ca marche AVANT le for, taille : " << ListeADelete.size() << endl;
+  /*
+  for(int ite : ListeADelete){
+    cout << "Ici ca marche dans le for " << this->Hand.at(ite)->getNom() << " et l'indice est " <<  ListeADelete.at(ite) << endl;
+    this->Hand.erase(this->Hand.begin()+ite);
+    cout << "EFFACE" << endl;
+  }
+  */
 }
 
-void Joueur::deleteFromGraveYard(int i){
-  GraveYard.erase(Bibli.begin() + i);
+void Joueur::NettoyageGraveYard(){
+  int i = 0;
+  vector<int> ListeADelete = {};
+  for(auto* carte : this->GraveYard){
+    if(carte->getLieu() == "Hand"){
+      addToHand(carte);
+      i += 1;
+    }
+    if(carte->getLieu() == "Bibli"){
+      addToBibli(carte);
+      i += 1;
+    }
+    if(carte->getLieu() == "Board"){
+      addToBoard(carte);
+      i += 1;
+    }
+    else{
+      i += 1;
+    }
+  }
+  for(int ite : ListeADelete){
+    this->GraveYard.erase(this->GraveYard.begin() + ite);
+  }
 }
 
-void Joueur::deleteFromHand(int i){
-  Hand.erase(Bibli.begin() + i);
+void Joueur::NettoyageBoard(){
+  int i = 0;
+  vector<int> ListeADelete = {};
+  for(auto* carte : this->Board){
+    if(carte->getLieu() == "GraveYard"){
+      addToGraveYard(carte);
+      i += 1;
+    }
+    if(carte->getLieu() == "Hand"){
+      addToHand(carte);
+      i += 1;
+    }
+    if(carte->getLieu() == "Bibli"){
+      addToBibli(carte);
+      i += 1;
+    }
+    else{
+      i += 1;
+    }
+  }
+  for(int ite : ListeADelete){
+    this->Board.erase(this->Board.begin() + ite);
+  }
 }
 
 void Joueur::PhaseDePioche()
@@ -162,6 +258,7 @@ void Joueur::PhaseDePioche()
   }
   else
   {
+    Bibli.front()->setLieu("Hand");
     Hand.push_back(Bibli.front());
     Bibli.erase(Bibli.begin());
   }

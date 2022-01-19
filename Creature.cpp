@@ -55,7 +55,7 @@ void Creature::print()
 {
   cout << this->getCouleur() << endl
        << " ____________________________________ " << endl
-       << "| Name : " + this->getNom() + "  Cout : " + to_string(cost) + "|" << endl
+       << "| Name : " + this->getNom() + "  Cout : " + to_string(cost) + + "  Lieu : " + this->getLieu() + "|" << endl
        << "|                                   |" << endl
        << "| Attack : " + to_string(force) + " HP : " + to_string(endurance) + " |" << endl
        << "|___________________________________|" << endl;

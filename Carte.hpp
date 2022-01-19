@@ -15,7 +15,7 @@ class Carte {
 
     public :
     Carte(string  nom, string couleur, string lieu, bool etat, int numero); // Constructeur
-    ~Carte() {}; // Destructeur
+    virtual ~Carte() {}; // Destructeur
 
     int virtual getCost() = 0;
     map<string,int> virtual getCout_Couleur() = 0;
