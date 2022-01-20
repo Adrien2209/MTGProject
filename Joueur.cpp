@@ -146,137 +146,109 @@ void Joueur::addToBoard(Carte *carte)
 void Joueur::NettoyageBibli()
 {
   int i = 0;
-  vector<int> ListeADelete = {};
   for (auto *carte : this->Bibli)
   {
     if (carte->getLieu() == "GraveYard")
     {
       addToGraveYard(carte);
-      i += 1;
+      this->Bibli.erase(this->Bibli.begin() + i);
     }
     if (carte->getLieu() == "Hand")
     {
       addToHand(carte);
-      ListeADelete.push_back(i);
-      cout << "on va vouloir supprimer " << carte->getNom() << " a la position " << i << endl;
       this->Bibli.erase(this->Bibli.begin() + i);
     }
     if (carte->getLieu() == "Board")
     {
       addToBoard(carte);
-      i += 1;
+      this->Bibli.erase(this->Bibli.begin() + i);
     }
     else
     {
       i += 1;
     }
-  }
-  for (int ite : ListeADelete)
-  {
-    this->Bibli.erase(this->Bibli.begin() + ite);
   }
 }
 
 void Joueur::NettoyageHand()
 {
   int i = 0;
-  vector<int> ListeADelete = {};
   for (auto *carte : this->Hand)
   {
     if (carte->getLieu() == "GraveYard")
     {
       addToGraveYard(carte);
-      cout << "on va vouloir supprimer " << carte->getNom() << " a la position " << i << endl;
+      //cout << "on va vouloir supprimer " << carte->getNom() << " a la position " << i << endl;
       this->Hand.erase(this->Hand.begin() + i);
     }
     if (carte->getLieu() == "Bibli")
     {
       addToBibli(carte);
-      ListeADelete.push_back(i);
-      i += 1;
+      this->Hand.erase(this->Hand.begin() + i);
     }
     if (carte->getLieu() == "Board")
     {
       addToBoard(carte);
-      ListeADelete.push_back(i);
-      i += 1;
+      this->Hand.erase(this->Hand.begin() + i);
     }
     else
     {
       i += 1;
     }
   }
-  cout << "Ici ca marche AVANT le for, taille : " << ListeADelete.size() << endl;
-  /*
-  for(int ite : ListeADelete){
-    cout << "Ici ca marche dans le for " << this->Hand.at(ite)->getNom() << " et l'indice est " <<  ListeADelete.at(ite) << endl;
-    this->Hand.erase(this->Hand.begin()+ite);
-    cout << "EFFACE" << endl;
-  }
-  */
 }
 
 void Joueur::NettoyageGraveYard()
 {
   int i = 0;
-  vector<int> ListeADelete = {};
   for (auto *carte : this->GraveYard)
   {
     if (carte->getLieu() == "Hand")
     {
       addToHand(carte);
-      i += 1;
+      this->GraveYard.erase(this->GraveYard.begin() + i);
     }
     if (carte->getLieu() == "Bibli")
     {
       addToBibli(carte);
-      i += 1;
+      this->GraveYard.erase(this->GraveYard.begin() + i);
     }
     if (carte->getLieu() == "Board")
     {
       addToBoard(carte);
-      i += 1;
+      this->GraveYard.erase(this->GraveYard.begin() + i);
     }
     else
     {
       i += 1;
     }
-  }
-  for (int ite : ListeADelete)
-  {
-    this->GraveYard.erase(this->GraveYard.begin() + ite);
   }
 }
 
 void Joueur::NettoyageBoard()
 {
   int i = 0;
-  vector<int> ListeADelete = {};
   for (auto *carte : this->Board)
   {
     if (carte->getLieu() == "GraveYard")
     {
       addToGraveYard(carte);
-      i += 1;
+      this->Board.erase(this->Board.begin() + i);
     }
     if (carte->getLieu() == "Hand")
     {
       addToHand(carte);
-      i += 1;
+      this->Board.erase(this->Board.begin() + i);
     }
     if (carte->getLieu() == "Bibli")
     {
       addToBibli(carte);
-      i += 1;
+      this->Board.erase(this->Board.begin() + i);
     }
     else
     {
       i += 1;
     }
-  }
-  for (int ite : ListeADelete)
-  {
-    this->Board.erase(this->Board.begin() + ite);
   }
 }
 

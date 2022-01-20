@@ -1,52 +1,65 @@
 {
     "DeckTest" : 
     {
-        
-        "Creature" :
-        [
-    
-    
+        "Terrain": [
             {
-                "Title" : "Angel of Vitality",
-                "CommonCost" : 2,
-                "ColorCost" : ["White"],
-                "Color" : "Red",
-                "Type" : "Angel",
-                "Force" : 2,
-                "Endurance" : 2,
-                "Capacity" : ["Flying"],
-                "ID"    : 14
+                "Title": "Plains",
+                "Color": "White",
+                "ID": 1
             },
             {
-                "Title" : "Apostle of Puryfing Light",
-                "CommonCost" : 1,
-                "ColorCost" : ["1"],
-                "Color" : "Blue",
-                "Type" : "Human Cleric",
-                "Force" : 2,
-                "Endurance" : 1,
-                "Capacity" : [""],
-                "ID"    : 15
+                "Title": "Island",
+                "Color": "Blue",
+                "ID": 2
             },
             {
-                "Title" : "Battalion Foot Soldier",
-                "CommonCost" : 2,
-                "ColorCost" : ["White"],
-                "Color" : "Black",
-                "Type" : "Human Soldier",
-                "Force" : 2,
-                "Endurance" : 2,
-                "Capacity" : [""],
-                "ID"    : 16
+                "Title": "Swamp",
+                "Color": "Black",
+                "ID": 3
             },
             {
-                "Title" : "Bishop of Wings",
-                "CommonCost" : 0,
-                "ColorCost" : ["White", "White"],
-                "Color" : "Green",
-                "ID"    : 12
+                "Title": "Mountain",
+                "Color": "Red",
+                "ID": 4
+            },
+            {
+                "Title": "Forest",
+                "Color": "Green",
+                "ID": 5
+            },
+            {
+                "Title": "Plains",
+                "Color": "White",
+                "ID": 6
+            },
+            {
+                "Title": "Island",
+                "Color": "Blue",
+                "ID": 7
+            },
+            {
+                "Title": "Swamp",
+                "Color": "Black",
+                "ID": 8
+            },
+            {
+                "Title": "Mountain",
+                "Color": "Red",
+                "ID": 9
+            },
+            {
+                "Title": "Forest",
+                "Color": "Green",
+                "ID": 10
+            },
+            {
+                "Title": "Plains",
+                "Color": "White",
+                "ID": 11
             }
         ],
+        
+        
         "Creature" :
         [
             {
@@ -103,6 +116,38 @@
                 "Endurance" : 4,
                 "Capacity" : [""],
                 "ID"    : 17
+            },{
+                "Title" : "Air Elemental",
+                "CommonCost" : 3,
+                "ColorCost" : ["Blue", "Blue"],
+                "Color" : "Blue",
+                "Type" : "Elemental",
+                "Force" : 4,
+                "Endurance" : 4,
+                "Capacity" : ["Flying"],
+                "ID"    : 22
+            },
+            {
+                "Title" : "Atemsis, All-Seeing",
+                "CommonCost" : 3,
+                "ColorCost" : ["Blue", "Blue", "Blue"],
+                "Color" : "Blue",
+                "Type" : "Legendary - Sphinx",
+                "Force" : 4,
+                "Endurance" : 5,
+                "Capacity" : ["Flying"],
+                "ID"    : 23
+            },
+            {
+                "Title" : "Boreal Elemental",
+                "CommonCost" : 4,
+                "ColorCost" : ["Blue"],
+                "Color" : "Blue",
+                "Type" : "Elemental",
+                "Force" : 3,
+                "Endurance" : 4,
+                "Capacity" : ["Flying"],
+                "ID"    : 24
             }
         ]
     }
