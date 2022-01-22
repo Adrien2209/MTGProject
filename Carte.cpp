@@ -102,13 +102,19 @@ void Carte::print()
         << "|___________________________________|" << endl;
 }
 
-void Carte::printCouleur() {
+void Carte::printCouleur()
+{
     Color couleurDefaut(FG_DEFAULT);
     Color c = Color::quelleCouleur(couleur);
-    
+
     cout << c << "\t |-----------------------------------| " << endl;
     cout << c << "\t |" << couleurDefaut << nom << "                  ";
-    cout << c  << "|" << endl;
+    cout << c << "|" << endl;
     cout << c << "\t |-----------------------------------| " << endl;
     cout << couleurDefaut;
+}
+
+bool operator==(Carte const &c, Carte const &c1)
+{
+    return c.numero == c1.numero;
 }

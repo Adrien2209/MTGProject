@@ -40,23 +40,28 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
         {
             if (t == "White")
             {
-                colorcost[t] = nbWhite++;
+                nbWhite++;
+                colorcost[t] = nbWhite;
             }
             else if (t == "Blue")
             {
-                colorcost[t] = nbBlue++;
+                nbBlue++;
+                colorcost[t] = nbBlue;
             }
             else if (t == "Black")
             {
-                colorcost[t] = nbBlack++;
+                nbBlack++;
+                colorcost[t] = nbBlack;
             }
             else if (t == "Red")
             {
-                colorcost[t] = nbRed++;
+                nbRed++;
+                colorcost[t] = nbRed;
             }
             else if (t == "Green")
             {
-                colorcost[t] = nbGreen++;
+                nbGreen++;
+                colorcost[t] = nbGreen;
             }
         }
         string color = liste_creature.value()["Color"];
@@ -67,7 +72,8 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
         int id = liste_creature.value()["ID"];
         string lieu = "Bibli";
         bool etat = false;
-        DeckRetour.push_back(new Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance));
+        bool peutAttaquer = false;
+        DeckRetour.push_back(new Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance, peutAttaquer));
     }
 
     // Ajout des terrains dans le deck

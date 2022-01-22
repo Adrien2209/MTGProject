@@ -13,7 +13,7 @@ class Deck;
 class Joueur
 {
 private:
-    vector<Carte*> Hand, Bibli, Board, GraveYard; // Voir si on specifie Creature ou Terrain au lieu de Carte
+    vector<Carte *> Hand, Bibli, Board, GraveYard; // Voir si on specifie Creature ou Terrain au lieu de Carte
     int HP = 20;
     string nom;
     bool mort = false;
@@ -22,7 +22,7 @@ private:
 public:
     // -- -- -- -- CONSTRUCTEUR -- -- -- --
     // Joueur(Deck d, int HP);
-    Joueur(string nom, int HP, int ID, vector<Carte*> Hand, vector<Carte*> Bibli, vector<Carte*> Board, vector<Carte*> GraveYard);
+    Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *> Bibli, vector<Carte *> Board, vector<Carte *> GraveYard);
     Joueur(string nom, int HP, int ID);
     Joueur();
     // -- -- -- -- DESTRUCTEUR -- -- -- --
@@ -33,17 +33,17 @@ public:
     int getId();
     string getNom();
     bool getMort();
-    vector<Carte*> getBibli();
-    vector<Carte*> getHand();
-    vector<Carte*> getGraveYard();
-    vector<Carte*> getBoard();
+    vector<Carte *> getBibli();
+    vector<Carte *> getHand();
+    vector<Carte *> getGraveYard();
+    vector<Carte *> getBoard();
 
     //-- -- -- -- Les sets -- -- -- --
     void setNom(string n);
     void setHP(int s);
     void setBibli(Deck v);
     void setInitialHand();
-    vector<Carte*> setBoard(vector<Carte*> c);
+    vector<Carte *> setBoard(vector<Carte *> c);
 
     //-- -- -- -- methodes -- -- -- --
     void printBibli();
@@ -51,10 +51,10 @@ public:
     void printGraveYard();
     void printBoard();
 
-    void addToBibli(Carte* carte);
-    void addToHand(Carte* carte);
-    void addToGraveYard(Carte* carte);
-    void addToBoard(Carte* carte);
+    void addToBibli(Carte *carte);
+    void addToHand(Carte *carte);
+    void addToGraveYard(Carte *carte);
+    void addToBoard(Carte *carte);
 
     void NettoyageBibli();
     void NettoyageHand();
@@ -64,8 +64,8 @@ public:
     void RecevoirDegat(int nbDegat);
     bool VerifMort();
     void MelangeBibli();
-    int ParcourirBoard(vector<Carte*> v);
-    
+    int ParcourirBoard(vector<Carte *> v);
+
     //-- -- -- -- Phases -- -- -- --
     void PoserCreature();
     void PhaseDePioche();
@@ -76,9 +76,15 @@ public:
     map<string, int> CoutDisponibleEnJeu();
     int CoutTotalDispoEnJeu();
     void PoserTerrain();
-    vector<Carte*> TerrainDispo();
-    vector<Carte*>  MAJTerrainDispo();
+    vector<Carte *> TerrainDispo();
+    vector<Carte *> MAJTerrainDispo();
     vector<Carte *> TerrainEnMain();
+    vector<Carte *> CreatureEnMain();
+    bool VerifCout(Carte *CarteChoisie);
+    void EngageTerrainCouleur(Carte *CarteChoisie);
+    void EngageTerrainQuelconque(Carte *CarteChoisie);
+    vector<string> TerrainAEngager(Carte *CarteChoisie);
+    vector<Carte *> TerrainCouleurAEngage(Carte *c);
 };
 
 #endif

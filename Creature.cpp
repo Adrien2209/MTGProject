@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Creature::Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string,int> cout_couleur, int cost, int force, int endurance) : Carte(nom, couleur, lieu, etat, numero)
+Creature::Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string,int> cout_couleur, int cost, int force, int endurance, bool peutAttaquer) : Carte(nom, couleur, lieu, etat, numero)
 {
   this->cout_couleur = cout_couleur;
   this->capacite = capacite;
@@ -12,6 +12,7 @@ Creature::Creature(string nom, string couleur, string lieu, bool etat, int numer
   this->endurance = endurance;
   this->idCreature = 2;
   this->base_endurance = endurance;
+  this->peutAttaquer = false;
 }
 
 // -- -- -- Les gets -- -- --
@@ -39,6 +40,10 @@ int Creature::getID()
   return idCreature;
 }
 
+bool Creature::getPeutAttaquer() {
+  return peutAttaquer;
+}
+
 // -- -- -- Les sets -- -- --
 
 void Creature::setCost(int i) { cost = i; }
@@ -48,7 +53,7 @@ void Creature::setForce(int i) { force = i; }
 void Creature::setEndurance(int i) { endurance = i; }
 void Creature::setBaseEndurance(int i) { base_endurance = i; }
 void Creature::minusEndurance(int i) { endurance -= i;}
-
+void Creature::setPeutAttaquer() { peutAttaquer = true;}
 // -- -- -- Les méthodes -- -- --
 
 void Creature::print()
@@ -69,3 +74,5 @@ int Creature::CoutTotale() {
   }
   return res;
 }
+
+

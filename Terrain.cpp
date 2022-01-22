@@ -32,3 +32,9 @@ void Terrain::print()
        << "|                                   |" << endl
        << "|___________________________________|" << endl;
 }
+/*
+bool operator==(Terrain const& c, Terrain const& c1) 
+{
+    return c.getNom() == c1.getNom();
+}
+*/
