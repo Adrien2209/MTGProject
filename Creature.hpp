@@ -39,7 +39,10 @@ public:
     void setPeutAttaquer();
     // les methodes
     void print();
+    void printCouleur();
     int CoutTotale();
+    string SpaceName();
+    string SpaceLieu();
 
 };
 

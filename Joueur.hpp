@@ -71,8 +71,8 @@ public:
     void PhaseDePioche();
     int PhaseDeDesengagement();
     void PhasePrincipale();
-    int PhaseSecondaire();
-    int FinDeTour();
+    void PhaseSecondaire();
+    void FinDeTour();
     map<string, int> CoutDisponibleEnJeu();
     int CoutTotalDispoEnJeu();
     void PoserTerrain();
@@ -85,6 +85,7 @@ public:
     void EngageTerrainQuelconque(Carte *CarteChoisie);
     vector<string> TerrainAEngager(Carte *CarteChoisie);
     vector<Carte *> TerrainCouleurAEngage(Carte *c);
+
 };
 
 #endif

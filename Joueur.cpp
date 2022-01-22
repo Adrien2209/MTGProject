@@ -178,7 +178,7 @@ void Joueur::NettoyageHand()
     if (carte->getLieu() == "GraveYard")
     {
       addToGraveYard(carte);
-      //cout << "on va vouloir supprimer " << carte->getNom() << " a la position " << i << endl;
+      // cout << "on va vouloir supprimer " << carte->getNom() << " a la position " << i << endl;
       this->Hand.erase(this->Hand.begin() + i);
     }
     if (carte->getLieu() == "Bibli")
@@ -565,8 +565,9 @@ void Joueur::PoserCreature()
       this->EngageTerrainCouleur(CarteChoisie);
       this->EngageTerrainQuelconque(CarteChoisie);
       Board.push_back(CarteChoisie);
-      Hand.erase(Hand.begin()+id);
-      for( auto c : Hand) {
+      Hand.erase(Hand.begin() + id);
+      for (auto c : Hand)
+      {
         c->printCouleur();
       }
     }
@@ -833,4 +834,36 @@ void Joueur::EngageTerrainQuelconque(Carte *CarteChoisie)
     }
   }
   return;
+}
+
+void Joueur::PhaseSecondaire()
+{
+  this->PhasePrincipale();
+}
+
+void Joueur::FinDeTour()
+{
+  int id;
+  while (Hand.size() > 7)
+  {
+    cout << "----------------------------------------------------------------" << endl;
+    cout << " Vous devez defausser une carte parmi : " << endl;
+    cout << "----------------------------------------------------------------" << endl;
+    cout << " Entrer le numero de la carte a envoyer au cimetiere : " << endl;
+    cout << "----------------------------------------------------------------" << endl;
+    this->printHand();
+
+    cin >> id;
+
+    if (id > (int)Hand.size())
+    {
+      cout << "Veuiller rentrer un numero valide " << endl;
+      cin >> id;
+    }
+    else
+    {
+      GraveYard.push_back(Hand[id - 1]);
+      Hand.erase(Hand.begin() + (id - 1));
+    }
+  }
 }

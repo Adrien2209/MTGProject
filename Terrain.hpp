@@ -14,6 +14,9 @@ class Terrain : public Carte {
     int getCost();
     map<string,int> getCout_Couleur();
     void getDesengage();
+    void printCouleur(); 
+    string SpaceName(); 
+    string SpaceLieu();
 };
 
 #endif

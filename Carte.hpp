@@ -24,9 +24,9 @@ public:
     int virtual getID() = 0;
     int virtual getForce();
     int virtual getEndurance();
-    vector<string> virtual getCapacite();
     int virtual getBaseEndurance();
-
+    vector<string> virtual getCapacite();
+    
     void virtual setForce(int i);
     void virtual setEndurance(int i);
     void virtual setBaseEndurance(int i);
@@ -54,6 +54,8 @@ public:
 
     // Affichage couleur
     virtual void printCouleur();
+    virtual string SpaceName();
+    virtual string SpaceLieu();
 
     friend bool operator==(Carte const &c, Carte const &c1);
 };

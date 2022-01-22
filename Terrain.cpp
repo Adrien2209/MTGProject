@@ -32,9 +32,38 @@ void Terrain::print()
        << "|                                   |" << endl
        << "|___________________________________|" << endl;
 }
-/*
-bool operator==(Terrain const& c, Terrain const& c1) 
-{
-    return c.getNom() == c1.getNom();
+
+
+void Terrain::printCouleur() {
+  Color couleurDefaut(FG_DEFAULT);
+  Color c = Color::quelleCouleur(this->getCouleur());
+
+  cout << c << "\t " << "___________________________" << endl;
+  cout << c << "\t |" << couleurDefaut << this->getNom() << this->SpaceName() << c << "| " << endl;
+  cout << c << "\t |" << couleurDefaut << this->getLieu() << this->SpaceLieu() << c << "| " << endl;
+  cout << c << "\t |" <<"_________________________|" << endl;
+  cout << couleurDefaut;
+
 }
-*/
+
+string Terrain::SpaceName() {
+
+  string res = "                         ";
+  int i = 0;
+
+  for ( i = 0; i < (int)this->getNom().length(); i++) {
+      res.pop_back();
+  }
+  return res;
+}
+
+string Terrain::SpaceLieu() {
+
+  string res = "                         ";
+  int i = 0;
+  for ( i = 0; i < (int)this->getLieu().length(); i++) {
+       res.pop_back();
+  }
+
+  return res;
+}

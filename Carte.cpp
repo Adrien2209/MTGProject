@@ -44,12 +44,6 @@ int Carte::getBaseEndurance()
     return 0;
 }
 
-vector<string> Carte::getCapacite()
-{
-    cout << "Methode getCapacite() de Carte " << endl;
-    return {};
-}
-
 // -- -- -- -- Virtual des SET -- -- -- --
 
 void Carte::setForce(int i)
@@ -86,6 +80,12 @@ map<string, int> Carte::getCout_Couleur()
     return {};
 }
 
+vector<string> Carte::getCapacite()
+{
+    cout << "Methode getCapacite() de Carte " << endl;
+    return {};
+} 
+
 // Les sets
 void Carte::setLieu(string l) { lieu = l; }
 void Carte::setEngage() { etat = true; }
@@ -110,17 +110,32 @@ void Carte::print()
 
 void Carte::printCouleur()
 {
-    Color couleurDefaut(FG_DEFAULT);
-    Color c = Color::quelleCouleur(couleur);
-
-    cout << c << "\t |-----------------------------------| " << endl;
-    cout << c << "\t |" << couleurDefaut << nom << "                  ";
-    cout << c << "|" << endl;
-    cout << c << "\t |-----------------------------------| " << endl;
-    cout << couleurDefaut;
+  return;
 }
 
 bool operator==(Carte const &c, Carte const &c1)
 {
     return c.numero == c1.numero;
+}
+
+string Carte::SpaceName() {
+
+  string res = "                         ";
+  int i = 0;
+
+  for ( i = 0; i < (int)this->getNom().length(); i++) {
+      res.pop_back();
+  }
+  return res;
+}
+
+string Carte::SpaceLieu() {
+
+  string res = "                         ";
+  int i = 0;
+  for ( i = 0; i < (int)this->getLieu().length(); i++) {
+       res.pop_back();
+  }
+
+  return res;
 }

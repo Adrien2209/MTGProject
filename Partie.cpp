@@ -64,7 +64,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
         if( n % 2 == 0){
             J1.PhaseDePioche();
             //J1.PhaseDeDesengagement();
-            //J1.PhasePrincipale();
+            J1.PhasePrincipale();
             PhaseDeCombat(J1, J2);
             J1.NettoyageHand();
             J2.NettoyageHand();
@@ -88,7 +88,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
         if( n % 2 == 1){
             J2.PhaseDePioche();
             //J2.PhaseDeDesengagement();
-            //J2.PhasePrincipale();
+            J2.PhasePrincipale();
             PhaseDeCombat(J2, J1);
             J1.NettoyageHand();
             J2.NettoyageHand();
@@ -165,7 +165,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
     for (Carte *carte : liste_Attaque)
     { // J'affiche les cartes avec lesquelles l'attaque est possible
-        carte->print();
+        carte->printCouleur();
     }
 
     cout << endl
@@ -194,7 +194,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
     for (Carte *carte : Attacking_Cards)
     { // Affichage des cartes selectionne par le joueur
-        carte->print();
+        carte->printCouleur();
     }
 
     // -- -- -- -- -- Partie choix du defenseur -- -- -- -- --
@@ -216,13 +216,13 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
     for (Carte *carte : Attacking_Cards)
     {
         cout << "-- -- -- -- -- Quelle carte va proteger ton fessier de poule mouille contre -- -- -- -- --" << endl << endl;
-        carte->print();
+        carte->printCouleur();
         cout << endl << "-- -- -- -- -- Veux tu defendre sur cette carte ? Ci dessous les cartes avec lesquelles tu peux defendre -- -- -- -- --" << endl;
         cout << "-- -- -- -- -- Rentre OUI si tu veux defendre, NON sinon -- -- -- -- --" << endl << endl;
         
         for (Carte *carte_def : liste_Defense)
         {
-            carte_def->print();
+            carte_def->printCouleur();
         }
 
         cin >> safeword;
@@ -248,7 +248,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
             for (Carte *carte_def : liste_Defense)
             {
-                carte_def->print();
+                carte_def->printCouleur();
             }
 
             cin >> safeword;
@@ -259,7 +259,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
             while(stop == false){
                 cout << endl << "-- -- -- -- -- Tu as choisi cette carte -- -- -- -- --" << endl << endl;
-                liste_Defense[stoi(safeword)-1]->print();
+                liste_Defense[stoi(safeword)-1]->printCouleur();
 
                 //Actualisation des points de vie
                 liste_Defense[stoi(safeword)-1]->minusEndurance(carte->getForce());
@@ -290,7 +290,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
                 for (Carte *carte_def : liste_Defense)
                 {
-                    carte_def->print();
+                    carte_def->printCouleur();
                 }
 
                 cin >> safeword;
