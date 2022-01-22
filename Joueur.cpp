@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 // Constructeur
-Joueur::Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *> Bibli, vector<Carte *> Board, vector<Carte *> GraveYard)
+Joueur::Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *> Bibli, vector<Carte *> Board, vector<Carte *> GraveYard, bool APoserTerrain)
 {
   this->nom = nom;
   this->HP = HP;
@@ -17,6 +17,7 @@ Joueur::Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *>
   this->Bibli = Bibli;
   this->Board = Board;
   this->GraveYard = GraveYard;
+  this->APoserTerrain = false;
 }
 
 Joueur::Joueur(string nom, int HP, int ID)
@@ -24,6 +25,7 @@ Joueur::Joueur(string nom, int HP, int ID)
   this->nom = nom;
   this->HP = HP;
   this->ID = ID;
+  APoserTerrain = false;
 }
 
 Joueur::Joueur(){};
@@ -41,6 +43,7 @@ vector<Carte *> Joueur::getHand() { return Hand; }
 // -- -- -- Les sets -- -- --
 void Joueur::setNom(string n) { nom = n; }
 void Joueur::setHP(int s) { HP = s; }
+void Joueur::setAPoserTerrain() { APoserTerrain = true;}
 vector<Carte *> Joueur::setBoard(vector<Carte *> c)
 {
   Board = c;
@@ -391,6 +394,7 @@ void Joueur::PoserTerrain()
     cout << "----------------------------------------------------------------" << endl;
     cout << "Vous n'avez PAS de Terrain en main ! PETIT CHENAPAM ! PIOU PIOU :o" << endl;
     cout << "----------------------------------------------------------------" << endl;
+    return;
   }
   else
   {
@@ -408,8 +412,8 @@ void Joueur::PoserTerrain()
       }
       i++;
     }
+    return;
   }
-  return;
 }
 // COUT DISPONIBLE SUR LE TERRAIN POUR VOIR SI LA CREATURE PEUT ETRE POSER
 map<string, int> Joueur::CoutDisponibleEnJeu()
@@ -491,7 +495,6 @@ void Joueur::PhasePrincipale()
   cout << c << "  |____________|  []       []   []  []  []    [] [][][][] []  []       []    [] [][][][] [][][][] [][][][]  [][][]                                                                                                                      " << endl;
   cout << couleurDefaut<< " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
 
-  bool APoserTerrain = false;
   bool continu = true;
   while (continu)
   {
@@ -507,6 +510,7 @@ void Joueur::PhasePrincipale()
 
     if (index == 1)
     {
+      cout << " Le bool vaut " << APoserTerrain << endl;
       if (APoserTerrain == false)
       {
         this->PoserTerrain();

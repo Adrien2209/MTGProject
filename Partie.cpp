@@ -61,7 +61,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             J1.PhaseDeDesengagement();
             J1.PhasePrincipale();
             PhaseDeCombat(J1, J2);
-            J1.NettoyageHand();
+           /* J1.NettoyageHand();
             J2.NettoyageHand();
             cout << "Cimetiere de : " << J1.getNom() << endl;
             J1.printGraveYard();
@@ -73,7 +73,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             cout << "Main de : " << J1.getNom() << endl;
             J1.printHand();
             cout << "Main de : " << J2.getNom() << endl;
-            J2.printHand();
+            J2.printHand();*/
             J1.PhaseSecondaire();
             // Ajouter fin de tour */
             n += 1;
@@ -84,7 +84,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             J2.PhaseDePioche();
             J2.PhaseDeDesengagement();
             J2.PhasePrincipale();
-            PhaseDeCombat(J2, J1);
+            /*PhaseDeCombat(J2, J1);
             J1.NettoyageHand();
             J2.NettoyageHand();
             cout << "Cimetiere de : " << J1.getNom() << endl;
@@ -99,8 +99,8 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             J1.printHand();
             cout << "Main de : " << J2.getNom() << endl;
             J2.printHand();
-
-            J2.PhaseSecondaire();
+*/
+            J2.PhasePrincipale();
             // Ajouter fin de tour */
             n += 1;
         }

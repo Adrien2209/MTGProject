@@ -17,6 +17,7 @@ private:
     int HP = 20;
     string nom;
     bool mort = false;
+    bool APoserTerrain = false;
     int ID;
     Color c1 = Color::quelleCouleur("Red");
     Color c2 = Color::quelleCouleur("Green");
@@ -25,7 +26,7 @@ private:
 public:
     // -- -- -- -- CONSTRUCTEUR -- -- -- --
     // Joueur(Deck d, int HP);
-    Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *> Bibli, vector<Carte *> Board, vector<Carte *> GraveYard);
+    Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *> Bibli, vector<Carte *> Board, vector<Carte *> GraveYard, bool APoserTerrain);
     Joueur(string nom, int HP, int ID);
     Joueur();
     // -- -- -- -- DESTRUCTEUR -- -- -- --
@@ -46,6 +47,7 @@ public:
     void setHP(int s);
     void setBibli(Deck v);
     void setInitialHand();
+    void setAPoserTerrain();
     vector<Carte *> setBoard(vector<Carte *> c);
 
     //-- -- -- -- methodes -- -- -- --
@@ -90,5 +92,4 @@ public:
     vector<Carte *> TerrainCouleurAEngage(Carte *c);
 
 };
-
 #endif
