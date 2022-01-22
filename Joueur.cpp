@@ -95,7 +95,7 @@ void Joueur::printHand()
 {
   for (auto *e : Hand)
   {
-    e->print();
+    e->printCouleur();
   }
 }
 
@@ -103,7 +103,7 @@ void Joueur::printBibli()
 {
   for (auto *e : Bibli)
   {
-    e->print();
+    e->printCouleur();
   }
 }
 
@@ -111,7 +111,7 @@ void Joueur::printGraveYard()
 {
   for (auto &e : GraveYard)
   {
-    e->print();
+    e->printCouleur();
   }
 }
 
@@ -119,7 +119,7 @@ void Joueur::printBoard()
 {
   for (auto &e : Board)
   {
-    e->print();
+    e->printCouleur();
   }
 }
 
