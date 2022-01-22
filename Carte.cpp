@@ -44,6 +44,12 @@ int Carte::getBaseEndurance()
     return 0;
 }
 
+vector<string> Carte::getCapacite()
+{
+    cout << "Methode getCapacite() de Carte " << endl;
+    return {};
+}
+
 // -- -- -- -- Virtual des SET -- -- -- --
 
 void Carte::setForce(int i)

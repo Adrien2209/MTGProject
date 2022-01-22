@@ -24,6 +24,7 @@ public:
     int virtual getID() = 0;
     int virtual getForce();
     int virtual getEndurance();
+    vector<string> virtual getCapacite();
     int virtual getBaseEndurance();
 
     void virtual setForce(int i);
