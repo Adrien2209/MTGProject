@@ -254,6 +254,19 @@ void Joueur::NettoyageBoard()
 
 void Joueur::PhaseDePioche()
 {
+  Color couleurDefaut(FG_DEFAULT);
+  Color c = Color::quelleCouleur("Magenta");
+
+  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+  cout << c << "      (  )        " << endl;
+  cout << c << "       ||            [][][][]  []  [][][][] [][][][] []    []  [][][][]                                  " << endl;
+  cout << c << "       ||            []    []  []  []    [] []       []    []  []                               " << endl;
+  cout << c << "   ___|  |____       [][][][]  []  []    [] []       [][][][]  [][]             [][][] []  []                " << endl;
+  cout << c << "  /__________/       []        []  []    [] []       []    []  []               []  [] [][]           " << endl;
+  cout << c << "  /___________/      []        []  [][][][] [][][][] []    []  [][][][] [][][]  [][][] []  []         " << endl;
+  cout << c << "  /___________/~~~  " << endl;
+  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+
   if (this->getBibli().empty())
   {
     mort = true;
@@ -269,9 +282,25 @@ void Joueur::PhaseDePioche()
 
 int Joueur::PhaseDeDesengagement()
 {
+  Color couleurDefaut(FG_DEFAULT);
+  Color c = Color::quelleCouleur("Magenta");
+  cout << c << endl;
+  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+  cout << c << "     ______      " << endl;
+  cout << c << "    |      |  [][][]     [][][][] [][][][] [][][][] []    []  [][][]   [][[]][]  [][][]   [][][][] []      [] [][][][] []    [] [][][][]                      " << endl;
+  cout << c << "    |      |  []    []   []       []       []       [][]  [] []        []    [] []        []       [][]  [][] []       [][]  []    []                         " << endl;
+  cout << c << "    | (o)(o)  []    []   [][]     [][][][] [][][    [] [] [] []   [][] [][][][] []   [][] [][]     []  []  [] [][]     [] [] []    []             [][][] [] []" << endl;
+  cout << c << "    C      _) []    []   []             [] []       []  [][] []     [] []    [] []     [] []       []      [] []       []  [][]    []             []  [] [][] " << endl;
+  cout << c << "    | ,___|   [][][]     [][][][] [][][][] [][][][] []    []  [][][]   []    []  [][][]   [][][][] []      [] [][][][] []    []    []   [] [] []  [][][] [] []" << endl;
+  cout << c << "    |   /" << endl;
+  cout << couleurDefaut<< " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+ 
+
   if (this->getBoard().empty())
   {
-    cout << "Le joueur " << this->getNom() << " n'a pas de cartes sur le terrain" << endl;
+    cout <<"--------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+    cout <<  " LE JOUEUR " << this->getNom() << " N'A PAS DE TERRAINS SUR LE BOARD ! " << endl;
+    cout <<  "--------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
     return 0;
   }
   else
@@ -450,15 +479,27 @@ int Joueur::CoutTotalDispoEnJeu()
 
 void Joueur::PhasePrincipale()
 {
+  Color couleurDefaut(FG_DEFAULT);
+  Color c = Color::quelleCouleur("Magenta");
+  cout << c << endl;
+  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+  cout << c << "   ____________                                                                                                                                                              " << endl;
+  cout << c << "  |    _|_     |  [][][][] [][][][] []  []    [] [][][][] []  [][][][] [][][][] []       []       [][][][]                                                                                                                                   " << endl;
+  cout << c << "  |   |_|_|    |  []    [] []    [] []  [][]  [] []       []  []    [] []    [] []       []       []                                                                                                                " << endl;
+  cout << c << "  |   |   |    |  [][][][] [][][][] []  [] [] [] []       []  [][][][] [][][][] []       []       [][]                                                                                                                      " << endl;
+  cout << c << "  |   |___|    |  []       [] []    []  []  [][] []       []  []       []    [] []       []       []                                                                                                         " << endl;
+  cout << c << "  |____________|  []       []   []  []  []    [] [][][][] []  []       []    [] [][][][] [][][][] [][][][]  [][][]                                                                                                                      " << endl;
+  cout << couleurDefaut<< " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+
   bool APoserTerrain = false;
   bool continu = true;
   while (continu)
   {
 
+    Color c1 = Color::quelleCouleur("Red");
     cout << "----------------------------------------------------------------" << endl;
-    cout << this->getNom() << " Voulez-vous poser un TERRAIN [1] ou une CREATURE [2] " << endl;
-    cout << " Entrer [1] ou [2] " << endl;
-    cout << " Entrer [3] si vous ne voulez pas posez de cartes " << endl;
+    cout << c1 << this->getNom() << couleurDefaut << " Voulez-vous poser un TERRAIN [1], une CREATURE [2] ou rien [3] " << endl;
+    cout <<  " Entrer " << c1 << " [1] , [2] ou [3] " << couleurDefaut << endl;
     cout << "----------------------------------------------------------------" << endl;
 
     int index;
@@ -475,7 +516,7 @@ void Joueur::PhasePrincipale()
       {
         cout << "----------------------------------------------------------------" << endl;
         cout << " Vous avez deja poser un TERRAIN malheuresement ! " << endl;
-        cout << " Vous ne pouvez plus jouer de TERRAIN CE TOUR CI ! " << endl;
+        cout << " Vous ne pouvez plus jouer de " << c1 << " TERRAIN " << couleurDefaut << " CE TOUR CI ! " << endl;
         cout << "----------------------------------------------------------------" << endl;
       }
       continu = true;
@@ -810,7 +851,9 @@ void Joueur::EngageTerrainQuelconque(Carte *CarteChoisie)
 
     while (i < nb)
     {
-      cout << " Entrer le nom du Terrain que vous voulez engager : ";
+      Color couleurDefaut(FG_DEFAULT);
+      
+      cout << " Entrer le nom du " << c1 << "Terrain" << couleurDefaut << "que vous voulez engager : ";
       cin >> index;
       cout << endl;
       cout << "----------------------------------------------------------------" << endl;

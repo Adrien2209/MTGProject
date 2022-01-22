@@ -18,6 +18,9 @@ private:
     string nom;
     bool mort = false;
     int ID;
+    Color c1 = Color::quelleCouleur("Red");
+    Color c2 = Color::quelleCouleur("Green");
+    Color c3 = Color::quelleCouleur("Blue");
 
 public:
     // -- -- -- -- CONSTRUCTEUR -- -- -- --

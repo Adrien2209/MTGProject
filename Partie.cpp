@@ -23,14 +23,15 @@ void Partie::setJoueur1(Joueur j) { J1 = j; }
 void Partie::setJoueur2(Joueur p) { J2 = p; }
 
 //  -- -- -- les methodes -- -- --
-void Partie::PartieDeMagic(Joueur J1, Joueur J2){
-    //Selection du deck
-    //cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+void Partie::PartieDeMagic(Joueur J1, Joueur J2)
+{
+    // Selection du deck
+    // cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
     string deckJ1 = "DeckTest4";
-    //getline(cin, deckJ1);
-    //cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    // getline(cin, deckJ1);
+    // cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
     string deckJ2 = "DeckTest4";
-    //getline(cin, deckJ2);
+    // getline(cin, deckJ2);
 
     // -- Creation Deck --
     Deck d1 = Deck(deckJ1); // Creation du Deck. OK.
@@ -47,23 +48,17 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
     // Creation des mains avant le dubut du premier tour. OK.
     J1.setInitialHand();
     J2.setInitialHand();
-    //J1.NettoyageBibli();
-    //J2.NettoyageBibli();
-    cout << " -------------------------------------------------------------------------------------" << endl;
-    cout << " -------------------------------------------------------------------------------------" << endl;
-    cout << " -------------------------------------------------------------------------------------" << endl;
-    cout << " -------------------------------------------------------------------------------------" << endl;
-    cout << " -------------------------------------------------------------------------------------" << endl;
-    for ( Carte * c : J1.getHand()) {
-        c->printCouleur();
-    }
+    // J1.NettoyageBibli();
+    // J2.NettoyageBibli();
 
-    int n = rand()%2;
+    int n = rand() % 2;
 
-    while(J1.getHP()>0 || J2.getHP()>0 || J1.getMort() == true || J2.getMort() == true){
-        if( n % 2 == 0){
+    while (J1.getHP() > 0 || J2.getHP() > 0 || J1.getMort() == true || J2.getMort() == true)
+    {
+        if (n % 2 == 0)
+        {
             J1.PhaseDePioche();
-            //J1.PhaseDeDesengagement();
+            J1.PhaseDeDesengagement();
             J1.PhasePrincipale();
             PhaseDeCombat(J1, J2);
             J1.NettoyageHand();
@@ -79,15 +74,15 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
             J1.printHand();
             cout << "Main de : " << J2.getNom() << endl;
             J2.printHand();
-            // Ajouter phase secondaire
+            J1.PhaseSecondaire();
             // Ajouter fin de tour */
             n += 1;
-            
         }
 
-        if( n % 2 == 1){
+        if (n % 2 == 1)
+        {
             J2.PhaseDePioche();
-            //J2.PhaseDeDesengagement();
+            J2.PhaseDeDesengagement();
             J2.PhasePrincipale();
             PhaseDeCombat(J2, J1);
             J1.NettoyageHand();
@@ -105,7 +100,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
             cout << "Main de : " << J2.getNom() << endl;
             J2.printHand();
 
-            // Ajouter phase secondaire
+            J2.PhaseSecondaire();
             // Ajouter fin de tour */
             n += 1;
         }
@@ -147,6 +142,19 @@ Joueur &Partie::JoueurCommence()
 
 void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 {
+
+    Color couleurDefaut(FG_DEFAULT);
+    Color c = Color::quelleCouleur("Magenta");
+    cout << c << endl;
+    cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+    cout << c << "       _,-,      " << endl;
+    cout << c << "      T_  |  [][][][] [][][][]  []      [] [][][][] [][][][] [][][][]             " << endl;
+    cout << c << "      ||`-|  []       []    []  [][]  [][] []    [] []    []    []       " << endl;
+    cout << c << "      ||     []       []    []  []  []  [] [][][][] [][][][]    []  " << endl;
+    cout << c << "      ||     []       []    []  []      [] []    [] []    []    []  " << endl;
+    cout << c << "      ~~     [][][][] [][][][]  []      [] [][][][] []    []    []  " << endl;
+    cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+
     // -- -- -- -- -- Partie choix de l'attaquant -- -- -- -- --
 
     vector<Carte *> liste_Attaque = {}; // Liste qui donne toutes les cartes avec lesquelles l'attaque est possible
@@ -215,11 +223,14 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
     for (Carte *carte : Attacking_Cards)
     {
-        cout << "-- -- -- -- -- Quelle carte va proteger ton fessier de poule mouille contre -- -- -- -- --" << endl << endl;
+        cout << "-- -- -- -- -- Quelle carte va proteger ton fessier de poule mouille contre -- -- -- -- --" << endl
+             << endl;
         carte->printCouleur();
-        cout << endl << "-- -- -- -- -- Veux tu defendre sur cette carte ? Ci dessous les cartes avec lesquelles tu peux defendre -- -- -- -- --" << endl;
-        cout << "-- -- -- -- -- Rentre OUI si tu veux defendre, NON sinon -- -- -- -- --" << endl << endl;
-        
+        cout << endl
+             << "-- -- -- -- -- Veux tu defendre sur cette carte ? Ci dessous les cartes avec lesquelles tu peux defendre -- -- -- -- --" << endl;
+        cout << "-- -- -- -- -- Rentre OUI si tu veux defendre, NON sinon -- -- -- -- --" << endl
+             << endl;
+
         for (Carte *carte_def : liste_Defense)
         {
             carte_def->printCouleur();
@@ -233,17 +244,19 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
             cout << "HP de defenseur avant attaque : " << J2.getHP() << endl;
             J2.setHP((J2.getHP()) - (carte->getForce()));
             cout << "HP de defenseur apres attaque : " << J2.getHP() << endl;
-            //Check de la capacité lifelink
-            if(find(carte->getCapacite().begin(), carte->getCapacite().end(), "LifeLink") != carte->getCapacite().end()){
+            // Check de la capacité lifelink
+            if (find(carte->getCapacite().begin(), carte->getCapacite().end(), "LifeLink") != carte->getCapacite().end())
+            {
                 J1.setHP((J1.getHP()) + (carte->getForce()));
             }
             safeword = "";
         }
-        
+
         if (safeword == "OUI")
         {
             bool stop = false;
-            cout << endl << "Tres bien, avec quelle carte compte tu defendre ? Rentre OK quand tu as fini" << endl;
+            cout << endl
+                 << "Tres bien, avec quelle carte compte tu defendre ? Rentre OK quand tu as fini" << endl;
             safeword = "";
 
             for (Carte *carte_def : liste_Defense)
@@ -253,39 +266,46 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
             cin >> safeword;
 
-            if(safeword == "OK"){
-                    stop = true;
-                }
+            if (safeword == "OK")
+            {
+                stop = true;
+            }
 
-            while(stop == false){
-                cout << endl << "-- -- -- -- -- Tu as choisi cette carte -- -- -- -- --" << endl << endl;
-                liste_Defense[stoi(safeword)-1]->printCouleur();
+            while (stop == false)
+            {
+                cout << endl
+                     << "-- -- -- -- -- Tu as choisi cette carte -- -- -- -- --" << endl
+                     << endl;
+                liste_Defense[stoi(safeword) - 1]->printCouleur();
 
-                //Actualisation des points de vie
-                liste_Defense[stoi(safeword)-1]->minusEndurance(carte->getForce());
-                carte->minusEndurance(liste_Defense[stoi(safeword)-1]->getForce());
+                // Actualisation des points de vie
+                liste_Defense[stoi(safeword) - 1]->minusEndurance(carte->getForce());
+                carte->minusEndurance(liste_Defense[stoi(safeword) - 1]->getForce());
 
-                //Check de la capacité lifelink pour l'attaquant
-                if(find(carte->getCapacite().begin(), carte->getCapacite().end(), "LifeLink") != carte->getCapacite().end()){
+                // Check de la capacité lifelink pour l'attaquant
+                if (find(carte->getCapacite().begin(), carte->getCapacite().end(), "LifeLink") != carte->getCapacite().end())
+                {
                     J1.setHP((J1.getHP()) + (carte->getForce()));
                 }
 
-                //Check de la capacité lifelink pour le défenseur
-                if(find(liste_Defense[stoi(safeword)-1]->getCapacite().begin(), liste_Defense[stoi(safeword)-1]->getCapacite().end(), "LifeLink") != liste_Defense[stoi(safeword)-1]->getCapacite().end()){
-                    J2.setHP((J2.getHP()) + (liste_Defense[stoi(safeword)-1]->getForce()));
+                // Check de la capacité lifelink pour le défenseur
+                if (find(liste_Defense[stoi(safeword) - 1]->getCapacite().begin(), liste_Defense[stoi(safeword) - 1]->getCapacite().end(), "LifeLink") != liste_Defense[stoi(safeword) - 1]->getCapacite().end())
+                {
+                    J2.setHP((J2.getHP()) + (liste_Defense[stoi(safeword) - 1]->getForce()));
                 }
 
-                if(liste_Defense[stoi(safeword)-1]->getEndurance() <= 0){
-                    liste_Defense[stoi(safeword)-1]->setLieu("GraveYard");
-                    
-                    
+                if (liste_Defense[stoi(safeword) - 1]->getEndurance() <= 0)
+                {
+                    liste_Defense[stoi(safeword) - 1]->setLieu("GraveYard");
                 }
-                if(carte->getEndurance() <= 0){
+                if (carte->getEndurance() <= 0)
+                {
                     carte->setLieu("GraveYard");
                 }
-                liste_Defense.erase(liste_Defense.begin() + stoi(safeword)-1);
+                liste_Defense.erase(liste_Defense.begin() + stoi(safeword) - 1);
 
-                cout << endl << "Tres bien, avec quelle carte compte tu defendre ? Rentre OK quand tu as fini" << endl;
+                cout << endl
+                     << "Tres bien, avec quelle carte compte tu defendre ? Rentre OK quand tu as fini" << endl;
                 safeword = "";
 
                 for (Carte *carte_def : liste_Defense)
@@ -295,7 +315,8 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
                 cin >> safeword;
 
-                if(safeword == "OK"){
+                if (safeword == "OK")
+                {
                     stop = true;
                 }
             }
