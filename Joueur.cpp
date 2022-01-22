@@ -206,7 +206,6 @@ void Joueur::NettoyageHand()
       i += 1;
     }
   }
-  cout << "Ici ca marche AVANT le for, taille : " << ListeADelete.size() << endl;
   /*
   for(int ite : ListeADelete){
     cout << "Ici ca marche dans le for " << this->Hand.at(ite)->getNom() << " et l'indice est " <<  ListeADelete.at(ite) << endl;
@@ -331,291 +330,16 @@ vector<Carte *> Joueur::TerrainDispo()
 vector<Carte *> Joueur::MAJTerrainDispo()
 {
   int cpt = 0;
-  // vector<Carte*> res;
+
   for (Carte *c : this->TerrainDispo())
   {
     if (c->getEtat() == true)
     {
       this->TerrainDispo().erase(this->TerrainDispo().begin() + cpt);
     }
-    else
-    {
-    }
     cpt++;
   }
   return this->TerrainDispo();
-}
-
-/*
-vector<Carte *> Joueur::PoserCreature()
-{
-  // Ici on demande au joeur quelle creture il veut poser :
-  // Lorsqu'il a choisis ca carte on la recupere et
-  // on verifie si le cout en mana est disponible sur le Board.
-
-  int idCarteChoisie;
-  vector<Carte *> ResCartePoser;
-
-  cout << "----------------------------------------------------------------" << endl;
-  cout << "                 Quelle CREATURE voulez-vous jouer ?               " << endl;
-  cout << "----------------------------------------------------------------" << endl
-       << endl;
-  // Afficher les cartes disponibles :
-  for (Carte *e : Hand)
-  {
-    e->printCouleur();
-  }
-
-  cout << "----------------------------------------------------------------" << endl;
-  cout << " Veuillez renseignez le numero de la carte a poser ! " << endl;
-  cout << " Ecrire '-1' si vous ne voulez pas jouer de carte " << endl;
-  cout << " Premiere carte afficher numero 1, etc..." << endl;
-  cout << "----------------------------------------------------------------" << endl;
-
-  cout << "Numero : ";
-  cin >> idCarteChoisie;
-
-  string arret;
-  bool FinDeChoix = true;
-  while (FinDeChoix)
-  {
-    // Evite les numero pas compris dans la hand
-    bool valide = true;
-    while (valide)
-    {
-      if (idCarteChoisie > (int)Hand.size())
-      {
-        cout << " Valeur erronée ! Choisir une autre valeur" << endl;
-        cin >> idCarteChoisie;
-      }
-      else
-      {
-        valide = false;
-      }
-    }
-
-    // On recupere la carte qu'il a choisis.
-
-    Carte *CarteChoisie = Hand[idCarteChoisie - 1];
-    cout << "----------------------------------------------------------------" << endl;
-    cout << " Voici la carte que vous avez choisi : " << endl;
-    cout << "----------------------------------------------------------------" << endl;
-
-    CarteChoisie->printCouleur();
-
-    // On verifie si le cout disponible sur le Board correspond a la carte chosie
-    cout << "----------------------------------------------------------------" << endl;
-    cout << " Possibilité de la poser. Chargement... " << endl;
-    cout << "----------------------------------------------------------------" << endl;
-
-    vector<Carte *> TerrainDispo = this->TerrainDispo();
-    int CoutCarteChoisie = CarteChoisie->getCost();
-    int coutTotal = CarteChoisie->CoutTotale();                                  // Le cout de la carte choisie
-    map<string, int> Cout_CouleurCarteChoisie = CarteChoisie->getCout_Couleur(); // Une map qui repertorie les couts en couleur de la carte en question.
-    map<string, int> coutDispo = this->CoutDisponibleEnJeu();                    // Une map qui repertorie le cout dispo en jeu.
-    std::map<std::string, int>::iterator it1, it2;                               // Cree l'iterateur sur la map | it-> first : premier element | it -> second  : deuxieme element.
-    vector<Carte *> CarteEngageCeTour;                                           // Les cartes terrains engagees ce tour.
-    int coutTotalEnJeu = this->CoutTotalDispoEnJeu();
-
-    // On parcours le CoutTotalDispo sur le BOARD pour voir si le cout totale de la carte est inferieur au cout dispo.
-
-    if (coutTotal <= coutTotalEnJeu) // Si le cout de la carte est inferieur au cout total dispo en jeu
-    {
-      for (it1 = coutDispo.begin(); it1 != coutDispo.end(); ++it1) // On parcours le cout dispo en jeu
-      {
-        for (it2 = Cout_CouleurCarteChoisie.begin(); it2 != Cout_CouleurCarteChoisie.end(); ++it2) // On parcours le cout couleur de la carte
-        {
-          if (it1->first == it2->first) // Si la clé est la meme alors
-          {
-            if (it1->second < it2->second) // Si le coutDispo est inferieur au cout demandé par la carte IMPOSSIBLE
-            {
-              cout << " PAS ASSEZ DE TERRAIN DISPO " << it1->first << " sur votre Board" << endl;
-              cout << " Impossible de placer la carte que vous avez choisi !" << endl;
-              cout << " Voulez vous poser une autre carte ? Si OUI ecrire le numero ecrire 213 ! " << endl;
-              cin >> idCarteChoisie; // On lui demande s'il veut en poser une autre
-            }
-            else if (it1->second >= it2->second) // Si le cout dispo >= le cout besoin de la carte ok
-            {
-              int cpt = 0;
-              for (Carte *c : this->TerrainDispo()) // On engage le bon nombre de cartes de couleur necessaires
-              {
-                // Si le nombre de carte qui reste correspond au getCost() de la carte alors on engage sinon on engage pas on ne peut pas poser la carte.
-                if (c->getCouleur() == it1->first && cpt <= it2->second)
-                {
-                  c->setEngage();
-                  CarteEngageCeTour.push_back(c);
-                }
-                TerrainDispo = this->TerrainDispo();
-                cpt++;
-                res = this->CoutTotalDispoEnJeu();
-
-              } // Une fois les cartes engagé on verifie qu'il
-              cout << " Vous avez assez de carte Terrain sur votre Board" << endl;
-
-              cout << " Voulez vous poser une AUTRE CARTE ? Si OUI ecrire le numero sinon ecrire 213 ! " << endl;
-              cin >> idCarteChoisie; // On lui demande s'il veut poser une autre carte.
-            }
-          }
-        }
-      }
-      int cpt = 0;
-      int cptCartePoser = 0;
-      for (Carte *c : this->TerrainDispo())
-      {
-        if (CoutCarteChoisie <= (int)this->TerrainDispo().size() && cpt <= CoutCarteChoisie)
-        {
-          cout << " Vous avez assez de carte Terrain sur votre Board" << endl;
-          c->setEngage();
-          ResCartePoser.push_back(Hand[idCarteChoisie - 1]);
-          cpt++;
-          cptCartePoser++;
-        }
-        else
-        {
-          for (Carte *c : CarteEngageCeTour)
-          {
-            c->setDesengage();
-            ResCartePoser.erase(ResCartePoser.begin() + cptCartePoser);
-          }
-        }
-      }
-    }
-    else
-    {
-      cout << " [1] Vous n'avez pas assez de carte terrain sur votre Board" << endl;
-      cout << " [2] Voulez vous choisir une autre carte ? " << endl;
-      cin >> idCarteChoisie;
-    }
-  }
-  return ResCartePoser;
-}
-*/
-void Joueur::PoserCreature()
-{
-
-  int idCarteChoisie; // Variable qui stock l'ID de la carte choisie
-
-  cout << "----------------------------------------------------------------" << endl;
-  cout << "                 Quelle CREATURE voulez-vous jouer ?               " << endl;
-  cout << "----------------------------------------------------------------" << endl
-       << endl;
-
-  // Afficher les cartes disponibles :
-  for (Carte *e : Hand)
-  {
-    e->printCouleur();
-  }
-
-  cout << "----------------------------------------------------------------" << endl;
-  cout << " Veuillez renseignez le numero de la carte a poser ! " << endl;
-  cout << " Premiere carte afficher n° 1, etc..." << endl;
-  cout << "----------------------------------------------------------------" << endl;
-
-  cout << "Numero : ";
-  cin >> idCarteChoisie;
-
-  vector<Carte *> TerrainDispo = this->MAJTerrainDispo();
-  // Evite les numero pas compris dans la hand
-  bool valide = true;
-  while (valide)
-  {
-    if (idCarteChoisie > (int)Hand.size())
-    {
-      cout << " Valeur erronée ! Choisir une autre valeur" << endl;
-      cin >> idCarteChoisie;
-    }
-    else
-    {
-      valide = false;
-    }
-  }
-
-  // On recupere la carte qu'il a choisis.
-  Carte *CarteChoisie = Hand[idCarteChoisie - 1];
-
-  cout << "----------------------------------------------------------------" << endl;
-  cout << " Voici la carte que vous avez choisi : " << endl;
-  cout << "----------------------------------------------------------------" << endl;
-
-  CarteChoisie->printCouleur();
-
-  // On verifie si le cout disponible sur le Board correspond a la carte chosie
-  cout << "----------------------------------------------------------------" << endl;
-  cout << " Possibilité de la poser. Chargement... " << endl;
-  cout << "----------------------------------------------------------------" << endl;
-
-  map<string, int> Cout_CouleurCarteChoisie = CarteChoisie->getCout_Couleur(); // Une map qui repertorie les couts en couleur de la carte en question.
-  map<string, int> coutDispo = this->CoutDisponibleEnJeu();                    // map qui repertorie le cout dispo en jeu
-  std::map<std::string, int>::iterator it1, it2;                               // Cree l'iterateur sur la map | it-> first : premier element | it -> second  : deuxieme element.
-
-  int CoutCarteChoisie = CarteChoisie->getCost(); // Le cout de la carte choisie
-  int coutTotal = CarteChoisie->CoutTotale();     // Le cout total de la carte choisie
-  int res = this->CoutTotalDispoEnJeu();          // Une map qui repertorie le cout total dispo en jeu.
-
-  vector<Carte *> CarteEngageCeTour; // Les cartes terrains engagees ce tour.
-
-  if (coutTotal <= res) // Si le cout de la carte est inferieur au cout total dispo en jeu
-                        // Alors on fait les verifications necessaires.
-  {
-    for (it1 = coutDispo.begin(); it1 != coutDispo.end(); ++it1) // On parcours le cout dispo en jeu
-    {
-      for (it2 = Cout_CouleurCarteChoisie.begin(); it2 != Cout_CouleurCarteChoisie.end(); ++it2) // On parcours le cout couleur de la carte
-      {
-        if (it1->first == it2->first) // Si la clé est la meme alors
-        {
-          if (it1->second < it2->second) // Si le coutDispo est inferieur au cout demandé par la carte IMPOSSIBLE
-          {
-            cout << " PAS ASSEZ DE TERRAIN DISPO " << it1->first << " sur votre Board" << endl;
-            cout << " Impossible de placer la carte que vous avez choisi !" << endl;
-            return;
-          }
-          else if (it1->second >= it2->second) // Si le cout dispo >= le cout besoin de la carte ok
-          {
-            int cpt = 0;
-            for (Carte *c : TerrainDispo) // On engage le bon nombre de cartes de couleur necessaires
-            {
-              if (c->getCouleur() == it1->first && cpt <= it2->second)
-              {
-                c->setEngage();
-                CarteEngageCeTour.push_back(c);
-                cpt++;
-              }
-            }
-            cout << " Vous avez assez de Terrain de couleur sur votre Board " << endl;
-            cout << " Verifions s'il vous reste des cartes pour le CommonCost " << endl;
-          }
-        }
-      }
-    }
-    // On a engager des cartes de couleur, il faut mtn verifier si on peut combler le CommonCost sinon il faut les desengagees les terrains engagees
-    TerrainDispo = this->MAJTerrainDispo();
-
-    if (CoutCarteChoisie <= (int)TerrainDispo.size())
-    {
-      for (Carte *c : TerrainDispo)
-      {
-        c->setEngage();
-        CarteEngageCeTour.push_back(c);
-      }
-      Board.push_back(CarteChoisie);
-      Hand.erase(Hand.begin() + (idCarteChoisie - 1));
-      return;
-    }
-    else
-    {
-      for (Carte *c : CarteEngageCeTour)
-      {
-        c->setDesengage();
-      }
-      return;
-    }
-  }
-  else
-  {
-    cout << " [**] Vous n'avez pas assez de carte terrain sur votre Board" << endl;
-    cout << " [**] Pensez à choisir une autre CREATURE ? " << endl;
-    return;
-  }
 }
 
 vector<Carte *> Joueur::TerrainEnMain()
@@ -630,14 +354,28 @@ vector<Carte *> Joueur::TerrainEnMain()
   }
   return TerrainEnMain;
 }
-//vector<Carte *> MAJ
+
+vector<Carte *> Joueur::CreatureEnMain()
+{
+  vector<Carte *> CreatureEnMain;
+  for (Carte *c : Hand)
+  {
+    if (c->getID() == 2)
+    {
+      CreatureEnMain.push_back(c);
+    }
+  }
+  return CreatureEnMain;
+}
 
 void Joueur::PoserTerrain()
 {
   string index;
   int i = 0;
-  vector<Carte *> ListeTerrainChoisi;
+
+  cout << "----------------------------------------------------------------" << endl;
   cout << " Vous voulez donc poser un TERRAIN ! Très bien ! " << endl;
+  cout << "----------------------------------------------------------------" << endl;
 
   vector<Carte *> TerrainEnMain = this->TerrainEnMain();
 
@@ -661,26 +399,16 @@ void Joueur::PoserTerrain()
     {
       if (Hand.at(i)->getNom() == index)
       {
-        if (ListeTerrainChoisi.size() < 1)
-        {
-          cout << "Raille" << ListeTerrainChoisi.size() << endl;
-          Board.push_back(Hand.at(i));
-          Hand.erase(Hand.begin() + i);
-          ListeTerrainChoisi.push_back(Hand.at(i));
-          return;
-        }
-        else
-        {
-          cout << " Vous avez deja poser un TERRAIN malheuresement ! " << endl;
-          cout << " Vous ne pouvez plus jouer de TERRAIN CE TOUR CI ! " << endl;
-          return;
-        }
+        Board.push_back(Hand.at(i));
+        Hand.at(i)->setLieu("Board");
+        Hand.erase(Hand.begin() + i);
+        return;
       }
       i++;
     }
   }
+  return;
 }
-
 // COUT DISPONIBLE SUR LE TERRAIN POUR VOIR SI LA CREATURE PEUT ETRE POSER
 map<string, int> Joueur::CoutDisponibleEnJeu()
 {
@@ -739,35 +467,397 @@ int Joueur::CoutTotalDispoEnJeu()
   int res = 0;
   for (it = A.begin(); it != A.end(); ++it)
   {
+    cout << " Sur le Board vous avez : " << it->first << " au(x) nombre(s) de " << it->second << endl;
+    cout << "----------------------------------------------------------------" << endl;
     res += it->second;
   }
+
   return res;
 }
 
 void Joueur::PhasePrincipale()
 {
+  bool APoserTerrain = false;
   bool continu = true;
   while (continu)
   {
-    int index;
-    cout << " Voulez-vous poser un TERRAIN [1] ou une CREATURE [2] " << endl;
+
+    cout << "----------------------------------------------------------------" << endl;
+    cout << this->getNom() << " Voulez-vous poser un TERRAIN [1] ou une CREATURE [2] " << endl;
     cout << " Entrer [1] ou [2] " << endl;
     cout << " Entrer [3] si vous ne voulez pas posez de cartes " << endl;
+    cout << "----------------------------------------------------------------" << endl;
+
+    int index;
     cin >> index;
 
     if (index == 1)
     {
-      this->PoserTerrain();
+      if (APoserTerrain == false)
+      {
+        this->PoserTerrain();
+        APoserTerrain = true;
+      }
+      else
+      {
+        cout << "----------------------------------------------------------------" << endl;
+        cout << " Vous avez deja poser un TERRAIN malheuresement ! " << endl;
+        cout << " Vous ne pouvez plus jouer de TERRAIN CE TOUR CI ! " << endl;
+        cout << "----------------------------------------------------------------" << endl;
+      }
       continu = true;
     }
     else if (index == 2)
     {
       this->PoserCreature();
+      this->TerrainDispo();
+      this->NettoyageHand();
       continu = true;
     }
-    else
+    else if (index == 3)
     {
       continu = false;
     }
+    else
+    {
+      cout << " Veuiller entrer un nombre correct ! MERCI LES AMIS ! UhO" << endl;
+      continu = true;
+    }
   }
+}
+
+void Joueur::PoserCreature()
+{
+
+  int idCarteChoisie; // Variable qui stock l'ID de la carte choisie
+
+  cout << "----------------------------------------------------------------" << endl;
+  cout << "                 Quelle CREATURE voulez-vous jouer ?               " << endl;
+  cout << "----------------------------------------------------------------" << endl
+       << endl;
+
+  // Afficher les cartes disponibles :
+  for (Carte *e : Hand)
+  {
+    e->printCouleur();
+  }
+
+  cout << "----------------------------------------------------------------" << endl;
+  cout << " Veuillez renseignez le numero de la carte a poser ! " << endl;
+  cout << " Premiere carte afficher n° 1, etc..." << endl;
+  cout << "----------------------------------------------------------------" << endl;
+
+  cout << "Numero : ";
+  cin >> idCarteChoisie;
+
+  vector<Carte *> TerrainDispo = this->TerrainDispo();
+  // Evite les numero pas compris dans la hand
+  bool valide = true;
+  while (valide)
+  {
+    if (idCarteChoisie > (int)Hand.size())
+    {
+      cout << " Valeur erronée ! Choisir une autre valeur" << endl;
+      cout << " Numero : ";
+      cin >> idCarteChoisie;
+    }
+    else
+    {
+      valide = false;
+    }
+  }
+
+  // On recupere la carte qu'il a choisis.
+  Carte *CarteChoisie = Hand[idCarteChoisie - 1];
+  int id = idCarteChoisie - 1;
+
+  cout << "----------------------------------------------------------------" << endl;
+  cout << " Voici la carte que vous avez choisi : " << endl;
+  cout << "----------------------------------------------------------------" << endl;
+
+  CarteChoisie->printCouleur();
+
+  // On verifie si le cout disponible sur le Board correspond a la carte chosie
+  cout << "----------------------------------------------------------------" << endl;
+  cout << " Possibilité de la poser. Chargement... " << endl;
+  cout << "----------------------------------------------------------------" << endl;
+  if (CarteChoisie->getID() == 2)
+  {
+    if (this->VerifCout(CarteChoisie))
+    {
+      cout << "----------------------------------------------------------------" << endl;
+      cout << " Votre carte peut etre poser ! (:)-<-< " << endl;
+      cout << " Engagement des Terrains en cours..." << endl;
+      cout << "----------------------------------------------------------------" << endl;
+      this->EngageTerrainCouleur(CarteChoisie);
+      this->EngageTerrainQuelconque(CarteChoisie);
+      Board.push_back(CarteChoisie);
+      Hand.erase(Hand.begin()+id);
+      for( auto c : Hand) {
+        c->printCouleur();
+      }
+    }
+    else
+    {
+      cout << " Impossible de poser votre carte ! [:o]-<-< " << endl;
+    }
+  }
+  else
+  {
+    cout << "----------------------------------------------------------------" << endl;
+    cout << " Vous avez choisis un terrain et non pas une creature ! Reesayer !" << endl;
+    cout << "----------------------------------------------------------------" << endl;
+  }
+}
+
+bool Joueur::VerifCout(Carte *CarteChoisie)
+{
+  map<string, int> Cout_CouleurCarteChoisie = CarteChoisie->getCout_Couleur(); // Une map qui repertorie les couts en couleur de la carte en question.
+  map<string, int> coutDispo = this->CoutDisponibleEnJeu();                    // map qui repertorie le cout dispo en jeu
+  map<std::string, int>::iterator it, it2;                                     // Cree l'iterateur sur la map | it-> first : premier element | it -> second  : deuxieme element.
+
+  int coutTotal = CarteChoisie->CoutTotale(); // Le cout total de la carte choisie
+  int res = this->CoutTotalDispoEnJeu();      // Une map qui repertorie le cout total dispo en jeu.
+
+  for (it2 = Cout_CouleurCarteChoisie.begin(); it2 != Cout_CouleurCarteChoisie.end(); it2++)
+  {
+    cout << it2->first << " : " << it2->second << endl;
+  }
+  /*
+    Pour placer la carte il faut :
+      - Que le nb de carte terrain sur le board soit superieur au nb totale de carte terrain besoin
+      - Si cette condition est remplie alors on verifie que le cout en couleur est respecter
+      s'il ne l'ai pas on ne peut pas placer la carte.
+      - et comme on a vu que le nb totale de carte dispo est >= au nb de carte besoin et que le nb de carte
+      de couleur est verifier on peut poser la carte et donner le choix au joueur d'engager c terrain.
+
+  */
+
+  if (res >= coutTotal)
+  {
+    for (it = Cout_CouleurCarteChoisie.begin(); it != Cout_CouleurCarteChoisie.end(); it++)
+    {
+      if (it->first == "White")
+      {
+
+        if (coutDispo["White"] < it->second)
+        {
+          return false;
+        }
+      }
+      else if (it->first == "Black")
+      {
+        if (coutDispo["Black"] < it->second)
+        {
+          return false;
+        }
+      }
+      if (it->first == "Blue")
+      {
+        if (coutDispo["Blue"] < it->second)
+        {
+          return false;
+        }
+      }
+      if (it->first == "Red")
+      {
+        if (coutDispo["Red"] < it->second)
+        {
+          return false;
+        }
+      }
+      if (it->first == "Green")
+      {
+        if (coutDispo["Green"] < it->second)
+        {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+vector<string> Joueur::TerrainAEngager(Carte *CarteChoisie)
+{
+  map<string, int> Cout_CouleurCarteChoisie = CarteChoisie->getCout_Couleur(); // Une map qui repertorie les couts en couleur de la carte en question.
+  map<string, int> coutDispo = this->CoutDisponibleEnJeu();                    // map qui repertorie le cout dispo en jeu
+  map<std::string, int>::iterator it1, it2;                                    // Cree l'iterateur sur la map | it-> first : premier element | it -> second  : deuxieme element.
+
+  int coutTotal = CarteChoisie->CoutTotale(); // Le cout total de la carte choisie
+  int res = this->CoutTotalDispoEnJeu();      // Une map qui repertorie le cout total dispo en jeu.
+
+  map<string, int>::iterator it;
+  vector<string> CarteAEngage;
+  if (res >= coutTotal)
+  {
+    for (it = Cout_CouleurCarteChoisie.begin(); it != Cout_CouleurCarteChoisie.end(); it++)
+    {
+      int i = 0;
+      if (it->first == "White" && coutDispo["White"] >= it->second)
+      {
+        while (i < it->second)
+        {
+          CarteAEngage.push_back("White");
+          i++;
+        }
+      }
+      else if (it->first == "Black" && coutDispo["Black"] >= it->second)
+      {
+        while (i < it->second)
+        {
+          CarteAEngage.push_back("Black");
+          i++;
+        }
+      }
+      else if (it->first == "Blue" && coutDispo["Blue"] >= it->second)
+      {
+        while (i < it->second)
+        {
+          CarteAEngage.push_back("Blue");
+          i++;
+        }
+      }
+      else if (it->first == "Red" && coutDispo["Red"] >= it->second)
+      {
+        while (i < it->second)
+        {
+          CarteAEngage.push_back("Red");
+          i++;
+        }
+      }
+      else if (it->first == "Green" && coutDispo["Green"] >= it->second)
+      {
+        while (i < it->second)
+        {
+          CarteAEngage.push_back("Green");
+          i++;
+        }
+      }
+    }
+    return CarteAEngage;
+  }
+  return CarteAEngage;
+}
+
+vector<Carte *> Joueur::TerrainCouleurAEngage(Carte *c)
+{
+  vector<string> Terrains = this->TerrainAEngager(c);
+  vector<Carte *> res;
+
+  for (auto s : Terrains)
+  {
+    int cpt = 0;
+    for (auto c : this->TerrainDispo())
+    {
+      if (s == c->getCouleur() && cpt < 1)
+      {
+        res.push_back(c);
+        cpt++;
+      }
+    }
+  }
+  return res;
+}
+
+void Joueur::EngageTerrainCouleur(Carte *CarteChoisie)
+{
+  vector<Carte *> Terrains = this->TerrainCouleurAEngage(CarteChoisie);
+  vector<Carte *> TerrainsDispo = this->TerrainDispo();
+
+  cout << "----------------------------------------------------------------" << endl;
+  cout << " Voici vos terrains disponibles " << endl;
+  cout << "----------------------------------------------------------------" << endl;
+  cout << "----------------------------------------------------------------" << endl;
+  for (Carte *c : TerrainsDispo)
+  {
+    c->printCouleur();
+  }
+  cout << "----------------------------------------------------------------" << endl;
+  cout << " Le(s) terrain(s) suivant vont être engagee (;-o) : " << endl;
+  cout << "----------------------------------------------------------------" << endl;
+  for (auto c : Terrains)
+  {
+    c->printCouleur();
+  }
+  cout << endl;
+  /*
+    if (taille == 0)
+    {
+      cout << "----------------------------------------------------------------" << endl;
+      cout << "Vous avez engager tous vos terrains ! MERCI !" << endl;
+      cout << "----------------------------------------------------------------" << endl;
+    }
+    else
+    { */
+  for (Carte *c : TerrainsDispo)
+  {
+    for (Carte *t : Terrains)
+    {
+      if (c == t)
+      {
+        c->setEngage();
+      }
+    }
+  }
+  TerrainsDispo = this->MAJTerrainDispo();
+  cout << "----------------------------------------------------------------" << endl;
+  cout << " Vos Terrains ont bien ete engager voici la liste de vos terrains encore disponible " << endl;
+  cout << "----------------------------------------------------------------" << endl;
+  for (auto c : TerrainsDispo)
+  {
+    c->printCouleur();
+  }
+  return;
+}
+
+void Joueur::EngageTerrainQuelconque(Carte *CarteChoisie)
+{
+  string index;
+  int nb = CarteChoisie->getCost();
+  vector<Carte *> TerrainsDispo = this->TerrainDispo();
+  int i = 0;
+
+  if (nb == 0)
+  {
+    cout << "----------------------------------------------------------------" << endl;
+    cout << " Pas besoin de terrains supplementaires " << endl;
+    cout << "----------------------------------------------------------------" << endl;
+  }
+  else
+  {
+    cout << "----------------------------------------------------------------" << endl;
+    cout << " Vous devez engager encore : " << nb << " terrains ! " << endl;
+    cout << "----------------------------------------------------------------" << endl;
+
+    while (i < nb)
+    {
+      cout << " Entrer le nom du Terrain que vous voulez engager : ";
+      cin >> index;
+      cout << endl;
+      cout << "----------------------------------------------------------------" << endl;
+      for (Carte *c : TerrainsDispo)
+      {
+        if (index == c->getNom())
+        {
+          c->setEngage();
+        }
+      }
+
+      TerrainsDispo = this->MAJTerrainDispo();
+      cout << "----------------------------------------------------------------" << endl;
+      cout << " Votre terrain a bien ete engager ! Voici les terrains qu'il vous reste " << endl;
+      cout << "----------------------------------------------------------------" << endl;
+      for (auto c : TerrainsDispo)
+      {
+        c->printCouleur();
+      }
+      i++;
+    }
+  }
+  return;
 }

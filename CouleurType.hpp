@@ -2,7 +2,6 @@
 #define MAGIC_COULEURTYPE_HPP
 
 #include <string>
-//#include "../include/Color.hpp"
 
 enum CouleurType {
     FG_RED      = 31 ,

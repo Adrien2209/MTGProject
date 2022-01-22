@@ -10,7 +10,6 @@ using namespace std;
 
 int main()
 {
-
     srand(time(NULL));
     // int tour = 0;
     string name1;
@@ -31,7 +30,6 @@ int main()
     Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
 
     game.PartieDeMagic(J1, J2);
-
     return 0;
 }
 
