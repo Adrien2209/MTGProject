@@ -26,9 +26,6 @@ class Enchantement : public Carte {
     int getForceBonus();
     int getEnduranceBonus();
     string getTarget();
-
-    // Affichage couleur
-    void printCouleur();
 };
 
 #endif

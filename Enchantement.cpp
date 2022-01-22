@@ -4,12 +4,17 @@
 
 Enchantement::Enchantement(string nom, string couleur, string lieu, bool etat, int numero, map<string,int> cout_couleur, int cost, int ForceBonus, int EnduranceBonus, string Target) : Carte(nom, couleur, lieu, etat, numero)
 {
-  this->idEnchantement = 1;
+  this->idEnchantement = 3;
   this->cout_couleur = cout_couleur;
   this->cost = cost;
   this-> ForceBonus = ForceBonus;
   this-> EnduranceBonus = EnduranceBonus;
   this->Target = Target;
+}
+
+int Enchantement::getID()
+{
+  return idEnchantement;
 }
 
 map<string,int> Enchantement::getCout_Couleur()
@@ -37,15 +42,4 @@ void Enchantement::print()
        << "|                                   |" << endl
        << "|                                   |" << endl
        << "|___________________________________|" << endl;
-}
-
-void Enchantement::printCouleur() {
-    Color couleurDefaut(FG_DEFAULT);
-    Color c = Color::quelleCouleur(this->getCouleur());
-    
-    cout << c << "\t |-----------------------------------| " << endl;
-    cout << c << "\t |" << couleurDefaut << this->getNom() << "                  ";
-    cout << c  << "|" << endl;
-    cout << c << "\t |-----------------------------------| " << endl;
-    cout << couleurDefaut;
 }

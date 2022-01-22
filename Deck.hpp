@@ -4,6 +4,7 @@
 #include "json.hpp"
 #include "Creature.hpp"
 #include "Terrain.hpp"
+#include "Enchantement.hpp"
 #include <vector>
 #include <string>
 

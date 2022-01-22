@@ -74,5 +74,3 @@ int Creature::CoutTotale() {
   }
   return res;
 }
-
-

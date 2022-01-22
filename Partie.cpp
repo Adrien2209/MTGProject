@@ -59,12 +59,6 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2){
     }
 
     int n = rand()%2;
-    
-    Terrain *Plains = new Terrain("Plains", "White", "", false, 1);
-    Terrain *Island = new Terrain("Island", "Blue", "",false, 2);
-    Terrain *Swamp = new Terrain("Swamp", "Black", "", false, 3);
-    Terrain *Mountain = new Terrain("Mountain", "Red", "", false, 4);
-    Terrain *Forest = new Terrain("Forest", "Green", "",false, 5);
 
     while(J1.getHP()>0 || J2.getHP()>0){
         if( n % 2 == 0){
