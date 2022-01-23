@@ -44,6 +44,7 @@ vector<Carte *> Joueur::getHand() { return Hand; }
 void Joueur::setNom(string n) { nom = n; }
 void Joueur::setHP(int s) { HP = s; }
 void Joueur::setAPoserTerrain() { APoserTerrain = true;}
+void Joueur::setPasPoserTerrain() { APoserTerrain = false;}
 vector<Carte *> Joueur::setBoard(vector<Carte *> c)
 {
   Board = c;

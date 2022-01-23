@@ -59,9 +59,10 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
         {
             J1.PhaseDePioche();
             J1.PhaseDeDesengagement();
-            J1.PhasePrincipale();
+            J1.setPasPoserTerrain();
+            //J1.PhasePrincipale();
             PhaseDeCombat(J1, J2);
-           /* J1.NettoyageHand();
+            J1.NettoyageHand();
             J2.NettoyageHand();
             cout << "Cimetiere de : " << J1.getNom() << endl;
             J1.printGraveYard();
@@ -73,8 +74,8 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             cout << "Main de : " << J1.getNom() << endl;
             J1.printHand();
             cout << "Main de : " << J2.getNom() << endl;
-            J2.printHand();*/
-            J1.PhaseSecondaire();
+            J2.printHand();
+            //J1.PhaseSecondaire();
             // Ajouter fin de tour */
             n += 1;
         }
@@ -83,8 +84,9 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
         {
             J2.PhaseDePioche();
             J2.PhaseDeDesengagement();
-            J2.PhasePrincipale();
-            /*PhaseDeCombat(J2, J1);
+            J2.setPasPoserTerrain();
+            //J2.PhasePrincipale();
+            PhaseDeCombat(J2, J1);
             J1.NettoyageHand();
             J2.NettoyageHand();
             cout << "Cimetiere de : " << J1.getNom() << endl;
@@ -99,8 +101,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             J1.printHand();
             cout << "Main de : " << J2.getNom() << endl;
             J2.printHand();
-*/
-            J2.PhasePrincipale();
+            //J2.PhasePrincipale();
             // Ajouter fin de tour */
             n += 1;
         }
@@ -143,6 +144,8 @@ Joueur &Partie::JoueurCommence()
 void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 {
 
+    Color cJ = Color::quelleCouleur("Red");
+
     Color couleurDefaut(FG_DEFAULT);
     Color c = Color::quelleCouleur("Magenta");
     cout << c << endl;
@@ -167,97 +170,96 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
         }
     }
 
-    cout << endl
-         << "-- -- -- -- -- Sac a viande " << J1.getNom() << " -- -- -- -- -- " << endl
-         << endl;
-
-    for (Carte *carte : liste_Attaque)
-    { // J'affiche les cartes avec lesquelles l'attaque est possible
-        carte->printCouleur();
+    if(liste_Attaque.empty()){
+        cout << "----------------------------------------------------------------" << endl;
+        cout << "Joueur " << cJ << J1.getNom() << couleurDefaut << " ne peut pas attaquer ce tour ci" << endl;
+        cout << "----------------------------------------------------------------" << endl;
     }
 
-    cout << endl
-         << "Parmis ces creatures, avec lesquelles decides-tu d'attaquer. Quand tu as fini, rentre OK, ET EN MAJUSCULE !! :\n";
+    else{
+        cout << "----------------------------------------------------------------" << endl;
+        cout << "Joueur " << cJ << J1.getNom() << couleurDefaut << endl;
+        cout << "----------------------------------------------------------------" << endl;
 
-    string safeword = "";                 // Mot cle defini a OK qui permet a l'utilisateur de terminer son action
-    vector<int> choix_attaquant = {};     // Un vecteur d'entier correspondant aux positions des cartes de son board avec lesquelles il souhaite attaquer
-    vector<Carte *> Attacking_Cards = {}; // Vecteur de carte qui contient les cartes qui vont attaquer
-
-    while (safeword != "OK")
-    { // Tant que l'utilisateur n'a pas ecrit ok, il rentre les cartes avec lesquelles il compte attaquer
-        cin >> safeword;
-        if (safeword != "OK")
-        {
-            choix_attaquant.push_back(stoi(safeword));
-            safeword = "";
-        }
-    }
-    for (int i : choix_attaquant)
-    { // Ajout des cartes dans le vecteur de carte qui contient les cartes qui vont attaquer
-        Attacking_Cards.push_back(liste_Attaque[i - 1]);
-    }
-
-    cout << "-- -- -- -- -- Tu as donc selectionne les cartes suivantes -- -- -- -- --" << endl
-         << endl;
-
-    for (Carte *carte : Attacking_Cards)
-    { // Affichage des cartes selectionne par le joueur
-        carte->printCouleur();
-    }
-
-    // -- -- -- -- -- Partie choix du defenseur -- -- -- -- --
-
-    cout << endl
-         << "-- -- -- -- -- Enfin !! Maintenant fumier " << J2.getNom() << " -- -- -- -- --" << endl;
-
-    vector<Carte *> liste_Defense = {}; // Liste qui donne toutes les cartes avec lesquelles la defense est possible
-    safeword = "";
-
-    for (unsigned int i = 0; i < J2.getHand().size(); i++)
-    {
-        if (J2.getHand()[i]->getID() == 2 && J2.getHand()[i]->getEtat() == false)
-        {
-            liste_Defense.push_back(J2.getHand()[i]);
-        }
-    }
-
-    for (Carte *carte : Attacking_Cards)
-    {
-        cout << "-- -- -- -- -- Quelle carte va proteger ton fessier de poule mouille contre -- -- -- -- --" << endl
-             << endl;
-        carte->printCouleur();
-        cout << endl
-             << "-- -- -- -- -- Veux tu defendre sur cette carte ? Ci dessous les cartes avec lesquelles tu peux defendre -- -- -- -- --" << endl;
-        cout << "-- -- -- -- -- Rentre OUI si tu veux defendre, NON sinon -- -- -- -- --" << endl
-             << endl;
-
-        for (Carte *carte_def : liste_Defense)
-        {
-            carte_def->printCouleur();
+        for (Carte *carte : liste_Attaque)
+        { // J'affiche les cartes avec lesquelles l'attaque est possible
+            carte->printCouleur();
         }
 
-        cin >> safeword;
+        cout << "-----------------------------------------------------------------------------------------------------------------" << endl;
+        cout << "Parmis ces creatures, avec lesquelles decides-tu d'attaquer. Quand tu as fini, rentre " << cJ << "OK" << couleurDefaut << ", ET EN MAJUSCULE !! :" << endl;
+        cout << "-----------------------------------------------------------------------------------------------------------------" << endl;
 
-        if (safeword == "NON")
-        {
-            cout << "Ok, celle-ci va te percuter de plein fouet" << endl;
-            cout << "HP de defenseur avant attaque : " << J2.getHP() << endl;
-            J2.setHP((J2.getHP()) - (carte->getForce()));
-            cout << "HP de defenseur apres attaque : " << J2.getHP() << endl;
-            // Check de la capacité lifelink
-            if (find(carte->getCapacite().begin(), carte->getCapacite().end(), "LifeLink") != carte->getCapacite().end())
+        string safeword = "";                 // Mot cle defini a OK qui permet a l'utilisateur de terminer son action
+        vector<int> choix_attaquant = {};     // Un vecteur d'entier correspondant aux positions des cartes de son board avec lesquelles il souhaite attaquer
+        vector<Carte *> Attacking_Cards = {}; // Vecteur de carte qui contient les cartes qui vont attaquer
+
+        while (safeword != "OK")
+        { // Tant que l'utilisateur n'a pas ecrit ok, il rentre les cartes avec lesquelles il compte attaquer
+            cin >> safeword;
+            if (safeword != "OK")
             {
-                J1.setHP((J1.getHP()) + (carte->getForce()));
+                choix_attaquant.push_back(stoi(safeword));
+                safeword = "";
             }
-            safeword = "";
+        }
+        for (int i : choix_attaquant)
+        { // Ajout des cartes dans le vecteur de carte qui contient les cartes qui vont attaquer
+            Attacking_Cards.push_back(liste_Attaque[i - 1]);
         }
 
-        if (safeword == "OUI")
+        cout << "----------------------------------------------------------------" << endl;
+        cout << " Tu as donc selectionne les cartes suivantes " << endl;
+        cout << "----------------------------------------------------------------" << endl;
+
+        for (Carte *carte : Attacking_Cards)
+        { // Affichage des cartes selectionne par le joueur
+            carte->printCouleur();
+        }
+
+        // -- -- -- -- -- Partie choix du defenseur -- -- -- -- --
+
+        cout << "----------------------------------------------------------------" << endl;
+        cout << "Maintenant ! Joueur " << cJ << J2.getNom() << couleurDefaut << endl;
+        cout << "----------------------------------------------------------------" << endl;
+
+        vector<Carte *> liste_Defense = {}; // Liste qui donne toutes les cartes avec lesquelles la defense est possible
+
+        safeword = "";
+        for (unsigned int i = 0; i < J2.getHand().size(); i++)
         {
-            bool stop = false;
-            cout << endl
-                 << "Tres bien, avec quelle carte compte tu defendre ? Rentre OK quand tu as fini" << endl;
-            safeword = "";
+            if (J2.getHand()[i]->getID() == 2 && J2.getHand()[i]->getEtat() == false)
+            {
+                liste_Defense.push_back(J2.getHand()[i]);
+            }
+        }
+
+        for (Carte *carte : Attacking_Cards)
+        {
+            bool AtFly = false;
+            bool AtLifeLink = false;
+            bool AtDeathTouch = false;
+
+            //Check des capacites de l'attaquant
+            for(string capa : carte->getCapacite()){
+                if(capa == "LifeLink"){
+                    AtLifeLink = true;
+                }
+                if(capa == "DeathTouch"){
+                    AtDeathTouch = true;
+                }
+                if(capa == "Flying"){
+                    AtFly = true;
+                }
+            }
+            cout << "----------------------------------------------------------------" << endl;
+            cout << " Quelle carte va te defendre face a cette carte ! " << endl;
+            cout << "----------------------------------------------------------------" << endl;
+            carte->printCouleur();
+            cout << "------------------------------------------------------------------------------------------------" << endl;
+            cout << "Veux tu defendre sur cette carte ? Ci dessous les cartes avec lesquelles tu peux defendre ! " << endl;
+            cout << "Entrer " << cJ << "OUI " << couleurDefaut << "si tu veux defendre, " << cJ << "NON" << couleurDefaut << " sinon !" << endl;
+            cout << "------------------------------------------------------------------------------------------------" << endl;
 
             for (Carte *carte_def : liste_Defense)
             {
@@ -266,46 +268,30 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
             cin >> safeword;
 
-            if (safeword == "OK")
+            if (safeword == "NON")
             {
-                stop = true;
-            }
+                cout << "-----------------------------------------------------" << endl;
+                cout << "Ok, celle-ci va te percuter de plein fouet ! " << endl;
+                cout << "-----------------------------------------------------" << endl;
+                cout << "HP de " << cJ << J2.getNom() << couleurDefaut << "avant attaque : " << J2.getHP() << endl;
+                J2.setHP((J2.getHP()) - (carte->getForce()));
+                cout << "HP de " << cJ << J2.getNom() << couleurDefaut << "apres attaque : " << cJ << J2.getHP() << endl;
 
-            while (stop == false)
-            {
-                cout << endl
-                     << "-- -- -- -- -- Tu as choisi cette carte -- -- -- -- --" << endl
-                     << endl;
-                liste_Defense[stoi(safeword) - 1]->printCouleur();
-
-                // Actualisation des points de vie
-                liste_Defense[stoi(safeword) - 1]->minusEndurance(carte->getForce());
-                carte->minusEndurance(liste_Defense[stoi(safeword) - 1]->getForce());
-
-                // Check de la capacité lifelink pour l'attaquant
-                if (find(carte->getCapacite().begin(), carte->getCapacite().end(), "LifeLink") != carte->getCapacite().end())
+                // Check de la capacité lifelink
+                if (AtLifeLink == true)
                 {
                     J1.setHP((J1.getHP()) + (carte->getForce()));
                 }
+                safeword = "";
+            }
 
-                // Check de la capacité lifelink pour le défenseur
-                if (find(liste_Defense[stoi(safeword) - 1]->getCapacite().begin(), liste_Defense[stoi(safeword) - 1]->getCapacite().end(), "LifeLink") != liste_Defense[stoi(safeword) - 1]->getCapacite().end())
-                {
-                    J2.setHP((J2.getHP()) + (liste_Defense[stoi(safeword) - 1]->getForce()));
-                }
+            if (safeword == "OUI")
+            {
+                bool stop = false;
 
-                if (liste_Defense[stoi(safeword) - 1]->getEndurance() <= 0)
-                {
-                    liste_Defense[stoi(safeword) - 1]->setLieu("GraveYard");
-                }
-                if (carte->getEndurance() <= 0)
-                {
-                    carte->setLieu("GraveYard");
-                }
-                liste_Defense.erase(liste_Defense.begin() + stoi(safeword) - 1);
-
-                cout << endl
-                     << "Tres bien, avec quelle carte compte tu defendre ? Rentre OK quand tu as fini" << endl;
+                cout << "----------------------------------------------------------------------------------" << endl;
+                cout << " Tres bien, avec quelle carte compte tu defendre ? Rentre " << cJ << "OK " << couleurDefaut << "quand tu as fini" << endl;
+                cout << "----------------------------------------------------------------------------------" << endl;
                 safeword = "";
 
                 for (Carte *carte_def : liste_Defense)
@@ -319,11 +305,131 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                 {
                     stop = true;
                 }
+
+                while (stop == false)
+                {
+                    cout << "-----------------------------------------------------" << endl;
+                    cout << " Tu as choisi cette carte ! " << endl;
+                    cout << "-----------------------------------------------------" << endl;
+                    liste_Defense[stoi(safeword) - 1]->printCouleur();
+
+                    bool DefFly = false;
+                    bool DefReach = false;
+                    bool DefLifeLink = false;
+                    bool DefDeathTouch = false;
+
+                    //Check des capacites du defenseur
+                    for(string capa : liste_Defense[stoi(safeword) - 1]->getCapacite()){
+                        if(capa == "LifeLink"){
+                            DefLifeLink = true;
+                        }
+                        if(capa == "Reach"){
+                            DefReach = true;
+                        }
+                        if(capa == "DeathTouch"){
+                            DefDeathTouch = true;
+                        }
+                        if(capa == "Flying"){
+                            DefFly = true;
+                        }
+                    }
+
+                    // Check de la capacite Flying pour l'attaquant et si le defenseur n'a ni flying ni reach
+                    if (AtFly == true && DefReach == false && DefFly == false)
+                    {
+                        cout << "------------------------------------------------------------------------------" << endl;
+                        cout << "La carte que tu as choisi ne peut pas defendre sur la carte qui t'attaque ! " << endl;
+                        cout << "------------------------------------------------------------------------------" << endl;
+                    }
+
+                    else{
+
+                        // Actualisation des points de vie
+                        liste_Defense[stoi(safeword) - 1]->minusEndurance(carte->getForce());
+                        carte->minusEndurance(liste_Defense[stoi(safeword) - 1]->getForce());
+
+                        
+                        // Check de la capacite DeathTouch pour l'attaquant
+                        if (AtDeathTouch == true)
+                        {
+                            cout << "L'attaquant a death touch" << endl;
+                            liste_Defense[stoi(safeword) - 1]->setEndurance(0);
+                        }
+
+                        // Check de la capacite DeathTouch pour le défenseur
+                        if (DefDeathTouch == true)
+                        {
+                            cout << "Le defenseur a death touch" << endl;
+                            carte->setEndurance(0);
+                        }
+
+                        // Check de la capacite lifelink pour l'attaquant
+                        if (AtLifeLink == true)
+                        {
+                            J1.setHP((J1.getHP()) + (carte->getForce()));
+                        }
+
+                        // Check de la capacite lifelink pour le défenseur
+                        if (DefLifeLink == true)
+                        {
+                            J2.setHP((J2.getHP()) + (liste_Defense[stoi(safeword) - 1]->getForce()));
+                        }
+
+                        if (liste_Defense[stoi(safeword) - 1]->getEndurance() <= 0)
+                        {
+                            liste_Defense[stoi(safeword) - 1]->setLieu("GraveYard");
+                        }
+                        if (carte->getEndurance() <= 0)
+                        {
+                            carte->setLieu("GraveYard");
+                        }
+                    }
+                    liste_Defense.erase(liste_Defense.begin() + stoi(safeword) - 1);
+
+                    if (liste_Defense.empty())
+                    {
+                        cout << "----------------------------------------------------------------------------------" << endl;
+                        cout << "Tu n'as plus de cartes pour defendre" << endl;
+                        cout << "----------------------------------------------------------------------------------" << endl;
+                        stop = true;
+                        safeword = "";
+                    }
+
+                    if (carte->getEndurance() <= 0)
+                    {
+                        cout << "----------------------------------------------------------------------------------" << endl;
+                        cout << "La carte qui attaque est morte tu n'as plus besoin de defendre" << endl;
+                        cout << "----------------------------------------------------------------------------------" << endl;
+                        stop = true;
+                        safeword = "";
+                    }
+
+                    else{
+                        cout << "----------------------------------------------------------------------------------" << endl;
+                        cout << "Tres bien, avec quelle carte compte tu defendre ? Rentre " << cJ << "OK " << couleurDefaut << "quand tu as fini" << endl;
+                        cout << "----------------------------------------------------------------------------------" << endl;
+                        safeword = "";
+
+                        for (Carte *carte_def : liste_Defense)
+                        {
+                            carte_def->printCouleur();
+                        }
+
+                        cin >> safeword;
+
+                        if (safeword == "OK")
+                        {
+                            stop = true;
+                        }
+                    }
+                }
             }
+            safeword = "";
         }
-        safeword = "";
     }
-    cout << "fin de phase d'attaque" << endl;
+    cout << "------------------------------------------" << endl;
+    cout << cJ << "Fin de la phase d'attaque (*^▽^*)" << couleurDefaut << endl;
+    cout << "------------------------------------------" << endl;
 }
 
 bool Partie::FinDePartie()

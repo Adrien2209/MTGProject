@@ -48,6 +48,7 @@ public:
     void setBibli(Deck v);
     void setInitialHand();
     void setAPoserTerrain();
+    void setPasPoserTerrain();
     vector<Carte *> setBoard(vector<Carte *> c);
 
     //-- -- -- -- methodes -- -- -- --

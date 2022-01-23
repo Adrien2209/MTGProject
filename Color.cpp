@@ -25,6 +25,8 @@ Color Color::quelleCouleur(std::string type)
         return ((FG_BLUE));
     else if (type == "White")
         return (FG_DEFAULT);
+    else if (type == "Multicolor")
+        return (FG_MAGENTA);
     else if (type == "Black")
         return (FG_YELLOW);
     else if (type == "Green")

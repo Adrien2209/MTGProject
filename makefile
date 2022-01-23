@@ -9,5 +9,5 @@ main : build/Color.o build/Carte.o build/Joueur.o build/Creature.o build/Terrain
 
 
 clean:
-	rm -f build/*.o
+	rm -f build/*.o main
 

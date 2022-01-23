@@ -3,9 +3,10 @@
 #include <iostream>
 using namespace std;
 
-Creature::Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string, int> cout_couleur, int cost, int force, int endurance, bool peutAttaquer) : Carte(nom, couleur, lieu, etat, numero)
+Creature::Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string, int> cout_couleur, int cost, int force, int endurance, bool peutAttaquer, string type, vector<string> cout_couleur_str) : Carte(nom, couleur, lieu, etat, numero)
 {
   this->cout_couleur = cout_couleur;
+  this->cout_couleur_str = cout_couleur_str;
   this->capacite = capacite;
   this->cost = cost;
   this->force = force;
@@ -13,6 +14,7 @@ Creature::Creature(string nom, string couleur, string lieu, bool etat, int numer
   this->idCreature = 2;
   this->base_endurance = endurance;
   this->peutAttaquer = false;
+  this->type = type;
 }
 
 // -- -- -- Les gets -- -- --
@@ -34,6 +36,8 @@ int Creature::getForce() { return force; }
 int Creature::getEndurance() { return endurance; }
 
 int Creature::getBaseEndurance() { return base_endurance; }
+
+string Creature::getType(){ return type;}
 
 int Creature::getID()
 {
@@ -82,20 +86,65 @@ void Creature::printCouleur()
 {
   Color couleurDefaut(FG_DEFAULT);
   Color c = Color::quelleCouleur(this->getCouleur());
+  int n = 0;
 
-  cout << c << "\t " << "___________________________" << endl;
+  cout << c << "\t " << "_____________________________________" << endl;
   cout << c << "\t |" << couleurDefaut << this->getNom() << this->SpaceName() << c << "| " << endl;
-  cout << c << "\t |" << couleurDefaut << "Cout : " + to_string(cost) + "                 "<< c <<"|" << endl;
+  cout << c << "\t |" << couleurDefaut << type << this->SpaceType() << c << "| " << endl;
+  cout << c << "\t |" << couleurDefaut << "Cout : " + to_string(cost) + "                           "<< c <<"|" << endl;
+  cout << c << "\t |" << couleurDefaut << "Cout Color : " << printCoutCouleur() << c <<"|" << endl;
   cout << c << "\t |" << couleurDefaut << this->getLieu() + this->SpaceLieu() << c << "| " << endl;
-  cout << c << "\t |" << couleurDefaut << "Attack : " + to_string(force) + " HP : " + to_string(endurance) + "        " << c << "|" << endl;
-  cout << c << "\t |" <<"_________________________|" << endl;
+  for(string capa : capacite){
+    cout << c << "\t |" << couleurDefaut << capa + this->SpaceCapa(n) << c <<"|" << endl;
+    n+=1;
+  }
+  cout << c << "\t |" << couleurDefaut << "Attack : " + to_string(force) + " HP : " + to_string(endurance) + "                  " << c << "|" << endl;
+  cout << c << "\t |" <<"___________________________________|" << endl;
   cout << couleurDefaut;
 }
 
+string Creature::SpaceCapa(int n) {
+
+  string res = "                                   ";
+  int i = 0;
+
+  for ( i = 0; i < (int)this->capacite[n].length(); i++) {
+      res.pop_back();
+  }
+  return res;
+}
+
+string Creature::printCoutCouleur(){
+  string res = "                      ";
+  int i = 0;
+  string retour = "";
+  for(string coutcolor : cout_couleur_str){
+    if(coutcolor == "White"){
+      retour += "W ";
+    }
+    if(coutcolor == "Blue"){
+      retour += "Blu ";
+    }
+    if(coutcolor == "Red"){
+      retour += "R ";
+    }
+    if(coutcolor == "Green"){
+      retour += "G ";
+    }
+    if(coutcolor == "Black"){
+      retour += "Bla ";
+    }
+  }
+
+  for ( i = 0; i < (int)retour.length(); i++) {
+      res.pop_back();
+  }
+  return retour + res;
+}
 
 string Creature::SpaceName() {
 
-  string res = "                         ";
+  string res = "                                   ";
   int i = 0;
 
   for ( i = 0; i < (int)this->getNom().length(); i++) {
@@ -104,9 +153,20 @@ string Creature::SpaceName() {
   return res;
 }
 
+string Creature::SpaceType() {
+
+  string res = "                                   ";
+  int i = 0;
+
+  for ( i = 0; i < (int)this->type.length(); i++) {
+      res.pop_back();
+  }
+  return res;
+}
+
 string Creature::SpaceLieu() {
 
-  string res = "                         ";
+  string res = "                                   ";
   int i = 0;
   for ( i = 0; i < (int)this->getLieu().length(); i++) {
        res.pop_back();

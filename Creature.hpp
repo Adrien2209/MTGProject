@@ -12,13 +12,15 @@ class Creature : public Carte
 {
 private:
     vector<string> capacite;
+    vector<string> cout_couleur_str;
     map<string, int> cout_couleur;
     int cost, force, endurance, idCreature, base_endurance;
     bool peutAttaquer;
+    string type;
 
 public:
-    Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string, int> cout_couleur, int cost, int force, int endurance, bool peutAttaquer); // Constructeur à faire
-    ~Creature(){};                                                                                                                                                        // Destructeur
+    Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string, int> cout_couleur, int cost, int force, int endurance, bool peutAttaquer, string type, vector<string> cout_couleur_str); // Constructeur à faire
+    ~Creature(){};// Destructeur
 
     // les gets
     int getCost();
@@ -29,6 +31,7 @@ public:
     map<string, int> getCout_Couleur();
     int getID();
     bool getPeutAttaquer();
+    string getType();
 
     // les sets
     void setCost(int i);
@@ -43,6 +46,9 @@ public:
     int CoutTotale();
     string SpaceName();
     string SpaceLieu();
+    string SpaceCapa(int n);
+    string SpaceType();
+    string printCoutCouleur();
 
 };
 

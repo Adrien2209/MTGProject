@@ -74,7 +74,7 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
         int id = i;
         bool etat = false;
         bool peutAttaquer = false;
-        DeckRetour.push_back(new Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance, peutAttaquer));
+        DeckRetour.push_back(new Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance, peutAttaquer, type, color_cost_string));
         i += 1;
     }
 
