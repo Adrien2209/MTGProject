@@ -11,6 +11,8 @@ enum CouleurType {
     BG_RED      = 41,
     BG_GREEN    = 42,
     BG_BLUE     = 44,
+    FG_CYAN     = 36, 
+    FG_MAGENTA = 35, 
     FG_YELLOW  = 33  //33 represente en realite le jaune mais pour tester dans une console noire, on commence avec le jaune
 };
 
