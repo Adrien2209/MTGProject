@@ -86,10 +86,12 @@ vector<string> Carte::getCapacite()
     return {};
 } 
 
+
 // Les sets
 void Carte::setLieu(string l) { lieu = l; }
 void Carte::setEngage() { etat = true; }
 void Carte::setDesengage() { etat = false; }
+void Carte::setPeutAttaquer() { return;};
 
 // Les méthodes
 

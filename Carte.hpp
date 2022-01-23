@@ -32,10 +32,10 @@ public:
     void virtual setBaseEndurance(int i);
     void virtual minusEndurance(int i);
     void virtual print();
+    virtual void setPeutAttaquer();
     virtual int CoutTotale() { return 0; }
 
     // Les gets
-
     string getCouleur();
     string getNom();
     string getLieu();

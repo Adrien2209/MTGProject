@@ -891,7 +891,9 @@ void Joueur::PhaseSecondaire()
 
 void Joueur::FinDeTour()
 {
+  APoserTerrain = false;
   int id;
+
   while (Hand.size() > 7)
   {
     cout << "----------------------------------------------------------------" << endl;
@@ -913,5 +915,9 @@ void Joueur::FinDeTour()
       GraveYard.push_back(Hand[id - 1]);
       Hand.erase(Hand.begin() + (id - 1));
     }
+  }
+
+  for(Carte* c : Board) {
+    c->setPeutAttaquer();
   }
 }
