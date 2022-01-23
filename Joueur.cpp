@@ -534,7 +534,7 @@ void Joueur::PhasePrincipale()
     }
     else if (index == 3)
     {
-      //this->PoserCreature();
+      this->PoserEnchantement();
       this->TerrainDispo();
       this->NettoyageHand();
       continu = true;
@@ -718,6 +718,7 @@ void Joueur::PoserEnchantement()
         for (Carte *carte : Board)
         {
           carte->setEndurance(carte->getEndurance() + CarteChoisie->getEnduranceBonus());
+          carte->setBaseEndurance(carte->getBaseEndurance() + CarteChoisie->getEnduranceBonus());
           carte->setForce(carte->getForce() + CarteChoisie->getForceBonus());
         }
       }
@@ -728,6 +729,7 @@ void Joueur::PoserEnchantement()
           if (carte->getType() == CarteChoisie->getTarget())
           {
             carte->setEndurance(carte->getEndurance() + CarteChoisie->getEnduranceBonus());
+            carte->setBaseEndurance(carte->getBaseEndurance() + CarteChoisie->getEnduranceBonus());
             carte->setForce(carte->getForce() + CarteChoisie->getForceBonus());
           }
         }
@@ -1055,5 +1057,6 @@ void Joueur::FinDeTour()
   for (Carte *c : Board)
   {
     c->setPeutAttaquer();
+    c->setEndurance(c->getBaseEndurance());
   }
 }

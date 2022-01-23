@@ -70,7 +70,7 @@
                 "Type" : "Angel",
                 "Force" : 2,
                 "Endurance" : 2,
-                "Capacity" : ["LifeLink", "Flying"],
+                "Capacity" : ["DeathRattle", "Flying"],
                 "ID"    : 13
             },
             {
@@ -81,7 +81,7 @@
                 "Type" : "Angel",
                 "Force" : 2,
                 "Endurance" : 2,
-                "Capacity" : ["LifeLink", "Flying"],
+                "Capacity" : ["DeathRattle", "Flying"],
                 "ID"    : 14
             },
             {
@@ -89,10 +89,10 @@
                 "CommonCost" : 1,
                 "ColorCost" : ["White"],
                 "Color" : "Blue",
-                "Type" : "Human Cleric",
+                "Type" : "Angel",
                 "Force" : 2,
                 "Endurance" : 1,
-                "Capacity" : ["LifeLink","Flying"],
+                "Capacity" : ["DeathRattle","Flying"],
                 "ID"    : 15
             },
             {
@@ -100,10 +100,10 @@
                 "CommonCost" : 2,
                 "ColorCost" : ["White"],
                 "Color" : "Black",
-                "Type" : "Human Soldier",
+                "Type" : "Angel",
                 "Force" : 2,
                 "Endurance" : 2,
-                "Capacity" : ["LifeLink","Flying"],
+                "Capacity" : ["DeathRattle","Flying"],
                 "ID"    : 16
             },
             {
