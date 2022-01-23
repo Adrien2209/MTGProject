@@ -64,7 +64,20 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             J1.printHand();
             J1.PhaseDeDesengagement();
             J1.setPasPoserTerrain();
-            //J1.PhasePrincipale();
+            // J1.PhasePrincipale();
+
+            Color couleurDefaut(FG_DEFAULT);
+            Color c = Color::quelleCouleur("Magenta");
+            cout << c << endl;
+            cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+            cout << c << "   ____________                                                                                                                                                              " << endl;
+            cout << c << "  |    _|_     |  [][][][] [][][][] []  []    [] [][][][] []  [][][][] [][][][] []       []       [][][][]                                                                                                                                   " << endl;
+            cout << c << "  |   |_|_|    |  []    [] []    [] []  [][]  [] []       []  []    [] []    [] []       []       []                                                                                                                " << endl;
+            cout << c << "  |   |   |    |  [][][][] [][][][] []  [] [] [] []       []  [][][][] [][][][] []       []       [][]                                                                                                                      " << endl;
+            cout << c << "  |   |___|    |  []       [] []    []  []  [][] []       []  []       []    [] []       []       []                                                                                                         " << endl;
+            cout << c << "  |____________|  []       []   []  []  []    [] [][][][] []  []       []    [] [][][][] [][][][] [][][][]  [][][]                                                                                                                      " << endl;
+            cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+
             PhaseDeCombat(J1, J2);
             J1.NettoyageHand();
             J2.NettoyageHand();
@@ -81,6 +94,17 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             J2.printHand();
             //J1.PhaseSecondaire();
             J1.FinDeTour();
+
+            cout << c << endl;
+            cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+            cout << c << "   ____________                                                                                                                                                              " << endl;
+            cout << c << "  |    _|_     |  [][][][] [][][][] [][][][]  [][][][] []    [] [][][]   [][][][] [] [][][][] [][][][]                                                                                                                                  " << endl;
+            cout << c << "  |   |_|_|    |  []       []       []        []    [] [][]  [] []    [] []    [] [] []    [] []                                                                                                                " << endl;
+            cout << c << "  |   |   |    |  [][][][] [][]     []        []    [] [] [] [] []    [] [][][][] [] [][][][] [][]                                                                                                                      " << endl;
+            cout << c << "  |   |___|    |        [] []       []        []    [] []  [][] []    [] []    [] [] []  []   []                                                                                                         " << endl;
+            cout << c << "  |____________|  [][][][] [][][][] [][][][]  [][][][] []    [] [][][]   []    [] [] []   []  [][][][]  [] [] []                                                                                       " << endl;
+            cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+
             n += 1;
             premiertour = false;
         }
@@ -93,7 +117,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             J2.printHand();
             J2.PhaseDeDesengagement();
             J2.setPasPoserTerrain();
-            //J2.PhasePrincipale();
+            // J2.PhasePrincipale();
             PhaseDeCombat(J2, J1);
             J1.NettoyageHand();
             J2.NettoyageHand();
@@ -180,13 +204,15 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
         }
     }
 
-    if(liste_Attaque.empty()){
+    if (liste_Attaque.empty())
+    {
         cout << "----------------------------------------------------------------" << endl;
         cout << "Joueur " << cJ << J1.getNom() << couleurDefaut << " ne peut pas attaquer ce tour ci" << endl;
         cout << "----------------------------------------------------------------" << endl;
     }
 
-    else{
+    else
+    {
         cout << "----------------------------------------------------------------" << endl;
         cout << "Joueur " << cJ << J1.getNom() << couleurDefaut << endl;
         cout << "----------------------------------------------------------------" << endl;
@@ -250,15 +276,19 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
             bool AtLifeLink = false;
             bool AtDeathTouch = false;
 
-            //Check des capacites de l'attaquant
-            for(string capa : carte->getCapacite()){
-                if(capa == "LifeLink"){
+            // Check des capacites de l'attaquant
+            for (string capa : carte->getCapacite())
+            {
+                if (capa == "LifeLink")
+                {
                     AtLifeLink = true;
                 }
-                if(capa == "DeathTouch"){
+                if (capa == "DeathTouch")
+                {
                     AtDeathTouch = true;
                 }
-                if(capa == "Flying"){
+                if (capa == "Flying")
+                {
                     AtFly = true;
                 }
             }
@@ -328,18 +358,23 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                     bool DefLifeLink = false;
                     bool DefDeathTouch = false;
 
-                    //Check des capacites du defenseur
-                    for(string capa : liste_Defense[stoi(safeword) - 1]->getCapacite()){
-                        if(capa == "LifeLink"){
+                    // Check des capacites du defenseur
+                    for (string capa : liste_Defense[stoi(safeword) - 1]->getCapacite())
+                    {
+                        if (capa == "LifeLink")
+                        {
                             DefLifeLink = true;
                         }
-                        if(capa == "Reach"){
+                        if (capa == "Reach")
+                        {
                             DefReach = true;
                         }
-                        if(capa == "DeathTouch"){
+                        if (capa == "DeathTouch")
+                        {
                             DefDeathTouch = true;
                         }
-                        if(capa == "Flying"){
+                        if (capa == "Flying")
+                        {
                             DefFly = true;
                         }
                     }
@@ -352,13 +387,13 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                         cout << "------------------------------------------------------------------------------" << endl;
                     }
 
-                    else{
+                    else
+                    {
 
                         // Actualisation des points de vie
                         liste_Defense[stoi(safeword) - 1]->minusEndurance(carte->getForce());
                         carte->minusEndurance(liste_Defense[stoi(safeword) - 1]->getForce());
 
-                        
                         // Check de la capacite DeathTouch pour l'attaquant
                         if (AtDeathTouch == true)
                         {
@@ -414,7 +449,8 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                         safeword = "";
                     }
 
-                    else{
+                    else
+                    {
                         cout << "----------------------------------------------------------------------------------" << endl;
                         cout << "Tres bien, avec quelle carte compte tu defendre ? Rentre " << cJ << "OK " << couleurDefaut << "quand tu as fini" << endl;
                         cout << "----------------------------------------------------------------------------------" << endl;
