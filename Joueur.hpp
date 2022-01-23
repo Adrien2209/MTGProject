@@ -82,6 +82,7 @@ public:
     map<string, int> CoutDisponibleEnJeu();
     int CoutTotalDispoEnJeu();
     void PoserTerrain();
+    void PoserEnchantement();
     vector<Carte *> TerrainDispo();
     vector<Carte *> MAJTerrainDispo();
     vector<Carte *> TerrainEnMain();

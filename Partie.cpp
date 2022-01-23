@@ -52,12 +52,16 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
     // J2.NettoyageBibli();
 
     int n = rand() % 2;
+    bool premiertour = true;
 
     while (J1.getHP() > 0 || J2.getHP() > 0 || J1.getMort() == true || J2.getMort() == true)
     {
         if (n % 2 == 0)
         {
-            J1.PhaseDePioche();
+            if(premiertour == false){
+                J1.PhaseDePioche();
+            }
+            J1.printHand();
             J1.PhaseDeDesengagement();
             J1.setPasPoserTerrain();
             //J1.PhasePrincipale();
@@ -76,13 +80,17 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             cout << "Main de : " << J2.getNom() << endl;
             J2.printHand();
             //J1.PhaseSecondaire();
-            // Ajouter fin de tour */
+            J1.FinDeTour();
             n += 1;
+            premiertour = false;
         }
 
         if (n % 2 == 1)
         {
-            J2.PhaseDePioche();
+            if(premiertour == false){
+                J2.PhaseDePioche();
+            }
+            J2.printHand();
             J2.PhaseDeDesengagement();
             J2.setPasPoserTerrain();
             //J2.PhasePrincipale();
@@ -102,8 +110,9 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             cout << "Main de : " << J2.getNom() << endl;
             J2.printHand();
             //J2.PhasePrincipale();
-            // Ajouter fin de tour */
+            J2.FinDeTour();
             n += 1;
+            premiertour = false;
         }
     }
 }
@@ -162,6 +171,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
     vector<Carte *> liste_Attaque = {}; // Liste qui donne toutes les cartes avec lesquelles l'attaque est possible
 
+    // Ajouter && J1.getHand()[i]->getPeutAttaquer() == true au IF
     for (unsigned int i = 0; i < J1.getHand().size(); i++)
     {
         if (J1.getHand()[i]->getID() == 2 && J1.getHand()[i]->getEtat() == false)

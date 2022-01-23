@@ -43,8 +43,8 @@ vector<Carte *> Joueur::getHand() { return Hand; }
 // -- -- -- Les sets -- -- --
 void Joueur::setNom(string n) { nom = n; }
 void Joueur::setHP(int s) { HP = s; }
-void Joueur::setAPoserTerrain() { APoserTerrain = true;}
-void Joueur::setPasPoserTerrain() { APoserTerrain = false;}
+void Joueur::setAPoserTerrain() { APoserTerrain = true; }
+void Joueur::setPasPoserTerrain() { APoserTerrain = false; }
 vector<Carte *> Joueur::setBoard(vector<Carte *> c)
 {
   Board = c;
@@ -297,19 +297,18 @@ int Joueur::PhaseDeDesengagement()
   cout << c << "    C      _) []    []   []             [] []       []  [][] []     [] []    [] []     [] []       []      [] []       []  [][]    []             []  [] [][] " << endl;
   cout << c << "    | ,___|   [][][]     [][][][] [][][][] [][][][] []    []  [][][]   []    []  [][][]   [][][][] []      [] [][][][] []    []    []   [] [] []  [][][] [] []" << endl;
   cout << c << "    |   /" << endl;
-  cout << couleurDefaut<< " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
- 
+  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
 
   if (this->getBoard().empty())
   {
-    cout <<"--------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
-    cout <<  " LE JOUEUR " << this->getNom() << " N'A PAS DE TERRAINS SUR LE BOARD ! " << endl;
-    cout <<  "--------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+    cout << "--------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+    cout << " LE JOUEUR " << this->getNom() << " N'A PAS DE TERRAINS SUR LE BOARD ! " << endl;
+    cout << "--------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
     return 0;
   }
   else
   {
-    for (Carte *carte : this->getBoard())
+    for (Carte *carte : Board)
     {
       carte->setDesengage();
     }
@@ -494,7 +493,7 @@ void Joueur::PhasePrincipale()
   cout << c << "  |   |   |    |  [][][][] [][][][] []  [] [] [] []       []  [][][][] [][][][] []       []       [][]                                                                                                                      " << endl;
   cout << c << "  |   |___|    |  []       [] []    []  []  [][] []       []  []       []    [] []       []       []                                                                                                         " << endl;
   cout << c << "  |____________|  []       []   []  []  []    [] [][][][] []  []       []    [] [][][][] [][][][] [][][][]  [][][]                                                                                                                      " << endl;
-  cout << couleurDefaut<< " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
+  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
 
   bool continu = true;
   while (continu)
@@ -502,8 +501,8 @@ void Joueur::PhasePrincipale()
 
     Color c1 = Color::quelleCouleur("Red");
     cout << "----------------------------------------------------------------" << endl;
-    cout << c1 << this->getNom() << couleurDefaut << " Voulez-vous poser un TERRAIN [1], une CREATURE [2] ou rien [3] " << endl;
-    cout <<  " Entrer " << c1 << " [1] , [2] ou [3] " << couleurDefaut << endl;
+    cout << c1 << this->getNom() << couleurDefaut << " Voulez-vous poser un TERRAIN [1], une CREATURE [2], un Enchantement [3] ou rien [4]" << endl;
+    cout << " Entrer " << c1 << " [1] , [2] ou [3] " << couleurDefaut << endl;
     cout << "----------------------------------------------------------------" << endl;
 
     int index;
@@ -534,6 +533,14 @@ void Joueur::PhasePrincipale()
       continu = true;
     }
     else if (index == 3)
+    {
+      //this->PoserCreature();
+      this->TerrainDispo();
+      this->NettoyageHand();
+      continu = true;
+    }
+
+    else if (index == 4)
     {
       continu = false;
     }
@@ -610,6 +617,16 @@ void Joueur::PoserCreature()
       cout << "----------------------------------------------------------------" << endl;
       this->EngageTerrainCouleur(CarteChoisie);
       this->EngageTerrainQuelconque(CarteChoisie);
+
+      //Check des capacites de l'attaquant
+      for (string capa : CarteChoisie->getCapacite())
+      {
+        if (capa == "Haste")
+        {
+          CarteChoisie->setPeutAttaquer();
+        }
+      }
+
       Board.push_back(CarteChoisie);
       Hand.erase(Hand.begin() + id);
       for (auto c : Hand)
@@ -626,6 +643,112 @@ void Joueur::PoserCreature()
   {
     cout << "----------------------------------------------------------------" << endl;
     cout << " Vous avez choisis un terrain et non pas une creature ! Reesayer !" << endl;
+    cout << "----------------------------------------------------------------" << endl;
+  }
+}
+
+void Joueur::PoserEnchantement()
+{
+
+  int idCarteChoisie; // Variable qui stock l'ID de la carte choisie
+
+  cout << "----------------------------------------------------------------" << endl;
+  cout << "                 Quelle Enchantement voulez-vous jouer ?               " << endl;
+  cout << "----------------------------------------------------------------" << endl
+       << endl;
+
+  // Afficher les cartes disponibles :
+  for (Carte *e : Hand)
+  {
+    e->printCouleur();
+  }
+
+  cout << "----------------------------------------------------------------" << endl;
+  cout << " Veuillez renseignez le numero de la carte a poser ! " << endl;
+  cout << " Premiere carte afficher n° 1, etc..." << endl;
+  cout << "----------------------------------------------------------------" << endl;
+
+  cout << "Numero : ";
+  cin >> idCarteChoisie;
+
+  vector<Carte *> TerrainDispo = this->TerrainDispo();
+  // Evite les numero pas compris dans la hand
+  bool valide = true;
+  while (valide)
+  {
+    if (idCarteChoisie > (int)Hand.size())
+    {
+      cout << " Valeur erronée ! Choisir une autre valeur" << endl;
+      cout << " Numero : ";
+      cin >> idCarteChoisie;
+    }
+    else
+    {
+      valide = false;
+    }
+  }
+
+  // On recupere la carte qu'il a choisis.
+  Carte *CarteChoisie = Hand[idCarteChoisie - 1];
+  int id = idCarteChoisie - 1;
+
+  cout << "----------------------------------------------------------------" << endl;
+  cout << " Voici la carte que vous avez choisi : " << endl;
+  cout << "----------------------------------------------------------------" << endl;
+
+  CarteChoisie->printCouleur();
+
+  // On verifie si le cout disponible sur le Board correspond a la carte chosie
+  cout << "----------------------------------------------------------------" << endl;
+  cout << " Possibilité de la poser. Chargement... " << endl;
+  cout << "----------------------------------------------------------------" << endl;
+  if (CarteChoisie->getID() == 3)
+  {
+    if (this->VerifCout(CarteChoisie))
+    {
+      cout << "----------------------------------------------------------------" << endl;
+      cout << " Votre carte peut etre poser ! (:)-<-< " << endl;
+      cout << " Engagement des Terrains en cours..." << endl;
+      cout << "----------------------------------------------------------------" << endl;
+      this->EngageTerrainCouleur(CarteChoisie);
+      this->EngageTerrainQuelconque(CarteChoisie);
+
+      if (CarteChoisie->getTarget() == "All")
+      {
+        for (Carte *carte : Board)
+        {
+          carte->setEndurance(carte->getEndurance() + CarteChoisie->getEnduranceBonus());
+          carte->setForce(carte->getForce() + CarteChoisie->getForceBonus());
+        }
+      }
+      else
+      {
+        for (Carte *carte : Board)
+        {
+          if (carte->getType() == CarteChoisie->getTarget())
+          {
+            carte->setEndurance(carte->getEndurance() + CarteChoisie->getEnduranceBonus());
+            carte->setForce(carte->getForce() + CarteChoisie->getForceBonus());
+          }
+        }
+      }
+
+      GraveYard.push_back(CarteChoisie);
+      Hand.erase(Hand.begin() + id);
+      for (auto c : Hand)
+      {
+        c->printCouleur();
+      }
+    }
+    else
+    {
+      cout << " Impossible de poser votre carte ! [:o]-<-< " << endl;
+    }
+  }
+  else
+  {
+    cout << "----------------------------------------------------------------" << endl;
+    cout << " Vous n'avez pas choisi un enchantement ! Reesayer !" << endl;
     cout << "----------------------------------------------------------------" << endl;
   }
 }
@@ -857,7 +980,7 @@ void Joueur::EngageTerrainQuelconque(Carte *CarteChoisie)
     while (i < nb)
     {
       Color couleurDefaut(FG_DEFAULT);
-      
+
       cout << " Entrer le nom du " << c1 << "Terrain" << couleurDefaut << "que vous voulez engager : ";
       cin >> index;
       cout << endl;
@@ -917,7 +1040,8 @@ void Joueur::FinDeTour()
     }
   }
 
-  for(Carte* c : Board) {
+  for (Carte *c : Board)
+  {
     c->setPeutAttaquer();
   }
 }

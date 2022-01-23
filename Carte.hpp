@@ -26,6 +26,11 @@ public:
     int virtual getEndurance();
     int virtual getBaseEndurance();
     vector<string> virtual getCapacite();
+
+    int virtual getForceBonus();
+    int virtual getEnduranceBonus();
+    string virtual getTarget();
+    string virtual getType();
     
     void virtual setForce(int i);
     void virtual setEndurance(int i);
@@ -40,6 +45,7 @@ public:
     string getNom();
     string getLieu();
     int getNumero();
+    virtual bool getPeutAttaquer();
 
     // Les sets
     void setLieu(string l);
