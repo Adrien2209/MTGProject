@@ -69,7 +69,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -93,7 +93,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -117,7 +117,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -164,7 +164,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -188,7 +188,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -212,7 +212,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -259,7 +259,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -283,7 +283,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -307,7 +307,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -354,7 +354,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -378,7 +378,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -402,7 +402,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -449,7 +449,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -473,7 +473,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -497,7 +497,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -544,7 +544,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -568,7 +568,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
@@ -592,7 +592,7 @@ void Deck::CreateDeck(string name){
                 if(choixCarte == "Back"){
                     choixtype = "Back";
                 }
-                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                else if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
                     cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
