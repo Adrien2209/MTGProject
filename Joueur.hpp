@@ -76,6 +76,8 @@ public:
     void PoserCreature();
     void PhaseDePioche();
     int PhaseDeDesengagement();
+    void VerifIndexHand(int i);
+    int VerifCin(int i);
     void PhasePrincipale();
     void PhaseSecondaire();
     void FinDeTour();

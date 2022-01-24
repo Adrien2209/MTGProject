@@ -1,0 +1,126 @@
+{
+    "DeckTest" : 
+    {
+        "Terrain": [
+            {
+                "Title": "Plains",
+                "Color": "White",
+                "ID": 1
+            },
+            {
+                "Title": "Island",
+                "Color": "Blue",
+                "ID": 2
+            },
+            {
+                "Title": "Swamp",
+                "Color": "Black",
+                "ID": 3
+            },
+            {
+                "Title": "Mountain",
+                "Color": "Red",
+                "ID": 4
+            },
+            {
+                "Title": "Forest",
+                "Color": "Green",
+                "ID": 5
+            }
+        ],
+        
+        
+        "Creature" :
+        [
+            {
+                "Title" : "Angel of Vitality",
+                "CommonCost" : 2,
+                "ColorCost" : ["White"],
+                "Color" : "White",
+                "Type" : "Angel",
+                "Force" : 2,
+                "Endurance" : 2,
+                "Capacity" : ["Flying"],
+                "ID"    : 13
+            },
+            {
+                "Title" : "Angel of Vitality",
+                "CommonCost" : 2,
+                "ColorCost" : ["White"],
+                "Color" : "Red",
+                "Type" : "Angel",
+                "Force" : 2,
+                "Endurance" : 2,
+                "Capacity" : ["Flying"],
+                "ID"    : 14
+            },   {
+                "Title" : "Cavalier of Flame",
+                "CommonCost" : 2,
+                "ColorCost" : ["Red","Red","Red"],
+                "Color" : "Red",
+                "Type" : "Elemental Knight",
+                "Force" : 6,
+                "Endurance" : 5,
+                "Capacity" : [""],
+                "ID"    : 35
+            },
+            {
+                "Title" : "Chandra's Embercat",
+                "CommonCost" : 1,
+                "ColorCost" : ["Red"],
+                "Color" : "Red",
+                "Type" : "Elemental Cat",
+                "Force" : 2,
+                "Endurance" : 2,
+                "Capacity" : [""],
+                "ID"    : 36
+            },
+            {
+                "Title" : "Chandra's Spitfire",
+                "CommonCost" : 2,
+                "ColorCost" : ["Red"],
+                "Color" : "Red",
+                "Type" : "Elemental",
+                "Force" : 1,
+                "Endurance" : 3,
+                "Capacity" : ["Flying"],
+                "ID"    : 37
+            },
+            {
+                "Title" : "Daggersail Aeronaut",
+                "CommonCost" : 3,
+                "ColorCost" : ["Red"],
+                "Color" : "Red",
+                "Type" : "Goblin",
+                "Force" : 3,
+                "Endurance" : 2,
+                "Capacity" : ["Flying"],
+                "ID"    : 38
+            },
+            {
+                "Title" : "Destructive Digger",
+                "CommonCost" : 2,
+                "ColorCost" : ["Red"],
+                "Color" : "Red",
+                "Type" : "Goblin",
+                "Force" : 3,
+                "Endurance" : 2,
+                "Capacity" : [""],
+                "ID"    : 39
+            },
+            {
+                "Title" : "Dragon Mage",
+                "CommonCost" : 5,
+                "ColorCost" : ["Red","Red"],
+                "Color" : "Red",
+                "Type" : "Dragon Wizard",
+                "Force" : 5,
+                "Endurance" : 5,
+                "Capacity" : ["Flying"],
+                "ID"    : 40
+            }
+        ],
+        "Enchantement" : [
+        ]
+    }
+}

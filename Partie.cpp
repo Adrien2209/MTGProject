@@ -27,10 +27,10 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
 {
     // Selection du deck
     // cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
-    string deckJ1 = "DeckTest4";
+    string deckJ1 = "DeckTest";
     // getline(cin, deckJ1);
     // cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
-    string deckJ2 = "DeckTest4";
+    string deckJ2 = "DeckTest";
     // getline(cin, deckJ2);
 
     // -- Creation Deck --
@@ -63,7 +63,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             }
             J1.PhaseDeDesengagement();
             J1.setPasPoserTerrain();
-            // J1.PhasePrincipale();
+            J1.PhasePrincipale();
             PhaseDeCombatTest(J1, J2);
             J1.NettoyageHand();
             J2.NettoyageHand();
@@ -94,7 +94,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             }
             J2.PhaseDeDesengagement();
             J2.setPasPoserTerrain();
-            // J2.PhasePrincipale();
+            J2.PhasePrincipale();
             PhaseDeCombatTest(J2, J1);
             J1.NettoyageHand();
             J2.NettoyageHand();

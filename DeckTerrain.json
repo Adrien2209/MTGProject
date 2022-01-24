@@ -27,93 +27,33 @@
             {
                 "Title" : "Forest",
                 "Color" : "Green",
-                "ID"    : 12
+                "ID"    : 5
             },
             {
                 "Title" : "Plains",
                 "Color" : "White",
-                "ID"    : 1
+                "ID"    : 6
             },
             {
                 "Title" : "Island",
                 "Color" : "Blue",
-                "ID"    : 2
+                "ID"    : 7
             },
             {
                 "Title" : "Swamp",
                 "Color" : "Black",
-                "ID"    : 3
+                "ID"    : 8
             },
             {
                 "Title" : "Mountain",
                 "Color" : "Red",
-                "ID"    : 4
+                "ID"    : 9
             },
 
             {
                 "Title" : "Forest",
                 "Color" : "Green",
-                "ID"    : 12
-            }
-        ],
-        "Creature" :
-        [
-            {
-                "Title" : "Saitama",
-                "CommonCost" : 5,
-                "ColorCost" : ["White", "Black", "Blue", "Red", "Green"],
-                "Color" : "Multicolor",
-                "Type" : "Simple Human",
-                "Force" : 99,
-                "Endurance" : 99,
-                "Capacity" : ["Flying"],
-                "ID"    : 13
-            },
-    
-    
-            {
-                "Title" : "Angel of Vitality",
-                "CommonCost" : 2,
-                "ColorCost" : ["White"],
-                "Color" : "White",
-                "Type" : "Angel",
-                "Force" : 2,
-                "Endurance" : 2,
-                "Capacity" : ["Flying"],
-                "ID"    : 14
-            },
-            {
-                "Title" : "Apostle of Puryfing Light",
-                "CommonCost" : 1,
-                "ColorCost" : ["White"],
-                "Color" : "White",
-                "Type" : "Human Cleric",
-                "Force" : 2,
-                "Endurance" : 1,
-                "Capacity" : [""],
-                "ID"    : 15
-            },
-            {
-                "Title" : "Battalion Foot Soldier",
-                "CommonCost" : 2,
-                "ColorCost" : ["White"],
-                "Color" : "White",
-                "Type" : "Human Soldier",
-                "Force" : 2,
-                "Endurance" : 2,
-                "Capacity" : [""],
-                "ID"    : 16
-            },
-            {
-                "Title" : "Bishop of Wings",
-                "CommonCost" : 0,
-                "ColorCost" : ["White", "White"],
-                "Color" : "White",
-                "Type" : "Human Cleric",
-                "Force" : 1,
-                "Endurance" : 4,
-                "Capacity" : [""],
-                "ID"    : 17
+                "ID"    : 10
             }
         ]
     }

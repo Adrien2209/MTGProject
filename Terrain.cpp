@@ -41,6 +41,7 @@ void Terrain::printCouleur() {
   cout << c << "\t " << "___________________________" << endl;
   cout << c << "\t |" << couleurDefaut << this->getNom() << this->SpaceName() << c << "| " << endl;
   cout << c << "\t |" << couleurDefaut << this->getLieu() << this->SpaceLieu() << c << "| " << endl;
+  cout << c << "\t |" << couleurDefaut << "Etat : " << this->getEtat() << "                 " << c << "| " << endl;
   cout << c << "\t |" <<"_________________________|" << endl;
   cout << couleurDefaut;
 
@@ -62,6 +63,18 @@ string Terrain::SpaceLieu() {
   string res = "                         ";
   int i = 0;
   for ( i = 0; i < (int)this->getLieu().length(); i++) {
+       res.pop_back();
+  }
+
+  return res;
+}
+
+
+string Terrain::SpaceEtat() {
+
+  string res = "                         ";
+  int i = 0;
+  for ( i = 0; i < 5; i++) {
        res.pop_back();
   }
 

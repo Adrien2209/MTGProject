@@ -97,32 +97,40 @@ void Joueur::MelangeBibli()
 
 void Joueur::printHand()
 {
+  int i = 1;
   for (auto *e : Hand)
   {
+    cout << " \t" << i++ << endl;
     e->printCouleur();
   }
 }
 
 void Joueur::printBibli()
 {
+  int i = 1;
   for (auto *e : Bibli)
   {
+    cout << " \t" << i++ << endl;
     e->printCouleur();
   }
 }
 
 void Joueur::printGraveYard()
 {
+  int i = 1;
   for (auto &e : GraveYard)
   {
+    cout << " \t" << i++ << endl;
     e->printCouleur();
   }
 }
 
 void Joueur::printBoard()
 {
+  int i = 1;
   for (auto &e : Board)
   {
+    cout << " \t" << i++ << endl;
     e->printCouleur();
   }
 }
@@ -375,8 +383,7 @@ vector<Carte *> Joueur::CreatureEnMain()
 
 void Joueur::PoserTerrain()
 {
-  string index;
-  int i = 0;
+  int index;
 
   cout << "----------------------------------------------------------------" << endl;
   cout << " Vous voulez donc poser un TERRAIN ! Très bien ! " << endl;
@@ -384,36 +391,64 @@ void Joueur::PoserTerrain()
 
   vector<Carte *> TerrainEnMain = this->TerrainEnMain();
 
-  for (Carte *c : TerrainEnMain)
-  {
-    c->printCouleur();
-  }
+  this->printHand();
 
   if ((int)TerrainEnMain.size() == 0)
   {
     cout << "----------------------------------------------------------------" << endl;
-    cout << "Vous n'avez PAS de Terrain en main ! PETIT CHENAPAM ! PIOU PIOU :o" << endl;
+    cout << "Vous n'avez PAS de Terrain en main ! PETIT CHENAPAM ! PIOU PIOU 😮" << endl;
     cout << "----------------------------------------------------------------" << endl;
+    APoserTerrain = false;
     return;
   }
   else
   {
-    cout << " Entrer le nom du TERRAIN " << endl;
+    cout << " Entrer le n° du TERRAIN " << endl;
     cin >> index;
-
-    while (i <= (int)Hand.size())
+    Carte *TerrainChoisie = Hand[index - 1];
+    while (1)
     {
-      if (Hand.at(i)->getNom() == index)
+      if (cin.fail())
       {
-        Board.push_back(Hand.at(i));
-        Hand.at(i)->setLieu("Board");
-        Hand.erase(Hand.begin() + i);
-        return;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << " Veuillez entrer une valeur valide " << endl;
+        cin >> index;
       }
-      i++;
+      if (!cin.fail())
+        break;
     }
-    return;
+
+    if (TerrainChoisie->getID() == 1 && index <= (int)Hand.size())
+    {
+      for (Carte *c : Hand)
+      {
+        if (c == TerrainChoisie)
+        {
+          cout << "[1]" << endl;
+          Board.push_back(Hand.at(index - 1));
+          Hand.at(index - 1)->setLieu("Board");
+          Hand.erase(Hand.begin() + (index - 1));
+          APoserTerrain = true;
+          cout << "----------------------------------------------------------------" << endl;
+          cout << " HAND APRES AVOIR POSER LE TERRAIN " << endl;
+          cout << "----------------------------------------------------------------" << endl;
+          this->printHand();
+          cout << "----------------------------------------------------------------" << endl;
+          cout << " BOARD APRES AVOIR POSER LE TERRAIN " << endl;
+          cout << "----------------------------------------------------------------" << endl;
+          this->printBoard();
+          cout << "----------------------------------------------------------------" << endl;
+          return;
+        }
+      }
+    }
+    else
+    {
+      cout << " Veuillez choisir un TERRAIN et un n° existant SVP " << endl;
+    }
   }
+  return;
 }
 // COUT DISPONIBLE SUR LE TERRAIN POUR VOIR SI LA CREATURE PEUT ETRE POSER
 map<string, int> Joueur::CoutDisponibleEnJeu()
@@ -473,8 +508,6 @@ int Joueur::CoutTotalDispoEnJeu()
   int res = 0;
   for (it = A.begin(); it != A.end(); ++it)
   {
-    cout << " Sur le Board vous avez : " << it->first << " au(x) nombre(s) de " << it->second << endl;
-    cout << "----------------------------------------------------------------" << endl;
     res += it->second;
   }
 
@@ -507,14 +540,13 @@ void Joueur::PhasePrincipale()
 
     int index;
     cin >> index;
+    index = this->VerifCin(index);
 
     if (index == 1)
     {
-      cout << " Le bool vaut " << APoserTerrain << endl;
       if (APoserTerrain == false)
       {
         this->PoserTerrain();
-        APoserTerrain = true;
       }
       else
       {
@@ -539,17 +571,59 @@ void Joueur::PhasePrincipale()
       this->NettoyageHand();
       continu = true;
     }
-
     else if (index == 4)
     {
       continu = false;
-    }
-    else
-    {
-      cout << " Veuiller entrer un nombre correct ! MERCI LES AMIS ! UhO" << endl;
-      continu = true;
+    } else {
+      cout << " Entrer un nombre compris entre 1 et 4 ! MERCI (':-|) " << endl;
     }
   }
+}
+
+void Joueur::VerifIndexHand(int i)
+{
+  cout << " [0]" << endl;
+  cout << i << endl;
+  // Evite les numero pas compris dans la hand
+  bool valide = true;
+  while (valide)
+  {
+    cout << " [1]" << endl;
+    if (i > (int)Hand.size())
+    {
+      cout << " [2]" << endl;
+      cout << "Valeur erronée ! Choisir une autre valeur" << endl;
+      cout << "Numero : ";
+      cin >> i;
+      this->VerifCin(i);
+    }
+    else
+ 
+    {
+       cout << " [3]" << endl;
+      valide = false;
+    }
+  }
+  cout << " [4]" << endl;
+
+  return;
+}
+
+int Joueur::VerifCin(int i)
+{
+  while (1)
+  {
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Veuillez entrer une valeur valide " << endl;
+      cin >> i;
+    }
+    if (!cin.fail())
+      break;
+  }
+  return i;
 }
 
 void Joueur::PoserCreature()
@@ -563,10 +637,7 @@ void Joueur::PoserCreature()
        << endl;
 
   // Afficher les cartes disponibles :
-  for (Carte *e : Hand)
-  {
-    e->printCouleur();
-  }
+  this->printHand();
 
   cout << "----------------------------------------------------------------" << endl;
   cout << " Veuillez renseignez le numero de la carte a poser ! " << endl;
@@ -576,6 +647,19 @@ void Joueur::PoserCreature()
   cout << "Numero : ";
   cin >> idCarteChoisie;
 
+  while (1)
+  {
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << "Veuillez entrer une valeur valide " << endl;
+      cin >> idCarteChoisie;
+    }
+    if (!cin.fail())
+      break;
+  }
+
   vector<Carte *> TerrainDispo = this->TerrainDispo();
   // Evite les numero pas compris dans la hand
   bool valide = true;
@@ -583,9 +667,21 @@ void Joueur::PoserCreature()
   {
     if (idCarteChoisie > (int)Hand.size())
     {
-      cout << " Valeur erronée ! Choisir une autre valeur" << endl;
-      cout << " Numero : ";
+      cout << "Valeur erronée ! Choisir une autre valeur" << endl;
+      cout << "Numero : ";
       cin >> idCarteChoisie;
+      while (1)
+      {
+        if (cin.fail())
+        {
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(), '\n');
+          cout << "Veuillez entrer une valeur valide " << endl;
+          cin >> idCarteChoisie;
+        }
+        if (!cin.fail())
+          break;
+      }
     }
     else
     {
@@ -615,10 +711,12 @@ void Joueur::PoserCreature()
       cout << " Votre carte peut etre poser ! (:)-<-< " << endl;
       cout << " Engagement des Terrains en cours..." << endl;
       cout << "----------------------------------------------------------------" << endl;
+
       this->EngageTerrainCouleur(CarteChoisie);
+
       this->EngageTerrainQuelconque(CarteChoisie);
 
-      //Check des capacites de l'attaquant
+      // Check des capacites de l'attaquant
       for (string capa : CarteChoisie->getCapacite())
       {
         if (capa == "Haste")
@@ -629,10 +727,8 @@ void Joueur::PoserCreature()
 
       Board.push_back(CarteChoisie);
       Hand.erase(Hand.begin() + id);
-      for (auto c : Hand)
-      {
-        c->printCouleur();
-      }
+
+      // this->printHand();
     }
     else
     {
@@ -671,6 +767,19 @@ void Joueur::PoserEnchantement()
   cout << "Numero : ";
   cin >> idCarteChoisie;
 
+  while (1)
+  {
+    if (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << " Veuillez entrer une valeur valide " << endl;
+      cin >> idCarteChoisie;
+    }
+    if (!cin.fail())
+      break;
+  }
+
   vector<Carte *> TerrainDispo = this->TerrainDispo();
   // Evite les numero pas compris dans la hand
   bool valide = true;
@@ -681,6 +790,7 @@ void Joueur::PoserEnchantement()
       cout << " Valeur erronée ! Choisir une autre valeur" << endl;
       cout << " Numero : ";
       cin >> idCarteChoisie;
+      //
     }
     else
     {
@@ -764,10 +874,11 @@ bool Joueur::VerifCout(Carte *CarteChoisie)
   int coutTotal = CarteChoisie->CoutTotale(); // Le cout total de la carte choisie
   int res = this->CoutTotalDispoEnJeu();      // Une map qui repertorie le cout total dispo en jeu.
 
-  for (it2 = Cout_CouleurCarteChoisie.begin(); it2 != Cout_CouleurCarteChoisie.end(); it2++)
+  /*for (it2 = Cout_CouleurCarteChoisie.begin(); it2 != Cout_CouleurCarteChoisie.end(); it2++)
   {
     cout << it2->first << " : " << it2->second << endl;
   }
+  */
   /*
     Pour placer la carte il faut :
       - Que le nb de carte terrain sur le board soit superieur au nb totale de carte terrain besoin
@@ -918,10 +1029,13 @@ void Joueur::EngageTerrainCouleur(Carte *CarteChoisie)
   cout << " Voici vos terrains disponibles " << endl;
   cout << "----------------------------------------------------------------" << endl;
   cout << "----------------------------------------------------------------" << endl;
+  int i = 1;
   for (Carte *c : TerrainsDispo)
   {
+    cout << " \t" << i++ << endl;
     c->printCouleur();
   }
+
   cout << "----------------------------------------------------------------" << endl;
   cout << " Le(s) terrain(s) suivant vont être engagee (;-o) : " << endl;
   cout << "----------------------------------------------------------------" << endl;
@@ -930,15 +1044,7 @@ void Joueur::EngageTerrainCouleur(Carte *CarteChoisie)
     c->printCouleur();
   }
   cout << endl;
-  /*
-    if (taille == 0)
-    {
-      cout << "----------------------------------------------------------------" << endl;
-      cout << "Vous avez engager tous vos terrains ! MERCI !" << endl;
-      cout << "----------------------------------------------------------------" << endl;
-    }
-    else
-    { */
+
   for (Carte *c : TerrainsDispo)
   {
     for (Carte *t : Terrains)
@@ -951,10 +1057,12 @@ void Joueur::EngageTerrainCouleur(Carte *CarteChoisie)
   }
   TerrainsDispo = this->MAJTerrainDispo();
   cout << "----------------------------------------------------------------" << endl;
-  cout << " Vos Terrains ont bien ete engager voici la liste de vos terrains encore disponible " << endl;
+  cout << " Vos terrains ont bien ete engager voici la liste de vos terrains encore disponibles " << endl;
   cout << "----------------------------------------------------------------" << endl;
+  int k = 1;
   for (auto c : TerrainsDispo)
   {
+    cout << " \t" << k++ << endl;
     c->printCouleur();
   }
   return;
@@ -962,7 +1070,7 @@ void Joueur::EngageTerrainCouleur(Carte *CarteChoisie)
 
 void Joueur::EngageTerrainQuelconque(Carte *CarteChoisie)
 {
-  string index;
+  int index;
   int nb = CarteChoisie->getCost();
   vector<Carte *> TerrainsDispo = this->TerrainDispo();
   int i = 0;
@@ -983,15 +1091,31 @@ void Joueur::EngageTerrainQuelconque(Carte *CarteChoisie)
     {
       Color couleurDefaut(FG_DEFAULT);
 
-      cout << " Entrer le nom du " << c1 << "Terrain" << couleurDefaut << "que vous voulez engager : ";
+      cout << " Entrer le n° du " << c1 << "Terrain" << couleurDefaut << " que vous voulez engager : ";
       cin >> index;
       cout << endl;
       cout << "----------------------------------------------------------------" << endl;
-      for (Carte *c : TerrainsDispo)
+
+      while (1)
       {
-        if (index == c->getNom())
+        if (cin.fail())
         {
-          c->setEngage();
+          cin.clear();
+          cin.ignore(numeric_limits<streamsize>::max(), '\n');
+          cout << " Veuillez entrer une valeur valide " << endl;
+          cin >> index;
+        }
+        if (!cin.fail())
+          break;
+      }
+
+      Carte *TerrainChoisie = this->TerrainDispo()[index - 1];
+
+      for (Carte *t : TerrainsDispo)
+      {
+        if (TerrainChoisie == t)
+        {
+          TerrainChoisie->setEngage();
         }
       }
 
@@ -999,8 +1123,10 @@ void Joueur::EngageTerrainQuelconque(Carte *CarteChoisie)
       cout << "----------------------------------------------------------------" << endl;
       cout << " Votre terrain a bien ete engager ! Voici les terrains qu'il vous reste " << endl;
       cout << "----------------------------------------------------------------" << endl;
+      int j = 1;
       for (auto c : TerrainsDispo)
       {
+        cout << " \t" << j++ << endl;
         c->printCouleur();
       }
       i++;
@@ -1041,11 +1167,24 @@ void Joueur::FinDeTour()
     this->printHand();
 
     cin >> id;
+    while (1)
+    {
+      if (cin.fail())
+      {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << " Veuillez entrer une valeur valide " << endl;
+        cin >> id;
+      }
+      if (!cin.fail())
+        break;
+    }
 
     if (id > (int)Hand.size())
     {
       cout << "Veuiller rentrer un numero valide " << endl;
       cin >> id;
+      // ICIIIII
     }
     else
     {

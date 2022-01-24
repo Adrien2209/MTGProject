@@ -17,6 +17,7 @@ class Terrain : public Carte {
     void printCouleur(); 
     string SpaceName(); 
     string SpaceLieu();
+    string SpaceEtat();
 };
 
 #endif

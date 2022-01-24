@@ -62,6 +62,7 @@ public:
     virtual void printCouleur();
     virtual string SpaceName();
     virtual string SpaceLieu();
+    virtual string SpaceEtat();
 
     friend bool operator==(Carte const &c, Carte const &c1);
 };
