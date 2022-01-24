@@ -58,12 +58,13 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
     {
         if (n % 2 == 0)
         {
-           /* if(premiertour == false){
+            if (premiertour == false)
+            {
                 J1.PhaseDePioche();
             }
             J1.PhaseDeDesengagement();
             J1.setPasPoserTerrain();
-            J1.PhasePrincipale();*/
+            J1.PhasePrincipale();
             PhaseDeCombatTest(J1, J2);
             J1.NettoyageHand();
             J2.NettoyageHand();
@@ -80,7 +81,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             J1.printHand();
             cout << "Main de : " << J2.getNom() << endl;
             J2.printHand();
-            //J1.PhaseSecondaire();
+            // J1.PhaseSecondaire();
             J1.FinDeTour();
 
             n += 1;
@@ -89,12 +90,13 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
 
         if (n % 2 == 1)
         {
-            /*if(premiertour == false){
+            if (premiertour == false)
+            {
                 J2.PhaseDePioche();
             }
             J2.PhaseDeDesengagement();
             J2.setPasPoserTerrain();
-            J2.PhasePrincipale();*/
+            J2.PhasePrincipale();
             PhaseDeCombatTest(J2, J1);
             J1.NettoyageHand();
             J2.NettoyageHand();
@@ -110,7 +112,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
             J1.printHand();
             cout << "Main de : " << J2.getNom() << endl;
             J2.printHand();
-            //J2.PhasePrincipale();
+            // J2.PhasePrincipale();
             J2.FinDeTour();
             n += 1;
             premiertour = false;
@@ -118,7 +120,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
     }
 }
 
-int Partie::TourSuivant()
+/*int Partie::TourSuivant()
 {
     return this->tour + 1;
 }
@@ -150,14 +152,14 @@ Joueur &Partie::JoueurCommence()
     }
     return J2;
 }
-
+*/
 void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 {
 
-    Color cJ = Color::quelleCouleur("Red");
+    Color cJ = Color::CouleurChoisie("Red");
 
     Color couleurDefaut(FG_DEFAULT);
-    Color c = Color::quelleCouleur("Cyan");
+    Color c = Color::CouleurChoisie("Cyan");
     cout << c << endl;
     cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
     cout << c << "       _,-,      " << endl;
@@ -210,7 +212,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
         while (safeword != "OK")
         { // Tant que l'utilisateur n'a pas ecrit ok, il rentre les cartes avec lesquelles il compte attaquer
             cin >> safeword;
-            safeword = VerifCin(safeword);
+
             if (safeword != "OK")
             {
                 choix_attaquant.push_back(stoi(safeword));
@@ -411,9 +413,12 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                         if (liste_Defense[stoi(safeword) - 1]->getEndurance() <= 0)
                         {
                             liste_Defense[stoi(safeword) - 1]->setLieu("GraveYard");
-                            if(DefDeathRattle == true){
-                                for(Carte* deadcard : J2.getGraveYard()){
-                                    if(deadcard->getType() == liste_Defense[stoi(safeword) - 1]->getType()){
+                            if (DefDeathRattle == true)
+                            {
+                                for (Carte *deadcard : J2.getGraveYard())
+                                {
+                                    if (deadcard->getType() == liste_Defense[stoi(safeword) - 1]->getType())
+                                    {
                                         deadcard->setEndurance(deadcard->getEndurance());
                                         deadcard->setLieu("Board");
                                     }
@@ -423,9 +428,12 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                         if (carte->getEndurance() <= 0)
                         {
                             carte->setLieu("GraveYard");
-                            if(ADeathRattle == true){
-                                for(Carte* deadcard : J1.getGraveYard()){
-                                    if(deadcard->getType() == carte->getType()){
+                            if (ADeathRattle == true)
+                            {
+                                for (Carte *deadcard : J1.getGraveYard())
+                                {
+                                    if (deadcard->getType() == carte->getType())
+                                    {
                                         deadcard->setEndurance(deadcard->getEndurance());
                                         deadcard->setLieu("Board");
                                     }
@@ -481,33 +489,14 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
     cout << cJ << "Fin de la phase d'attaque (*^▽^*)" << couleurDefaut << endl;
     cout << "------------------------------------------" << endl;
 }
-string Partie::VerifCin(string s)
-{
-  while (1)
-  {
-    if (cin.fail())
-    {
-      cin.clear();
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-      cout << "----------------------------------------------------------------" << endl;
-      cout << " Entrer des numeros valide avant le OK !" << endl;
-      cout << "----------------------------------------------------------------" << endl;
-      cout << "Numero : ";
-      cin >> s;
-    }
-    if (!cin.fail())
-      break;
-  }
-  return s;
-}
 void Partie::PhaseDeCombatTest(Joueur &J1, Joueur &J2)
 {
 
-    Color cJ = Color::quelleCouleur("Red");
+    Color cJ = Color::CouleurChoisie("Red");
 
     Color couleurDefaut(FG_DEFAULT);
-    Color c = Color::quelleCouleur("Magenta");
+    Color c = Color::CouleurChoisie("Magenta");
     cout << c << endl;
     cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
     cout << c << "       _,-,      " << endl;
@@ -760,9 +749,12 @@ void Partie::PhaseDeCombatTest(Joueur &J1, Joueur &J2)
                         if (liste_Defense[stoi(safeword) - 1]->getEndurance() <= 0)
                         {
                             liste_Defense[stoi(safeword) - 1]->setLieu("GraveYard");
-                            if(DefDeathRattle == true){
-                                for(Carte* deadcard : J2.getGraveYard()){
-                                    if(deadcard->getType() == liste_Defense[stoi(safeword) - 1]->getType()){
+                            if (DefDeathRattle == true)
+                            {
+                                for (Carte *deadcard : J2.getGraveYard())
+                                {
+                                    if (deadcard->getType() == liste_Defense[stoi(safeword) - 1]->getType())
+                                    {
                                         deadcard->setEndurance(deadcard->getEndurance());
                                         deadcard->setLieu("Board");
                                     }
@@ -772,9 +764,12 @@ void Partie::PhaseDeCombatTest(Joueur &J1, Joueur &J2)
                         if (carte->getEndurance() <= 0)
                         {
                             carte->setLieu("GraveYard");
-                            if(ADeathRattle == true){
-                                for(Carte* deadcard : J1.getGraveYard()){
-                                    if(deadcard->getType() == carte->getType()){
+                            if (ADeathRattle == true)
+                            {
+                                for (Carte *deadcard : J1.getGraveYard())
+                                {
+                                    if (deadcard->getType() == carte->getType())
+                                    {
                                         deadcard->setEndurance(deadcard->getEndurance());
                                         deadcard->setLieu("Board");
                                     }

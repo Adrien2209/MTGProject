@@ -28,15 +28,18 @@ class Partie {
     
     // méthodes
     void PartieDeMagic(Joueur J1, Joueur J2);
-    Joueur& JoueurCommence();
-    Joueur* ChangementDeJoueur();
-    //Joueur getJoueurCommence();
-    int TourSuivant();
+    
     void PhaseDeCombat(Joueur& J1, Joueur& J2);
     void PhaseDeCombatTest(Joueur& J1, Joueur& J2);
     bool FinDePartie();
-    string VerifCin(string s);
-
+    
+    
+    
+    //string VerifCin(string s);
+    //Joueur& JoueurCommence();
+    //Joueur* ChangementDeJoueur();
+    //Joueur getJoueurCommence();
+    //int TourSuivant();
 };
 
 #endif

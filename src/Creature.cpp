@@ -61,15 +61,6 @@ void Creature::minusEndurance(int i) { endurance -= i; }
 void Creature::setPeutAttaquer() { peutAttaquer = true; }
 // -- -- -- Les méthodes -- -- --
 
-void Creature::print()
-{
-  cout << this->getCouleur() << endl
-       << " ____________________________________ " << endl
-       << "| Name : " + this->getNom() + "  Cout : " + to_string(cost) + +"  Lieu : " + this->getLieu() + "|" << endl
-       << "|                                   |" << endl
-       << "| Attack : " + to_string(force) + " HP : " + to_string(endurance) + " |" << endl
-       << "|___________________________________|" << endl;
-}
 
 int Creature::CoutTotale()
 {
@@ -85,7 +76,7 @@ int Creature::CoutTotale()
 void Creature::printCouleur()
 {
   Color couleurDefaut(FG_DEFAULT);
-  Color c = Color::quelleCouleur(this->getCouleur());
+  Color c = Color::CouleurChoisie(this->getCouleur());
   int n = 0;
 
   cout << c << "\t " << "_____________________________________" << endl;

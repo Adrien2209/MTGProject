@@ -10,25 +10,25 @@ using namespace std;
 
 int main()
 {
-  srand(time(NULL));
-  // int tour = 0;
-  string name1;
-  string name2;
-  cout << "Lancement du jeu ... [||||||||||||||||||||||||||||||||||||||___________] 70 %" << endl;
-  cout << "                     [|||||||||||||||||||||||||||||||||||||||||||||||||] 100 %" << endl;
-  cout << " Bienvenue dans Magic : THE CLAQUÉ" << endl;
-  cout << " Veuillez choisir le nom du premier Joueur" << endl;
-  getline(cin, name1);
-  cout << " Veuillez choisir le nom du deuxieme Joueur" << endl;
-  getline(cin, name2);
+     srand(time(NULL));
+     // int tour = 0;
+     string name1;
+     string name2;
+     cout << "Lancement du jeu ... [||||||||||||||||||||||||||||||||||||||___________] 70 %" << endl;
+     cout << "                     [|||||||||||||||||||||||||||||||||||||||||||||||||] 100 %" << endl;
+     cout << " Bienvenue dans Magic : THE CLAQUÉ" << endl;
+     cout << " Veuillez choisir le nom du premier Joueur" << endl;
+     getline(cin, name1);
+     cout << " Veuillez choisir le nom du deuxieme Joueur" << endl;
+     getline(cin, name2);
 
-  // -- Creation Joueur --
-  Joueur J1 = Joueur(name1, 20, 1); // Joueur1
-  Joueur J2 = Joueur(name2, 20, 2); // Joueur2
-
-  // -- Creation de la partie --
-  Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
-  game.PartieDeMagic(J1, J2);
+     // -- Creation Joueur --
+     Joueur J1 = Joueur(name1, 20, 1); // Joueur1
+     Joueur J2 = Joueur(name2, 20, 2); // Joueur2
+     // -- Creation de la partie --
+     Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
+     game.PartieDeMagic(J1, J2);
+     return 0;
 }
 
 /* ------------------------------------------------- */
@@ -65,6 +65,7 @@ int main()
 /* TEST DE : PHASE DESENGAGEMENT + PHASE PRINCIPALE */
 /* ------------------------------------------------- */
 /*
+
 Deck dPrinciapal = Deck("DeckTest"); // Creation du Deck. OK.
     J1.setBibli(dPrinciapal);
     J1.MelangeBibli();
@@ -97,7 +98,7 @@ Deck dPrinciapal = Deck("DeckTest"); // Creation du Deck. OK.
     cout << "--------------------------------------------------------------------" << endl;
     J1.printBoard();
     J1.PhasePrincipale();
-    
+
 
     cout << "--------------------------------------------------------------------" << endl;
     cout << " HAND APRES PHASE PRINCIPALE " << endl;

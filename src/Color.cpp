@@ -1,23 +1,15 @@
-//
-// Created by Wassim on 18/01/2022.
-//
-
 #include "../Headers/Color.hpp"
 
-Color::Color(CouleurType t) : couleurTexte(t)
+Color::Color(CouleurType colorTexT)  { this->colorTexT = colorTexT; }
+
+Color::~Color(){}
+
+CouleurType Color::getColorTexT() const
 {
+    return colorTexT;
 }
 
-Color::~Color()
-{
-}
-
-CouleurType Color::getCouleurTexte() const
-{
-    return couleurTexte;
-}
-
-Color Color::quelleCouleur(std::string type)
+Color Color::CouleurChoisie(std::string type)
 {
     if (type == "Red")
         return ((FG_RED));
@@ -41,5 +33,5 @@ Color Color::quelleCouleur(std::string type)
 
 std::ostream &operator<<(std::ostream &flux, Color const &c)
 {
-    return flux << "\033[" << c.getCouleurTexte() << "m";
+    return flux << "\033[" << c.getColorTexT() << "m";
 }

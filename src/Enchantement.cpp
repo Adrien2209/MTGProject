@@ -34,21 +34,11 @@ int Enchantement::getEnduranceBonus(){return EnduranceBonus;}
 
 string Enchantement::getTarget(){return Target;}
 
-void Enchantement::print()
-{
-
-  cout << this->getCouleur() << endl
-       << " ____________________________________ " << endl
-       << "| Name : " + this->getNom() + "  Cout : 0 |" << endl
-       << "|                                   |" << endl
-       << "|                                   |" << endl
-       << "|___________________________________|" << endl;
-}
 
 void Enchantement::printCouleur()
 {
   Color couleurDefaut(FG_DEFAULT);
-  Color c = Color::quelleCouleur(this->getCouleur());
+  Color c = Color::CouleurChoisie(this->getCouleur());
 
   cout << c << "\t " << "_____________________________________" << endl;
   cout << c << "\t |" << couleurDefaut << this->getNom() << this->SpaceName() << c << "| " << endl;

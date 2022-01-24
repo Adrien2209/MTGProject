@@ -772,6 +772,6 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
 
 void Deck::printDeck() {
     for ( auto e : this->deck) {
-        e->print();
+        e->printCouleur();
     }
 }

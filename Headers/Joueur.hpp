@@ -19,9 +19,9 @@ private:
     bool mort = false;
     bool APoserTerrain = false;
     int ID;
-    Color c1 = Color::quelleCouleur("Red");
-    Color c2 = Color::quelleCouleur("Green");
-    Color c3 = Color::quelleCouleur("Blue");
+    Color c1 = Color::CouleurChoisie("Red");
+    Color c2 = Color::CouleurChoisie("Green");
+    Color c3 = Color::CouleurChoisie("Blue");
 
 public:
     // -- -- -- -- CONSTRUCTEUR -- -- -- --
@@ -32,7 +32,7 @@ public:
     // -- -- -- -- DESTRUCTEUR -- -- -- --
     ~Joueur(){};
 
-    // -- -- -- -- Les gets -- -- -- --
+    // ------------------------------ LES GETS ------------------------------
     int getHP();
     int getId();
     string getNom();
@@ -42,7 +42,7 @@ public:
     vector<Carte *> getGraveYard();
     vector<Carte *> getBoard();
 
-    //-- -- -- -- Les sets -- -- -- --
+    // ------------------------------ LES SETS ------------------------------
     void setNom(string n);
     void setHP(int s);
     void setBibli(Deck v);
@@ -51,49 +51,59 @@ public:
     void setPasPoserTerrain();
     vector<Carte *> setBoard(vector<Carte *> c);
 
-    //-- -- -- -- methodes -- -- -- --
+    // ------------------------------ LES PRINTS ------------------------------
+    // Print des cartes.
     void printBibli();
     void printHand();
     void printGraveYard();
     void printBoard();
 
+    // ------------------------------ LES ADDS ------------------------------
+    // Ajout de cartes.
     void addToBibli(Carte *carte);
     void addToHand(Carte *carte);
     void addToGraveYard(Carte *carte);
     void addToBoard(Carte *carte);
 
+    // ------------------------------ LES NETYOYAGES ------------------------------
+    // Methodes qui permettent de replacer les cartes au bon endroit grace a l'attribut lieu.
     void NettoyageBibli();
     void NettoyageHand();
     void NettoyageGraveYard();
     void NettoyageBoard();
 
-    void RecevoirDegat(int nbDegat);
-    bool VerifMort();
-    void MelangeBibli();
+    // ------------------------------ METHODE UTILES  ------------------------------
+    vector<Carte *> TerrainEnMain();  // Renvoie les terrains qui sont dans la main.
+    vector<Carte *> CreatureEnMain(); // Renvoie les creatures qui sont dans la main.
+    int VerifCin(int i);              // Verifie si l'entrer dans le terminal respecte bien les regles. Evite les erreurs
+    void RecevoirDegat(int nbDegat);  // Fait en sorte que le joueur recoit les degats.
+    bool VerifMort();                 // Verifie les HP du joueurs
+    void MelangeBibli();              // Melange la bibli du joueur.
     int ParcourirBoard(vector<Carte *> v);
 
-    //-- -- -- -- Phases -- -- -- --
-    void PoserCreature();
+    // ------------------------------ POSER CARTES ------------------------------
+    void PoserCreature();     // Methode qui permet de poser les creatures selon le cout.
+    void PoserTerrain();      // Methode qui permet de poser un terrain par tour.
+    void PoserEnchantement(); // Methode qui permet de poser les cartes d'enchantements selon le cout.
+
+    // ------------------------------ PHASES ------------------------------
     void PhaseDePioche();
     int PhaseDeDesengagement();
-    int VerifCin(int i);
     void PhasePrincipale();
     void PhaseSecondaire();
     void FinDeTour();
-    map<string, int> CoutDisponibleEnJeu();
-    int CoutTotalDispoEnJeu();
-    void PoserTerrain();
-    void PoserEnchantement();
-    vector<Carte *> TerrainDispo();
-    vector<Carte *> MAJTerrainDispo();
-    vector<Carte *> TerrainEnMain();
-    vector<Carte *> CreatureEnMain();
-    bool VerifCout(Carte *CarteChoisie);
-    void EngageTerrainCouleur(Carte *CarteChoisie);
-    void EngageTerrainQuelconque(Carte *CarteChoisie);
-    vector<string> TerrainAEngager(Carte *CarteChoisie);
-    vector<Carte *> TerrainCouleurAEngage(Carte *c);
 
+    // ------------------------------ GESTION DE COUT  ------------------------------
+    bool VerifCout(Carte *CarteChoisie);
+    map<string, int> CoutDisponibleEnJeu(); // renvoie une map qui pour chaque couleur donne le nb de terrains dispo.
+    int CoutTotalDispoEnJeu();              // renvoie le nb total de terrain dispo en jeu.
+    vector<Carte *> TerrainDispo();         // Renvoie les terrains sur le board qui ne sont pas engager.
+    vector<Carte *> MAJTerrainDispo();      // Met a jours les terrains qui sont encores disponibles.
+
+    // ------------------------------ ENGAGEMENT TERRAINS  ------------------------------
+    vector<string> TerrainAEngager(Carte *CarteChoisie); // Renvoie les couleurs a engager pour une carte donner
+    vector<Carte *> TerrainCouleurAEngage(Carte *c);     // Renvoie les terrains a engager pour respecter le cout de couleur d'une carte donner
+    void EngageTerrainCouleur(Carte *CarteChoisie);      // Methode pour engager automatiquement les terrains de couleurs dont la carte a besoin
+    void EngageTerrainQuelconque(Carte *CarteChoisie);   // Methode pour engager les terrains d'une carte donner, pour remplir le commonCost
 };
 #endif
-

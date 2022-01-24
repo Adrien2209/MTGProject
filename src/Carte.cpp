@@ -20,129 +20,68 @@ string Carte::getLieu() { return lieu; }
 
 // -- -- -- -- Virtual des GET -- -- -- --
 
-int Carte::getID()
-{
-    cout << "Methode getID() de Carte " << endl;
-    return 0;
-}
+int Carte::getID() { return 0; }
 
-int Carte::getForce()
-{
-    cout << "Methode getForce() de Carte " << endl;
-    return 0;
-}
+int Carte::getForce() { return 0; }
 
-int Carte::getEndurance()
-{
-    cout << "Methode getEndurance() de Carte " << endl;
-    return 0;
-}
+int Carte::getEndurance() { return 0; }
 
-int Carte::getBaseEndurance()
-{
-    cout << "Methode getBaseEndurance() de Carte " << endl;
-    return 0;
-}
+int Carte::getBaseEndurance() { return 0; }
 
 // -- -- -- -- Virtual des SET -- -- -- --
 
-void Carte::setForce(int i)
-{
-    cout << "Methode setForce() de Carte " << endl;
-}
-
-void Carte::setEndurance(int i)
-{
-    cout << "Methode setEndurance() de Carte " << endl;
-}
-
-void Carte::setBaseEndurance(int i)
-{
-    cout << "Methode setBaseEndurance() de Carte " << endl;
-}
-
-void Carte::minusEndurance(int i)
-{
-    cout << "Methode minusEndurance() de Carte " << endl;
-}
+void Carte::setForce(int i) {}
+void Carte::setEndurance(int i) {}
+void Carte::setBaseEndurance(int i) {}
+void Carte::minusEndurance(int i) {}
 
 // -- -- -- --
 
 int Carte::getNumero() { return numero; }
 bool Carte::getEtat() { return etat; }
-int Carte::getCost()
-{
-    cout << "Methode getCost() de Carte " << endl;
-    return 0;
-}
-map<string, int> Carte::getCout_Couleur()
-{
-    return {};
-}
+int Carte::getCost() { return 0; }
+map<string, int> Carte::getCout_Couleur() { return {}; }
+vector<string> Carte::getCapacite() { return {}; }
 
-vector<string> Carte::getCapacite()
-{
-    cout << "Methode getCapacite() de Carte " << endl;
-    return {};
-} 
-
-
-// Les sets
+// ------------------------------ LES SETS ------------------------------
 void Carte::setLieu(string l) { lieu = l; }
 void Carte::setEngage() { etat = true; }
 void Carte::setDesengage() { etat = false; }
-void Carte::setPeutAttaquer() { return;}
-int Carte::getForceBonus(){ return 0;}
-int Carte::getEnduranceBonus(){ return 0;}
-bool Carte::getPeutAttaquer(){return false;}
-string Carte::getTarget(){ return "";}
-string Carte::getType(){ return "";}
+void Carte::setPeutAttaquer() { return; }
+int Carte::getForceBonus() { return 0; }
+int Carte::getEnduranceBonus() { return 0; }
+bool Carte::getPeutAttaquer() { return false; }
+string Carte::getTarget() { return ""; }
+string Carte::getType() { return ""; }
 
-// Les méthodes
+// ------------------------------ LES METHODES ------------------------------
 
-void Carte::Death()
+void Carte::Death() { lieu = "GraveYard"; }
+
+void Carte::printCouleur() { return; }
+
+bool operator==(Carte const &c, Carte const &c1) { return c.numero == c1.numero; }
+
+string Carte::SpaceName()
 {
-    lieu = "GraveYard";
+    string res = "                         ";
+    int i = 0;
+
+    for (i = 0; i < (int)this->getNom().length(); i++)
+    {
+        res.pop_back();
+    }
+    return res;
 }
 
-void Carte::print()
+string Carte::SpaceLieu()
 {
-    cout
-        << "                       " + this->getCouleur() << endl
-        << " ____________________________________ " << endl
-        << "| Name : " + this->getNom() + "                        |" << endl
-        << "|                                   |" << endl
-        << "|___________________________________|" << endl;
-}
+    string res = "                         ";
+    int i = 0;
+    for (i = 0; i < (int)this->getLieu().length(); i++)
+    {
+        res.pop_back();
+    }
 
-void Carte::printCouleur()
-{
-  return;
-}
-
-bool operator==(Carte const &c, Carte const &c1)
-{
-    return c.numero == c1.numero;
-}
-
-string Carte::SpaceName() {
-
-  string res = "                         ";
-  int i = 0;
-
-  for ( i = 0; i < (int)this->getNom().length(); i++) {
-      res.pop_back();
-  }
-  return res;
-}
-
-string Carte::SpaceLieu() {
-
-  string res = "                         ";
-  int i = 0;
-  for ( i = 0; i < (int)this->getLieu().length(); i++) {
-       res.pop_back();
-  }
-
-  return res;
+    return res;
 }

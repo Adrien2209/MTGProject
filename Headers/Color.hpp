@@ -1,26 +1,23 @@
-//
-// Created by Wassim on 18/01/2022
-//
-
 #ifndef MAGIC_COLOR_HPP
 #define MAGIC_COLOR_HPP
 
 #include <iostream>
 #include "CouleurType.hpp"
 
+class Color
+{
 
-class Color {
-
-public :
+public:
     Color(CouleurType t);
     ~Color();
 
-    CouleurType getCouleurTexte() const;
-    static Color quelleCouleur(std::string type);
+    CouleurType getColorTexT() const;
+    static Color CouleurChoisie(std::string type);
+
 private:
-     CouleurType couleurTexte;
+    CouleurType colorTexT;
 };
 
-std::ostream& operator << (std::ostream& flux, Color const& c);
+std::ostream &operator<<(std::ostream &flux, Color const &c);
 
-#endif //MAGIC_COLOR_H
+#endif 

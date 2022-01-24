@@ -20,7 +20,7 @@ private:
 
 public:
     Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string, int> cout_couleur, int cost, int force, int endurance, bool peutAttaquer, string type, vector<string> cout_couleur_str); // Constructeur à faire
-    ~Creature(){};// Destructeur
+    ~Creature(){};                                                                                                                                                                                                                         // Destructeur
 
     // les gets
     int getCost();
@@ -40,16 +40,19 @@ public:
     void setBaseEndurance(int i);
     void minusEndurance(int i);
     void setPeutAttaquer();
-    // les methodes
-    void print();
+
+    // Les prints
     void printCouleur();
-    int CoutTotale();
+    string printCoutCouleur();
+
+    
+    // Gere les espaces pour afficher les cartes.
     string SpaceName();
     string SpaceLieu();
     string SpaceCapa(int n);
     string SpaceType();
-    string printCoutCouleur();
 
+    int CoutTotale();
 };
 
 #endif
