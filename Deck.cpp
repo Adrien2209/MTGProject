@@ -122,7 +122,7 @@ void Deck::CreateDeck(string name){
                 }
             }
         }
-        
+
 
         //Cartes bleues
         while(choixcouleur == "Blue" && Menu == false && i < 30){
@@ -541,7 +541,7 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
     int i = 1;
 
     // Ajout des creatures dans le deck
-    const auto &creature = deck["DeckTest"]["Creature"];
+    const auto &creature = deck[nomDeck]["Creature"];
     for (const auto &liste_creature : creature.items())
     {
         string title = liste_creature.value()["Title"];
@@ -592,7 +592,7 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
     }
 
     // Ajout des terrains dans le deck
-    const auto &terrain = deck["DeckTest"]["Terrain"];
+    const auto &terrain = deck[nomDeck]["Terrain"];
     for (const auto &liste_terrain : terrain.items())
     {
         string title = liste_terrain.value()["Title"];
@@ -605,7 +605,7 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
     }
 
     // Ajout des enchantements dans le deck
-    const auto &enchantement = deck["DeckTest"]["Enchantement"];
+    const auto &enchantement = deck[nomDeck]["Enchantement"];
     for (const auto &liste_enchantement : enchantement.items())
     {
         string title = liste_enchantement.value()["Title"];
