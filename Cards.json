@@ -1,5 +1,5 @@
 {
-    "Card": {
+    "DeckTest": {
         "Terrain" : [
         {
             "Title" : "Plains",
@@ -21,7 +21,7 @@
             "Title" : "Forest",
             "Color" : "Green"
         }
-        ],
+    ],
         "Creature" : [
         {
             "Title" : "Saitama",
@@ -470,6 +470,62 @@
             "Endurance" : 2,
             "Capacity" : ["Flying", "Haste"]
         }
+    ],
+        "Enchantement" : [
+            {
+                "Title" : "Never Walk Alone",
+                "CommonCost" : 2,
+                "ColorCost" : ["White", "Red"],
+                "Color" : "White",
+                "Target" : "All",
+                "ForceBonus" : 2,
+                "EnduranceBonus" : 2
+            },
+            {
+                "Title" : "Don't f**k with da jelly",
+                "CommonCost" : 2,
+                "ColorCost" : ["Blue", "White", "Red"],
+                "Color" : "Blue",
+                "Target" : "Elemental",
+                "ForceBonus" : 4,
+                "EnduranceBonus" : 4
+            },
+            {
+                "Title" : "Took an arrow in the knee",
+                "CommonCost" : 1,
+                "ColorCost" : ["Black", "Black"],
+                "Color" : "Black",
+                "Target" : "All",
+                "ForceBonus" : 4,
+                "EnduranceBonus" : -1
+            },
+            {
+                "Title" : "You shall not pass",
+                "CommonCost" : 0,
+                "ColorCost" : ["White", "White"],
+                "Color" : "Red",
+                "Target" : "All",
+                "ForceBonus" : 0,
+                "EnduranceBonus" : 6
+            },
+            {
+                "Title" : "They're taking the Hobbits to Isengard",
+                "CommonCost" : 2,
+                "ColorCost" : ["Green", "Green"],
+                "Color" : "Green",
+                "Target" : "Elf",
+                "ForceBonus" : 6,
+                "EnduranceBonus" : 0
+            },
+            {
+                "Title" : "OPCard",
+                "CommonCost" : 4,
+                "ColorCost" : ["White", "Red", "Black", "Green", "Blue"],
+                "Color" : "Multicolor",
+                "Target" : "All",
+                "ForceBonus" : 10,
+                "EnduranceBonus" : 10
+            }
         ]
     }
 }

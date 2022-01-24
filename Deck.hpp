@@ -28,6 +28,7 @@ class Deck {
     vector<Carte*> getDeck();
     void printDeck();
     vector<Carte*> getDeckFromFile(string nomDeck);
+    void CreateDeck(string name);
 };
 
 #endif

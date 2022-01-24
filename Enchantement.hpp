@@ -11,10 +11,11 @@ class Enchantement : public Carte {
     string Target;
 
     map<string,int> cout_couleur;
+    vector<string> cout_couleur_str;
     int cost;
 
     public :
-    Enchantement(string nom, string couleur, string lieu, bool etat, int numero, map<string,int> cout_couleur, int cost, int ForceBonus, int EnduranceBonus, string Target); // Constructeur
+    Enchantement(string nom, string couleur, string lieu, bool etat, int numero, map<string,int> cout_couleur, int cost, int ForceBonus, int EnduranceBonus, string Target, vector<string> cout_couleur_str); // Constructeur
     ~Enchantement() {}; // Destructeur
     void print();
 
@@ -26,6 +27,11 @@ class Enchantement : public Carte {
     int getForceBonus();
     int getEnduranceBonus();
     string getTarget();
+    void printCouleur();
+    string printCoutCouleur();
+    string SpaceName();
+    string SpaceLieu();
+    string SpaceTarget();
 };
 
 #endif
