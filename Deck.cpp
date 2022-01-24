@@ -57,15 +57,20 @@ void Deck::CreateDeck(string name){
             }
             
             while(choixtype == "Terrain" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "White" && carte->getID() == 1){
                         carte->printCouleur();
+                        compteur +=1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Terrain"].push_back(TriCardList["Cards"]["White"]["Terrain"][stoi(choixCarte) - 1]);
@@ -76,15 +81,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Creature" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "White" && carte->getID() == 2){
                         carte->printCouleur();
+                        compteur +=1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Creature"].push_back(TriCardList["Cards"]["White"]["Creature"][stoi(choixCarte) - 1]);
@@ -95,15 +105,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Enchantement" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "White" && carte->getID() == 3){
                         carte->printCouleur();
+                        compteur +=1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Enchantement"].push_back(TriCardList["Cards"]["White"]["Enchantement"][stoi(choixCarte) - 1]);
@@ -121,6 +136,10 @@ void Deck::CreateDeck(string name){
                     Menu = true;
                 }
             }
+            if(choixtype != "Creature" && choixtype != "Terrain" && choixtype != "Enchantement" && choixtype != "Back" ){
+            cout << "Je n'ai pas bien compris, veuillez réessayer" << endl;
+            choixtype = "Back";
+            }
         }
 
 
@@ -133,15 +152,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Terrain" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Blue" && carte->getID() == 1){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Terrain"].push_back(TriCardList["Cards"]["Blue"]["Terrain"][stoi(choixCarte) - 1]);
@@ -152,15 +176,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Creature" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Blue" && carte->getID() == 2){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Creature"].push_back(TriCardList["Cards"]["Blue"]["Creature"][stoi(choixCarte) - 1]);
@@ -171,15 +200,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Enchantement" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Blue" && carte->getID() == 3){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Enchantement"].push_back(TriCardList["Cards"]["Blue"]["Enchantement"][stoi(choixCarte) - 1]);
@@ -198,6 +232,10 @@ void Deck::CreateDeck(string name){
                     Menu = true;
                 }
             }
+            if(choixtype != "Creature" && choixtype != "Terrain" && choixtype != "Enchantement" && choixtype != "Back" ){
+            cout << "Je n'ai pas bien compris, veuillez réessayer" << endl;
+            choixtype = "Back";
+            }
         }
 
         //Cartes noires
@@ -209,15 +247,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Terrain" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Black" && carte->getID() == 1){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Terrain"].push_back(TriCardList["Cards"]["Black"]["Terrain"][stoi(choixCarte) - 1]);
@@ -228,15 +271,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Creature" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Black" && carte->getID() == 2){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Creature"].push_back(TriCardList["Cards"]["Black"]["Creature"][stoi(choixCarte) - 1]);
@@ -247,15 +295,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Enchantement" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Black" && carte->getID() == 3){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Enchantement"].push_back(TriCardList["Cards"]["Black"]["Enchantement"][stoi(choixCarte) - 1]);
@@ -274,6 +327,10 @@ void Deck::CreateDeck(string name){
                     Menu = true;
                 }
             }
+            if(choixtype != "Creature" && choixtype != "Terrain" && choixtype != "Enchantement" && choixtype != "Back" ){
+            cout << "Je n'ai pas bien compris, veuillez réessayer" << endl;
+            choixtype = "Back";
+            }
         }
 
         //Cartes Rouge
@@ -285,15 +342,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Terrain" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Red" && carte->getID() == 1){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Terrain"].push_back(TriCardList["Cards"]["Red"]["Terrain"][stoi(choixCarte) - 1]);
@@ -304,15 +366,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Creature" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Red" && carte->getID() == 2){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Creature"].push_back(TriCardList["Cards"]["Red"]["Creature"][stoi(choixCarte) - 1]);
@@ -323,15 +390,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Enchantement" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Red" && carte->getID() == 3){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Enchantement"].push_back(TriCardList["Cards"]["Red"]["Enchantement"][stoi(choixCarte) - 1]);
@@ -350,6 +422,10 @@ void Deck::CreateDeck(string name){
                     Menu = true;
                 }
             }
+            if(choixtype != "Creature" && choixtype != "Terrain" && choixtype != "Enchantement" && choixtype != "Back" ){
+            cout << "Je n'ai pas bien compris, veuillez réessayer" << endl;
+            choixtype = "Back";
+            }
         }
 
         //Cartes Vertes
@@ -361,15 +437,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Terrain" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Green" && carte->getID() == 1){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Terrain"].push_back(TriCardList["Cards"]["Green"]["Terrain"][stoi(choixCarte) - 1]);
@@ -380,15 +461,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Creature" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Green" && carte->getID() == 2){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Creature"].push_back(TriCardList["Cards"]["Green"]["Creature"][stoi(choixCarte) - 1]);
@@ -399,15 +485,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Enchantement" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Green" && carte->getID() == 3){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Enchantement"].push_back(TriCardList["Cards"]["Green"]["Enchantement"][stoi(choixCarte) - 1]);
@@ -426,6 +517,10 @@ void Deck::CreateDeck(string name){
                     Menu = true;
                 }
             }
+            if(choixtype != "Creature" && choixtype != "Terrain" && choixtype != "Enchantement" && choixtype != "Back" ){
+            cout << "Je n'ai pas bien compris, veuillez réessayer" << endl;
+            choixtype = "Back";
+            }
         }
 
         //Cartes Multicolor
@@ -437,15 +532,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Terrain" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Multicolor" && carte->getID() == 1){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Terrain"].push_back(TriCardList["Cards"]["Multicolor"]["Terrain"][stoi(choixCarte) - 1]);
@@ -456,15 +556,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Creature" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Multicolor" && carte->getID() == 2){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Creature"].push_back(TriCardList["Cards"]["Multicolor"]["Creature"][stoi(choixCarte) - 1]);
@@ -475,15 +580,20 @@ void Deck::CreateDeck(string name){
             }
 
             while(choixtype == "Enchantement" && Menu == false && i < 30){
+                int compteur = 0;
                 for(Carte* carte : CardList){
                     if(carte->getCouleur() == "Multicolor" && carte->getID() == 3){
                         carte->printCouleur();
+                        compteur += 1;
                     }
                 }
                 cout << "Quelle carte voulez vous ? Tapez son numero. Tapez Back pour revenir en arriere" << endl;
                 cin >> choixCarte;
                 if(choixCarte == "Back"){
                     choixtype = "Back";
+                }
+                if(stoi(choixCarte) > compteur || stoi(choixCarte) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
                 }
                 else {
                     Deck[name]["Enchantement"].push_back(TriCardList["Cards"]["Multicolor"]["Enchantement"][stoi(choixCarte) - 1]);
@@ -501,6 +611,10 @@ void Deck::CreateDeck(string name){
                 if(choixtype == "Back"){
                     Menu = true;
                 }
+            }
+            if(choixtype != "Creature" && choixtype != "Terrain" && choixtype != "Enchantement" && choixtype != "Back" ){
+            cout << "Je n'ai pas bien compris, veuillez réessayer" << endl;
+            choixtype = "Back";
             }
         }
 
