@@ -15,6 +15,7 @@ public :
     void static printFinDeTour();
     void static printCombat();
     void static printVictoire();
+    void static printSecondaire();
 };
 
 #endif

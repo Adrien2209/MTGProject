@@ -265,7 +265,7 @@ int Joueur::VerifCin(int i)
 
 bool Joueur::VerifMort()
 {
-  if (this->getHP() <= 0 )
+  if (this->getHP() <= 0)
   {
     cout << "Le joueur " << this->getNom() << " est mort ! C'est CIAO !!" << endl;
     mort = true;
@@ -637,7 +637,7 @@ void Joueur::PhaseDePioche()
 
 int Joueur::PhaseDeDesengagement()
 {
- 
+
   if (this->getBoard().empty())
   {
     cout << "--------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
@@ -1101,8 +1101,22 @@ void Joueur::EngageTerrainQuelconque(Carte *CarteChoisie)
 
       cout << endl;
       cout << "----------------------------------------------------------------" << endl;
-
-      Carte *TerrainChoisie = this->TerrainDispo()[index - 1]; // On recup la carte choisie.
+      bool valide = true;
+      while (valide)
+      {
+        if (index > (int)TerrainsDispo.size())
+        {
+          cout << "Valeur erronée ! Choisir une autre valeur" << endl;
+          cout << "Numero : ";
+          cin >> index;
+          index = this->VerifCin(index);
+        }
+        else
+        {
+          valide = false;
+        }
+      }
+      Carte *TerrainChoisie = TerrainsDispo[index - 1]; // On recup la carte choisie.
 
       for (Carte *t : TerrainsDispo) // On parcours les terrains dispo.
       {
