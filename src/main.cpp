@@ -28,7 +28,7 @@ int main()
 
      // -- Creation Joueur --
      Joueur J1 = Joueur(name1, 20, 1); // Joueur1
-     Joueur J2 = Joueur(name2, 20, 2); // Joueur2
+     Joueur J2 = Joueur(name2, 0, 2); // Joueur2
      // -- Creation de la partie --
      Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
      game.PartieDeMagic(J1, J2);

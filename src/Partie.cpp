@@ -61,112 +61,125 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
 
         if (n % 2 == 0)
         {
-            cout << " ------------------------------------------------------ " << endl;
-            cout << J1.getNom() << " : " << J1.VerifMort() << endl;
-            cout << " ------------------------------------------------------ " << endl;
-            cout << J1.getNom() << " : " << J1.getMort() << endl;
-            cout << " ------------------------------------------------------ " << endl;
 
-            if (premiertour == false)
+            if (J1.VerifMort() == true)
+
             {
-                p.printPioche();
-                J1.PhaseDePioche();
+                cout << " HP de " << J1.getNom() << " = " << J1.getHP() << endl;
+                p.printVictoire();
+                cout << " Bravo à " << J2.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
+                return;
             }
+            else
+            {
+                if (premiertour == false)
+                {
+                    p.printPioche();
+                    J1.PhaseDePioche();
+                    if (J1.getMort() == true)
+                    {
+                        cout << J1.getNom() << " : " << J1.getMort() << endl;
+                        p.printVictoire();
+                        cout << " Bravo à " << J2.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
+                        return;
+                    }
+                }
 
-            /*            p.printDesengagement();
-                        J1.PhaseDeDesengagement();
-                        J1.setPasPoserTerrain();
+                /*            p.printDesengagement();
+                            J1.PhaseDeDesengagement();
+                            J1.setPasPoserTerrain();
 
-                        p.printPrincipale();
-                        J1.PhasePrincipale();
+                            p.printPrincipale();
+                            J1.PhasePrincipale();
 
-                        p.printCombat();
-                        PhaseDeCombatTest(J1, J2);
-                        J1.NettoyageHand();
-                        J2.NettoyageHand();
-                        J1.NettoyageGraveYard();
-                        J2.NettoyageGraveYard();
-                        cout << "Cimetiere de : " << J1.getNom() << endl;
-                        J1.printGraveYard();
-                        cout << "Cimetiere de : " << J2.getNom() << endl;
-                        J2.printGraveYard();
-                        cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
-                        cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
+                            p.printCombat();
+                            PhaseDeCombatTest(J1, J2);
+                            J1.NettoyageHand();
+                            J2.NettoyageHand();
+                            J1.NettoyageGraveYard();
+                            J2.NettoyageGraveYard();
+                            cout << "Cimetiere de : " << J1.getNom() << endl;
+                            J1.printGraveYard();
+                            cout << "Cimetiere de : " << J2.getNom() << endl;
+                            J2.printGraveYard();
+                            cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
+                            cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
 
-                        cout << "Main de : " << J1.getNom() << endl;
-                        J1.printHand();
-                        cout << "Main de : " << J2.getNom() << endl;
-                        J2.printHand();
+                            cout << "Main de : " << J1.getNom() << endl;
+                            J1.printHand();
+                            cout << "Main de : " << J2.getNom() << endl;
+                            J2.printHand();
 
-                        p.printPrincipale();
-                        J1.PhaseSecondaire();
+                            p.printPrincipale();
+                            J1.PhaseSecondaire();
 
-                        p.printFinDeTour();
-                        J1.FinDeTour();
-            */
-            n += 1;
-            premiertour = false;
+                            p.printFinDeTour();
+                            J1.FinDeTour();*/
+                n += 1;
+                premiertour = false;
+            }
         }
 
         if (n % 2 == 1)
         {
-           
-            cout << " ------------------------------------------------------ " << endl;
-            cout << J2.getNom() << " : " << J1.VerifMort() << endl;
-            cout << " ------------------------------------------------------ " << endl;
-            cout << J2.getNom() << " : " << J1.getMort() << endl;
-            cout << " ------------------------------------------------------ " << endl;
 
-            if (premiertour == false)
+            if (J2.VerifMort() == true)
+
             {
-                p.printPioche();
-                J2.PhaseDePioche();
+                cout << " HP de " << J2.getNom() << " = " << J2.getHP() << endl;
+                p.printVictoire();
+                cout << " Bravo à " << J1.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
+                return;
             }
-            /*
-                        J2.PhaseDeDesengagement();
-                        J2.setPasPoserTerrain();
+            else
+            {
+                if (premiertour == false)
+                {
+                    p.printPioche();
+                    J2.PhaseDePioche();
+                    if (J2.getMort() == true)
+                    {
+                        cout << J2.getNom() << " : " << J2.getMort() << endl;
+                        p.printVictoire();
+                        cout << " Bravo à " << J1.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
+                        return;
+                    }
+                }
+                /*
+                            J2.PhaseDeDesengagement();
+                            J2.setPasPoserTerrain();
 
-                        p.printPrincipale();
-                        J2.PhasePrincipale();
+                            p.printPrincipale();
+                            J2.PhasePrincipale();
 
-                        p.printCombat();
-                        PhaseDeCombatTest(J2, J1);
-                        J1.NettoyageHand();
-                        J2.NettoyageHand();
-                        cout << "Cimetiere de : " << J1.getNom() << endl;
-                        J1.printGraveYard();
-                        cout << "Cimetiere de : " << J2.getNom() << endl;
-                        J2.printGraveYard();
+                            p.printCombat();
+                            PhaseDeCombatTest(J2, J1);
+                            J1.NettoyageHand();
+                            J2.NettoyageHand();
+                            cout << "Cimetiere de : " << J1.getNom() << endl;
+                            J1.printGraveYard();
+                            cout << "Cimetiere de : " << J2.getNom() << endl;
+                            J2.printGraveYard();
 
-                        cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
-                        cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
+                            cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
+                            cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
 
-                        cout << "Main de : " << J1.getNom() << endl;
-                        J1.printHand();
-                        cout << "Main de : " << J2.getNom() << endl;
-                        J2.printHand();
+                            cout << "Main de : " << J1.getNom() << endl;
+                            J1.printHand();
+                            cout << "Main de : " << J2.getNom() << endl;
+                            J2.printHand();
 
-                        p.printPrincipale();
-                        J2.PhaseSecondaire();
+                            p.printPrincipale();
+                            J2.PhaseSecondaire();
 
-                        p.printFinDeTour();
-                        J2.FinDeTour();*/
-            n += 1;
-            premiertour = false;
+                            p.printFinDeTour();
+                            J2.FinDeTour();*/
+                n += 1;
+                premiertour = false;
+            }
         }
     }
-
-    if (J1.getHP() <= 0 || J1.getMort() == true)
-    {
-        p.printVictoire();
-        cout << " [1] Bravo à " << J2.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
-    }
-
-    else if (J2.getHP() <= 0 || J2.getMort() == true)
-    {
-        p.printVictoire();
-        cout << " [2] Bravo à " << J1.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
-    }
+    return;
 }
 
 /*int Partie::TourSuivant()
