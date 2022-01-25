@@ -4,6 +4,8 @@
 #include <ctime>
 #include <stdlib.h>
 #include <iostream>
+#include <filesystem>
+namespace fs = std::filesystem;
 
 // -- -- -- Constructeur -- -- --
 Partie::Partie(Joueur J1, Joueur J2, int tour)
@@ -27,13 +29,44 @@ void Partie::setJoueur2(Joueur p) { J2 = p; }
 void Partie::PartieDeMagic(Joueur J1, Joueur J2)
 {
     printAffichage p = printAffichage();
-    // Selection du deck
-    cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    string AllDeck = "";
+    vector<string> AllDeckList = {};
+    string path = "./";
+     for (const auto & entry : fs::directory_iterator(path)){
+          if(entry.path().extension() == ".json" && entry.path() != "./Cards.json" && entry.path() != "./CardsList.json"){
+              AllDeck += entry.path().filename().stem().string() + "  ";
+              AllDeckList.push_back(entry.path().filename().stem().string());
+          }
+     }
+    bool DeckValide = false;
     string deckJ1 = "";
-    getline(cin, deckJ1);
-    cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
     string deckJ2 = "";
-    getline(cin, deckJ2);
+    cout << "Veuillez choisir un deck parmi cette liste : " << endl << endl << AllDeck << endl << endl;
+    // Selection du deck J1
+    while(DeckValide == false){
+        for(string deck : AllDeckList){
+            if(deckJ1 == deck){ 
+                DeckValide = true;
+            }
+        }
+        if(DeckValide == false){
+            cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+            cin >> deckJ1;
+        }
+    }
+    DeckValide = false;
+    // Selection du deck J2
+    while(DeckValide == false){
+        for(string deck : AllDeckList){
+            if(deckJ2 == deck){
+                DeckValide = true;
+            }
+        }
+        if(DeckValide == false){
+            cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+            cin >> deckJ2;
+        }
+    }
 
     // -- Creation Deck --
     Deck d1 = Deck(deckJ1); // Creation du Deck. OK.
@@ -220,10 +253,11 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
         cout << "----------------------------------------------------------------" << endl;
         cout << "Joueur " << cJ << J1.getNom() << couleurDefaut << endl;
         cout << "----------------------------------------------------------------" << endl;
-
+        int compteur = 0;
         for (Carte *carte : liste_Attaque)
         { // J'affiche les cartes avec lesquelles l'attaque est possible
             carte->printCouleur();
+            compteur += 1;
         }
 
         cout << "-----------------------------------------------------------------------------------------------------------------" << endl;
@@ -240,8 +274,13 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 
             if (safeword != "OK")
             {
+                if(stoi(safeword) > compteur || stoi(safeword) <= 0){
+                    cout << "Veuillez entrer un numero valide" << endl;
+                }
+                else{
                 choix_attaquant.push_back(stoi(safeword));
                 safeword = "";
+                }
             }
         }
         for (int i : choix_attaquant)
@@ -347,10 +386,11 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                 cout << "Veux tu defendre sur cette carte ? Ci dessous les cartes avec lesquelles tu peux defendre ! " << endl;
                 cout << "Entrer " << cJ << "OUI " << couleurDefaut << "si tu veux defendre, " << cJ << "NON" << couleurDefaut << " sinon !" << endl;
                 cout << "------------------------------------------------------------------------------------------------" << endl;
-
+                compteur = 0;
                 for (Carte *carte_def : liste_Defense)
                 {
                     carte_def->printCouleur();
+                    compteur += 1;
                 }
 
                 cin >> safeword;

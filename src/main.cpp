@@ -6,7 +6,6 @@
 #include "../Headers/printAffichage.hpp"
 #include <iostream>
 #include <stdlib.h>
-
 using namespace std;
 
 int main()
@@ -20,8 +19,8 @@ int main()
 
      p.printLogo();
 
-     cout
-         << " Bienvenue dans Magic : THE CLAQUÉ" << endl;
+     cout << " Bienvenue dans Magic : THE CLAQUÉ" << endl;
+
      cout << " Veuillez choisir le nom du premier Joueur" << endl;
      getline(cin, name1);
      cout << " Veuillez choisir le nom du deuxieme Joueur" << endl;
