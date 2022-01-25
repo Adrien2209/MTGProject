@@ -28,12 +28,12 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
 {
     printAffichage p = printAffichage();
     // Selection du deck
-    // cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
-    string deckJ1 = "DeckTest";
-    // getline(cin, deckJ1);
-    // cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
-    string deckJ2 = "DeckTest";
-    // getline(cin, deckJ2);
+    cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    string deckJ1 = "";
+    getline(cin, deckJ1);
+    cout << J2.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
+    string deckJ2 = "";
+    getline(cin, deckJ2);
 
     // -- Creation Deck --
     Deck d1 = Deck(deckJ1); // Creation du Deck. OK.
@@ -50,13 +50,13 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
     // Creation des mains avant le dubut du premier tour. OK.
     J1.setInitialHand();
     J2.setInitialHand();
-    // J1.NettoyageBibli();
-    // J2.NettoyageBibli();
+    J1.NettoyageBibli();
+    J2.NettoyageBibli();
 
     int n = rand() % 2;
     bool premiertour = true;
 
-    while (J1.getHP()>0 && J2.getHP()>0 && J1.getBibli().size()>0 && J2.getBibli().size()>0)
+    while (J1.VerifMort() == false || J2.VerifMort() == false || J1.getMort() == false || J2.getMort() == false)
     {
 
         if (n % 2 == 0)
@@ -85,36 +85,37 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
                     }
                 }
 
-                /*            p.printDesengagement();
-                            J1.PhaseDeDesengagement();
-                            J1.setPasPoserTerrain();
+                p.printDesengagement();
+                J1.PhaseDeDesengagement();
+                J1.setPasPoserTerrain();
 
-                            p.printPrincipale();
-                            J1.PhasePrincipale();
+                p.printPrincipale();
+                J1.PhasePrincipale();
 
-                            p.printCombat();
-                            PhaseDeCombatTest(J1, J2);
-                            J1.NettoyageHand();
-                            J2.NettoyageHand();
-                            J1.NettoyageGraveYard();
-                            J2.NettoyageGraveYard();
-                            cout << "Cimetiere de : " << J1.getNom() << endl;
-                            J1.printGraveYard();
-                            cout << "Cimetiere de : " << J2.getNom() << endl;
-                            J2.printGraveYard();
-                            cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
-                            cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
+                p.printCombat();
+                PhaseDeCombat(J1, J2);
+                J1.NettoyageHand();
+                J2.NettoyageHand();
+                J1.NettoyageGraveYard();
+                J2.NettoyageGraveYard();
+                /*
+                cout << "Cimetiere de : " << J1.getNom() << endl;
+                J1.printGraveYard();
+                cout << "Cimetiere de : " << J2.getNom() << endl;
+                J2.printGraveYard();
+                cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
+                cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
 
-                            cout << "Main de : " << J1.getNom() << endl;
-                            J1.printHand();
-                            cout << "Main de : " << J2.getNom() << endl;
-                            J2.printHand();
+                cout << "Main de : " << J1.getNom() << endl;
+                J1.printHand();
+                cout << "Main de : " << J2.getNom() << endl;
+                J2.printHand();
+                */
+                p.printPrincipale();
+                J1.PhaseSecondaire();
 
-                            p.printPrincipale();
-                            J1.PhaseSecondaire();
-
-                            p.printFinDeTour();
-                            J1.FinDeTour();*/
+                p.printFinDeTour();
+                J1.FinDeTour();
                 n += 1;
                 premiertour = false;
             }
@@ -145,35 +146,40 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
                         return;
                     }
                 }
+
+                p.printDesengagement();
+                J2.PhaseDeDesengagement();
+                J2.setPasPoserTerrain();
+
+                p.printPrincipale();
+                J2.PhasePrincipale();
+
+                p.printCombat();
+                PhaseDeCombat(J2, J1);
+                J1.NettoyageHand();
+                J2.NettoyageHand();
+                J1.NettoyageGraveYard();
+                J2.NettoyageGraveYard();
                 /*
-                            J2.PhaseDeDesengagement();
-                            J2.setPasPoserTerrain();
+                cout << "Cimetiere de : " << J1.getNom() << endl;
+                J1.printGraveYard();
+                cout << "Cimetiere de : " << J2.getNom() << endl;
+                J2.printGraveYard();
 
-                            p.printPrincipale();
-                            J2.PhasePrincipale();
+                cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
+                cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
 
-                            p.printCombat();
-                            PhaseDeCombatTest(J2, J1);
-                            J1.NettoyageHand();
-                            J2.NettoyageHand();
-                            cout << "Cimetiere de : " << J1.getNom() << endl;
-                            J1.printGraveYard();
-                            cout << "Cimetiere de : " << J2.getNom() << endl;
-                            J2.printGraveYard();
+                cout << "Main de : " << J1.getNom() << endl;
+                J1.printHand();
+                cout << "Main de : " << J2.getNom() << endl;
+                J2.printHand();
+                */
 
-                            cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
-                            cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
+                p.printPrincipale();
+                J2.PhaseSecondaire();
 
-                            cout << "Main de : " << J1.getNom() << endl;
-                            J1.printHand();
-                            cout << "Main de : " << J2.getNom() << endl;
-                            J2.printHand();
-
-                            p.printPrincipale();
-                            J2.PhaseSecondaire();
-
-                            p.printFinDeTour();
-                            J2.FinDeTour();*/
+                p.printFinDeTour();
+                J2.FinDeTour();
                 n += 1;
                 premiertour = false;
             }
@@ -182,39 +188,6 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
     return;
 }
 
-/*int Partie::TourSuivant()
-{
-    return this->tour + 1;
-}
-
-Joueur *Partie::ChangementDeJoueur()
-{
-    if (this->JoueurCommence().getNom() == this->getJoueur2()->getNom())
-    {
-        return this->getJoueur1();
-    }
-    else
-    {
-        return this->getJoueur2();
-    }
-}
-
-Joueur &Partie::JoueurCommence()
-{
-    srand(time(NULL));
-    int IdJoueur = rand() % 2 + 1;
-    if (this->getJoueur1()->getId() == IdJoueur)
-    {
-        cout << "Le Joueur qui commence sera : " << J1.getNom() << endl;
-        return J1;
-    }
-    else
-    {
-        cout << "Le Joueur qui commence sera : " << J2.getNom() << endl;
-    }
-    return J2;
-}
-*/
 void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
 {
 
@@ -309,10 +282,8 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
             cout << "----------------------------------------------------------------" << endl;
             for (Carte *carte : Attacking_Cards)
             {
-                bool AtFly = false;
                 bool AtLifeLink = false;
-                bool AtDeathTouch = false;
-                bool ADeathRattle = false;
+                carte->setEngage();
 
                 // Check des capacites de l'attaquant
                 for (string capa : carte->getCapacite())
@@ -320,18 +291,6 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                     if (capa == "LifeLink")
                     {
                         AtLifeLink = true;
-                    }
-                    if (capa == "DeathTouch")
-                    {
-                        AtDeathTouch = true;
-                    }
-                    if (capa == "Flying")
-                    {
-                        AtFly = true;
-                    }
-                    if (capa == "DeathRattle")
-                    {
-                        AtFly = ADeathRattle;
                     }
                 }
                 cout << "-----------------------------------------------------" << endl;
@@ -350,13 +309,15 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
             }
         }
 
-        else{
+        else
+        {
             for (Carte *carte : Attacking_Cards)
             {
                 bool AtFly = false;
                 bool AtLifeLink = false;
                 bool AtDeathTouch = false;
                 bool ADeathRattle = false;
+                carte->setEngage();
 
                 // Check des capacites de l'attaquant
                 for (string capa : carte->getCapacite())
@@ -375,7 +336,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                     }
                     if (capa == "DeathRattle")
                     {
-                        AtFly = ADeathRattle;
+                        ADeathRattle = true;
                     }
                 }
                 cout << "----------------------------------------------------------------" << endl;
@@ -916,16 +877,3 @@ void Partie::PhaseDeCombatTest(Joueur &J1, Joueur &J2)
     cout << cJ << "Fin de la phase d'attaque (*^▽^*)" << couleurDefaut << endl;
     cout << "------------------------------------------" << endl;
 }
-
-/*
-bool Partie::FinDePartie()
-{
-    if (this->getJoueur1()->getHP() <= 0 || this->getJoueur2()->getHP() <= 0)
-    {
-        return false;
-    }
-    return true;
-
-    // Ajouter plus tard les autres regles
-}
-*/

@@ -67,19 +67,6 @@
         "Creature" :
         [
             {
-                "Title" : "Saitama",
-                "CommonCost" : 5,
-                "ColorCost" : ["White", "Black", "Blue", "Red", "Green"],
-                "Color" : "Multicolor",
-                "Type" : "Simple Human",
-                "Force" : 99,
-                "Endurance" : 99,
-                "Capacity" : ["Flying"],
-                "ID"    : 13
-            },
-    
-    
-            {
                 "Title" : "Angel of Vitality",
                 "CommonCost" : 2,
                 "ColorCost" : ["White"],

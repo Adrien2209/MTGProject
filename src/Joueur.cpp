@@ -650,6 +650,9 @@ int Joueur::PhaseDeDesengagement()
     for (Carte *carte : Board)
     {
       carte->setDesengage();
+      if(carte->getID() == 2){
+        carte->setPeutAttaquer();
+      }
     }
   }
   return 1;

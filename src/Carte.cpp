@@ -48,6 +48,7 @@ void Carte::setLieu(string l) { lieu = l; }
 void Carte::setEngage() { etat = true; }
 void Carte::setDesengage() { etat = false; }
 void Carte::setPeutAttaquer() { return; }
+void Carte::setPeutPasAttaquer() { return; }
 int Carte::getForceBonus() { return 0; }
 int Carte::getEnduranceBonus() { return 0; }
 bool Carte::getPeutAttaquer() { return false; }

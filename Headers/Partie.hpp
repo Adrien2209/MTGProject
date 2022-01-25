@@ -31,15 +31,7 @@ class Partie {
     
     void PhaseDeCombat(Joueur& J1, Joueur& J2);
     void PhaseDeCombatTest(Joueur& J1, Joueur& J2);
-    bool FinDePartie();
-    
-    
-    
-    //string VerifCin(string s);
-    //Joueur& JoueurCommence();
-    //Joueur* ChangementDeJoueur();
-    //Joueur getJoueurCommence();
-    //int TourSuivant();
+
 };
 
 #endif

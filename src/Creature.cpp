@@ -44,6 +44,7 @@ int Creature::getID()
   return idCreature;
 }
 
+
 bool Creature::getPeutAttaquer()
 {
   return peutAttaquer;
@@ -59,6 +60,7 @@ void Creature::setEndurance(int i) { endurance = i; }
 void Creature::setBaseEndurance(int i) { base_endurance = i; }
 void Creature::minusEndurance(int i) { endurance -= i; }
 void Creature::setPeutAttaquer() { peutAttaquer = true; }
+void Creature::setPeutPasAttaquer() { peutAttaquer = false; }
 // -- -- -- Les méthodes -- -- --
 
 

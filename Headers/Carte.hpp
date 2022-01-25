@@ -36,7 +36,7 @@ public:
     string getLieu();
     int getNumero();
     virtual bool getPeutAttaquer();
-    bool getEtat();
+    virtual bool getEtat();
 
     // ------------------------------ LES SETS ------------------------------
     void virtual setForce(int i);
@@ -45,10 +45,11 @@ public:
     void virtual minusEndurance(int i);
 
     virtual void setPeutAttaquer();
+    virtual void setPeutPasAttaquer();
     virtual int CoutTotale() { return 0; }
     void setLieu(string l);
-    void setEngage();
-    void setDesengage();
+    virtual void setEngage();
+    virtual void setDesengage();
 
     // ------------------------------ LES METHODES ------------------------------
     void Death();

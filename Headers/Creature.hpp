@@ -40,6 +40,7 @@ public:
     void setBaseEndurance(int i);
     void minusEndurance(int i);
     void setPeutAttaquer();
+    void setPeutPasAttaquer();
 
     // Les prints
     void printCouleur();
