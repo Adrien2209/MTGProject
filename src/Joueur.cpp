@@ -10,7 +10,7 @@
 // ------------------------------ CONSTRUCTEURS ---------------------------------
 // ------------------------------------------------------------------------------
 
-Joueur::Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *> Bibli, vector<Carte *> Board, vector<Carte *> GraveYard, bool APoserTerrain)
+Joueur::Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *> Bibli, vector<Carte *> Board, vector<Carte *> GraveYard, bool APoserTerrain, bool mort)
 {
   this->nom = nom;
   this->HP = HP;
@@ -20,6 +20,7 @@ Joueur::Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *>
   this->Board = Board;
   this->GraveYard = GraveYard;
   this->APoserTerrain = false;
+  this->mort = false;
 }
 
 Joueur::Joueur(string nom, int HP, int ID)
@@ -28,6 +29,7 @@ Joueur::Joueur(string nom, int HP, int ID)
   this->HP = HP;
   this->ID = ID;
   APoserTerrain = false;
+  this->mort = false;
 }
 
 Joueur::Joueur(){};
@@ -49,6 +51,7 @@ vector<Carte *> Joueur::getHand() { return Hand; }
 // ----------------------------------------------------------------------
 
 void Joueur::setNom(string n) { nom = n; }
+void Joueur::setMort() { mort = true; }
 void Joueur::setHP(int s) { HP = s; }
 void Joueur::setAPoserTerrain() { APoserTerrain = true; }
 void Joueur::setPasPoserTerrain() { APoserTerrain = false; }
@@ -262,9 +265,10 @@ int Joueur::VerifCin(int i)
 
 bool Joueur::VerifMort()
 {
-  if (this->getHP() <= 0 || mort == true)
+  if (this->getHP() <= 0 )
   {
     cout << "Le joueur " << this->getNom() << " est mort ! C'est CIAO !!" << endl;
+    mort = true;
     return mort;
   }
   return mort;
@@ -618,23 +622,10 @@ void Joueur::PoserEnchantement()
 
 void Joueur::PhaseDePioche()
 {
-  Color couleurDefaut(FG_DEFAULT);
-  Color c = Color::CouleurChoisie("Magenta");
-
-  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
-  cout << c << "      (  )        " << endl;
-  cout << c << "       ||            [][][][]  []  [][][][] [][][][] []    []  [][][][]                                  " << endl;
-  cout << c << "       ||            []    []  []  []    [] []       []    []  []                               " << endl;
-  cout << c << "   ___|  |____       [][][][]  []  []    [] []       [][][][]  [][]             [][][] []  []                " << endl;
-  cout << c << "  /__________/       []        []  []    [] []       []    []  []               []  [] [][]           " << endl;
-  cout << c << "  /___________/      []        []  [][][][] [][][][] []    []  [][][][] [][][]  [][][] []  []         " << endl;
-  cout << c << "  /___________/~~~  " << endl;
-  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
 
   if (this->getBibli().empty())
   {
     mort = true;
-    this->VerifMort();
   }
   else
   {
@@ -646,23 +637,11 @@ void Joueur::PhaseDePioche()
 
 int Joueur::PhaseDeDesengagement()
 {
-  Color couleurDefaut(FG_DEFAULT);
-  Color c = Color::CouleurChoisie("Magenta");
-  cout << c << endl;
-  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
-  cout << c << "     ______      " << endl;
-  cout << c << "    |      |  [][][]     [][][][] [][][][] [][][][] []    []  [][][]   [][[]][]  [][][]   [][][][] []      [] [][][][] []    [] [][][][]                      " << endl;
-  cout << c << "    |      |  []    []   []       []       []       [][]  [] []        []    [] []        []       [][]  [][] []       [][]  []    []                         " << endl;
-  cout << c << "    | (o)(o)  []    []   [][]     [][][][] [][][    [] [] [] []   [][] [][][][] []   [][] [][]     []  []  [] [][]     [] [] []    []             [][][] [] []" << endl;
-  cout << c << "    C      _) []    []   []             [] []       []  [][] []     [] []    [] []     [] []       []      [] []       []  [][]    []             []  [] [][] " << endl;
-  cout << c << "    | ,___|   [][][]     [][][][] [][][][] [][][][] []    []  [][][]   []    []  [][][]   [][][][] []      [] [][][][] []    []    []   [] [] []  [][][] [] []" << endl;
-  cout << c << "    |   /" << endl;
-  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
-
+ 
   if (this->getBoard().empty())
   {
     cout << "--------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
-    cout << " LE JOUEUR " << this->getNom() << " N'A PAS DE TERRAINS SUR LE BOARD ! " << endl;
+    cout << " LE JOUEUR " << this->getNom() << " N'A PAS DE CARTES SUR LE BOARD ! " << endl;
     cout << "--------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
     return 0;
   }
@@ -679,16 +658,6 @@ int Joueur::PhaseDeDesengagement()
 void Joueur::PhasePrincipale()
 {
   Color couleurDefaut(FG_DEFAULT);
-  Color c = Color::CouleurChoisie("Magenta");
-  cout << c << endl;
-  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
-  cout << c << "   ____________                                                                                                                                                              " << endl;
-  cout << c << "  |    _|_     |  [][][][] [][][][] [][][][] [][][][] [][][][]   []      [] [][][][] [][][][]    [][][][] [][][][] [][][][] [][][][]  [][][][] [][][][]                                                                                                                                       " << endl;
-  cout << c << "  |   |_|_|    |  []    [] []    [] []       []       []    []    []    []  []    [] []          []       []    [] []    []    []     []       []                                                                                               " << endl;
-  cout << c << "  |   |   |    |  [][][][] []    [] [][][][] [][]     [][][][]     []  []   []    [] [][][][]    []       [][][][] [][][][]    []     [][]     [][][][]                                                                                                                      " << endl;
-  cout << c << "  |   |___|    |  []       []    []       [] []       []  []        [][]    []    []       []    []       []    [] []  []      []     []             []                                                                                " << endl;
-  cout << c << "  |____________|  []       [][][][] [][][][] [][][][] []   []        []     [][][][] [][][][]    [][][][] []    [] []    []    []     [][][][] [][][][] [][][]                                                                                                                       " << endl;
-  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
 
   bool continu = true;
   while (continu)
@@ -749,17 +718,6 @@ void Joueur::PhaseSecondaire()
 
 void Joueur::FinDeTour()
 {
-  Color couleurDefaut(FG_DEFAULT);
-  Color c = Color::CouleurChoisie("Magenta");
-  cout << c << endl;
-  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
-  cout << c << "                                                                                                                                                                " << endl;
-  cout << c << "   [][][][] []  []    []    [][][]   [][][][]   [][][][] [][][][] []    [] [][][][]                        " << endl;
-  cout << c << "   []       []  [][]  []    []    [] []            []    []    [] []    [] []    []                                                                                                              " << endl;
-  cout << c << "   [][]     []  [] [] []    []    [] [][]          []    []    [] []    [] [][][][]     " << endl;
-  cout << c << "   []       []  []  [][]    []    [] []            []    []    [] []    [] []  []                                                                                                         " << endl;
-  cout << c << "   []       []  []    []    [][][]   [][][][]      []    [][][][] [][][][] []    []         " << endl;
-  cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
 
   APoserTerrain = false;
   int id;

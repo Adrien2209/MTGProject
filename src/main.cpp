@@ -3,6 +3,7 @@
 #include "../Headers/Terrain.hpp"
 #include "../Headers/Partie.hpp"
 #include "../Headers/Deck.hpp"
+#include "../Headers/printAffichage.hpp"
 #include <iostream>
 #include <stdlib.h>
 
@@ -10,13 +11,16 @@ using namespace std;
 
 int main()
 {
+     printAffichage p = printAffichage();
      srand(time(NULL));
      // int tour = 0;
      string name1;
      string name2;
-     cout << "Lancement du jeu ... [||||||||||||||||||||||||||||||||||||||___________] 70 %" << endl;
-     cout << "                     [|||||||||||||||||||||||||||||||||||||||||||||||||] 100 %" << endl;
-     cout << " Bienvenue dans Magic : THE CLAQUÉ" << endl;
+
+     p.printLogo();
+
+     cout
+         << " Bienvenue dans Magic : THE CLAQUÉ" << endl;
      cout << " Veuillez choisir le nom du premier Joueur" << endl;
      getline(cin, name1);
      cout << " Veuillez choisir le nom du deuxieme Joueur" << endl;

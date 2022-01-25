@@ -1,5 +1,6 @@
 
 #include "../Headers/Partie.hpp"
+#include "../Headers/printAffichage.hpp"
 #include <ctime>
 #include <stdlib.h>
 #include <iostream>
@@ -25,6 +26,7 @@ void Partie::setJoueur2(Joueur p) { J2 = p; }
 //  -- -- -- les methodes -- -- --
 void Partie::PartieDeMagic(Joueur J1, Joueur J2)
 {
+    printAffichage p = printAffichage();
     // Selection du deck
     // cout << J1.getNom() << ", veuillez choisir votre deck en rentrant son nom :" << endl;
     string deckJ1 = "DeckTest";
@@ -54,69 +56,116 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
     int n = rand() % 2;
     bool premiertour = true;
 
-    while (J1.getHP() > 0 || J2.getHP() > 0 || J1.getMort() == true || J2.getMort() == true)
+    while (J1.VerifMort() == false || J2.VerifMort() == false || J1.getMort() == false || J2.getMort() == false)
     {
+
         if (n % 2 == 0)
         {
+            cout << " ------------------------------------------------------ " << endl;
+            cout << J1.getNom() << " : " << J1.VerifMort() << endl;
+            cout << " ------------------------------------------------------ " << endl;
+            cout << J1.getNom() << " : " << J1.getMort() << endl;
+            cout << " ------------------------------------------------------ " << endl;
+
             if (premiertour == false)
             {
+                p.printPioche();
                 J1.PhaseDePioche();
             }
-            J1.PhaseDeDesengagement();
-            J1.setPasPoserTerrain();
-            J1.PhasePrincipale();
-            PhaseDeCombatTest(J1, J2);
-            J1.NettoyageHand();
-            J2.NettoyageHand();
-            J1.NettoyageGraveYard();
-            J2.NettoyageGraveYard();
-            cout << "Cimetiere de : " << J1.getNom() << endl;
-            J1.printGraveYard();
-            cout << "Cimetiere de : " << J2.getNom() << endl;
-            J2.printGraveYard();
-            cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
-            cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
 
-            cout << "Main de : " << J1.getNom() << endl;
-            J1.printHand();
-            cout << "Main de : " << J2.getNom() << endl;
-            J2.printHand();
-            // J1.PhaseSecondaire();
-            J1.FinDeTour();
+            /*            p.printDesengagement();
+                        J1.PhaseDeDesengagement();
+                        J1.setPasPoserTerrain();
 
+                        p.printPrincipale();
+                        J1.PhasePrincipale();
+
+                        p.printCombat();
+                        PhaseDeCombatTest(J1, J2);
+                        J1.NettoyageHand();
+                        J2.NettoyageHand();
+                        J1.NettoyageGraveYard();
+                        J2.NettoyageGraveYard();
+                        cout << "Cimetiere de : " << J1.getNom() << endl;
+                        J1.printGraveYard();
+                        cout << "Cimetiere de : " << J2.getNom() << endl;
+                        J2.printGraveYard();
+                        cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
+                        cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
+
+                        cout << "Main de : " << J1.getNom() << endl;
+                        J1.printHand();
+                        cout << "Main de : " << J2.getNom() << endl;
+                        J2.printHand();
+
+                        p.printPrincipale();
+                        J1.PhaseSecondaire();
+
+                        p.printFinDeTour();
+                        J1.FinDeTour();
+            */
             n += 1;
             premiertour = false;
         }
 
         if (n % 2 == 1)
         {
+           
+            cout << " ------------------------------------------------------ " << endl;
+            cout << J2.getNom() << " : " << J1.VerifMort() << endl;
+            cout << " ------------------------------------------------------ " << endl;
+            cout << J2.getNom() << " : " << J1.getMort() << endl;
+            cout << " ------------------------------------------------------ " << endl;
+
             if (premiertour == false)
             {
+                p.printPioche();
                 J2.PhaseDePioche();
             }
-            J2.PhaseDeDesengagement();
-            J2.setPasPoserTerrain();
-            J2.PhasePrincipale();
-            PhaseDeCombatTest(J2, J1);
-            J1.NettoyageHand();
-            J2.NettoyageHand();
-            cout << "Cimetiere de : " << J1.getNom() << endl;
-            J1.printGraveYard();
-            cout << "Cimetiere de : " << J2.getNom() << endl;
-            J2.printGraveYard();
+            /*
+                        J2.PhaseDeDesengagement();
+                        J2.setPasPoserTerrain();
 
-            cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
-            cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
+                        p.printPrincipale();
+                        J2.PhasePrincipale();
 
-            cout << "Main de : " << J1.getNom() << endl;
-            J1.printHand();
-            cout << "Main de : " << J2.getNom() << endl;
-            J2.printHand();
-            // J2.PhasePrincipale();
-            J2.FinDeTour();
+                        p.printCombat();
+                        PhaseDeCombatTest(J2, J1);
+                        J1.NettoyageHand();
+                        J2.NettoyageHand();
+                        cout << "Cimetiere de : " << J1.getNom() << endl;
+                        J1.printGraveYard();
+                        cout << "Cimetiere de : " << J2.getNom() << endl;
+                        J2.printGraveYard();
+
+                        cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
+                        cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
+
+                        cout << "Main de : " << J1.getNom() << endl;
+                        J1.printHand();
+                        cout << "Main de : " << J2.getNom() << endl;
+                        J2.printHand();
+
+                        p.printPrincipale();
+                        J2.PhaseSecondaire();
+
+                        p.printFinDeTour();
+                        J2.FinDeTour();*/
             n += 1;
             premiertour = false;
         }
+    }
+
+    if (J1.getHP() <= 0 || J1.getMort() == true)
+    {
+        p.printVictoire();
+        cout << " [1] Bravo à " << J2.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
+    }
+
+    else if (J2.getHP() <= 0 || J2.getMort() == true)
+    {
+        p.printVictoire();
+        cout << " [2] Bravo à " << J1.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
     }
 }
 
@@ -159,16 +208,6 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
     Color cJ = Color::CouleurChoisie("Red");
 
     Color couleurDefaut(FG_DEFAULT);
-    Color c = Color::CouleurChoisie("Cyan");
-    cout << c << endl;
-    cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
-    cout << c << "       _,-,      " << endl;
-    cout << c << "      T_  |  [][][][] [][][][]  []      [] [][][][] [][][][] [][][][]             " << endl;
-    cout << c << "      ||`-|  []       []    []  [][]  [][] []    [] []    []    []       " << endl;
-    cout << c << "      ||     []       []    []  []  []  [] [][][][] [][][][]    []  " << endl;
-    cout << c << "      ||     []       []    []  []      [] []    [] []    []    []  " << endl;
-    cout << c << "      ~~     [][][][] [][][][]  []      [] [][][][] []    []    []  " << endl;
-    cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
 
     // -- -- -- -- -- Partie choix de l'attaquant -- -- -- -- --
 
@@ -494,18 +533,7 @@ void Partie::PhaseDeCombatTest(Joueur &J1, Joueur &J2)
 {
 
     Color cJ = Color::CouleurChoisie("Red");
-
     Color couleurDefaut(FG_DEFAULT);
-    Color c = Color::CouleurChoisie("Magenta");
-    cout << c << endl;
-    cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
-    cout << c << "       _,-,      " << endl;
-    cout << c << "      T_  |  [][][][] [][][][]  []      [] [][][][] [][][][] [][][][]             " << endl;
-    cout << c << "      ||`-|  []       []    []  [][]  [][] []    [] []    []    []       " << endl;
-    cout << c << "      ||     []       []    []  []  []  [] [][][][] [][][][]    []  " << endl;
-    cout << c << "      ||     []       []    []  []      [] []    [] []    []    []  " << endl;
-    cout << c << "      ~~     [][][][] [][][][]  []      [] [][][][] []    []    []  " << endl;
-    cout << couleurDefaut << " --------------------------------------------------------------------------------------------------------------------------------------------------------------- " << endl;
 
     // -- -- -- -- -- Partie choix de l'attaquant -- -- -- -- --
 
@@ -826,6 +854,7 @@ void Partie::PhaseDeCombatTest(Joueur &J1, Joueur &J2)
     cout << "------------------------------------------" << endl;
 }
 
+/*
 bool Partie::FinDePartie()
 {
     if (this->getJoueur1()->getHP() <= 0 || this->getJoueur2()->getHP() <= 0)
@@ -836,3 +865,4 @@ bool Partie::FinDePartie()
 
     // Ajouter plus tard les autres regles
 }
+*/

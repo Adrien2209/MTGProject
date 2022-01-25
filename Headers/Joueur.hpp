@@ -26,7 +26,7 @@ private:
 public:
     // -- -- -- -- CONSTRUCTEUR -- -- -- --
     // Joueur(Deck d, int HP);
-    Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *> Bibli, vector<Carte *> Board, vector<Carte *> GraveYard, bool APoserTerrain);
+    Joueur(string nom, int HP, int ID, vector<Carte *> Hand, vector<Carte *> Bibli, vector<Carte *> Board, vector<Carte *> GraveYard, bool APoserTerrain, bool mort);
     Joueur(string nom, int HP, int ID);
     Joueur();
     // -- -- -- -- DESTRUCTEUR -- -- -- --
@@ -49,6 +49,7 @@ public:
     void setInitialHand();
     void setAPoserTerrain();
     void setPasPoserTerrain();
+    void setMort();
     vector<Carte *> setBoard(vector<Carte *> c);
 
     // ------------------------------ LES PRINTS ------------------------------
