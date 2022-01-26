@@ -131,111 +131,111 @@ void Joueur::addToBoard(Carte *carte) { Board.push_back(carte); }
 
 void Joueur::NettoyageBibli()
 {
-  int i = 0;
-  for (auto *carte : this->Bibli)
+  for (auto *carte : Bibli)
   {
     if (carte->getLieu() == "GraveYard")
     {
       addToGraveYard(carte);
-      this->Bibli.erase(this->Bibli.begin() + i);
     }
     if (carte->getLieu() == "Hand")
     {
       addToHand(carte);
-      this->Bibli.erase(this->Bibli.begin() + i);
     }
     if (carte->getLieu() == "Board")
     {
       addToBoard(carte);
-      this->Bibli.erase(this->Bibli.begin() + i);
-    }
-    else
-    {
-      i += 1;
     }
   }
+  Bibli.erase(
+    remove_if(
+        Bibli.begin(), 
+        Bibli.end(),
+        [](Carte* c) { return c->getLieu() != "Bibli"; }
+    ), 
+    Bibli.end()
+  ); 
 }
 
 void Joueur::NettoyageHand()
 {
-  int i = 0;
   for (auto *carte : this->Hand)
   {
     if (carte->getLieu() == "GraveYard")
     {
       addToGraveYard(carte);
-      // cout << "on va vouloir supprimer " << carte->getNom() << " a la position " << i << endl;
-      this->Hand.erase(this->Hand.begin() + i);
     }
     if (carte->getLieu() == "Bibli")
     {
       addToBibli(carte);
-      this->Hand.erase(this->Hand.begin() + i);
+
     }
     if (carte->getLieu() == "Board")
     {
       addToBoard(carte);
-      this->Hand.erase(this->Hand.begin() + i);
-    }
-    else
-    {
-      i += 1;
-    }
+    }  
   }
+  Hand.erase(
+    remove_if(
+        Hand.begin(), 
+        Hand.end(),
+        [](Carte* c) { return c->getLieu() != "Hand"; }
+    ), 
+    Hand.end()
+  ); 
 }
 
 void Joueur::NettoyageGraveYard()
 {
-  int i = 0;
-  for (auto *carte : this->GraveYard)
+  for (auto *carte : GraveYard)
   {
     if (carte->getLieu() == "Hand")
     {
       addToHand(carte);
-      this->GraveYard.erase(this->GraveYard.begin() + i);
     }
     if (carte->getLieu() == "Bibli")
     {
       addToBibli(carte);
-      this->GraveYard.erase(this->GraveYard.begin() + i);
     }
     if (carte->getLieu() == "Board")
     {
       addToBoard(carte);
-      this->GraveYard.erase(this->GraveYard.begin() + i);
-    }
-    else
-    {
-      i += 1;
     }
   }
+  GraveYard.erase(
+    remove_if(
+        GraveYard.begin(), 
+        GraveYard.end(),
+        [](Carte* c) { return c->getLieu() != "GraveYard"; }
+    ), 
+    GraveYard.end()
+  ); 
 }
 
 void Joueur::NettoyageBoard()
 {
-  int i = 0;
-  for (auto *carte : this->Board)
+  for (auto *carte : Board)
   {
     if (carte->getLieu() == "GraveYard")
     {
       addToGraveYard(carte);
-      this->Board.erase(this->Board.begin() + i);
     }
     if (carte->getLieu() == "Hand")
     {
       addToHand(carte);
-      this->Board.erase(this->Board.begin() + i);
     }
     if (carte->getLieu() == "Bibli")
     {
       addToBibli(carte);
-      this->Board.erase(this->Board.begin() + i);
-    }
-    else
-    {
-      i += 1;
     }
   }
+  Board.erase(
+    remove_if(
+        Board.begin(), 
+        Board.end(),
+        [](Carte* c) { return c->getLieu() != "Board"; }
+    ), 
+    Board.end()
+  ); 
 }
 
 // -----------------------------------------------------------------------------
@@ -762,6 +762,12 @@ void Joueur::FinDeTour()
   }
 
   for (Carte *c : Board)
+  {
+    c->setPeutAttaquer();
+    c->setEndurance(c->getBaseEndurance());
+  }
+  //A commenter si on est dans le vrai jeu
+  for (Carte *c : Hand)
   {
     c->setPeutAttaquer();
     c->setEndurance(c->getBaseEndurance());

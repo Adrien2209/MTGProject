@@ -696,12 +696,13 @@ vector<Carte *> Deck::getDeckFromFile(string nomDeck)
         string type = liste_creature.value()["Type"];
         int force = liste_creature.value()["Force"];
         int endurance = liste_creature.value()["Endurance"];
+        int base_endurance = liste_creature.value()["Endurance"];
         vector<string> capacity = liste_creature.value()["Capacity"];
         string lieu = "Bibli";
         int id = i;
         bool etat = false;
         bool peutAttaquer = false;
-        DeckRetour.push_back(new Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance, peutAttaquer, type, color_cost_string));
+        DeckRetour.push_back(new Creature(title, color, lieu, etat, id, capacity, colorcost, commoncost, force, endurance, base_endurance, peutAttaquer, type, color_cost_string));
         i += 1;
     }
 

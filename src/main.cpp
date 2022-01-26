@@ -10,28 +10,65 @@ using namespace std;
 
 int main()
 {
-     
      printAffichage p = printAffichage();
-     srand(time(NULL));
-     // int tour = 0;
-     string name1;
-     string name2;
-
-     p.printLogo();
-
+     string choix;
      cout << " Bienvenue dans Magic : THE CLAQUÉ" << endl;
+     p.printLogo();
+     
+     cout << endl << "Voulez vous : " << endl;
+     cout << "[1] Lancer une partie de Magic" << endl;
+     cout << "[2] Lancer la creation de deck" << endl;
+     cout << "[3] Lancer un test des fonctionnalités de combat" << endl;
 
-     cout << " Veuillez choisir le nom du premier Joueur" << endl;
-     getline(cin, name1);
-     cout << " Veuillez choisir le nom du deuxieme Joueur" << endl;
-     getline(cin, name2);
+     cin >> choix;
+     srand(time(NULL));
 
-     // -- Creation Joueur --
-     Joueur J1 = Joueur(name1, 5, 1); // Joueur1
-     Joueur J2 = Joueur(name2, 5, 2); // Joueur2
-     // -- Creation de la partie --
-     Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
-     game.PartieDeMagic(J1, J2);
+     if(choix == "1"){
+          // int tour = 0;
+          string name1;
+          string name2;
+
+
+          cout << " Veuillez choisir le nom du premier Joueur" << endl;
+          cin >> name1;
+          cout << " Veuillez choisir le nom du deuxieme Joueur" << endl;
+          cin >> name2;
+
+          // -- Creation Joueur --
+          Joueur J1 = Joueur(name1, 20, 1); // Joueur1
+          Joueur J2 = Joueur(name2, 20, 2); // Joueur2
+          // -- Creation de la partie --
+          Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
+          game.PartieDeMagic(J1, J2);
+     }
+
+     if(choix == "2"){
+          Deck d1 = Deck("DeckTest2");
+          string name;
+          cout << "Quel nom voulez vous donner a votre deck ?" << endl;
+          cin >> name;
+          d1.CreateDeck(name);
+     }
+
+     if(choix == "3"){
+          // int tour = 0;
+          string name1;
+          string name2;
+
+
+          cout << " Veuillez choisir le nom du premier Joueur" << endl;
+          cin >> name1;
+          cout << " Veuillez choisir le nom du deuxieme Joueur" << endl;
+          cin >> name2;
+
+          // -- Creation Joueur --
+          Joueur J1 = Joueur(name1, 20, 1); // Joueur1
+          Joueur J2 = Joueur(name2, 20, 2); // Joueur2
+          // -- Creation de la partie --
+          Partie game = Partie(J1, J2, 1); // Creation de la partie. OK.
+          game.PartieDeMagicCombatTest(J1, J2);
+     }
+     
 
      
      return 0;

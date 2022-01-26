@@ -28,9 +28,10 @@ class Partie {
     
     // méthodes
     void PartieDeMagic(Joueur J1, Joueur J2);
+    void PartieDeMagicCombatTest(Joueur J1, Joueur J2);
     
-    void PhaseDeCombat(Joueur& J1, Joueur& J2);
-    void PhaseDeCombatTest(Joueur& J1, Joueur& J2);
+    void PhaseDeCombat(Joueur J1, Joueur J2);
+    void PhaseDeCombatTest(Joueur J1, Joueur J2);
 
 };
 

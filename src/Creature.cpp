@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Creature::Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string, int> cout_couleur, int cost, int force, int endurance, bool peutAttaquer, string type, vector<string> cout_couleur_str) : Carte(nom, couleur, lieu, etat, numero)
+Creature::Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string, int> cout_couleur, int cost, int force, int endurance, int base_endurance, bool peutAttaquer, string type, vector<string> cout_couleur_str) : Carte(nom, couleur, lieu, etat, numero)
 {
   this->cout_couleur = cout_couleur;
   this->cout_couleur_str = cout_couleur_str;
@@ -12,7 +12,7 @@ Creature::Creature(string nom, string couleur, string lieu, bool etat, int numer
   this->force = force;
   this->endurance = endurance;
   this->idCreature = 2;
-  this->base_endurance = endurance;
+  this->base_endurance = base_endurance;
   this->peutAttaquer = false;
   this->type = type;
 }

@@ -19,7 +19,7 @@ private:
     string type;
 
 public:
-    Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string, int> cout_couleur, int cost, int force, int endurance, bool peutAttaquer, string type, vector<string> cout_couleur_str); // Constructeur à faire
+    Creature(string nom, string couleur, string lieu, bool etat, int numero, vector<string> capacite, map<string, int> cout_couleur, int cost, int force, int endurance, int base_endurance, bool peutAttaquer, string type, vector<string> cout_couleur_str); // Constructeur à faire
     ~Creature(){};                                                                                                                                                                                                                         // Destructeur
 
     // les gets

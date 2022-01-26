@@ -47,7 +47,7 @@ public:
     virtual void setPeutAttaquer();
     virtual void setPeutPasAttaquer();
     virtual int CoutTotale() { return 0; }
-    void setLieu(string l);
+    virtual void setLieu(string l);
     virtual void setEngage();
     virtual void setDesengage();
 

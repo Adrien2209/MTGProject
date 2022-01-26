@@ -221,7 +221,147 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
     return;
 }
 
-void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
+void Partie::PartieDeMagicCombatTest(Joueur J1, Joueur J2)
+{
+    printAffichage p = printAffichage();
+    string deckJ1 = "CreateTest";
+    string deckJ2 = "CreateTest";
+    // -- Creation Deck --
+    Deck d1 = Deck(deckJ1); // Creation du Deck. OK.
+    Deck d2 = Deck(deckJ2);
+
+    // Bibliotheques des deux joueurs. OK.
+    J1.setBibli(d1);
+    J2.setBibli(d2);
+
+    // On melange au prealables les Bibliothèques des deux joueurs. OK.
+    J1.MelangeBibli();
+    J2.MelangeBibli();
+
+    // Creation des mains avant le dubut du premier tour. OK.
+    J1.setInitialHand();
+    J2.setInitialHand();
+    J1.NettoyageBibli();
+    J2.NettoyageBibli();
+
+    int n = rand() % 2;
+    bool premiertour = true;
+
+    while (J1.VerifMort() == false || J2.VerifMort() == false || J1.getMort() == false || J2.getMort() == false)
+    {
+
+        if (n % 2 == 0)
+        {
+
+            if (J1.VerifMort() == true)
+
+            {
+                cout << " HP de " << J1.getNom() << " = " << J1.getHP() << endl;
+                p.printVictoire();
+                cout << " Bravo à " << J2.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
+                return;
+            }
+            else
+            {
+                if (premiertour == false)
+                {
+                    p.printPioche();
+                    J1.PhaseDePioche();
+                    if (J1.getMort() == true)
+                    {
+                        cout << J1.getNom() << " : " << J1.getMort() << endl;
+                        p.printVictoire();
+                        cout << " Bravo à " << J2.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
+                        return;
+                    }
+                }
+
+                p.printDesengagement();
+                J1.PhaseDeDesengagement();
+
+                p.printCombat();
+                PhaseDeCombatTest(J1, J2);
+
+                J1.NettoyageHand();
+                J2.NettoyageHand();
+
+                cout << "Cimetiere de : " << J1.getNom() << endl;
+                J1.printGraveYard();
+                cout << "Cimetiere de : " << J2.getNom() << endl;
+                J2.printGraveYard();
+                cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
+                cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
+
+                cout << "Main de : " << J1.getNom() << endl;
+                J1.printHand();
+                cout << "Main de : " << J2.getNom() << endl;
+                J2.printHand();
+
+                p.printFinDeTour();
+                J1.FinDeTour();
+                n += 1;
+                premiertour = false;
+            }
+        }
+
+        if (n % 2 == 1)
+        {
+
+            if (J2.VerifMort() == true)
+
+            {
+                cout << " HP de " << J2.getNom() << " = " << J2.getHP() << endl;
+                p.printVictoire();
+                cout << " Bravo à " << J1.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
+                return;
+            }
+            else
+            {
+                if (premiertour == false)
+                {
+                    p.printPioche();
+                    J2.PhaseDePioche();
+                    if (J2.getMort() == true)
+                    {
+                        cout << J2.getNom() << " : " << J2.getMort() << endl;
+                        p.printVictoire();
+                        cout << " Bravo à " << J1.getNom() << " pour la victoire ! Bravo mon champion ! " << endl;
+                        return;
+                    }
+                }
+
+                p.printDesengagement();
+                J2.PhaseDeDesengagement();
+
+                p.printCombat();
+                PhaseDeCombatTest(J2, J1);
+                
+                J1.NettoyageHand();
+                J2.NettoyageHand();
+                cout << "Cimetiere de : " << J1.getNom() << endl;
+                J1.printGraveYard();
+                cout << "Cimetiere de : " << J2.getNom() << endl;
+                J2.printGraveYard();
+
+                cout << "HP de : " << J1.getNom() << " : " << J1.getHP() << endl;
+                cout << "HP de : " << J2.getNom() << " : " << J2.getHP() << endl;
+
+                cout << "Main de : " << J1.getNom() << endl;
+                J1.printHand();
+                cout << "Main de : " << J2.getNom() << endl;
+                J2.printHand();
+
+                p.printFinDeTour();
+                J2.FinDeTour();
+                n += 1;
+                premiertour = false;
+            }
+        }
+    }
+    return;
+}
+
+void Partie::PhaseDeCombat(Joueur J1, Joueur J2)
 {
 
     Color cJ = Color::CouleurChoisie("Red");
@@ -386,11 +526,9 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                 cout << "Veux tu defendre sur cette carte ? Ci dessous les cartes avec lesquelles tu peux defendre ! " << endl;
                 cout << "Entrer " << cJ << "OUI " << couleurDefaut << "si tu veux defendre, " << cJ << "NON" << couleurDefaut << " sinon !" << endl;
                 cout << "------------------------------------------------------------------------------------------------" << endl;
-                compteur = 0;
                 for (Carte *carte_def : liste_Defense)
                 {
                     carte_def->printCouleur();
-                    compteur += 1;
                 }
 
                 cin >> safeword;
@@ -517,12 +655,12 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                                 liste_Defense[stoi(safeword) - 1]->setLieu("GraveYard");
                                 if (DefDeathRattle == true)
                                 {
-                                    for (Carte *deadcard : J2.getGraveYard())
+                                    for (Carte *card : J2.getBoard())
                                     {
-                                        if (deadcard->getType() == liste_Defense[stoi(safeword) - 1]->getType())
+                                        if (card->getType() == liste_Defense[stoi(safeword) - 1]->getType() && card->getLieu() != "GraveYard")
                                         {
-                                            deadcard->setEndurance(deadcard->getEndurance());
-                                            deadcard->setLieu("Board");
+                                            card->setEndurance(card->getEndurance()+1);
+                                            card->setForce(card->getForce()+1);
                                         }
                                     }
                                 }
@@ -532,12 +670,12 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
                                 carte->setLieu("GraveYard");
                                 if (ADeathRattle == true)
                                 {
-                                    for (Carte *deadcard : J1.getGraveYard())
+                                    for (Carte *card : J1.getBoard())
                                     {
-                                        if (deadcard->getType() == carte->getType())
+                                        if (card->getType() == liste_Defense[stoi(safeword) - 1]->getType() && card->getLieu() != "GraveYard")
                                         {
-                                            deadcard->setEndurance(deadcard->getEndurance());
-                                            deadcard->setLieu("Board");
+                                            card->setEndurance(card->getEndurance()+1);
+                                            card->setForce(card->getForce()+1);
                                         }
                                     }
                                 }
@@ -593,7 +731,7 @@ void Partie::PhaseDeCombat(Joueur &J1, Joueur &J2)
     cout << "------------------------------------------" << endl;
 }
 
-void Partie::PhaseDeCombatTest(Joueur &J1, Joueur &J2)
+void Partie::PhaseDeCombatTest(Joueur J1, Joueur J2)
 {
 
     Color cJ = Color::CouleurChoisie("Red");
@@ -843,27 +981,30 @@ void Partie::PhaseDeCombatTest(Joueur &J1, Joueur &J2)
                             liste_Defense[stoi(safeword) - 1]->setLieu("GraveYard");
                             if (DefDeathRattle == true)
                             {
-                                for (Carte *deadcard : J2.getGraveYard())
+
+                                for (Carte *card : J2.getHand())
                                 {
-                                    if (deadcard->getType() == liste_Defense[stoi(safeword) - 1]->getType())
+                                    if (card->getType() == liste_Defense[stoi(safeword) - 1]->getType() && card->getLieu() != "GraveYard")
                                     {
-                                        deadcard->setEndurance(deadcard->getEndurance());
-                                        deadcard->setLieu("Board");
+                                        card->setEndurance(card->getEndurance()+1);
+                                        card->setForce(card->getForce()+1);
                                     }
                                 }
+
                             }
                         }
+
                         if (carte->getEndurance() <= 0)
                         {
                             carte->setLieu("GraveYard");
                             if (ADeathRattle == true)
                             {
-                                for (Carte *deadcard : J1.getGraveYard())
+                                for (Carte *card : J1.getHand())
                                 {
-                                    if (deadcard->getType() == carte->getType())
+                                    if (card->getType() == carte->getType() && card->getLieu() != "GraveYard")
                                     {
-                                        deadcard->setEndurance(deadcard->getEndurance());
-                                        deadcard->setLieu("Board");
+                                        card->setEndurance(card->getEndurance()+1);
+                                        card->setForce(card->getForce()+1);
                                     }
                                 }
                             }
