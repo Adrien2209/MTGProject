@@ -33,5 +33,5 @@ Color Color::CouleurChoisie(std::string type)
 
 std::ostream &operator<<(std::ostream &flux, Color const &c)
 {
-    return flux << "\033[" << c.getColorTexT() << "m";
+    return flux << "\033[" << c.getColorTexT() << "m"; 
 }
