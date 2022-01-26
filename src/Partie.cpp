@@ -27,7 +27,7 @@ void Partie::setJoueur1(Joueur j) { J1 = j; }
 void Partie::setJoueur2(Joueur p) { J2 = p; }
 
 //  -- -- -- les methodes -- -- --
-void Partie::PartieDeMagic(Joueur J1, Joueur J2)
+void Partie::PartieDeMagic(Joueur& J1, Joueur& J2)
 {
     printAffichage p = printAffichage();
     string AllDeck = "";
@@ -222,7 +222,7 @@ void Partie::PartieDeMagic(Joueur J1, Joueur J2)
     return;
 }
 
-void Partie::PartieDeMagicCombatTest(Joueur J1, Joueur J2)
+void Partie::PartieDeMagicCombatTest(Joueur& J1, Joueur& J2)
 {
     printAffichage p = printAffichage();
     string deckJ1 = "CreateTest";
@@ -362,7 +362,7 @@ void Partie::PartieDeMagicCombatTest(Joueur J1, Joueur J2)
     return;
 }
 
-void Partie::PhaseDeCombat(Joueur J1, Joueur J2)
+void Partie::PhaseDeCombat(Joueur& J1, Joueur& J2)
 {
 
     Color cJ = Color::CouleurChoisie("Red");
@@ -732,7 +732,7 @@ void Partie::PhaseDeCombat(Joueur J1, Joueur J2)
     cout << "------------------------------------------" << endl;
 }
 
-void Partie::PhaseDeCombatTest(Joueur J1, Joueur J2)
+void Partie::PhaseDeCombatTest(Joueur& J1, Joueur& J2)
 {
 
     Color cJ = Color::CouleurChoisie("Red");
