@@ -1,4 +1,5 @@
 # MTGProject
+<p align = right> <img src =https://forthebadge.com/images/badges/made-with-c-plus-plus.svg></p>
 
 ## Presentation
 
